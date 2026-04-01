@@ -12,9 +12,9 @@ into the {body} of the default.hbs template --}}
                 <div class="main-swiper swiper overflow-hidden relative">
                     <div class="swiper-wrapper">
                         {{#foreach featured}}
-                            <div class="swiper-slide flex flex-col justify-center">
+                            <div class="swiper-slide !h-auto flex flex-col justify-center">
                                 {{!-- Main Content Wrapper: Groups Text and Image --}}
-                                <div class="featured-slider-card grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12">
+                                <div class="featured-slider-card h-full grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12">
                                     {{!-- Text Content --}}
                                     <div class="slide-content space-y-6">
                                         <div class="flex items-center gap-4">
@@ -48,7 +48,7 @@ into the {body} of the default.hbs template --}}
                                     </div>
 
                                     {{!-- Right Large Image --}}
-                                    <div class="relative bg-gray-200 min-h-[650px] rounded-[20px] overflow-hidden flex items-center justify-center">
+                                    <div class="relative bg-gray-200 min-h-[650px] h-full rounded-[20px] overflow-hidden flex items-center justify-center">
                                         {{#if feature_image}}
                                             <img src="{{img_url feature_image size="l"}}" alt="{{title}}" class="w-full h-full object-cover">
                                         {{else}}
@@ -93,46 +93,119 @@ into the {body} of the default.hbs template --}}
                             </div>
                         </div>
                     </div>
+                    </div>
                 </div>
             </div>
         </section>
-                </div>
-            </div>
-        </section>
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const thumbsSwiper = new Swiper(".thumbs-swiper", {
-                slidesPerView: "auto",
-                freeMode: true,
-                watchSlidesVisibility: true,
-                watchSlidesProgress: true,
-            });
+        {{/if}}
+    {{/get}}
 
-            const mainSwiper = new Swiper(".main-swiper", {
-                spaceBetween: 10,
-                effect: 'fade',
-                fadeEffect: {
-                    crossFade: true
-                },
-                thumbs: {
-                    swiper: thumbsSwiper,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next-custom",
-                    prevEl: ".swiper-button-prev-custom",
-                },
-                on: {
-                    slideChange: function () {
-                        const activeIndex = this.realIndex + 1;
-                        document.querySelector('.active-index').textContent = activeIndex;
-                    }
-                }
-            });
+    {{!-- New Articles Section --}}
+    <section class="new-articles py-24 bg-[#F3F4F6] border-t border-gray-100">
+        <div class="max-w-[1580px] mx-auto px-6">
+            {{!-- Section Header --}}
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">New Articles</h2>
+                <div class="flex flex-wrap items-center gap-3">
+                    <button class="px-6 py-2.5 bg-[#4CAF50] text-white rounded-full text-sm font-semibold shadow-md border-2 border-[#4CAF50] hover:opacity-90 transition-all">All</button>
+                    <button class="px-6 py-2.5 bg-white text-gray-400 rounded-full text-sm font-semibold border-2 border-gray-100 hover:border-gray-200 transition-all">Popular</button>
+                    <button class="px-6 py-2.5 bg-white text-gray-400 rounded-full text-sm font-semibold border-2 border-gray-100 hover:border-gray-200 transition-all">Trending</button>
+                    <button class="px-6 py-2.5 bg-white text-gray-400 rounded-full text-sm font-semibold border-2 border-gray-100 hover:border-gray-200 transition-all">Most Discussed</button>
+                </div>
+            </div>
+
+            {{!-- Articles Grid --}}
+            {{#get "posts" limit="8" include="tags,authors" order="published_at desc"}}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {{#foreach posts}}
+                <article class="article-card group bg-white rounded-[40px] p-8 shadow-sm hover:shadow-xl transition-all border border-gray-50 flex flex-col h-full">
+                    {{!-- Category Tag --}}
+                    <div class="mb-4">
+                        {{#if primary_tag}}
+                        <span class="px-4 py-1 bg-white border border-gray-100 text-[#6B7280] text-xs font-semibold rounded-lg shadow-sm">
+                            {{primary_tag.name}}
+                        </span>
+                        {{/if}}
+                    </div>
+
+                    {{!-- Title --}}
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 leading-tight line-clamp-2 h-[3.5rem] group-hover:text-blue-600 transition-colors">
+                        <a href="{{url}}">{{title}}</a>
+                    </h3>
+
+                    {{!-- Featured Image --}}
+                    <div class="relative aspect-[4/3] rounded-[32px] overflow-hidden mb-6 shadow-sm border-2 border-white">
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image size="m"}}" alt="{{title}}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                        {{else}}
+                        <div class="w-full h-full bg-gray-100 flex items-center justify-center">
+                            <span class="text-gray-400 font-bold">NO IMAGE</span>
+                        </div>
+                        {{/if}}
+                    </div>
+
+                    {{!-- Excerpt --}}
+                    <p class="text-[15px] text-[#6B7280] leading-relaxed line-clamp-3 mb-8">
+                        {{excerpt}}
+                    </p>
+
+                    {{!-- Footer Metadata --}}
+                    <div class="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
+                        <div class="flex items-center gap-2 text-[#9CA3AF] text-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span>{{date format="MMM DD, YYYY"}}</span>
+                        </div>
+                        
+                        {{#foreach authors}}
+                        <div class="flex items-center gap-2.5">
+                            <span class="text-xs font-bold text-gray-900">By {{name}}</span>
+                            {{#if profile_image}}
+                            <img src="{{img_url profile_image size="xs"}}" alt="{{name}}" class="w-8 h-8 rounded-full border border-white shadow-sm object-cover">
+                            {{/if}}
+                        </div>
+                        {{/foreach}}
+                    </div>
+                </article>
+                {{/foreach}}
+            </div>
+
+            {{!-- View All Button --}}
+            <div class="mt-16 flex justify-center">
+                <a href="/archive" class="px-8 py-3.5 bg-white text-gray-900 font-bold text-sm rounded-xl border border-gray-200 shadow-sm hover:bg-gray-50 transition-all">View All</a>
+            </div>
+            {{/get}}
+        </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const thumbsSwiper = new Swiper(".thumbs-swiper", {
+            slidesPerView: "auto",
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
         });
-        </script>
-    {{/if}}
-{{/get}}
 
-
-
+        const mainSwiper = new Swiper(".main-swiper", {
+            spaceBetween: 10,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            thumbs: {
+                swiper: thumbsSwiper,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next-custom",
+                prevEl: ".swiper-button-prev-custom",
+            },
+            on: {
+                slideChange: function () {
+                    const activeIndex = this.realIndex + 1;
+                    document.querySelector('.active-index').textContent = activeIndex;
+                }
+            }
+        });
+    });
+    </script>
 </main>
