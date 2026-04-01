@@ -10,17 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     {{!-- Preload scripts --}}
-    <link rel="preload" as="style" href="{{asset "built/screen.css"}}" />
     <link rel="preload" as="script" href="{{asset "built/casper.js"}}" />
 
     {{!-- Theme assets - use the {asset} helper to reference styles & scripts,
     this will take care of caching and cache-busting automatically --}}
-    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
-    <link rel="preload" as="style" href="{{asset "./built/main.css"}}">
-    <link rel="stylesheet" href="{{asset "./built/main.css"}}">
+    <link rel="stylesheet" href="{{asset "built/main.css"}}">
 
-    {{!-- This tag outputs all your advanced SEO meta, structured data, and other important settings,
-    it should always be the last tag before the closing head tag --}}
+    {{!-- Swiper --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     {{ghost_head}}
 
 </head>
@@ -116,6 +114,8 @@ $(document).ready(function () {
 </script>
 
 {{!-- Ghost outputs required functional scripts with this tag - it should always be the last thing before the closing body tag --}}
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 {{ghost_foot}}
 
 </body>

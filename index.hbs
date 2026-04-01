@@ -2,58 +2,137 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} of the default.hbs template --}}
 
-<div class="site-header-content outer{{#match @custom.header_style "Left aligned"}} left-aligned{{/match}}{{#unless @custom.show_publication_cover}}{{#match @custom.header_style "Hidden"}} no-content{{/match}}{{/unless}}">
 
-    {{#if @custom.show_publication_cover}}
-        {{#if @site.cover_image}}
-            {{!-- This is a responsive image, it loads different sizes depending on device
-            https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-            <img class="site-header-cover"
-                srcset="{{img_url @site.cover_image size="s"}} 300w,
-                        {{img_url @site.cover_image size="m"}} 600w,
-                        {{img_url @site.cover_image size="l"}} 1000w,
-                        {{img_url @site.cover_image size="xl"}} 2000w"
-                sizes="100vw"
-                src="{{img_url @site.cover_image size="xl"}}"
-                alt="{{@site.title}}"
-            />
-        {{/if}}
-    {{/if}}
-
-    {{#match @custom.header_style "!=" "Hidden"}}
-        <div class="site-header-inner inner">
-            {{#match @custom.navigation_layout "Logo on cover"}}
-                {{#if @site.logo}}
-                    <img class="site-logo" src="{{@site.logo}}" alt="{{@site.title}}">
-                {{else}}
-                    <h1 class="site-title">{{@site.title}}</h1>
-                {{/if}}
-            {{/match}}
-            {{#if @site.description}}
-                <p class="site-description">{{@site.description}}</p>
-            {{/if}}
-        </div>
-    {{/match}}
-
-</div>
-
-{{!-- The main content area --}}
 <main id="site-main" class="site-main outer">
-<div class="inner posts ">
+{{!-- Featured Slider Section --}}
+{{#get "posts" limit="5" include="tags,authors" as |featured|}}
+    {{#if featured}}
+        <section class="featured-slider py-[50px] border-be border-[#E5E7EB] bg-[#F3F4F6]">
+            <div class="container">
+                <div class="main-swiper swiper overflow-hidden relative">
+                    <div class="swiper-wrapper">
+                        {{#foreach featured}}
+                            <div class="swiper-slide flex flex-col justify-center">
+                                {{!-- Main Content Wrapper: Groups Text and Image --}}
+                                <div class="featured-slider-card grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12">
+                                    {{!-- Text Content --}}
+                                    <div class="slide-content space-y-6">
+                                        <div class="flex items-center gap-4">
+                                            <div class="flex gap-2">
+                                                {{#foreach tags limit="2"}}
+                                                    <span class="px-5 py-1.5 bg-white rounded-lg text-xs border">{{name}}</span>
+                                                {{/foreach}}
+                                            </div>
+                                            <span class="text-xs font-medium">{{reading_time}}</span>
+                                        </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {{#get "posts" limit="100" include="tags"}}
-        {{#foreach posts}}
-            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
-            <div class="post-item">
+                                        <h2 class="text-5xl">
+                                            <a href="{{url}}">{{title}}</a>
+                                        </h2>
 
-            {{> "post-card"}}
+                                        <p class="text-sm line-clamp-3 max-w-xl">
+                                            {{excerpt}}
+                                        </p>
+
+                                        {{#foreach authors}}
+                                            <div class="flex items-center gap-3">
+                                                {{#if profile_image}}
+                                                    <img src="{{img_url profile_image size="xs"}}" alt="{{name}}" class="w-12 h-12 rounded-full object-cover shadow-md">
+                                                {{/if}}
+                                                <div>
+                                                    <div class="font-bold text-gray-900 leading-none">{{name}}</div>
+                                                    <div class="text-xs text-gray-400 mt-1">Published on {{date format="DD MMM YYYY"}}</div>
+                                                </div>
+                                            </div>
+                                        {{/foreach}}
+                                    </div>
+
+                                    {{!-- Right Large Image --}}
+                                    <div class="relative bg-gray-200 min-h-[650px] rounded-[20px] overflow-hidden flex items-center justify-center">
+                                        {{#if feature_image}}
+                                            <img src="{{img_url feature_image size="l"}}" alt="{{title}}" class="w-full h-full object-cover">
+                                        {{else}}
+                                            <span class="text-gray-400">Featured Image Not Set</span>
+                                        {{/if}}
+                                    </div>
+                                </div>
+                            </div>
+                        {{/foreach}}
+                    </div>
+                    <div class="navigation-wrapper absolute z-1 bottom-[40px] left-0 w-full max-w-[56%] flex items-end justify-between gap-12 p-[10px] bg-[#F3F4F6] rounded-lg">
+                        <div class="flex items-center gap-5">
+                            <div class="flex gap-2">
+                                <button class="swiper-button-prev-custom w-12 h-12 rounded-full flex items-center justify-center bg-white hover:bg-gray-50 transition-all shadow-sm border border-gray-100 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                                </button>
+                                <button class="swiper-button-next-custom w-12 h-12 rounded-full flex items-center justify-center bg-white hover:bg-gray-50 transition-all shadow-sm border border-gray-100 cursor-pointer">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                                </button>
+                            </div>
+                            <div class="swiper-pagination-custom text-gray-400 font-medium min-w-[40px]">
+                                <span class="active-index text-gray-900">1</span>/{{featured.length}}
+                            </div>
+                        </div>
+
+                        {{!-- Thumbnail Slider relocated here --}}
+                        <div class="thumbs-swiper swiper max-w-sm !mx-0">
+                            <div class="swiper-wrapper gap-2.5">
+                                {{#foreach featured}}
+                                    <div class="swiper-slide !w-auto">
+                                        <div class="thumb-card w-[130px] xl:w-[180px] aspect-4/3 bg-gray-200 rounded-lg overflow-hidden transition-all cursor-pointer">
+                                            {{#if feature_image}}
+                                                <img src="{{img_url feature_image size="s"}}" alt="{{title}}" class="rounded-lg w-full h-full object-cover">
+                                            {{else}}
+                                                 <div class="w-full h-full flex items-center justify-center">
+                                                     <span class="">No Img</span>
+                                                 </div>
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                {{/foreach}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        {{/foreach}}
-        {{/get}}
-    </div>
+        </section>
+                </div>
+            </div>
+        </section>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const thumbsSwiper = new Swiper(".thumbs-swiper", {
+                slidesPerView: "auto",
+                freeMode: true,
+                watchSlidesVisibility: true,
+                watchSlidesProgress: true,
+            });
 
-    {{pagination}}
+            const mainSwiper = new Swiper(".main-swiper", {
+                spaceBetween: 10,
+                effect: 'fade',
+                fadeEffect: {
+                    crossFade: true
+                },
+                thumbs: {
+                    swiper: thumbsSwiper,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next-custom",
+                    prevEl: ".swiper-button-prev-custom",
+                },
+                on: {
+                    slideChange: function () {
+                        const activeIndex = this.realIndex + 1;
+                        document.querySelector('.active-index').textContent = activeIndex;
+                    }
+                }
+            });
+        });
+        </script>
+    {{/if}}
+{{/get}}
 
-</div>
+
+
 </main>
