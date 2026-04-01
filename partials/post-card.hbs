@@ -1,0 +1,47 @@
+<article class="relative group recommended-post-item h-full">
+    <div class="bg-secondary-bg text-secondary-text rounded-xl border border-secondary-border p-5 h-full group">
+        <div class="rounded-xl mb-6 overflow-hidden relative h-70">
+            <div class="bg-primary-bg h-full w-full">
+                {{#if feature_image}}
+                <img loading="lazy" src="{{feature_image}}" class="transition-transform duration-500 group-hover:scale-105" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{slug}}{{/if}}">
+                {{else}}
+                <img loading="lazy" src={{asset "images/no-image.png"}} class="transition-transform duration-500 group-hover:scale-105"
+                    alt="No Image">
+                {{/if}}
+            </div>
+            {{#if tags}}
+            <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                {{#foreach tags}}
+                    <a href="{{url}}"
+                        class="inline-flex z-10 text-xs bg-white/30 text-white backdrop-blur-sm border border-white/10 rounded-3xl px-3 py-1">
+                        <div class="overflow-hidden relative group">
+                            <div class="group-hover:translate-y-[-120%] transition-transform duration-500">
+                                {{name}}
+                            </div>
+                            <div class="absolute bottom-[-100%] group-hover:bottom-[0] duration-500 transition-all">
+                                {{name}}
+                            </div>
+                        </div>
+                    </a>
+                {{/foreach}}
+            </div>
+            {{/if}}
+
+        </div>
+        <div class="recommended-post-item-content">
+            <div class="recommended-post-meta flex items-center gap-2.5 mb-4">
+                <span class="recommended-post-date text-xs">
+                    {{date format="MMMM DD, YYYY"}}
+                </span>
+                {{#if reading_time}}
+                <span class="bg-primary-bg text-primary-text px-2.5 py-1 rounded-3xl text-xs font-medium border border-primary-border">{{reading_time}}</span>
+                {{/if}}
+            </div>
+            <h2 class="text-lg font-bold mb-3 md:mb-4">
+                <a class="block after:absolute after:inset-0 after:z-5" href="{{url}}">{{title}}</a>
+            </h2>
+            <p class="text-sm break-keep line-clamp-3">{{excerpt}}</p>
+        </div>
+    </div>
+</article>
+

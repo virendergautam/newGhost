@@ -1,0 +1,19 @@
+{
+  "name": "your-theme-name",
+  "description": "Your custom Ghost theme",
+  "version": "1.0.0",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "tailwindcss -i ./assets/css/main.css -o ./assets/built/main.css --watch",
+    "build": "tailwindcss -i ./assets/css/main.css -o ./assets/built/main.css --minify",
+    "test": "gscan ."
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.17",
+    "tailwindcss": "^4.1.17",
+    "gscan": "^5.2.4"
+  }
+}
