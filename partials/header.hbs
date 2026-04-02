@@ -1,91 +1,90 @@
 <header id="siteHeader" class="header-main">
-    <div class="max-w-[1215px] w-[93%] mx-auto relative">
-        <div
-            class="header-inner z-1 flex items-center gap-8 bg-white/70 backdrop-blur-md border border-[#EBEBEB] p-5 lg:p-2.5 rounded-[50px] mt-[20px] lg:mt-[25px] lg:pl-7.5">
-            <div class="header-logo w-25">
-                <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
-                    {{#if @site.logo}}
-                    <img loading="lazy" src="{{@site.logo}}" alt="{{@site.title}}">
-                    {{else}}
-                    {{@site.title}}
-                    {{/if}}
-                </a>
-            </div>
-            <!-- CENTER MENU -->
-            <nav class="header-menu hidden lg:block">
-                {{navigation}}
-                <div
-                    class="header-nav-account-links flex gap-4 items-center lg:hidden border-t border-[#EBEBEB] mt-10 pt-10">
-                    {{#if @member}}
-                    <a href="javascript:void(0)" data-members-signout
-                        class="px-5 py-2 text-sm font-medium rounded-full bg-black dark:bg-white dark:text-black text-white hover:bg-[#FF7044] transition">
-                        Sign Out
-                    </a>
-                    {{else}}
-                    <a href="#/portal/signin" class="inline-flex text-sm">Sign In</a>
+  <div class="max-w-[1215px] w-[93%] mx-auto relative">
 
-                    <a href="#/portal/signup"
-                        class="hidden lg:inline-flex items-center px-5 py-2 min-h-11 text-sm font-medium rounded-full bg-black text-white hover:text-white hover:bg-accent-bg transition">
-                        Become a Subscriber
-                    </a>
-                    {{/if}}
-                </div>
-            </nav>
-            <!-- RIGHT SECTION -->
-            <div class="flex items-center gap-3 ml-auto">
-                <button name="search" type="button" aria-label="Search" class="gh-search w-6 h-6 lg:w-9.5 lg:h-9.5 flex items-center justify-center rounded-full text-black hover:bg-white hover:text-black cursor-pointer"
-                    data-ghost-search>{{> "icons/search"}}
-                </button>
+    <!-- HEADER BAR -->
+    <div class="header-inner flex items-center gap-6 bg-white/70 backdrop-blur-md border border-[#EBEBEB] p-4 lg:p-2.5 rounded-[50px] mt-[20px] lg:mt-[25px] lg:pl-7.5">
 
-                {{!-- <button name="dark-lite-mode" type="button" aria-label="Dark Lite Mode" id="dark-lite-mode"
-                    class="relative w-6 h-6 lg:w-9.5 lg:h-9.5 flex justify-center items-center transition-opacity rounded-full text-black hover:bg-white hover:text-black cursor-pointer">
-                    <span id="dark-span" class="absolute transition-opacity will-change-[opacity] duration-300 opacity-0">
-                        {{> "icons/light-mode"}}
-                    </span>
-                    <span id="light-span" class="transition-opacity will-change-[opacity] duration-300 ">
-                        {{> "icons/dark-mode"}}
-                    </span>
-                </button> --}}
+      <!-- LOGO -->
+      <div class="header-logo w-24">
+        <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
+          {{#if @site.logo}}
+            <img src="{{@site.logo}}" alt="{{@site.title}}">
+          {{else}}
+            {{@site.title}}
+          {{/if}}
+        </a>
+      </div>
 
-                {{#if @member}}
-                <a href="javascript:void(0)" role="button" data-members-signout
-                    class="px-5 py-2 text-sm font-medium rounded-full transition">
-                    Sign Out
-                </a>
-                {{else}}
-                <!-- Sign In -->
-                <a href="#/portal/signin" role="button" class="hidden lg:block text-sm text-black mx-2.5">Sign In</a>
+      <!-- DESKTOP NAV -->
+      <nav class="header-menu hidden lg:flex items-center gap-6">
+        {{navigation}}
+      </nav>
 
-                <!-- Button -->
-                <a href="#/portal/signup" role="button"
-                    class="hidden lg:inline-flex items-center px-5 py-2 min-h-11 text-sm font-medium rounded-full bg-black text-white hover:text-white hover:bg-accent-bg transition">
-                    Become a Subscriber
-                </a>
-                {{/if}}
-                <button name="menu" type="button" aria-label="Menu" class="header-utils-burger w-5 h-3 lg:hidden relative">
-                    <span class="bg-black"></span>
-                    <span class="bg-black"></span>
-                    <span class="bg-black"></span>
-                </button>
-            </div>
-        </div>
+      <!-- RIGHT SIDE -->
+      <div class="flex items-center gap-3 ml-auto">
 
-        <nav class="mobile-header-menu block lg:hidden">
-            {{navigation}}
-            <div class="header-nav-account-links flex flex-col gap-4 items-center pt-5">
-                {{#if @member}}
-                <a href="javascript:void(0)" data-members-signout
-                    class="px-5 py-2 text-sm font-medium rounded-full bg-black dark:bg-white dark:text-black text-white hover:bg-[#FF7044] transition">
-                    Sign Out
-                </a>
-                {{else}}
-                <a href="#/portal/signin" class="inline-flex text-base lg:text-sm text-black">Sign In</a>
-                <a href="#/portal/signup"
-                    class="inline-flex items-center px-5 py-2 min-h-11 text-sm font-medium rounded-full bg-black text-white hover:text-white hover:bg-accent-bg transition">
-                    Become a Subscriber
-                </a>
-                {{/if}}
-            </div>
-        </nav>
+        <!-- SEARCH -->
+        <button aria-label="Search" class="gh-search w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 cursor-pointer" data-ghost-search>
+          {{> "icons/search"}}
+        </button>
+
+        <!-- MEMBERS -->
+        {{#if @site.members_enabled}}
+          {{#if @member}}
+            <a href="#/portal/account" data-portal="account" class="hidden lg:inline-flex text-sm font-medium">
+              Account
+            </a>
+          {{else}}
+            <a href="#/portal/signin" data-portal="signin" class="hidden lg:inline-flex text-sm">
+              Sign In
+            </a>
+            {{#unless @site.members_invite_only}}
+              <a href="#/portal/signup" data-portal="signup" class="hidden lg:inline-flex px-4 py-2 bg-black text-white rounded-full text-sm">
+                Subscribe
+              </a>
+            {{/unless}}
+          {{/if}}
+        {{/if}}
+
+        <!-- MOBILE BURGER -->
+        <button id="mobileMenuToggle" aria-label="Menu" class="w-6 h-6 lg:hidden flex flex-col justify-center gap-1 cursor-pointer">
+          <span class="block h-[2px] bg-black"></span>
+          <span class="block h-[2px] bg-black"></span>
+          <span class="block h-[2px] bg-black"></span>
+        </button>
+
+      </div>
     </div>
+
+    <!-- MOBILE MENU -->
+    <nav id="mobileMenu" class="mobile-header-menu hidden lg:hidden mt-4 bg-white border border-[#EBEBEB] rounded-xl p-5">
+
+      <!-- NAVIGATION -->
+      <div class="flex flex-col gap-4">
+        {{navigation}}
+      </div>
+
+      <!-- MEMBERS (MOBILE) -->
+      {{#if @site.members_enabled}}
+        <div class="flex flex-col gap-3 mt-5 border-t pt-5">
+          {{#if @member}}
+            <a href="#/portal/account" data-portal="account" class="text-base">
+              Account
+            </a>
+          {{else}}
+            <a href="#/portal/signin" data-portal="signin" class="text-base">
+              Sign In
+            </a>
+            {{#unless @site.members_invite_only}}
+              <a href="#/portal/signup" data-portal="signup" class="px-4 py-2 bg-black text-white rounded-full text-center">
+                Subscribe
+              </a>
+            {{/unless}}
+          {{/if}}
+        </div>
+      {{/if}}
+
+    </nav>
+
+  </div>
 </header>

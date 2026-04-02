@@ -1,0 +1,151 @@
+{{!-- saffffffffffffffffffffffffffffffffffffffffffffffff------------------------------------------------------------------------------- --}}
+
+
+<ul id="siteNav" class="flex flex-wrap items-center gap-5 xl:gap-10" data-site-nav>
+  {{#foreach navigation}}
+    <li class="nav-item relative" data-nav-item>
+      <a class="nav-link inline-flex items-center gap-2 text-base lg:text-sm font-medium"
+         href="{{url}}">
+        {{label}}
+      </a>
+    </li>
+  {{/foreach}}
+</ul>
+
+<script>
+(function () {
+  if (location.pathname.startsWith('/ghost/')) return;
+
+  // const nav = document.getElementById('siteNav');
+  const navs = document.querySelectorAll('[data-site-nav]');
+navs.forEach(nav => {
+
+  if (!nav) return;
+
+  const items = Array.from(nav.querySelectorAll('[data-nav-item]'));
+
+  // Remove [group] from label text
+  function cleanLabel(text) {
+    return text.replace(/\s*\[.+?\]/, '').trim();
+  }
+
+  // Extract group name from label
+  function extractGroup(text) {
+    const match = text.match(/\[(.+?)\]/);
+    return match ? match[1].toLowerCase() : null;
+  }
+
+  // Build nav data
+  const navData = items.map(li => {
+    const a = li.querySelector('a');
+    const rawLabel = a ? a.textContent.trim() : '';
+    const label = cleanLabel(rawLabel);
+
+    if (a) a.textContent = label; // 🔥 CLEAN LABEL IN DOM
+
+    return {
+      li,
+      a,
+      rawLabel,
+      label
+    };
+  });
+
+  // Map parents by label
+  const parentsByLabel = {};
+  navData.forEach(item => {
+    if (item.label) {
+      parentsByLabel[item.label.toLowerCase()] = item;
+    }
+  });
+
+  // Build parent → children map
+  const childrenMap = new Map();
+
+  navData.forEach(item => {
+    const group = extractGroup(item.rawLabel);
+    if (!group) return;
+
+    const parent = parentsByLabel[group];
+    if (!parent) return;
+
+    if (!childrenMap.has(parent.li)) {
+      childrenMap.set(parent.li, []);
+    }
+    childrenMap.get(parent.li).push(item.li);
+  });
+
+  // Create dropdowns
+  for (const [parentLI, childLIs] of childrenMap.entries()) {
+    const parentA = parentLI.querySelector('a');
+    if (!parentA || !childLIs.length) continue;
+
+    parentLI.classList.add('has-dropdown');
+    // Add caret icon once
+const observer = new MutationObserver(() => {
+  if (!parentA.querySelector('[data-caret]')) {
+    parentA.insertAdjacentHTML('beforeend', `
+        <svg data-caret width="8" height="5" viewBox="0 0 8 5" fill="none">
+          <path d="M8 0.791974L7.24707 0L3.99963 3.41586L0.752178 0L0 0.791974L4.00037 5L8 0.791974Z" fill="currentColor" clip-rule="evenodd"/>
+        </svg>
+      `);
+  }
+});
+
+observer.observe(parentA, { childList: true });
+
+
+    const dropdown = document.createElement('ul');
+    dropdown.className =
+      'absolute left-0 top-full z-50 mt-2 min-w-56 rounded-xl border border-neutral-200 bg-white text-black p-2 shadow-lg ' +
+      'opacity-0 invisible translate-y-1 transition';
+
+    childLIs.forEach(childLI => {
+      const childA = childLI.querySelector('a');
+      if (!childA) return;
+
+      const li = document.createElement('li');
+      const a = childA.cloneNode(true);
+      a.className = 'block rounded-lg px-3 py-2 text-sm font-medium hover:bg-[#F7F7F7]';
+
+      li.appendChild(a);
+      dropdown.appendChild(li);
+
+      // Remove from top-level
+      childLI.remove();
+    });
+
+    parentLI.appendChild(dropdown);
+
+    // CLICK TO TOGGLE
+    parentA.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      document.querySelectorAll('#siteNav li.is-open').forEach(li => {
+        if (li !== parentLI) li.classList.remove('is-open');
+      });
+
+      parentLI.classList.toggle('is-open');
+    });
+  }
+
+  // CLICK OUTSIDE TO CLOSE
+  document.addEventListener('click', function () {
+    document.querySelectorAll('#siteNav li.is-open')
+      .forEach(li => li.classList.remove('is-open'));
+  });
+})
+})();
+</script>
+
+<style>
+#siteNav li.is-open > ul {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  max-height: 70vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+</style>
