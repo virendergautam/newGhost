@@ -7,20 +7,22 @@ into the {body} of the default.hbs template --}}
 {{!-- Featured Slider Section --}}
 {{#get "posts" limit="5" include="tags,authors" as |featured|}}
     {{#if featured}}
-        <section class="featured-slider py-[50px] border-be border-[#E5E7EB] bg-[#F3F4F6]">
+        <section class="featured-slider py-[50px] border-be border-[#E5E7EB] bg-[#E7E8E9]">
             <div class="container">
                 <div class="main-swiper swiper overflow-hidden relative">
                     <div class="swiper-wrapper">
                         {{#foreach featured}}
-                            <div class="swiper-slide !h-auto flex flex-col justify-center">
+                            <div class="swiper-slide flex flex-col justify-center">
                                 {{!-- Main Content Wrapper: Groups Text and Image --}}
                                 <div class="featured-slider-card h-full grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12">
                                     {{!-- Text Content --}}
                                     <div class="slide-content space-y-6">
                                         <div class="flex items-center gap-4">
                                             <div class="flex gap-2">
-                                                {{#foreach tags limit="2"}}
-                                                    <span class="px-5 py-1.5 bg-white rounded-lg text-xs border">{{name}}</span>
+                                                {{#foreach tags}}
+                                                    <span
+                                                    class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border"
+                                                    >{{name}}</span>
                                                 {{/foreach}}
                                             </div>
                                             <span class="text-xs font-medium">{{reading_time}}</span>
@@ -59,7 +61,7 @@ into the {body} of the default.hbs template --}}
                             </div>
                         {{/foreach}}
                     </div>
-                    <div class="navigation-wrapper absolute z-1 bottom-[40px] left-0 w-full max-w-[56%] flex items-end justify-between gap-12 p-[10px] bg-[#F3F4F6] rounded-lg">
+                    <div class="navigation-wrapper absolute z-1 bottom-[40px] left-0 w-full max-w-[56%] flex items-end justify-between gap-12 p-[10px] bg-[##E7E8E9] rounded-lg">
                         <div class="flex items-center gap-5">
                             <div class="flex gap-2">
                                 <button class="swiper-button-prev-custom w-12 h-12 rounded-full flex items-center justify-center bg-white hover:bg-gray-50 transition-all shadow-sm border border-gray-100 cursor-pointer">
@@ -93,87 +95,51 @@ into the {body} of the default.hbs template --}}
                             </div>
                         </div>
                     </div>
-                    </div>
+            
                 </div>
             </div>
         </section>
         {{/if}}
     {{/get}}
-
-    {{!-- New Articles Section --}}
-    <section class="new-articles py-24 bg-[#F3F4F6] border-t border-gray-100">
-        <div class="max-w-[1580px] mx-auto px-6">
-            {{!-- Section Header --}}
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">New Articles</h2>
+    <section class="py-[50px] bg-[#E7E8E9]">
+        <div class="container">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-[25px] gap-6">
+                <h2 class="text-3xl md:text-4xl tracking-tight">New Articles</h2>
                 <div class="flex flex-wrap items-center gap-3">
-                    <button class="px-6 py-2.5 bg-[#4CAF50] text-white rounded-full text-sm font-semibold shadow-md border-2 border-[#4CAF50] hover:opacity-90 transition-all">All</button>
-                    <button class="px-6 py-2.5 bg-white text-gray-400 rounded-full text-sm font-semibold border-2 border-gray-100 hover:border-gray-200 transition-all">Popular</button>
-                    <button class="px-6 py-2.5 bg-white text-gray-400 rounded-full text-sm font-semibold border-2 border-gray-100 hover:border-gray-200 transition-all">Trending</button>
-                    <button class="px-6 py-2.5 bg-white text-gray-400 rounded-full text-sm font-semibold border-2 border-gray-100 hover:border-gray-200 transition-all">Most Discussed</button>
+                    <button class="filter-tab-btn tab-btn active px-5 py-1.5 rounded-lg text-sm border transition-all cursor-pointer" data-tab="all">All</button>
+                    {{#get "tags" limit="3" include="count.posts" order="count.posts desc"}}
+                        {{#foreach tags}}
+                            <button class="filter-tab-btn tab-btn px-5 py-1.5 rounded-lg text-sm border transition-all cursor-pointer" data-tab="{{slug}}">{{name}}</button>
+                        {{/foreach}}
+                    {{/get}}
                 </div>
             </div>
-
-            {{!-- Articles Grid --}}
-            {{#get "posts" limit="8" include="tags,authors" order="published_at desc"}}
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {{#foreach posts}}
-                <article class="article-card group bg-white rounded-[40px] p-8 shadow-sm hover:shadow-xl transition-all border border-gray-50 flex flex-col h-full">
-                    {{!-- Category Tag --}}
-                    <div class="mb-4">
-                        {{#if primary_tag}}
-                        <span class="px-4 py-1 bg-white border border-gray-100 text-[#6B7280] text-xs font-semibold rounded-lg shadow-sm">
-                            {{primary_tag.name}}
-                        </span>
-                        {{/if}}
-                    </div>
-
-                    {{!-- Title --}}
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-6 leading-tight line-clamp-2 h-[3.5rem] group-hover:text-blue-600 transition-colors">
-                        <a href="{{url}}">{{title}}</a>
-                    </h3>
-
-                    {{!-- Featured Image --}}
-                    <div class="relative aspect-[4/3] rounded-[32px] overflow-hidden mb-6 shadow-sm border-2 border-white">
-                        {{#if feature_image}}
-                        <img src="{{img_url feature_image size="m"}}" alt="{{title}}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        {{else}}
-                        <div class="w-full h-full bg-gray-100 flex items-center justify-center">
-                            <span class="text-gray-400 font-bold">NO IMAGE</span>
+            <div class="tab-content">
+                <div id="tab-all" class="tab-grid">
+                    {{#get "posts" limit="8" include="tags,authors" order="published_at desc"}}
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            {{#foreach posts}}
+                                {{> post-card}}
+                            {{/foreach}}
                         </div>
-                        {{/if}}
-                    </div>
-
-                    {{!-- Excerpt --}}
-                    <p class="text-[15px] text-[#6B7280] leading-relaxed line-clamp-3 mb-8">
-                        {{excerpt}}
-                    </p>
-
-                    {{!-- Footer Metadata --}}
-                    <div class="mt-auto pt-6 border-t border-gray-50 flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-[#9CA3AF] text-sm">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            <span>{{date format="MMM DD, YYYY"}}</span>
+                    {{/get}}
+                </div>
+                {{#get "tags" limit="3" include="count.posts" order="count.posts desc"}}
+                    {{#foreach tags}}
+                        <div id="tab-{{slug}}" class="tab-grid hidden">
+                            {{#get "posts" limit="8" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                                    {{#foreach posts}}
+                                        {{> post-card}}
+                                    {{else}}
+                                        <div class="col-span-full py-20 text-center text-gray-400">No articles found in {{name}}.</div>
+                                    {{/foreach}}
+                                </div>
+                            {{/get}}
                         </div>
-                        
-                        {{#foreach authors}}
-                        <div class="flex items-center gap-2.5">
-                            <span class="text-xs font-bold text-gray-900">By {{name}}</span>
-                            {{#if profile_image}}
-                            <img src="{{img_url profile_image size="xs"}}" alt="{{name}}" class="w-8 h-8 rounded-full border border-white shadow-sm object-cover">
-                            {{/if}}
-                        </div>
-                        {{/foreach}}
-                    </div>
-                </article>
-                {{/foreach}}
+                    {{/foreach}}
+                {{/get}}
             </div>
-
-            {{!-- View All Button --}}
-            <div class="mt-16 flex justify-center">
-                <a href="/archive" class="px-8 py-3.5 bg-white text-gray-900 font-bold text-sm rounded-xl border border-gray-200 shadow-sm hover:bg-gray-50 transition-all">View All</a>
-            </div>
-            {{/get}}
         </div>
     </section>
 
@@ -205,6 +171,34 @@ into the {body} of the default.hbs template --}}
                     document.querySelector('.active-index').textContent = activeIndex;
                 }
             }
+        });
+
+        // Tab Switching Logic
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabGrids = document.querySelectorAll('.tab-grid');
+        const viewAllLink = document.getElementById('view-all-link');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Update buttons
+                tabBtns.forEach(b => {
+                    b.classList.remove('active');
+                });
+                btn.classList.add('active');
+
+                // Update grids
+                tabGrids.forEach(grid => grid.classList.add('hidden'));
+                document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+                // Update View All link if needed
+                if (tabId === 'all') {
+                    viewAllLink.href = '/archive';
+                } else {
+                    viewAllLink.href = `/tag/${tabId}`;
+                }
+            });
         });
     });
     </script>
