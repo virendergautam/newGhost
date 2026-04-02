@@ -1,26 +1,5 @@
 @import "tailwindcss";
 
-/* Custom Thumbs Styling */
-.thumbs-swiper .swiper-slide-thumb-active .thumb-card {
-  border: 1px solid black !important;
-  padding: 5px !important;
-}
-
-.main-swiper:has(.navigation-wrapper) .slide-content {
-  padding-bottom: 250px;
-  padding-top: 60px;
-}
-
-.main-swiper:not(:has(.navigation-wrapper)) .featured-slider-card {
-  align-items: center;
-}
-
-.container {
-  max-width: 1580px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
-
 @theme {
   --color-primary-text: #000000;
   --color-primary-bg: #ffffff;
