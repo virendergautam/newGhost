@@ -15,5 +15,47 @@
     "@tailwindcss/cli": "^4.1.17",
     "tailwindcss": "^4.1.17",
     "gscan": "^5.2.4"
+  },
+  "config": {
+    "custom": {
+      "number_of_featured_posts": {
+        "type": "text",
+        "default": "",
+        "desciription": "Set the number of featured posts to show in the homepage section",
+        "group": "homepage"
+      },
+      "home_feed_title": {
+        "type": "text",
+        "default": "New Article",
+        "desciription": "Set the title for the homepage feed section",
+        "group": "homepage"
+      },
+      "home_feed_tags": {
+        "type": "text",
+        "default": "",
+        "desciription": "enter the tag slug to show posts, separate by comma",
+        "group": "homepage"
+      },
+      "feed_image_orientation": {
+        "type": "select",
+        "options": [
+          "Landscape",
+          "Potrait",
+          "Square",
+          "Free"
+        ],
+        "default": "Landscape",
+        "group": "homepage"
+      },
+      "feed_card_layout": {
+        "type": "select",
+        "options": [
+          "Heading first",
+          "Image first"
+        ],
+        "default": "Heading first",
+        "group": "homepage"
+      }
+    }
   }
 }

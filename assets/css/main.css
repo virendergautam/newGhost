@@ -1,6 +1,11 @@
 @import "tailwindcss";
  
 /* Custom Thumbs Styling */
+
+.main-swiper .swiper-slide {
+  pointer-events: auto;
+}
+
 .thumbs-swiper .swiper-slide-thumb-active .thumb-card {
   border: 1px solid black !important;
   padding: 5px !important;

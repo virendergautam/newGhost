@@ -1,6 +1,10 @@
 {{! Article Card for Index Page }}
 <article
-  class="article-card group bg-white rounded-[20px] p-7 pbe-0 shadow-sm hover:shadow-xl transition-all flex flex-col h-full"
+  class="article-card group bg-white rounded-[20px] p-7 pbe-0 shadow-sm hover:shadow-xl transition-all flex flex-col h-full {{#match @custom.feed_card_layout "Image first"}}
+    has-image-first
+  {{else}}
+    has-heading-first
+  {{/match}}"
 >
   {{! Category Tag }}
   <div class="mb-4">
@@ -22,7 +26,15 @@
 
   {{! Featured Image }}
   <div
-    class="relative aspect-[3/2] rounded-[14px] overflow-hidden mb-5 bg-[#F3F4F6] text-[#dbdbdb] flex items-center justify-center"
+    class="relative rounded-[14px] overflow-hidden mb-5 bg-[#F3F4F6] text-[#dbdbdb] flex items-center justify-center  {{#match @custom.feed_image_orientation "Landscape"}}
+    aspect-[3/2]
+  {{else match @custom.feed_image_orientation "Potrait"}}
+    aspect-[2/3]
+  {{else match @custom.feed_image_orientation "Square"}}
+    aspect-square
+  {{else}}
+    aspect-auto
+  {{/match}}""
   >
     {{#if feature_image}}
       <img
