@@ -20,20 +20,27 @@
     "custom": {
       "number_of_featured_posts": {
         "type": "text",
-        "default": "",
-        "desciription": "Set the number of featured posts to show in the homepage section",
+        "default": "3",
         "group": "homepage"
       },
       "home_feed_title": {
         "type": "text",
         "default": "New Article",
-        "desciription": "Set the title for the homepage feed section",
         "group": "homepage"
       },
       "home_feed_tags": {
         "type": "text",
         "default": "",
-        "desciription": "enter the tag slug to show posts, separate by comma",
+        "description": "Enter the tag slug to show posts, separate by comma. Example: Fashion,lifestyle,travel",
+        "group": "homepage"
+      },
+      "feed_card_layout": {
+        "type": "select",
+        "options": [
+          "Heading first",
+          "Image first"
+        ],
+        "default": "Heading first",
         "group": "homepage"
       },
       "feed_image_orientation": {
@@ -45,15 +52,6 @@
           "Free"
         ],
         "default": "Landscape",
-        "group": "homepage"
-      },
-      "feed_card_layout": {
-        "type": "select",
-        "options": [
-          "Heading first",
-          "Image first"
-        ],
-        "default": "Heading first",
         "group": "homepage"
       }
     }
