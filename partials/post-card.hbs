@@ -7,15 +7,15 @@
   {{/match}}"
 >
   {{! Category Tag }}
-  <div class="mb-4">
-    <div class="flex gap-2">
+  {{#if tags.[0]}}
+    <div class="flex gap-2 mb-4">
       {{#foreach tags}}
         <span
           class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border"
         >{{name}}</span>
       {{/foreach}}
-    </div>
   </div>
+  {{/if}}
 
   {{! Title }}
   <h3
