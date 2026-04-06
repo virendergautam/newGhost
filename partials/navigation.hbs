@@ -1,10 +1,7 @@
-{{!-- saffffffffffffffffffffffffffffffffffffffffffffffff------------------------------------------------------------------------------- --}}
-
-
-<ul id="siteNav" class="flex flex-wrap items-center gap-5 xl:gap-10" data-site-nav>
+<ul id="siteNav" class="nav-menu-list flex flex-wrap items-center gap-5 xl:gap-8" data-site-nav>
   {{#foreach navigation}}
-    <li class="nav-item relative" data-nav-item>
-      <a class="nav-link inline-flex items-center gap-2 text-base lg:text-sm font-medium"
+    <li class="nav-menu-item relative" data-nav-item>
+      <a class="nav-menu-link inline-flex items-center gap-1 text-sm font-bold text-black"
          href="{{url}}">
         {{label}}
       </a>
@@ -85,9 +82,10 @@ navs.forEach(nav => {
 const observer = new MutationObserver(() => {
   if (!parentA.querySelector('[data-caret]')) {
     parentA.insertAdjacentHTML('beforeend', `
-        <svg data-caret width="8" height="5" viewBox="0 0 8 5" fill="none">
-          <path d="M8 0.791974L7.24707 0L3.99963 3.41586L0.752178 0L0 0.791974L4.00037 5L8 0.791974Z" fill="currentColor" clip-rule="evenodd"/>
+        <svg width="7px" height="5px" data-caret viewBox="0 0 7 5" fill="none">
+          <path d="M6.03843 0L3.5 2.53843L0.961571 0L0 0.961571L3.5 4.46157L7 0.961571L6.03843 0Z" fill="currentColor"/>
         </svg>
+
       `);
   }
 });

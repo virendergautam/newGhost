@@ -1,12 +1,12 @@
 <header id="siteHeader" class="header container header-sticky z-2">
     <!-- HEADER BAR -->
-    <nav class="header-inner grid grid-cols-[auto_1fr_auto] items-center min-h-[50px] p-1.5 pl-5 gap-6 relative before:absolute before:h-full before:w-full before:left-0 before:top-0 before:bg-white  before:-z-10 lg:before:rounded-lg shadow-[0px 8px 22px 0px #261E532B]">
+    <nav class="header-inner grid grid-cols-[1fr_auto_1fr] items-center min-h-[50px] p-1.5 pl-5 gap-6 relative before:absolute before:h-full before:w-full before:left-0 before:top-0 before:bg-white before:-z-10 lg:before:rounded-lg shadow-[0px_8px_22px_0px_#261E532B]">
 
       <!-- LOGO -->
       <div class="header-logo">
         <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
           {{#if @site.logo}}
-            <img src="{{@site.logo}}" class="h-10" alt="{{@site.title}}">
+            <img src="{{@site.logo}}" class="max-w-[150px]" alt="{{@site.title}}">
           {{else}}
             <h1 class="text-lg font-semibold">{{@site.title}}</h1>
           {{/if}}
@@ -14,48 +14,48 @@
       </div>
 
       <!-- DESKTOP NAV -->
-      <nav class="header-menu hidden lg:flex w-full justify-center items-center gap-6">
+      <nav class="nav-menu hidden lg:flex w-full justify-center items-center gap-6">
         {{navigation}}
       </nav>
 
       <!-- RIGHT SIDE -->
-      <div class="flex items-center gap-4">
-      <div class="flex items-center">
-        <!-- SEARCH -->
-        <button aria-label="Search" class="gh-search min-w-12 flex items-center justify-center hover:text-accent cursor-pointer" data-ghost-search>
-          {{> "icons/search"}}
-        </button>
-        <button aria-label="dark mode" class="gh-search min-w-12  border-l flex items-center justify-center hover:text-accent cursor-pointer" id="theme-toggle">
-          {{> "icons/dark-mode"}}
-        </button>
-      </div>
-      <div class="flex items-center gap-1.5">
-        <!-- MEMBERS -->
-        {{#if @site.members_enabled}}
-          {{#if @member}}
-            <a href="#/portal/account" data-portal="account" class="hidden lg:inline-flex text-sm px-4 py-2 bg-black text-white rounded-lg">
-              Account
-            </a>
-          {{else}}
-            <a href="#/portal/signin" data-portal="signin" class="hidden lg:inline-flex text-sm px-4 py-2 bg-black text-white rounded-lg">
-              Sign In
-            </a>
-            {{#unless @site.members_invite_only}}
-              <a href="#/portal/signup" data-portal="signup" class="hidden lg:inline-flex px-4 py-2 bg-black text-white rounded-lg text-sm">
-                Subscribe
+      <div class="flex items-center justify-end gap-4">
+        <div class="flex items-center">
+          <!-- SEARCH -->
+          <button aria-label="Search" class="gh-search min-w-12 flex items-center justify-center hover:text-accent cursor-pointer" data-ghost-search>
+            {{> "icons/search"}}
+          </button>
+          <button aria-label="dark mode" class="gh-search min-w-12  border-l flex items-center justify-center hover:text-accent cursor-pointer" id="theme-toggle">
+            {{> "icons/dark-mode"}}
+          </button>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <!-- MEMBERS -->
+          {{#if @site.members_enabled}}
+            {{#if @member}}
+              <a href="#/portal/account" data-portal="account" class="hidden lg:inline-flex text-sm px-4 py-2 bg-black text-white rounded-lg">
+                Account
               </a>
-            {{/unless}}
+            {{else}}
+              <a href="#/portal/signin" data-portal="signin" class="hidden lg:inline-flex text-sm px-4 py-2 bg-black text-white rounded-lg">
+                Sign In
+              </a>
+              {{#unless @site.members_invite_only}}
+                <a href="#/portal/signup" data-portal="signup" class="hidden lg:inline-flex px-4 py-2 bg-black text-white rounded-lg text-sm">
+                  Subscribe
+                </a>
+              {{/unless}}
+            {{/if}}
           {{/if}}
-        {{/if}}
 
-        <!-- MOBILE BURGER -->
-        <button id="mobileMenuToggle" aria-label="Menu" class="w-6 h-6 lg:hidden flex flex-col justify-center gap-1 cursor-pointer">
-          <span class="block h-[2px] bg-black"></span>
-          <span class="block h-[2px] bg-black"></span>
-          <span class="block h-[2px] bg-black"></span>
-        </button>
+          <!-- MOBILE BURGER -->
+          <button id="mobileMenuToggle" aria-label="Menu" class="w-6 h-6 lg:hidden flex flex-col justify-center gap-1 cursor-pointer">
+            <span class="block h-[2px] bg-black"></span>
+            <span class="block h-[2px] bg-black"></span>
+            <span class="block h-[2px] bg-black"></span>
+          </button>
 
-      </div>
+        </div>
       </div>
     </nav>
     <!-- MOBILE MENU -->

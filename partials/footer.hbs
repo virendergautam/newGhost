@@ -1,59 +1,25 @@
-<footer class="bg-primary-bg">
-  <div class="footer-inner bg-secondary-bg text-secondary-text pt-16">
-    <div class="container mx-auto">
-      <div class="flex flex-wrap">
-        <div class="flex-[0_0_100%] md:flex-[0_0_30%] lg:flex-[0_0_30%] pr-0 md:pr-12.5 lg:pr-25 mb-10 md:mb-0">
-          <div class="footer-logo mb-2.5 w-25">
+<footer class="site-footer bg-white text-black border-t border-border pt-[30px] lg:pt-[50px] xl:pt-[70px]">
+    <div class="container">
+      <div class="grid grid-cols-[1fr_auto_1fr] gap-6">
+        <div class="">
+          <div class="footer-logo mb-3">
             <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
               {{#if @site.logo}}
-              <img loading="lazy" src="{{@site.logo}}" alt="{{@site.title}}">
+              <img loading="lazy" class="max-w-[150px]" src="{{@site.logo}}" alt="{{@site.title}}">
               {{else}}
               {{@site.title}}
               {{/if}}
             </a>
           </div>
-          <p class="text-sm">{{@site.description}}</p>
-        </div>
-
-        <div id="footerGrid"
-          class="flex-[0_0_100%] md:flex-[0_0_70%] lg:flex-[0_0_45%] grid gap-10 grid-cols-2 md:grid-cols-3">
-        </div>
-        <div class="md:flex-[0_0_100%] lg:flex-[0_0_25%] lg:ml-auto mt-10 md:mt-10 lg:mt-0">
-          <h2 class="text-base font-bold mb-6">
-            Subscribe to our newsletter
-          </h2>
-          <p class="text-sm mb-6">
-            Join our newsletter to stay up to date on features and releases.
+          <p class="text-sm mb-4">{{@site.description}}</p>
+          <p><span>{{@custom.footer_copyright_text}}</span>
+            <span>Published with <a class="underline" target="_blank" href="https://ghost.org/">Ghost</a> and <a class="underline" target="_blank" href="https://whmcsglobalservices.com/">WHMCS Global Services</a></span>
           </p>
-          <form data-members-form="subscribe">
-            <div class="grid grid-cols-(--my-grid-cols) bg-transparent rounded-full border border-secondary-border p-[3px] h-[50px] overflow-hidden">
-              <label for="subscribe-email2" class="hidden">Email</label>
-              <input data-members-email name="email" type="email" required placeholder="Enter your email" id="subscribe-email2"
-                class="min-w-0 flex-1 px-4 text-sm bg-transparent outline-none" placeholder="Enter your email" autocomplete="email"/>
-              <button type="submit"
-                class="px-6 py-2 text-sm font-semibold h-full text-white rounded-full cursor-pointer bg-accent-bg hover:bg-secondary-text hover:text-secondary-bg" autocomplete="off">
-                Subscribe
-              </button>
-            </div>
-            <p data-members-error class="form-error text-red-500 mt-3 text-sm"></p>
-            <p data-members-success class="form-success text-green-500 mt-3 text-sm">
-              Thanks! Check your inbox.
-            </p>
-          </form>
         </div>
+        <div id="footerGrid" class=""></div>
       </div>
-      {{!-- <div
-        class="border-t border-secondary-border mt-10 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
-        <p><span>{{@custom.footer_copyright_text}}</span>
-          <span>Published with <a class="underline" target="_blank" href="https://ghost.org/">Ghost</a> and <a class="underline" target="_blank" href="https://whmcsglobalservices.com/">WHMCS Global Services</a></span>
-        </p>
-
-        <div class="flex items-center gap-2" id="social-links" data-links="{{@custom.social_links}}">
-        </div>
-
-      </div> --}}
+      
     </div>
-  </div>
 </footer>
 
 
