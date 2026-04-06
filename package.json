@@ -64,6 +64,22 @@
         "default": "Read by Category",
         "description": "Enter the tag slug to show posts, separate by comma. Example: Fashion,lifestyle,travel",
         "group": "homepage"
+      },
+      "hero_actions": {
+        "type": "select",
+        "options": [
+          "Subscription form",
+          "Social links",
+          "None"
+        ],
+        "default": "Subscription form",
+        "group": "homepage",
+        "description": "Subscription form will be hidden if the Portal is disabled or set to invite-only."
+      },
+      "banner_background_image": {
+        "type": "image",
+        "default": "",
+        "group": "homepage"
       }
     }
   }
