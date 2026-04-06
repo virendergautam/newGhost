@@ -53,6 +53,17 @@
         ],
         "default": "Landscape",
         "group": "homepage"
+      },
+      "home_tags_section": {
+        "type": "text",
+        "default": "",
+        "group": "homepage"
+      },
+      "category_title": {
+        "type": "text",
+        "default": "Read by Category",
+        "description": "Enter the tag slug to show posts, separate by comma. Example: Fashion,lifestyle,travel",
+        "group": "homepage"
       }
     }
   }

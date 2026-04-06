@@ -117,53 +117,7 @@
     {{/get}}
 
     {{!-- All posts Section --}}
-    {{!-- <section class="py-[70px] bg-[#E7E8E9]">
-        <div class="container">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-[25px] gap-6">
-                <h2 class="text-2xl md:text-3xl tracking-tight">{{@custom.home_feed_title}}</h2>
-                <div class="flex flex-wrap items-center gap-3">
-                    <button
-                        class="filter-tab-btn tab-btn active px-5 py-1.5 rounded-lg text-sm border transition-all cursor-pointer"
-                        data-tab="all">All</button>
-                    {{#get "tags" filter="slug:[{{@custom.home_feed_tags}}]"}}
 
-                    {{log tags "ghsdffsdf"}}
-                    {{#foreach tags}}
-                    <button
-                        class="filter-tab-btn tab-btn px-5 py-1.5 rounded-lg text-sm border transition-all cursor-pointer"
-                        data-tab="{{slug}}">{{name}}</button>
-                    {{/foreach}}
-                    {{/get}}
-                </div>
-            </div>
-            <div class="tab-content">
-                <div id="tab-all" class="tab-grid">
-                    {{#get "posts" limit="8" include="tags,authors" order="published_at desc"}}
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {{#foreach posts}}
-                        {{> post-card}}
-                        {{/foreach}}
-                    </div>
-                    {{/get}}
-                </div>
-                {{#get "tags" filter="slug:[{{@custom.home_feed_tags}}]" include="count.posts" }}
-                {{#foreach tags}}
-                <div id="tab-{{slug}}" class="tab-grid hidden">
-                    {{#get "posts" limit="8" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {{#foreach posts}}
-                        {{> post-card}}
-                        {{else}}
-                        <div class="col-span-full py-20 text-center text-gray-400">No articles found in {{name}}.</div>
-                        {{/foreach}}
-                    </div>
-                    {{/get}}
-                </div>
-                {{/foreach}}
-                {{/get}}
-            </div>
-        </div>
-    </section> --}}
     <section class="py-[70px] bg-[#E7E8E9]">
     <div class="container">
 
@@ -239,7 +193,7 @@
 
 
     <section class="">
-        {{#get "posts" limit="3" include="tags,authors" order="published_at desc"}}
+        {{#get "posts" limit="3" include="tags,authors" filter="tag:hash-recommended" order="published_at desc"}}
         <div class="flex overflow-hidden">
             {{#foreach posts}}
             <div
@@ -303,6 +257,8 @@
         </div>
         {{/get}}
     </section>
+
+
     {{!-- Latest Posts Section with Dual-State Hover Effect --}}
     <section class="pbs-[70px] bg-[#E7E8E9]">
         <div class="container">
@@ -325,43 +281,73 @@
                     <p class="">Find inspiration for dressing well and living beautifully, with styles that fit <br
                             class="hidden md:block">seamlessly into your everyday life</p>
                 </div>
-                {{#get "posts" limit="4" include="tags,authors" filter="tag:lifestyle"}}
+
+
+
+                {{#get "tags" filter="slug:[{{@custom.home_tags_section}}]"}}
+    {{#foreach tags}}
+
+        <section class="mb-12">
+            
+            <!-- TAG TITLE -->
+            <h2 class="text-2xl font-bold mb-6">{{name}}</h2>
+
+            <!-- POSTS -->
+            {{#get "posts" limit="4" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
+                
+                {{#if posts}}
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                    
                     {{#foreach posts}}
                     <a href="{{url}}"
                         class="group relative flex flex-col bg-[#F3F7F7] rounded-[10px] overflow-hidden aspect-[3/4] cursor-pointer">
 
-                        {{!-- Enhanced Image Expansion Layer --}}
-                        <div
-                            class="absolute inset-0 m-auto [clip-path:circle(25%_at_50%_45%)] group-hover:[clip-path:circle(100%_at_50%_50%)] overflow-hidden transition-all duration-700 ease-in-out">
+                        <!-- IMAGE -->
+                        <div class="absolute inset-0 m-auto [clip-path:circle(25%_at_50%_45%)] group-hover:[clip-path:circle(100%_at_50%_50%)] overflow-hidden transition-all duration-700 ease-in-out">
                             {{#if feature_image}}
-                            <img src="{{img_url feature_image size=" l"}}" alt="{{title}}"
-                                class="w-full h-full object-cover">
+                                <img src="{{img_url feature_image size="l"}}" alt="{{title}}" class="w-full h-full object-cover">
                             {{/if}}
                         </div>
 
-                        {{!-- Normal State Content --}}
+                        <!-- CONTENT -->
                         <div class="relative flex flex-col h-full justify-between px-[14px] py-[20px]">
+                            
                             <div class="flex gap-2">
                                 {{#foreach tags}}
-                                <span
-                                    class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border group-hover:text-white group-hover:bg-[#F4F4F433] group-hover:backdrop-blur-2xl transition-all ease-in">{{name}}</span>
+                                    <span class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border group-hover:text-white group-hover:bg-[#F4F4F433] group-hover:backdrop-blur-2xl transition-all ease-in">
+                                        {{name}}
+                                    </span>
                                 {{/foreach}}
                             </div>
+
                             <div class="w-full">
-                                <span
-                                    class="text-xs font-medium mb-1 text-white opacity-0 group-hover:opacity-70 transition-all ease-in">{{date
-                                    format="MMM DD, YYYY"}}</span>
-                                <h3 class="text-base font-bold group-hover:text-white transition-all ease-in">{{title}}
+                                <span class="text-xs font-medium mb-1 text-white opacity-0 group-hover:opacity-70 transition-all ease-in">
+                                    {{date format="MMM DD, YYYY"}}
+                                </span>
+
+                                <h3 class="text-base font-bold group-hover:text-white transition-all ease-in">
+                                    {{title}}
                                 </h3>
                             </div>
+
                         </div>
                     </a>
                     {{/foreach}}
+
                 </div>
+
                 {{else}}
-                <div class="py-10 text-center text-gray-400">There is no post related to this tag.</div>
-                {{/get}}
+                    <div class="py-10 text-center text-gray-400">
+                        No posts found in {{name}}
+                    </div>
+                {{/if}}
+
+            {{/get}}
+
+        </section>
+
+    {{/foreach}}
+{{/get}}
             </div>
         </div>
     </section>
@@ -369,7 +355,7 @@
     <section class="pbs-[70px] bg-[#E7E8E9]">
         <div class="container">
             <div class="flex items-center justify-between mb-[25px]">
-                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Read by Category</h2>
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">{{@custom.category_title}}</h2>
             </div>
             {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
