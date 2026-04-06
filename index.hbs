@@ -1,5 +1,6 @@
 {{!< default}} {{!-- The tag above means: insert everything in this file into the {body} of the default.hbs template
     --}} <main id="site-main" class="site-main outer">
+
     {{!-- Featured Slider Section --}}
     {{#get "posts" limit=@custom.number_of_featured_posts include="tags,authors" filter="featured:true" as |featured|}}
     {{#if featured}}
@@ -20,8 +21,9 @@
                                             class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border">{{name}}</span>
                                         {{/foreach}}
                                     </div>
-                                    <span class="text-xs font-medium">{{reading_time}}</span>
-                                </div>
+{{#if reading_time}}
+<span class="text-xs font-medium">{{reading_time}}</span>
+{{/if}}                                </div>
 
                                 <h2 class="text-5xl">
                                     <a href="{{url}}">{{title}}</a>
@@ -190,7 +192,7 @@
     </section>
 
 
-
+{{!-- recommended post section --}}
     <section class="">
         {{#get "posts" limit="3" include="tags,authors" filter="tag:hash-recommended" order="published_at desc"}}
         <div class="flex overflow-hidden">
@@ -259,109 +261,64 @@
 
 
     {{!-- Latest Posts Section with Dual-State Hover Effect --}}
-    <section class="pbs-[70px] bg-[#E7E8E9]">
-        <div class="container">
-            <div class="bg-white rounded-[30px] p-[40px]">
+{{#if @custom.home_tags_section}}
 
-                {{#get "pages" filter="tag:hash-categories-posts" limit="1"}}
-                {{#if pages}}
+<section class="pbs-[70px] bg-[#E7E8E9]">
+    <div class="container">
+        <div class="bg-white rounded-[30px] p-[40px]">
+
+            {{!-- PAGE BLOCK --}}
+            {{#get "pages" filter="tag:hash-categories-posts" limit="1"}}
+            {{#if pages}}
                 {{#foreach pages}}
                 <div class="text-center max-w-2xl mx-auto mb-10">
-                    <div
-                        class="inline-flex items-center gap-2 p-0.5 rounded-full bg-[linear-gradient(90deg,_#B7A7FF_0%,_#9ED2CF_50%,_#2FFF5C_100%)] text-[#000000] text-sm mb-6 animate-fade-in">
-                        <span
-                            class="flex items-center justify-center gap-1 rounded-full px-4 py-1.5 bg-[#ffffff] text-[#000000]">
-                            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M6.422 0.00405997C6.38979 0.0139994 6.35708 0.0222331 6.324 0.0287266C6.26746 0.0468719 6.21511 0.0761085 6.17 0.114727C6.01467 0.245393 6.00133 0.299393 5.97933 0.913393C5.93667 2.08473 5.74133 3.02206 5.38467 3.75873C4.68667 5.20139 3.27733 5.90273 0.904 5.98873C0.308 6.01006 0.244667 6.02406 0.125333 6.15539C0.0306666 6.26006 0 6.34406 0 6.49806C0 6.65206 0.0306666 6.73606 0.125333 6.84073C0.244 6.97206 0.309333 6.98606 0.888667 7.00739C1.68 7.03673 2.138 7.09606 2.73 7.24473C4.68867 7.73673 5.65 8.95473 5.92933 11.2981C5.94533 11.4374 5.968 11.7974 5.97933 12.0981C6 12.6594 6.01 12.7134 6.12533 12.8407C6.216 12.9407 6.33067 12.9867 6.48867 12.9867C6.64667 12.9867 6.76133 12.9407 6.852 12.8407C6.96667 12.7134 6.97733 12.6594 6.998 12.0981C7.02067 11.4974 7.04933 11.1947 7.128 10.7514C7.506 8.61606 8.60667 7.51539 10.742 7.13739C11.1853 7.05939 11.488 7.03006 12.0887 7.00739C12.668 6.98606 12.7333 6.97206 12.852 6.84073C12.9467 6.73606 12.9773 6.65206 12.9773 6.49806C12.9773 6.34006 12.9307 6.22539 12.8313 6.13473C12.704 6.01939 12.6507 6.00939 12.0753 5.98873C9.50467 5.89539 8.11133 5.12139 7.43867 3.41139C7.17933 2.75206 7.03533 1.93273 6.998 0.911393C6.98467 0.539393 6.96667 0.328727 6.94333 0.284727C6.89443 0.190723 6.82003 0.112399 6.72867 0.0587266C6.658 0.02206 6.46667 -0.01194 6.422 0.00405997ZM6.55467 3.90473C6.63 4.10939 6.87933 4.56873 7.04867 4.81606C7.53733 5.52739 8.27667 6.11073 9.12867 6.45606L9.24867 6.50406L9.08867 6.57273C7.88133 7.09006 7.07667 7.89806 6.558 9.11139L6.484 9.28473L6.42133 9.13006C5.94533 7.96406 5.138 7.13473 3.97533 6.61739C3.84733 6.56073 3.75133 6.50539 3.762 6.49539C3.77333 6.48539 3.872 6.43873 3.982 6.39273C5.04 5.94873 5.93133 5.05539 6.38533 3.98473C6.434 3.87073 6.48133 3.77806 6.49067 3.77806C6.5 3.77806 6.52933 3.83473 6.55467 3.90473Z"
-                                    fill="#5F4DFF" />
-                            </svg>
-                            <span>Modern Elegance</span>
-                        </span>
-                    </div>
                     <h2 class="text-4xl md:text-5xl font-bold mb-4">{{title}}</h2>
                     {{#if excerpt}}
-                    <p class="">{{excerpt}}</p>
+                        <p>{{excerpt}}</p>
                     {{/if}}
                 </div>
                 {{/foreach}}
-                {{/if}}
-                {{/get}}
+            {{/if}}
+            {{/get}}
 
+            {{!-- TAGS BLOCK --}}
+            {{#get "tags" filter="slug:[{{@custom.home_tags_section}}]"}}
+            {{#if tags}}
 
-
-                {{#get "tags" filter="slug:[{{@custom.home_tags_section}}]"}}
                 {{#foreach tags}}
-
                 <section class="mb-12">
 
-                    <!-- TAG TITLE -->
                     <h2 class="text-2xl font-bold mb-6">{{name}}</h2>
 
-                    <!-- POSTS -->
                     {{#get "posts" limit="4" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
 
-                    {{#if posts}}
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-
-                        {{#foreach posts}}
-                        <a href="{{url}}"
-                            class="group relative flex flex-col bg-[#F3F7F7] rounded-[10px] overflow-hidden aspect-[3/4] cursor-pointer">
-
-                            <!-- IMAGE -->
-                            <div
-                                class="absolute inset-0 m-auto [clip-path:circle(25%_at_50%_45%)] group-hover:[clip-path:circle(100%_at_50%_50%)] overflow-hidden transition-all duration-700 ease-in-out">
-                                {{#if feature_image}}
-                                <img src="{{img_url feature_image size=" l"}}" alt="{{title}}"
-                                    class="w-full h-full object-cover">
-                                {{/if}}
-                            </div>
-
-                            <!-- CONTENT -->
-                            <div class="relative flex flex-col h-full justify-between px-[14px] py-[20px]">
-
-                                <div class="flex gap-2">
-                                    {{#foreach tags}}
-                                    <span
-                                        class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border group-hover:text-white group-hover:bg-[#F4F4F433] group-hover:backdrop-blur-2xl transition-all ease-in">
-                                        {{name}}
-                                    </span>
-                                    {{/foreach}}
-                                </div>
-
-                                <div class="w-full">
-                                    <span
-                                        class="text-xs font-medium mb-1 text-white opacity-0 group-hover:opacity-70 transition-all ease-in">
-                                        {{date format="MMM DD, YYYY"}}
-                                    </span>
-
-                                    <h3 class="text-base font-bold group-hover:text-white transition-all ease-in">
-                                        {{title}}
-                                    </h3>
-                                </div>
-
-                            </div>
-                        </a>
-                        {{/foreach}}
-
-                    </div>
-
-                    {{else}}
-                    <div class="py-10 text-center text-gray-400">
-                        No posts found in {{name}}
-                    </div>
-                    {{/if}}
+                        {{#if posts}}
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                            {{#foreach posts}}
+                                {{!-- your card --}}
+                            {{/foreach}}
+                        </div>
+                        {{else}}
+                        <div class="py-10 text-center text-gray-400">
+                            No posts found in {{name}}
+                        </div>
+                        {{/if}}
 
                     {{/get}}
 
                 </section>
-
                 {{/foreach}}
-                {{/get}}
-            </div>
+
+            {{/if}}
+            {{/get}}
+
         </div>
-    </section>
+    </div>
+</section>
+
+{{/if}}
+
+
     {{!-- Read by Category Section --}}
     <section class="pbs-[70px] bg-[#E7E8E9]">
         <div class="container">
@@ -394,6 +351,8 @@
             {{/get}}
         </div>
     </section>
+
+    
     {{!-- Newsletter Hero Section --}}
     <section class="py-[70px] bg-[#E7E8E9] relative overflow-hidden" {{#if @custom.banner_background_image}}
     style="background-image: url('{{img_url @custom.banner_background_image}}');" {{/if}}>
@@ -493,10 +452,6 @@
                 <div class="w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-white">
                     {{#if @site.cover_image}}
                     <img src="{{@site.cover_image}}" class="w-full h-full object-cover">
-                    {{else}}
-                    <div class="w-full h-full flex items-center justify-center bg-gray-200">
-                        <span>No Image</span>
-                    </div>
                     {{/if}}
                 </div>
 
@@ -509,18 +464,6 @@
 
             {{/get}}
 
-            {{!-- Badge --}}
-            <div
-                class="inline-flex items-center gap-2 p-0.5 rounded-full bg-[linear-gradient(90deg,_#B7A7FF_0%,_#9ED2CF_50%,_#2FFF5C_100%)] text-[#000000] text-sm mb-8 animate-fade-in">
-                <span
-                    class="flex items-center justify-center gap-1 rounded-full px-4 py-1.5 bg-[#ffffff] text-[#000000]">
-                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M6.422 0.00405997C6.38979 0.0139994 6.35708 0.0222331 6.324 0.0287266C6.26746 0.0468719 6.21511 0.0761085 6.17 0.114727C6.01467 0.245393 6.00133 0.299393 5.97933 0.913393C5.93667 2.08473 5.74133 3.02206 5.38467 3.75873C4.68667 5.20139 3.27733 5.90273 0.904 5.98873C0.308 6.01006 0.244667 6.02406 0.125333 6.15539C0.0306666 6.26006 0 6.34406 0 6.49806C0 6.65206 0.0306666 6.73606 0.125333 6.84073C0.244 6.97206 0.309333 6.98606 0.888667 7.00739C1.68 7.03673 2.138 7.09606 2.73 7.24473C4.68867 7.73673 5.65 8.95473 5.92933 11.2981C5.94533 11.4374 5.968 11.7974 5.97933 12.0981C6 12.6594 6.01 12.7134 6.12533 12.8407C6.216 12.9407 6.33067 12.9867 6.48867 12.9867C6.64667 12.9867 6.76133 12.9407 6.852 12.8407C6.96667 12.7134 6.97733 12.6594 6.998 12.0981C7.02067 11.4974 7.04933 11.1947 7.128 10.7514C7.506 8.61606 8.60667 7.51539 10.742 7.13739C11.1853 7.05939 11.488 7.03006 12.0887 7.00739C12.668 6.98606 12.7333 6.97206 12.852 6.84073C12.9467 6.73606 12.9773 6.65206 12.9773 6.49806C12.9773 6.34006 12.9307 6.22539 12.8313 6.13473C12.704 6.01939 12.6507 6.00939 12.0753 5.98873C9.50467 5.89539 8.11133 5.12139 7.43867 3.41139C7.17933 2.75206 7.03533 1.93273 6.998 0.911393C6.98467 0.539393 6.96667 0.328727 6.94333 0.284727C6.89443 0.190723 6.82003 0.112399 6.72867 0.0587266C6.658 0.02206 6.46667 -0.01194 6.422 0.00405997ZM6.55467 3.90473C6.63 4.10939 6.87933 4.56873 7.04867 4.81606C7.53733 5.52739 8.27667 6.11073 9.12867 6.45606L9.24867 6.50406L9.08867 6.57273C7.88133 7.09006 7.07667 7.89806 6.558 9.11139L6.484 9.28473L6.42133 9.13006C5.94533 7.96406 5.138 7.13473 3.97533 6.61739C3.84733 6.56073 3.75133 6.50539 3.762 6.49539C3.77333 6.48539 3.872 6.43873 3.982 6.39273C5.04 5.94873 5.93133 5.05539 6.38533 3.98473C6.434 3.87073 6.48133 3.77806 6.49067 3.77806C6.5 3.77806 6.52933 3.83473 6.55467 3.90473Z"
-                            fill="#5F4DFF" />
-                    </svg>
-                </span>
-            </div>
             <h2 class="text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-6">
                 {{@site.title}}
             </h2>
