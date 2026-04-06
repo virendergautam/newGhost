@@ -21,7 +21,7 @@
   <h3
     class="text-md md:text-xl mb-5 leading-tight line-clamp-2 group-hover:text-blue-600 transition-colors"
   >
-    <a href="{{url}}">{{title}}</a>
+    {{title}}
   </h3>
 
   {{! Featured Image }}
@@ -48,9 +48,11 @@
   </div>
 
   {{! Excerpt }}
+  {{#if excerpt}}
   <p class="leading-relaxed line-clamp-3 mb-4">
     {{excerpt}}
   </p>
+  {{/if}}
 
   {{! Footer Metadata }}
   <div class="mt-auto py-[15px] border-t flex items-center justify-between">
@@ -82,4 +84,5 @@
       </div>
     {{/foreach}}
   </div>
+  <a href="{{url}}"></a>
 </article>

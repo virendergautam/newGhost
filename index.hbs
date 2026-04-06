@@ -15,15 +15,17 @@
                             {{!-- Text Content --}}
                             <div class="slide-content space-y-6">
                                 <div class="flex items-center gap-4">
+                                    {{#if tags.[0]}}
+
                                     <div class="flex gap-2">
                                         {{#foreach tags}}
                                         <span
                                             class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border">{{name}}</span>
                                         {{/foreach}}
                                     </div>
-{{#if reading_time}}
-<span class="text-xs font-medium">{{reading_time}}</span>
-{{/if}}                                </div>
+                                    {{/if}}
+                                    <span class="text-xs font-medium">{{reading_time}}</span>
+                                </div>
 
                                 <h2 class="text-5xl">
                                     <a href="{{url}}">{{title}}</a>
@@ -192,7 +194,7 @@
     </section>
 
 
-{{!-- recommended post section --}}
+    {{!-- recommended post section --}}
     <section class="">
         {{#get "posts" limit="3" include="tags,authors" filter="tag:hash-recommended" order="published_at desc"}}
         <div class="flex overflow-hidden">
@@ -261,29 +263,29 @@
 
 
     {{!-- Latest Posts Section with Dual-State Hover Effect --}}
-{{#if @custom.home_tags_section}}
+    {{#if @custom.home_tags_section}}
 
-<section class="pbs-[70px] bg-[#E7E8E9]">
-    <div class="container">
-        <div class="bg-white rounded-[30px] p-[40px]">
+    <section class="pbs-[70px] bg-[#E7E8E9]">
+        <div class="container">
+            <div class="bg-white rounded-[30px] p-[40px]">
 
-            {{!-- PAGE BLOCK --}}
-            {{#get "pages" filter="tag:hash-categories-posts" limit="1"}}
-            {{#if pages}}
+                {{!-- PAGE BLOCK --}}
+                {{#get "pages" filter="tag:hash-categories-posts" limit="1"}}
+                {{#if pages}}
                 {{#foreach pages}}
                 <div class="text-center max-w-2xl mx-auto mb-10">
                     <h2 class="text-4xl md:text-5xl font-bold mb-4">{{title}}</h2>
                     {{#if excerpt}}
-                        <p>{{excerpt}}</p>
+                    <p>{{excerpt}}</p>
                     {{/if}}
                 </div>
                 {{/foreach}}
-            {{/if}}
-            {{/get}}
+                {{/if}}
+                {{/get}}
 
-            {{!-- TAGS BLOCK --}}
-            {{#get "tags" filter="slug:[{{@custom.home_tags_section}}]"}}
-            {{#if tags}}
+                {{!-- TAGS BLOCK --}}
+                {{#get "tags" filter="slug:[{{@custom.home_tags_section}}]"}}
+                {{#if tags}}
 
                 {{#foreach tags}}
                 <section class="mb-12">
@@ -292,31 +294,60 @@
 
                     {{#get "posts" limit="4" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
 
-                        {{#if posts}}
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-                            {{#foreach posts}}
-                                {{!-- your card --}}
-                            {{/foreach}}
-                        </div>
-                        {{else}}
-                        <div class="py-10 text-center text-gray-400">
-                            No posts found in {{name}}
-                        </div>
-                        {{/if}}
+                    {{#if posts}}
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                        {{#foreach posts}}
+                        <a href="{{url}}"
+                            class="group relative flex flex-col bg-[#F3F7F7] rounded-[10px] overflow-hidden aspect-[3/4] cursor-pointer">
+
+                            {{!-- Enhanced Image Expansion Layer --}}
+                            <div
+                                class="absolute inset-0 m-auto [clip-path:circle(25%_at_50%_45%)] group-hover:[clip-path:circle(100%_at_50%_50%)] overflow-hidden transition-all duration-700 ease-in-out">
+                                {{#if feature_image}}
+                                <img src="{{img_url feature_image size=" l"}}" alt="{{title}}"
+                                    class="w-full h-full object-cover">
+                                {{/if}}
+                            </div>
+
+                            {{!-- Normal State Content --}}
+                            <div class="relative flex flex-col h-full justify-between px-[14px] py-[20px]">
+                                <div class="flex gap-2">
+                                    {{#foreach tags}}
+                                    <span
+                                        class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border group-hover:text-white group-hover:bg-[#F4F4F433] group-hover:backdrop-blur-2xl transition-all ease-in">{{name}}</span>
+                                    {{/foreach}}
+                                </div>
+                                <div class="w-full">
+                                    <span
+                                        class="text-xs font-medium mb-1 text-white opacity-0 group-hover:opacity-70 transition-all ease-in">{{date
+                                        format="MMM DD, YYYY"}}</span>
+                                    <h3 class="text-base font-bold group-hover:text-white transition-all ease-in">
+                                        {{title}}
+                                    </h3>
+                                </div>
+                            </div>
+                        </a>
+                        {{/foreach}}
+                    </div>
+                    {{else}}
+                    <div class="py-10 text-center text-gray-400">
+                        No posts found in {{name}}
+                    </div>
+                    {{/if}}
 
                     {{/get}}
 
                 </section>
                 {{/foreach}}
 
-            {{/if}}
-            {{/get}}
+                {{/if}}
+                {{/get}}
 
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-{{/if}}
+    {{/if}}
 
 
     {{!-- Read by Category Section --}}
@@ -352,10 +383,10 @@
         </div>
     </section>
 
-    
+
     {{!-- Newsletter Hero Section --}}
     <section class="py-[70px] bg-[#E7E8E9] relative overflow-hidden" {{#if @custom.banner_background_image}}
-    style="background-image: url('{{img_url @custom.banner_background_image}}');" {{/if}}>
+        style="background-image: url('{{img_url @custom.banner_background_image}}');" {{/if}}>
         {{!-- Wavy Background Element --}}
         <div class="absolute inset-0 z-0 pointer-events-none opacity-40">
             <svg viewBox="0 0 1440 600" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full opacity-30">
@@ -371,7 +402,7 @@
             </svg>
         </div>
 
-        <div class="container relative text-center " >
+        <div class="container relative text-center ">
             {{!-- Overlapping Images Design --}}
             {{#get "posts" limit="3" filter="tag:hash-custom" include="tags"}}
             {{log posts "jhghjghhjhj"}}
@@ -449,11 +480,11 @@
                 {{else}}
 
                 <!-- FALLBACK: SITE COVER -->
+                {{#if @site.cover_image}}
                 <div class="w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-white">
-                    {{#if @site.cover_image}}
                     <img src="{{@site.cover_image}}" class="w-full h-full object-cover">
-                    {{/if}}
                 </div>
+                {{/if}}
 
                 {{/match}}
                 {{/match}}
@@ -463,15 +494,20 @@
             </div>
 
             {{/get}}
-
+            {{#get "pages" filter="tag:hash-static-text-section" limit="1"}}
+            {{#if pages}}
+            {{#foreach pages}}
             <h2 class="text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-6">
-                {{@site.title}}
+                {{title}}
             </h2>
             <p class="text-base mb-10 max-w-2xl mx-auto">
-                {{@site.description}}
+                {{excerpt}}
             </p>
+            {{/foreach}}
+            {{/if}}
+            {{/get}}
 
-            {{#match @custom.hero_actions  "Subscription form"}}
+            {{#match @custom.hero_actions "Subscription form"}}
             <form class="flex flex-col md:flex-row items-center justify-center gap-3.5 max-w-lg mx-auto">
                 <input type="email" placeholder="Your Email"
                     class="w-full px-6 py-3 rounded-lg border border-transparent bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-gray-900 placeholder:text-gray-400 focus:border-[#6366F1]/30 focus:ring-4 focus:ring-[#6366F1]/5 transition-all outline-none"
@@ -482,7 +518,7 @@
                 </button>
             </form>
             {{else}}
-            {{#match @custom.hero_actions  "Social links"}}
+            {{#match @custom.hero_actions "Social links"}}
             <div>
                 <p>ye wale social links hai</p>
             </div>
@@ -497,10 +533,16 @@
     </section>
 
     {{!-- Meet the Authors Section --}}
+    {{#get "pages" filter="tag:hash-authors-section" limit="1" include ="tags"}}
+    {{#if pages}}
+    {{#foreach pages}}
+     {{#has tag="#no-title"}}
+                {{!-- do nothing --}}
+            {{else}}
     <section class="py-[70px] bg-white">
         <div class="container">
             <div class="flex items-center justify-between mb-[25px]">
-                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Meet the Authors</h2>
+                <h2 class="text-2xl md:text-3xl font-bold tracking-tight">{{title}}</h2>
                 <a href="/authors" class="text-sm font-medium flex items-center gap-2 group/link">
                     <span>View All</span>
                     <svg class="w-4 h-4 transform group-hover/link:translate-x-1 transition-transform"
@@ -550,6 +592,10 @@
             {{/get}}
         </div>
     </section>
+{{/has}}
+    {{/foreach}}
+    {{/if}}
+    {{/get}}
 
 
     <script>
