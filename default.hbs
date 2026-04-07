@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{@site.locale}}"{{#match @custom.color_scheme "Dark"}} class="dark-mode"{{else match @custom.color_scheme "Auto"}} class="auto-color"{{/match}}>
+<html data-theme="light" lang="{{@site.locale}}"{{#match @custom.color_scheme "Dark"}} class="dark-mode"{{else match @custom.color_scheme "Auto"}} class="auto-color"{{/match}}>
 <head>
 
     {{!-- Basic meta - advanced meta is output with {ghost_head} below --}}
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     {{!-- Preload scripts --}}
-    <link rel="preload" as="script" href="{{asset "built/casper.js"}}" />
+   <script src="{{asset "js/main.js"}}"></script>
 
     {{!-- Theme assets - use the {asset} helper to reference styles & scripts,
     this will take care of caching and cache-busting automatically --}}
@@ -22,7 +22,7 @@
     {{ghost_head}}
 
 </head>
-<body class="bg-[#E7E8E9] {{body_class}} ">
+<body class="bg-main {{body_class}} ">
 <div class="viewport">
  {{> "header"}}
     {{!-- <header id="gh-head" class="gh-head outer{{#match @custom.header_style "Hidden"}} is-header-hidden{{/match}}">

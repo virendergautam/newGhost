@@ -25,9 +25,20 @@
           <button aria-label="Search" class="gh-search min-w-12 flex items-center justify-center hover:text-accent cursor-pointer" data-ghost-search>
             {{> "icons/search"}}
           </button>
-          <button aria-label="dark mode" class="gh-search min-w-12  border-l flex items-center justify-center hover:text-accent cursor-pointer" id="theme-toggle">
-            {{> "icons/dark-mode"}}
-          </button>
+       
+          <button 
+  aria-label="Toggle theme" 
+  id="theme-toggle"
+  class="gh-search min-w-12 border-l flex items-center justify-center hover:text-accent cursor-pointer"
+>
+  <span class="icon-dark">
+    {{> "icons/dark-mode"}}
+  </span>
+  <span class="icon-light hidden">
+    {{> "icons/light-mode"}}
+  </span>
+</button>
+          
         </div>
         <div class="flex items-center gap-1.5">
           <!-- MEMBERS -->

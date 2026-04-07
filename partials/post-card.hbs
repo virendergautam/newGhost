@@ -1,49 +1,37 @@
 {{! Article Card for Index Page }}
 <article
-  class="article-card group bg-white rounded-[20px] p-7 pbe-0 shadow-sm hover:shadow-xl transition-all flex flex-col h-full {{#match @custom.feed_card_layout "Image first"}}
-    has-image-first
-  {{else}}
-    has-heading-first
-  {{/match}}"
->
+  class="article-card group bg-white rounded-[20px] p-7 pbe-0 shadow-sm hover:shadow-xl transition-all flex flex-col h-full {{#match @custom.feed_card_layout "
+  Image first"}} has-image-first {{else}} has-heading-first {{/match}}">
   {{! Category Tag }}
-  {{#if tags.[0]}}
-    <div class="flex gap-2 mb-4">
-      {{#foreach tags}}
-        <span
-          class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border"
-        >{{name}}</span>
-      {{/foreach}}
+  {{#foreach tags visibility="public"}}
+  {{#if @first}}
+  <div class="flex gap-2 mb-4">
+    {{/if}}
+
+    <span class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border">
+      {{name}}
+    </span>
+
+    {{#if @last}}
   </div>
   {{/if}}
+  {{/foreach}}
 
   {{! Title }}
-  <h3
-    class="text-md md:text-xl mb-5 leading-tight line-clamp-2 group-hover:text-blue-600 transition-colors"
-  >
+  <h3 class="text-md md:text-xl mb-5 leading-tight line-clamp-2 group-hover:text-blue-600 transition-colors">
     {{title}}
   </h3>
 
   {{! Featured Image }}
   <div
-    class="relative rounded-[14px] overflow-hidden mb-5 bg-[#F3F4F6] text-[#dbdbdb] flex items-center justify-center  {{#match @custom.feed_image_orientation "Landscape"}}
-    aspect-[3/2]
-  {{else match @custom.feed_image_orientation "Potrait"}}
-    aspect-[2/3]
-  {{else match @custom.feed_image_orientation "Square"}}
-    aspect-square
-  {{else}}
-    aspect-auto
-  {{/match}}""
-  >
+    class="relative rounded-[14px] overflow-hidden mb-5 bg-[#F3F4F6] text-[#dbdbdb] flex items-center justify-center  {{#match @custom.feed_image_orientation "
+    Landscape"}} aspect-[3/2] {{else match @custom.feed_image_orientation "Potrait" }} aspect-[2/3] {{else match
+    @custom.feed_image_orientation "Square" }} aspect-square {{else}} aspect-auto {{/match}}"">
     {{#if feature_image}}
-      <img
-        src="{{img_url feature_image size="m"}}"
-        alt="{{title}}"
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-      />
+    <img src="{{img_url feature_image size=" m"}}" alt="{{title}}"
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
     {{else}}
-      <span class="font-bold">NO IMAGE</span>
+    <span class="font-bold">NO IMAGE</span>
     {{/if}}
   </div>
 
@@ -56,33 +44,32 @@
 
   {{! Footer Metadata }}
   <div class="mt-auto py-[15px] border-t flex items-center justify-between">
-    <div class="flex items-center gap-2 text-xs">
-      <svg
-        class="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      ><path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-        ></path></svg>
-      <span>{{date format="MMM DD, YYYY"}}</span>
-    </div>
+   
 
-    {{#foreach authors}}
-      <div class="flex items-center gap-2.5">
-        <span class="text-xs">By {{name}}</span>
+    <div class="author-group flex items-center">
+      {{#if authors}}
+      <div class="flex -space-x-3 mr-3">
+        {{#foreach authors}}
         {{#if profile_image}}
-          <img
-            src="{{img_url profile_image size="xs"}}"
-            alt="{{name}}"
-            class="w-7 h-7 rounded-full object-cover"
-          />
+        <img src="{{img_url profile_image size=" xs"}}" alt="{{name}}"
+          class="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm bg-white" title="{{name}}">
+        {{else}}
+        <div
+          class="w-9 h-9 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px] text-gray-500 shadow-sm"
+          title="{{name}}">
+          {{#if name}}{{name}}{{/if}}
+        </div>
         {{/if}}
+        {{/foreach}}
       </div>
-    {{/foreach}}
+      {{/if}}
+      <div class="flex flex-col justify-center">
+        <h4 class="text-base">
+          {{#foreach authors}}{{name}}{{#unless @last}}, {{/unless}}{{/foreach}}
+        </h4>
+        <span class="text-xs mt-0.5">Published on {{date format="DD MMM YYYY"}}</span>
+      </div>
+    </div>
   </div>
-  <a href="{{url}}"></a>
+  <a href="{{url}}" class="overlaylink"></a>
 </article>
