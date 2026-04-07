@@ -1,35 +1,30 @@
 {{! Article Card for Index Page }}
 <article
-  class="article-card group bg-white rounded-[20px] p-7 pbe-0 shadow-sm hover:shadow-xl transition-all flex flex-col h-full {{#match @custom.feed_card_layout "
+  class="relative article-card group bg-alternate rounded-[20px] p-7 pbe-0 shadow-[box-shadow:0px_0px_50px_0px_#261E5308] hover:shadow-xl transition-all flex flex-col h-full {{#match @custom.feed_card_layout "
   Image first"}} has-image-first {{else}} has-heading-first {{/match}}">
   {{! Category Tag }}
   {{#foreach tags visibility="public"}}
   {{#if @first}}
   <div class="flex gap-2 mb-4">
     {{/if}}
-
-    <span class="px-4 py-1 min-h-[20px] flex items-center bg-white rounded-sm text-xs border">
+    <span class="px-4 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light">
       {{name}}
     </span>
-
     {{#if @last}}
   </div>
   {{/if}}
   {{/foreach}}
 
   {{! Title }}
-  <h3 class="text-md md:text-xl mb-5 leading-tight line-clamp-2 group-hover:text-blue-600 transition-colors">
+  <h3 class="text-md md:text-xl mb-5 line-clamp-2 group-hover:text-accent transition-colors">
     {{title}}
   </h3>
 
   {{! Featured Image }}
-  <div
-    class="relative rounded-[14px] overflow-hidden mb-5 bg-[#F3F4F6] text-[#dbdbdb] flex items-center justify-center  {{#match @custom.feed_image_orientation "
-    Landscape"}} aspect-[3/2] {{else match @custom.feed_image_orientation "Potrait" }} aspect-[2/3] {{else match
-    @custom.feed_image_orientation "Square" }} aspect-square {{else}} aspect-auto {{/match}}"">
+  <div class="relative rounded-[14px] overflow-hidden mb-5 bg-main text-text/20 flex items-center justify-center {{#match @custom.feed_image_orientation "Landscape"}} aspect-[3/2] {{else match @custom.feed_image_orientation "Potrait" }} aspect-[2/3] {{else match @custom.feed_image_orientation "Square" }} aspect-square {{else}} aspect-auto {{/match}}">
     {{#if feature_image}}
     <img src="{{img_url feature_image size=" m"}}" alt="{{title}}"
-      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
     {{else}}
     <span class="font-bold">NO IMAGE</span>
     {{/if}}
@@ -43,33 +38,24 @@
   {{/if}}
 
   {{! Footer Metadata }}
-  <div class="mt-auto py-[15px] border-t flex items-center justify-between">
-   
-
-    <div class="author-group flex items-center">
-      {{#if authors}}
-      <div class="flex -space-x-3 mr-3">
-        {{#foreach authors}}
-        {{#if profile_image}}
-        <img src="{{img_url profile_image size=" xs"}}" alt="{{name}}"
-          class="w-9 h-9 rounded-full border-2 border-white object-cover shadow-sm bg-white" title="{{name}}">
-        {{else}}
-        <div
-          class="w-9 h-9 rounded-full border-2 border-white bg-gray-200 flex items-center justify-center text-[10px] text-gray-500 shadow-sm"
-          title="{{name}}">
-          {{#if name}}{{name}}{{/if}}
-        </div>
-        {{/if}}
-        {{/foreach}}
+  <div class="mt-auto py-[15px] border-t border-border-light flex items-center justify-between"> 
+    {{#has author="count:1"}}
+      <div class="flex items-center gap-2.5">
+          {{#if authors.[0].profile_image}}
+            <img src="{{img_url authors.[0].profile_image size="xs"}}" alt="{{authors.[0].name}}" class="w-8 h-8 rounded-full object-cover">
+          {{/if}}
+           <h4 class="text-xs">By {{authors.[0].name}}</h4>
       </div>
-      {{/if}}
-      <div class="flex flex-col justify-center">
-        <h4 class="text-base">
-          {{#foreach authors}}{{name}}{{#unless @last}}, {{/unless}}{{/foreach}}
-        </h4>
-        <span class="text-xs mt-0.5">Published on {{date format="DD MMM YYYY"}}</span>
+      <div class="grid grid-cols-[auto_1fr] gap-1 items-center">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M9.13782 8.057L7.46469 6.80216V4.24602C7.46469 3.989 7.25694 3.78125 6.99992 3.78125C6.74291 3.78125 6.53516 3.989 6.53516 4.24602V7.03456C6.53516 7.18095 6.60395 7.319 6.72106 7.40637L8.58008 8.80065C8.66373 8.86339 8.76134 8.8936 8.85847 8.8936C9.00022 8.8936 9.13965 8.82992 9.23075 8.70723C9.38509 8.50224 9.34325 8.21084 9.13782 8.057Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"/>
+          <path d="M7 1C3.6914 1 1 3.6914 1 7C1 10.3086 3.6914 13 7 13C10.3086 13 13 10.3086 13 7C13 3.6914 10.3086 1 7 1ZM7 12.0705C4.20449 12.0705 1.92951 9.79551 1.92951 7C1.92951 4.20449 4.20449 1.92951 7 1.92951C9.79598 1.92951 12.0705 4.20449 12.0705 7C12.0705 9.79551 9.79551 12.0705 7 12.0705Z" fill="currentColor" stroke="currentColor" stroke-width="0.3"/>
+        </svg>
+        <span class="text-xs mt-0.5">{{date format="DD MMM YYYY"}}</span>
       </div>
-    </div>
+    {{else}}
+         {{> "author-group"}}
+    {{/has}}
   </div>
   <a href="{{url}}" class="overlaylink"></a>
 </article>

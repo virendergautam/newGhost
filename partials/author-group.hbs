@@ -1,0 +1,39 @@
+<div class="author-group flex items-center">
+  {{#if authors}}
+    <div class="flex -space-x-3 mr-3">
+      {{#foreach authors}}
+        {{#if profile_image}}
+          <img
+            src="{{img_url profile_image size=" xs"}}"
+            alt="{{name}}"
+            class="w-9 h-9 rounded-full object-cover"
+            title="{{name}}"
+          />
+        {{else}}
+          <div
+            class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-[10px] text-gray-500"
+            title="{{name}}"
+          >
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <path
+                d="M0.415364 14.759C0.397364 14.759 0.397364 14.759 0.379364 14.759C0.145364 14.741 -0.0166362 14.543 0.00136381 14.327C0.235364 10.889 3.47536 8.20703 7.36336 8.20703C11.2514 8.20703 14.4914 10.889 14.7254 14.309C14.7434 14.543 14.5634 14.723 14.3474 14.741C14.1134 14.759 13.9334 14.579 13.9154 14.363C13.6994 11.357 10.8194 9.01703 7.36336 9.01703C3.88936 9.01703 1.00936 11.375 0.811364 14.381C0.793364 14.597 0.613364 14.759 0.415364 14.759Z"
+                fill="currentColor"
+              />
+              <path
+                d="M7.36377 8.208C5.09577 8.208 3.25977 6.372 3.25977 4.104C3.25977 1.836 5.09577 0 7.36377 0C9.63177 0 11.4678 1.836 11.4678 4.104C11.4678 6.372 9.63177 8.208 7.36377 8.208ZM7.36377 0.828C5.56377 0.828 4.08777 2.304 4.08777 4.104C4.08777 5.904 5.56377 7.38 7.36377 7.38C9.16377 7.38 10.6398 5.904 10.6398 4.104C10.6398 2.304 9.16377 0.828 7.36377 0.828Z"
+                fill="currentColor"
+              />
+            </svg>
+          </div>
+        {{/if}}
+      {{/foreach}}
+    </div>
+  {{/if}}
+  <div class="flex flex-col justify-center">
+    <h4 class="text-sm">
+      {{#foreach authors}}{{name}}{{#unless @last}}, {{/unless}}{{/foreach}}
+    </h4>
+    <span class="text-xs mt-0.5">Published on
+      {{date format="DD MMM YYYY"}}</span>
+  </div>
+</div>
