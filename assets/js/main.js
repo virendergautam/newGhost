@@ -6,8 +6,10 @@ const themeToggle = () => {
   const html = document.documentElement;
   let customValue = html.getAttribute("data-theme-value");
   if (customValue === "Dark") {
+    localStorage.setItem("theme", "dark");
     html.setAttribute("data-theme", "dark");
   } else if (customValue === "Light") {
+    localStorage.setItem("theme", "light");
     html.setAttribute("data-theme", "light");
   } else {
     const toggleBtn = document.getElementById("theme-toggle");
