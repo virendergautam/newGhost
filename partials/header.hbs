@@ -1,6 +1,6 @@
 <header id="siteHeader" class="header container header-sticky z-3">
     <!-- HEADER BAR -->
-    <nav class="header-inner grid grid-cols-[1fr_auto_1fr] items-center min-h-[50px] p-1.5 pl-5 gap-6 relative before:absolute before:h-full before:w-full before:left-0 before:top-0 before:bg-white before:-z-10 lg:before:rounded-lg shadow-[0px_8px_22px_0px_#261E532B]">
+    <nav class="header-inner grid grid-cols-[1fr_auto_1fr] items-center min-h-[50px] p-1.5 pl-5 gap-6 relative text-black dark:text-white before:absolute before:h-full before:w-full before:left-0 before:top-0 before:bg-white dark:before:bg-black before:-z-10 lg:before:rounded-lg shadow-[0px_8px_22px_0px_#261E532B]">
 
       <!-- LOGO -->
       <div class="header-logo">
@@ -46,15 +46,15 @@
           <!-- MEMBERS -->
           {{#if @site.members_enabled}}
             {{#if @member}}
-              <a href="#/portal/account" data-portal="account" class="hidden lg:inline-flex text-sm px-4 py-2 bg-black text-white rounded-lg">
+              <a href="#/portal/account" data-portal="account" class="hidden lg:inline-flex text-sm px-4 py-2 bg-transparent border border-border-light text-black dark:text-white rounded-lg">
                 Account
               </a>
             {{else}}
-              <a href="#/portal/signin" data-portal="signin" class="hidden lg:inline-flex text-sm px-4 py-2 bg-black text-white rounded-lg">
+              <a href="#/portal/signin" data-portal="signin" class="hidden lg:inline-flex text-sm px-4 py-2 bg-transparent border border-border-light text-black dark:text-white rounded-lg">
                 Sign In
               </a>
               {{#unless @site.members_invite_only}}
-                <a href="#/portal/signup" data-portal="signup" class="hidden lg:inline-flex px-4 py-2 bg-black text-white rounded-lg text-sm">
+                <a href="#/portal/signup" data-portal="signup" class="hidden button">
                   Subscribe
                 </a>
               {{/unless}}

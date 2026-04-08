@@ -118,12 +118,12 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-[25px] gap-6">
                 <h2 class="text-2xl md:text-3xl tracking-tight">{{@custom.home_feed_title}}</h2>
                 <div class="flex flex-wrap items-center gap-3">
-                    <button class="filter-tab-btn tab-btn active px-5 py-1.5 rounded-lg text-sm border" data-tab="all">
+                    <button class="filter-tab-btn cursor-pointer tab-btn active px-5 py-1.5 rounded-lg text-sm bg-text/4 border border-border" data-tab="all">
                         All
                     </button>
                     {{#get "tags" filter="slug:[{{@custom.home_feed_tags}}]"}}
                     {{#foreach tags}}
-                    <button class="filter-tab-btn tab-btn px-5 py-1.5 rounded-lg text-sm border" data-tab="{{slug}}">
+                    <button class="filter-tab-btn cursor-pointer tab-btn px-5 py-1.5 rounded-lg text-sm bg-text/4 border border-border" data-tab="{{slug}}">
                         {{name}}
                     </button>
                     {{/foreach}}
@@ -200,7 +200,7 @@
                         <div class="flex gap-2 mb-4">
                             {{/if}}
                             <span
-                                class="px-3 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border">{{name}}</span>
+                                class="px-3 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light">{{name}}</span>
 
 
                             {{#if @last}}
@@ -216,7 +216,7 @@
                         {{/if}}
 
                         {{! Footer Metadata }}
-                        <div class="mt-auto py-[15px] border-t border-border flex items-center justify-between">
+                        <div class="mt-auto py-[15px] border-t border-border-light flex items-center justify-between">
                             {{> "author-group"}}
                         </div>
                     </div>
@@ -290,7 +290,7 @@
                                         <span
                                             class="text-xs font-medium mb-1 text-white opacity-0 group-hover:opacity-70 transition-all ease-in">{{date
                                             format="MMM DD, YYYY"}}</span>
-                                            <div class="text-base font-bold text-black group-hover:text-white transition-all ease-in">
+                                            <div class="text-base font-bold text-black dark:text-white group-hover:text-white transition-all ease-in">
                                             {{title}}
                                         </div>
                                     </div>
@@ -299,7 +299,7 @@
                             {{/foreach}}
                         </div>
                         {{else}}
-                        <div class="py-10 text-center text-gray-400">
+                        <div class="py-10 text-center text-text">
                             No posts found in {{name}}
                         </div>
                         {{/if}}
@@ -511,7 +511,7 @@
         <div class="container">
             <div class="flex items-center justify-between mb-[20px]">
                 <h2 class="text-2xl md:text-3xl">{{title}}</h2>
-                <a href={{url}} class="text-xs text-heading font-medium flex items-center gap-2 group/link">
+                <a href={{url}} class="text-xs text-heading font-medium flex items-center gap-2 group/link hover:text-accent transition-colors">
                     <span>View All</span>
                     <svg width="9" height="8" viewBox="0 0 9 8" fill="none">
                         <path d="M5.4 0L4.77 0.63L7.29 3.15H0V4.05H7.29L4.77 6.57L5.4 7.2L9 3.6L5.4 0Z" fill="currentColor"/>
