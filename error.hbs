@@ -1,4 +1,4 @@
-{{!--
+{{!
 
 There are two error files in this theme, one for 404s and one for all other errors.
 This file is the latter, and handles all 400/500 errors that might occur.
@@ -10,65 +10,69 @@ the error in the first place.
 
 Keep this template as lightweight as you can!
 
---}}
+}}
 
-<!DOCTYPE html>
 <html>
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>{{meta_title}}</title>
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="{{asset "built/screen.css"}}" />
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>{{meta_title}}</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="{{asset 'built/main.css'}}" />
 </head>
+
 <body>
-    <div class="site-wrapper">
+	<div class="site-wrapper">
+		<header class="site-header no-image">
+			<div class="site-nav-main outer">
+				<div class="inner">
+					<nav class="site-nav-center">
+						{{#if @site.logo}}
+						<a class="site-nav-logo" href="{{@site.url}}"><img src="{{img_url @site.logo size=" xs"}}"
+								alt="{{@site.title}}" /></a>
+						{{else}}
+						<a class="site-nav-logo" href="{{@site.url}}">{{@site.title}}</a>
+						{{/if}}
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main id="site-main" class="site-main outer">
+			<section class="error-content py-[70px]">
+				<div class="container">
+					<div class="error-message text-center min-h-[500px] flex flex-col justify-center items-center">
+						<h1 class="error-code text-4xl md:text-6xl mb-3">{{statusCode}}</h1>
+						<p class="error-description text-lg mb-5">{{message}}</p>
+						<a class="error-link button button-large" href="{{@site.url}}">{{t
+							"Go to the Homepage"
+							}}</a>
+					</div>
+					{{#if errorDetails}}
+					<div class="error-stack">
+						<h3 class="text-lg">{{t "Theme errors"}}</h3>
+						<ul class="error-stack-list">
+							{{#foreach errorDetails}}
+							<li>
+								<em class="error-stack-function">{{{rule}}}</em>
 
-        <header class="site-header no-image">
-            <div class="site-nav-main outer">
-                <div class="inner">
-                    <nav class="site-nav-center">
-                        {{#if @site.logo}}
-                        <a class="site-nav-logo" href="{{@site.url}}"><img src="{{img_url @site.logo size="xs"}}"
-                                alt="{{@site.title}}" /></a>
-                        {{else}}
-                        <a class="site-nav-logo" href="{{@site.url}}">{{@site.title}}</a>
-                        {{/if}}
-                    </nav>
-                </div>
-            </div>
-        </header>
+								{{#foreach failures}}
+								<p><span class="error-stack-file">Ref:
+										{{ref}}</span></p>
+								<p><span class="error-stack-file">Message:
+										{{message}}</span></p>
+								{{/foreach}}
+							</li>
+							{{/foreach}}
+						</ul>
+					</div>
+					{{/if}}
 
-        <main class="outer error-content">
-            <div class="inner">
-
-                <section class="error-message">
-                    <h1 class="error-code">{{statusCode}}</h1>
-                    <p class="error-description">{{message}}</p>
-                    <a class="error-link" href="{{@site.url}}">{{t "Go to the front page →"}}</a>
-                </section>
-
-                {{#if errorDetails}}
-                <section class="error-stack">
-                    <h3>{{t "Theme errors"}}</h3>
-                    <ul class="error-stack-list">
-                        {{#foreach errorDetails}}
-                            <li>
-                                <em class="error-stack-function">{{{rule}}}</em>
-
-                                {{#foreach failures}}
-                                    <p><span class="error-stack-file">Ref: {{ref}}</span></p>
-                                    <p><span class="error-stack-file">Message: {{message}}</span></p>
-                                {{/foreach}}
-                            </li>
-                        {{/foreach}}
-                    </ul>
-                </section>
-                {{/if}}
-
-            </div>
-        </main>
-    </div>
+				</div>
+			</section>
+		</main>
+	</div>
 </body>
+
 </html>

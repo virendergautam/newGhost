@@ -18,7 +18,7 @@
 
                                     {{#foreach tags visibility="public"}}
                                     {{#if @first}}
-                                    <div class="flex gap-2 mb-4">
+                                    <div class="flex gap-2">
                                         {{/if}}
                                         <span
                                             class="px-3 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border">{{name}}</span>
@@ -191,8 +191,8 @@
                 <article id="article-card-{{@index}}"
                     class="relative z-1 article-card group flex flex-col w-full max-w-[450px] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-400 ease">
                     <div id="article-card-iamge-{{@index}}"
-                        class="border-16 border-white rounded-t-xl article-card-image aspect-[3/2]"> </div>
-                    <div class="bg-white p-4 pb-[0px] rounded-b-xl">
+                        class="border-16 border-alternate rounded-t-xl article-card-image aspect-[3/2]"> </div>
+                    <div class="bg-alternate p-4 pb-[0px] rounded-b-xl">
                         {{! Category Tag }}
 
                         {{#foreach tags visibility="public"}}
