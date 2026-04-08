@@ -32,9 +32,9 @@
         "type": "select",
         "options": [
           "Full width",
-          "sticky with full width",
+          "Full width with sticky",
           "Fixed layout",
-          "sticky with fixed layout"
+          "Sticky with fixed layout"
         ],
         "default": "Full width"
       },
