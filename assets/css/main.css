@@ -129,6 +129,11 @@ h6 {
   font-size: 14px;
 }
 
+.button.button-large {
+  min-height: 46px;
+  padding-inline: 20px;
+}
+
 .button-outline {
   background: transparent;
   color: var(--color-heading);
