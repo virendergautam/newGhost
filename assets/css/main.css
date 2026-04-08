@@ -144,3 +144,20 @@ h6 {
 .tag-posts-list>.mb-12:only-of-type .tag-post-title {
   display: none;
 }
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-alternate);
+  color: var(--color-heading);
+  border-radius: 8px;
+  box-shadow: 0px 4px 15px 0px #1820531A;
+}
+
+.social-link svg {
+  width: 17px;
+  height: 17px;
+}
