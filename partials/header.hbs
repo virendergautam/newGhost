@@ -26,7 +26,8 @@
             {{> "icons/search"}}
           </button>
        
-          <button 
+{{#match @custom.appearance "User defined"}}
+<button 
   aria-label="Toggle theme" 
   id="theme-toggle"
   class="gh-search min-w-12 border-l flex items-center justify-center hover:text-accent cursor-pointer"
@@ -38,6 +39,7 @@
     {{> "icons/light-mode"}}
   </span>
 </button>
+{{/match}}
           
         </div>
         <div class="flex items-center gap-1.5">

@@ -18,6 +18,35 @@
   },
   "config": {
     "custom": {
+      "appearance": {
+        "type": "select",
+        "options": [
+          "Light",
+          "Dark",
+          "User defined"
+        ],
+        "default": "Light",
+        "description": "Allow users to toggle between light and dark mode with their preference saved"
+      },
+      "header_layout": {
+        "type": "select",
+        "options": [
+          "Full width",
+          "sticky with full width",
+          "Fixed layout",
+          "sticky with fixed layout"
+        ],
+        "default": "Full width"
+      },
+      "social_links": {
+        "type": "text",
+        "default": "",
+        "description": "Enter the social media name and URL, separate by comma. Example:https://facebook.com/yourpage,https://twitter.com/yourpage"
+      },
+      "footer_copyright_text": {
+        "type": "text",
+        "default": "Copyright © 2024 Your Company. All rights reserved."
+      },
       "number_of_featured_posts": {
         "type": "text",
         "default": "3",
@@ -58,8 +87,7 @@
         "type": "text",
         "default": "",
         "group": "homepage",
-                "description": "Enter the tag slug to show posts, separate by comma. Example: Fashion,lifestyle,travel"
-
+        "description": "Enter the tag slug to show posts, separate by comma. Example: Fashion,lifestyle,travel"
       },
       "category_title": {
         "type": "text",
