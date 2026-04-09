@@ -1,55 +1,55 @@
-{{!< default}}
-{{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
-
-<main id="site-main" class="site-main outer">
-<div class="inner posts">
-    <div class="post-feed">
-
-        {{#tag}}
-        <section class="post-card post-card-large">
-
-            {{#if feature_image}}
-            <div class="post-card-image-link">
-                {{!-- This is a responsive image, it loads different sizes depending on device
-                https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-                <img class="post-card-image"
-                    srcset="{{img_url feature_image size="s"}} 300w,
-                            {{img_url feature_image size="m"}} 600w,
-                            {{img_url feature_image size="l"}} 1000w,
-                            {{img_url feature_image size="xl"}} 2000w"
-                    sizes="(max-width: 1000px) 400px, 800px"
-                    src="{{img_url feature_image size="m"}}"
-                    alt="{{title}}"
-                />
-            </div>
-            {{/if}}
-
-            <div class="post-card-content">
-            <div class="post-card-content-link">
-                <header class="post-card-header">
-                    <h2 class="post-card-title">{{name}}</h2>
-                </header>
-                <div class="post-card-excerpt">
-                    {{#if description}}
-                        {{description}}
-                    {{else}}
-                        {{plural ../pagination.total empty=(t "A collection of 0 posts") singular=(t "A collection of 1 post") plural=(t "A collection of {numberOfPosts} posts" numberOfPosts=../pagination.total)}}
-                    {{/if}}
+{{!< default}} {{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template
+    --}} <main id="site-main" class="site-main outer">
+    <section class="category-posts py-[70px]">
+        <div class="container">
+            <div class="grid grid-cols-[auto_1fr] items-start gap-4">
+                {{#tag}}
+                <div class="category-card w-[375px] bg-alternate border border-accent rounded-[20px]">
+                    <div class="category-card-body px-7 py-10 text-center flex flex-col items-center">
+                        <div
+                            class="category-image bg-main rounded-full overflow-hidden size-[180px] text-text/20 aspect-square">
+                            {{#if feature_image}}
+                            <img class="w-full h-full object-cover" srcset="{{img_url feature_image size=" s"}} 300w,
+                                {{img_url feature_image size="m" }} 600w, {{img_url feature_image size="l" }} 1000w,
+                                {{img_url feature_image size="xl" }} 2000w" sizes="(max-width: 1000px) 400px, 800px"
+                                src="{{img_url feature_image size=" m"}}" alt="{{title}}" />
+                            {{else}}
+                            <div class="w-full h-full p-[10%] flex items-center justify-center">
+                                {{> "icons/avatar"}}
+                            </div>
+                            {{/if}}
+                        </div>
+                        <div class="category-card-content">
+                            <h2 class="text-2xl lg:text-3xl mt-5">{{name}}</h2>
+                            <div
+                                class="px-3 py-1 min-h-[20px] inline-flex items-center rounded-sm text-xs border border-border-light text-heading mt-4">
+                                2 Article
+                            </div>
+                            <p class="text-sm mt-4">
+                                {{#if description}}
+                                {{description}}
+                                {{else}}
+                                {{plural ../pagination.total empty=(t "A collection of 0 posts") singular=(t "A
+                                collection of 1 post") plural=(t "A collection of {numberOfPosts} posts"
+                                numberOfPosts=../pagination.total)}}
+                                {{/if}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {{/tag}}
+                <div class="authors-posts-list">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {{#foreach posts}}
+                        {{> "post-card"}}
+                        {{/foreach}}
+                    </div>
+                    {{pagination}}
                 </div>
             </div>
-            </div>
 
-        </section>
-        {{/tag}}
 
-        {{#foreach posts}}
-            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
-            {{> "post-card"}}
-        {{/foreach}}
 
-    </div>
 
-    {{pagination}}
-    
-</div>
-</main>
+    </section>
+    </main>
