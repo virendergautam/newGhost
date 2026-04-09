@@ -14,7 +14,10 @@
                             {{!-- Text Content --}}
                             <div class="slide-content">
                                 <div class="flex items-center gap-4 mb-7">
-
+                                    {{#if featured}}
+                                    <div class="bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
+                                        {{> "icons/fire"}}Featured</div>
+                                    {{/if}}
                                     {{#foreach tags visibility="public"}}
                                     {{#if @first}}
                                     <div class="flex gap-2">
@@ -29,6 +32,13 @@
 
 
                                     <span class="text-xs font-medium">{{reading_time}}</span>
+                                    {{#unless access}}
+                                        {{^has visibility="public"}}
+                                        <span class="ml-3 flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
+                                        {{> "icons/lock"}}
+                                        </span>
+                                        {{/has}}
+                                    {{/unless}}
                                 </div>
                                 <h2 class="text-5xl mb-5 max-w-[550px]">
                                     <a href="{{url}}">{{title}}</a>
@@ -194,22 +204,35 @@
                 <article id="article-card-{{@index}}"
                     class="relative z-1 article-card group flex flex-col w-full max-w-[450px] mx-auto opacity-0 group-hover:opacity-100 transition-all duration-400 ease">
                     <div id="article-card-iamge-{{@index}}"
-                        class="border-16 border-alternate rounded-t-xl article-card-image aspect-[3/2]"> </div>
+                        class="border-16 border-alternate rounded-t-xl article-card-image aspect-[3/2] relative">
+                        {{#if featured}}
+                            <div class="absolute bottom-2.5 left-2.5 bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs flex items-center gap-1">
+                                {{> "icons/fire"}}Featured</div>
+                        {{/if}}
+                         </div>
                     <div class="bg-alternate p-4 pb-[0px] rounded-b-xl">
                         {{! Category Tag }}
+                        <div class="flex items-start justify-between">
+                            {{#foreach tags visibility="public"}}
+                            {{#if @first}}
+                            <div class="flex gap-2 mb-4">
+                                {{/if}}
+                                <span
+                                    class="px-3 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light">{{name}}</span>
 
-                        {{#foreach tags visibility="public"}}
-                        {{#if @first}}
-                        <div class="flex gap-2 mb-4">
+
+                                {{#if @last}}
+                            </div>
                             {{/if}}
-                            <span
-                                class="px-3 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light">{{name}}</span>
-
-
-                            {{#if @last}}
-                        </div>
-                        {{/if}}
-                        {{/foreach}}
+                            {{/foreach}}
+                            {{#unless access}}
+                                {{^has visibility="public"}}
+                                <span class="ml-3 flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
+                                {{> "icons/lock"}}
+                                </span>
+                                {{/has}}
+                            {{/unless}}
+                            </div>
                         {{! Title }}
                         <h3 class="text-md md:text-xl mb-4 pr-[10px]"> {{title}} </h3>
 
@@ -277,7 +300,7 @@
 
                                 {{!-- Normal State Content --}}
                                 <div class="relative flex flex-col h-full justify-between px-[14px] py-[20px]">
-                                    <div class="flex gap-2">
+                                    <div class="flex gap-2 justify-between">
                                         {{#foreach tags visibility="public"}}
                                         {{#if @first}}
                                         <div class="flex gap-2 mb-4">
@@ -290,6 +313,13 @@
                                         </div>
                                         {{/if}}
                                         {{/foreach}}
+                                        {{#unless access}}
+                                            {{^has visibility="public"}}
+                                            <span class="flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
+                                            {{> "icons/lock"}}
+                                            </span>
+                                            {{/has}}
+                                        {{/unless}}
                                     </div>
                                     <div class="w-full">
                                         <span
@@ -299,6 +329,10 @@
                                             class="text-base font-bold text-black dark:text-white group-hover:text-white transition-all ease-in">
                                             {{title}}
                                         </div>
+                                        {{#if featured}}
+                                        <div class="mt-3 bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
+                                            {{> "icons/fire"}}Featured</div>
+                                        {{/if}}
                                     </div>
                                 </div>
                             </a>
