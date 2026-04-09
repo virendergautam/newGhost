@@ -1,6 +1,5 @@
 {{!< default}} {{!-- The tag above means: insert everything in this file into the {body} of the default.hbs template
-    --}} 
-<main id="site-main" class="site-main outer">
+    --}} <main id="site-main" class="site-main outer">
     {{!-- Featured Slider Section --}}
     {{#get "posts" limit=@custom.number_of_featured_posts include="tags,authors" filter="featured:true" as |featured|}}
     {{#if featured}}
@@ -84,9 +83,9 @@
                     </div>
                     <div class="thumbs-swiper-wrapper max-w-[560px]">
                         <div class="thumbs-swiper swiper">
-                            <div class="swiper-wrapper gap-2.5">
+                            <div class="swiper-wrapper">
                                 {{#foreach featured}}
-                                <div class="swiper-slide !w-auto">
+                                <div class="swiper-slide !w-auto pr-2.5">
                                     <div
                                         class="thumb-card w-[130px] xl:w-[180px] aspect-1/1 bg-alternate text-text rounded-lg overflow-hidden transition-all cursor-pointer">
                                         {{#if feature_image}}
@@ -118,12 +117,16 @@
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-[25px] gap-6">
                 <h2 class="text-2xl md:text-3xl tracking-tight">{{@custom.home_feed_title}}</h2>
                 <div class="flex flex-wrap items-center gap-3">
-                    <button class="filter-tab-btn cursor-pointer tab-btn active px-5 py-1.5 rounded-lg text-sm bg-text/4 border border-border" data-tab="all">
+                    <button
+                        class="filter-tab-btn cursor-pointer tab-btn active px-5 py-1.5 rounded-lg text-sm bg-text/4 border border-border"
+                        data-tab="all">
                         All
                     </button>
                     {{#get "tags" filter="slug:[{{@custom.home_feed_tags}}]"}}
                     {{#foreach tags}}
-                    <button class="filter-tab-btn cursor-pointer tab-btn px-5 py-1.5 rounded-lg text-sm bg-text/4 border border-border" data-tab="{{slug}}">
+                    <button
+                        class="filter-tab-btn cursor-pointer tab-btn px-5 py-1.5 rounded-lg text-sm bg-text/4 border border-border"
+                        data-tab="{{slug}}">
                         {{name}}
                     </button>
                     {{/foreach}}
@@ -240,7 +243,7 @@
                 <div class="text-center max-w-[600px] mx-auto mb-8">
                     <h2 class="text-4xl md:text-5xl font-bold mb-3">{{title}}</h2>
                     {{#if excerpt}}
-                        <p>{{excerpt}}</p>
+                    <p>{{excerpt}}</p>
                     {{/if}}
                 </div>
                 {{/foreach}}
@@ -255,12 +258,14 @@
                     {{#foreach tags}}
                     <div class="mb-12">
                         <h2 class="text-xl mb-6 tag-post-title">{{name}}</h2>
-                        {{#get "posts" limit="4" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
+                        {{#get "posts" limit="4" include="tags,authors" filter="tag:{{slug}}" order="published_at
+                        desc"}}
 
                         {{#if posts}}
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                             {{#foreach posts}}
-                            <a href="{{url}}" class="group relative flex flex-col bg-main rounded-[10px] overflow-hidden aspect-[3/4] cursor-pointer">
+                            <a href="{{url}}"
+                                class="group relative flex flex-col bg-main rounded-[10px] overflow-hidden aspect-[3/4] cursor-pointer">
 
                                 {{!-- Enhanced Image Expansion Layer --}}
                                 <div
@@ -275,22 +280,24 @@
                                 <div class="relative flex flex-col h-full justify-between px-[14px] py-[20px]">
                                     <div class="flex gap-2">
                                         {{#foreach tags visibility="public"}}
-                                            {{#if @first}}
-                                            <div class="flex gap-2 mb-4">
-                                                {{/if}}
-                                                <span class="px-4 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light">
-                                                {{name}}
-                                                </span>
-                                                {{#if @last}}
-                                            </div>
+                                        {{#if @first}}
+                                        <div class="flex gap-2 mb-4">
                                             {{/if}}
+                                            <span
+                                                class="px-4 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light">
+                                                {{name}}
+                                            </span>
+                                            {{#if @last}}
+                                        </div>
+                                        {{/if}}
                                         {{/foreach}}
                                     </div>
                                     <div class="w-full">
                                         <span
                                             class="text-xs font-medium mb-1 text-white opacity-0 group-hover:opacity-70 transition-all ease-in">{{date
                                             format="MMM DD, YYYY"}}</span>
-                                            <div class="text-base font-bold text-black dark:text-white group-hover:text-white transition-all ease-in">
+                                        <div
+                                            class="text-base font-bold text-black dark:text-white group-hover:text-white transition-all ease-in">
                                             {{title}}
                                         </div>
                                     </div>
@@ -326,7 +333,8 @@
             {{#get "tags" limit="all" include="count.posts" order="count.posts desc"}}
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {{#foreach tags}}
-                <a href="{{url}}" class="group flex flex-col gap-3 hover:translate-y-[-10px] transition-transform duration-500 ease-in-out">
+                <a href="{{url}}"
+                    class="group flex flex-col gap-3 hover:translate-y-[-10px] transition-transform duration-500 ease-in-out">
                     <div
                         class="relative aspect-square bg-alternate text-text/20 flex items-center justify-center rounded-lg overflow-hidden group-hover:shadow-lg transition-shadow duration-500 ease-in-out">
                         {{#if feature_image}}
@@ -337,7 +345,8 @@
                         {{/if}}
                     </div>
                     <div class="flex flex-col">
-                        <h3 class="text-base leading-tight group-hover:!text-accent transition-all ease-in">{{name}}</h3>
+                        <h3 class="text-base leading-tight group-hover:!text-accent transition-all ease-in">{{name}}
+                        </h3>
                         <span class="text-xs mt-1">{{count.posts}} articles</span>
                     </div>
                 </a>
@@ -352,151 +361,153 @@
         style="background-image: url('{{img_url @custom.banner_background_image}}');" {{/if}}>
         <div class="container relative text-center">
             <div class="max-w-[800px] mx-auto">
-            {{!-- Overlapping Images Design --}}
-            {{#get "posts" limit="3" filter="tag:hash-custom" include="tags"}}
-            <div class="flex items-center justify-center mb-12 pointer-events-none md:pointer-events-auto">
+                {{!-- Overlapping Images Design --}}
+                {{#get "posts" limit="3" filter="tag:hash-custom" include="tags"}}
+                <div class="flex items-center justify-center mb-12 pointer-events-none md:pointer-events-auto">
 
-                {{!-- CASE: 3 POSTS --}}
-                {{#match posts.length ">=" 3}}
+                    {{!-- CASE: 3 POSTS --}}
+                    {{#match posts.length ">=" 3}}
 
-                <!-- LEFT -->
-                <div
-                    class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center -rotate-[15deg] translate-x-[25px] translate-y-[10px]">
-                    {{#with posts.[0]}}
-                    {{#if feature_image}}
-                    <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                    <!-- LEFT -->
+                    <div
+                        class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center -rotate-[15deg] translate-x-[25px] translate-y-[10px]">
+                        {{#with posts.[0]}}
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                        {{else}}
+                        <span class="font-bold">NO IMAGE</span>
+                        {{/if}}
+                        <a href="{{url}}" class="overlaylink"></a>
+                        {{/with}}
+                    </div>
+
+                    <!-- CENTER -->
+                    <div
+                        class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
+                        {{#with posts.[1]}}
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                        {{else}}
+                        <span class="font-bold">NO IMAGE</span>
+                        {{/if}}
+                        <a href="{{url}}" class="overlaylink"></a>
+                        {{/with}}
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div
+                        class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center rotate-[15deg] -translate-x-[25px] translate-y-[10px]">
+                        {{#with posts.[2]}}
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                        {{else}}
+                        <span class="font-bold">NO IMAGE</span>
+                        {{/if}}
+                        <a href="{{url}}" class="overlaylink"></a>
+                        {{/with}}
+                    </div>
+
+                    {{!-- CASE: 2 POSTS --}}
                     {{else}}
-                    <span class="font-bold">NO IMAGE</span>
-                    {{/if}}
-                    <a href="{{url}}" class="overlaylink"></a>
-                    {{/with}}
-                </div>
+                    {{#match posts.length "=" 2}}
 
-                <!-- CENTER -->
-                <div
-                    class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
-                    {{#with posts.[1]}}
-                    {{#if feature_image}}
-                    <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                    <!-- CENTER -->
+                    <div
+                        class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
+                        {{#with posts.[0]}}
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                        {{else}}
+                        <span class="font-bold">NO IMAGE</span>
+                        {{/if}}
+                        <a href="{{url}}" class="overlaylink"></a>
+                        {{/with}}
+                    </div>
+
+                    <!-- RIGHT -->
+                    <div
+                        class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center rotate-[15deg] -translate-x-[25px] translate-y-[10px]">
+                        {{#with posts.[1]}}
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                        {{else}}
+                        <span class="font-bold">NO IMAGE</span>
+                        {{/if}}
+                        <a href="{{url}}" class="overlaylink"></a>
+                        {{/with}}
+                    </div>
+
+                    {{!-- CASE: 1 POST --}}
                     {{else}}
-                    <span class="font-bold">NO IMAGE</span>
-                    {{/if}}
-                    <a href="{{url}}" class="overlaylink"></a>
-                    {{/with}}
-                </div>
+                    {{#match posts.length "=" 1}}
 
-                <!-- RIGHT -->
-                <div
-                    class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center rotate-[15deg] -translate-x-[25px] translate-y-[10px]">
-                    {{#with posts.[2]}}
-                    {{#if feature_image}}
-                    <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                    <!-- CENTER -->
+                    <div
+                        class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
+                        {{#with posts.[0]}}
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
+                        {{else}}
+                        <span class="font-bold">NO IMAGE</span>
+                        {{/if}}
+                        <a href="{{url}}" class="overlaylink"></a>
+                        {{/with}}
+                    </div>
+
+                    {{!-- CASE: 0 POSTS --}}
                     {{else}}
-                    <span class="font-bold">NO IMAGE</span>
+
+                    <!-- FALLBACK: SITE COVER -->
+                    {{#if @site.cover_image}}
+                    <div
+                        class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate">
+                        <img src="{{@site.cover_image}}" class="w-full h-full object-cover">
+                    </div>
                     {{/if}}
-                    <a href="{{url}}" class="overlaylink"></a>
-                    {{/with}}
+
+                    {{/match}}
+                    {{/match}}
+                    {{/match}}
+
+
                 </div>
 
-                {{!-- CASE: 2 POSTS --}}
-                {{else}}
-                {{#match posts.length "=" 2}}
-
-                <!-- CENTER -->
-                <div
-                    class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
-                    {{#with posts.[0]}}
-                    {{#if feature_image}}
-                    <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
-                    {{else}}
-                    <span class="font-bold">NO IMAGE</span>
-                    {{/if}}
-                    <a href="{{url}}" class="overlaylink"></a>
-                    {{/with}}
-                </div>
-
-                <!-- RIGHT -->
-                <div
-                    class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center rotate-[15deg] -translate-x-[25px] translate-y-[10px]">
-                    {{#with posts.[1]}}
-                    {{#if feature_image}}
-                    <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
-                    {{else}}
-                    <span class="font-bold">NO IMAGE</span>
-                    {{/if}}
-                    <a href="{{url}}" class="overlaylink"></a>
-                    {{/with}}
-                </div>
-
-                {{!-- CASE: 1 POST --}}
-                {{else}}
-                {{#match posts.length "=" 1}}
-
-                <!-- CENTER -->
-                <div
-                    class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
-                    {{#with posts.[0]}}
-                    {{#if feature_image}}
-                    <img src="{{img_url feature_image}}" class="w-full h-full object-cover">
-                    {{else}}
-                    <span class="font-bold">NO IMAGE</span>
-                    {{/if}}
-                    <a href="{{url}}" class="overlaylink"></a>
-                    {{/with}}
-                </div>
-
-                {{!-- CASE: 0 POSTS --}}
-                {{else}}
-
-                <!-- FALLBACK: SITE COVER -->
-                {{#if @site.cover_image}}
-                <div class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate">
-                    <img src="{{@site.cover_image}}" class="w-full h-full object-cover">
-                </div>
+                {{/get}}
+                {{#get "pages" filter="tag:hash-static-text-section" limit="1"}}
+                {{#if pages}}
+                {{#foreach pages}}
+                <h2 class="text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-6">
+                    {{title}}
+                </h2>
+                <p class="text-base mb-10 max-w-2xl mx-auto">
+                    {{excerpt}}
+                </p>
+                {{/foreach}}
                 {{/if}}
+                {{/get}}
 
-                {{/match}}
+                {{#match @custom.hero_actions "Subscription form"}}
+                <form
+                    class="flex flex-col md:grid md:grid-cols-[1fr_auto] items-center justify-center gap-3.5 max-w-lg mx-auto">
+                    <input type="email" placeholder="Your Email"
+                        class="w-full px-6 py-3 rounded-lg border border-transparent bg-alternate shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-text text-sm placeholder:text-text/20 focus:border-text focus:ring-4 focus:ring-text/5 transition-all outline-none"
+                        required>
+                    <button type="submit" class="button subscribe-button h-full cursor-pointer">
+                        Subscribe
+                    </button>
+                </form>
+                {{else}}
+                {{#match @custom.hero_actions "Social links"}}
+                <div>
+                    <p>ye wale social links hai</p>
+                </div>
                 {{/match}}
                 {{/match}}
 
 
             </div>
-
-            {{/get}}
-            {{#get "pages" filter="tag:hash-static-text-section" limit="1"}}
-            {{#if pages}}
-            {{#foreach pages}}
-            <h2 class="text-3xl md:text-4xl lg:text-5xl leading-[1.05] mb-6">
-                {{title}}
-            </h2>
-            <p class="text-base mb-10 max-w-2xl mx-auto">
-                {{excerpt}}
-            </p>
-            {{/foreach}}
-            {{/if}}
-            {{/get}}
-
-            {{#match @custom.hero_actions "Subscription form"}}
-            <form class="flex flex-col md:grid md:grid-cols-[1fr_auto] items-center justify-center gap-3.5 max-w-lg mx-auto">
-                <input type="email" placeholder="Your Email"
-                    class="w-full px-6 py-3 rounded-lg border border-transparent bg-alternate shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-text text-sm placeholder:text-text/20 focus:border-text focus:ring-4 focus:ring-text/5 transition-all outline-none"
-                    required>
-                <button type="submit" class="button subscribe-button h-full cursor-pointer">
-                    Subscribe
-                </button>
-            </form>
-            {{else}}
-            {{#match @custom.hero_actions "Social links"}}
-            <div>
-                <p>ye wale social links hai</p>
-            </div>
-            {{/match}}
-            {{/match}}
-
 
         </div>
-
-    </div>
 
     </section>
 
@@ -511,10 +522,12 @@
         <div class="container">
             <div class="flex items-center justify-between mb-[20px]">
                 <h2 class="text-2xl md:text-3xl">{{title}}</h2>
-                <a href={{url}} class="text-xs text-heading font-medium flex items-center gap-2 group/link hover:text-accent transition-colors">
+                <a href={{url}}
+                    class="text-xs text-heading font-medium flex items-center gap-2 group/link hover:text-accent transition-colors">
                     <span>View All</span>
                     <svg width="9" height="8" viewBox="0 0 9 8" fill="none">
-                        <path d="M5.4 0L4.77 0.63L7.29 3.15H0V4.05H7.29L4.77 6.57L5.4 7.2L9 3.6L5.4 0Z" fill="currentColor"/>
+                        <path d="M5.4 0L4.77 0.63L7.29 3.15H0V4.05H7.29L4.77 6.57L5.4 7.2L9 3.6L5.4 0Z"
+                            fill="currentColor" />
                     </svg>
                 </a>
             </div>
@@ -669,4 +682,4 @@
 
         });
     </script>
-</main>
+    </main>

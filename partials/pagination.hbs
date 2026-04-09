@@ -1,0 +1,19 @@
+<nav class="flex items-center justify-center gap-3 mt-10">
+  {{#if prev}}
+  <a href="{{page_url prev}}"
+    class="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 text-lg hover:bg-gray-100 transition">
+    &larr;
+  </a>
+  {{/if}}
+
+  <span class="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium">
+    Page {{page}} of {{pages}}
+  </span>
+
+  {{#if next}}
+  <a href="{{page_url next}}"
+    class="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 text-lg hover:bg-gray-100 transition">
+    &rarr;
+  </a>
+  {{/if}}
+</nav>

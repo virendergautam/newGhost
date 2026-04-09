@@ -17,6 +17,7 @@
     "gscan": "^5.2.4"
   },
   "config": {
+    "posts_per_page": 9,
     "custom": {
       "appearance": {
         "type": "select",
