@@ -3,6 +3,13 @@
   class="relative article-card group bg-alternate rounded-[20px] p-7 pbe-0 shadow-[box-shadow:0px_0px_50px_0px_#261E5308] hover:shadow-xl transition-all flex flex-col h-full {{#match @custom.feed_card_layout "
   Image first"}} has-image-first {{else}} has-heading-first {{/match}}">
   {{! Category Tag }}
+  {{#if featured}}
+  <div>featured</div>
+  
+  {{/if}}
+  {{#has visibility="members,paid"}}
+  <span class="badge-paid">Members Only</span>
+{{/has}}
   {{#foreach tags visibility="public"}}
   {{#if @first}}
   <div class="flex gap-2 mb-4">
@@ -19,11 +26,9 @@
   <h3 class="text-md md:text-xl mb-5 line-clamp-2 group-hover:text-accent transition-colors">
     {{title}}
   </h3>
-  {{ log @custom.feed_image_orientation "kgsjh"}}
   {{! Featured Image }}
   <div
-    class="relative rounded-[14px] overflow-hidden mb-5 bg-main text-text/20 flex items-center justify-center {{#match @custom.feed_image_orientation "
-    Landscape"}} aspect-[3/2] {{else}} {{#match @custom.feed_image_orientation "Potrait" }} aspect-[2/3] {{else}}
+    class="relative rounded-[14px] overflow-hidden mb-5 bg-main text-text/20 flex items-center justify-center {{#match @custom.feed_image_orientation "Landscape"}} aspect-[3/2] {{else}} {{#match @custom.feed_image_orientation "Potrait" }} aspect-[2/3] {{else}}
     {{#match @custom.feed_image_orientation "Square" }} aspect-square {{else}} aspect-auto {{/match}} {{/match}}
     {{/match}}">
     {{#if feature_image}}
@@ -35,11 +40,19 @@
   </div>
 
   {{! Excerpt }}
-  {{#if excerpt}}
+  {{!-- {{#if excerpt}}
   <p class="text-sm line-clamp-3 mb-4">
     {{excerpt}}
   </p>
-  {{/if}}
+  {{/if}} --}}
+  {{#if custom_excerpt}}
+                <p class="text-sm line-clamp-3 mb-4">{{custom_excerpt}}</p>
+            {{/if}}
+            {{#unless custom_excerpt}}
+                {{#if excerpt}}
+                    <p class="text-sm line-clamp-3 mb-4">{{excerpt}}</p>
+                {{/if}}
+            {{/unless}}
 
   {{! Footer Metadata }}
   <div class="mt-auto py-[15px] border-t border-border-light flex items-center justify-between">
