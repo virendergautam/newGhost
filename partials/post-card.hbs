@@ -7,9 +7,11 @@
   <div>featured</div>
   
   {{/if}}
-  {{#has visibility="members,paid"}}
-  <span class="badge-paid">Members Only</span>
-{{/has}}
+{{#unless access}}
+                    {{^has visibility="public"}}
+                        {{> "icons/lock"}}
+                    {{/has}}
+                {{/unless}}
   {{#foreach tags visibility="public"}}
   {{#if @first}}
   <div class="flex gap-2 mb-4">
