@@ -1,19 +1,37 @@
 <nav class="flex items-center justify-center gap-3 mt-10">
-  {{#if prev}}
-  <a href="{{page_url prev}}"
-    class="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 text-lg hover:bg-gray-100 transition">
-    &larr;
-  </a>
-  {{/if}}
+  <div class="flex items-center bg-alternate p-1.5 text-heading rounded-lg">
+    {{#if prev}}
+      <a
+        href="{{page_url prev}}"
+        class="flex items-center justify-center w-8 h-8 rounded-lg bg-heading text-main hover:bg-main hover:text-heading transition"
+      >
+        <svg width="6" height="10" viewBox="0 0 6 10" fill="none">
+          <path
+            d="M5.96381 1.33189L2.57066 4.84441L5.96381 8.35694L4.67846 9.6875L-2.43187e-05 4.84441L4.67846 0.0013237L5.96381 1.33189Z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+    {{/if}}
 
-  <span class="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium">
-    Page {{page}} of {{pages}}
-  </span>
-
-  {{#if next}}
-  <a href="{{page_url next}}"
-    class="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 text-lg hover:bg-gray-100 transition">
-    &rarr;
-  </a>
-  {{/if}}
+    <span class="text-sm font-medium min-w-[110px] text-center">
+      Page
+      {{page}}
+      of
+      {{pages}}
+    </span>
+    {{#if next}}
+      <a
+        href="{{page_url next}}"
+        class="flex items-center justify-center w-8 h-8 rounded-sm bg-heading text-main hover:bg-main hover:text-heading transition"
+      >
+        <svg width="6" height="9" viewBox="0 0 6 9" fill="none">
+          <path
+            d="M0 1.23631L3.41372 4.5L0 7.76369L1.29314 9L6 4.5L1.29314 0L0 1.23631Z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+    {{/if}}
+  </div>
 </nav>
