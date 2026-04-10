@@ -13,9 +13,10 @@
                         <div class="featured-slider-card h-full grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12">
                             {{!-- Text Content --}}
                             <div class="slide-content">
-                                <div class="flex items-center gap-4 mb-7">
+                                <div class="flex items-center gap-2 mb-7">
                                     {{#if featured}}
-                                    <div class="bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
+                                    <div
+                                        class="bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
                                         {{> "icons/fire"}}Featured</div>
                                     {{/if}}
                                     {{#foreach tags visibility="public"}}
@@ -33,11 +34,12 @@
 
                                     <span class="text-xs font-medium">{{reading_time}}</span>
                                     {{#unless access}}
-                                        {{^has visibility="public"}}
-                                        <span class="ml-3 flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
+                                    {{^has visibility="public"}}
+                                    <span
+                                        class="ml-3 flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
                                         {{> "icons/lock"}}
-                                        </span>
-                                        {{/has}}
+                                    </span>
+                                    {{/has}}
                                     {{/unless}}
                                 </div>
                                 <h2 class="text-5xl mb-5 max-w-[550px]">
@@ -206,10 +208,11 @@
                     <div id="article-card-iamge-{{@index}}"
                         class="border-16 border-alternate rounded-t-xl article-card-image aspect-[3/2] relative">
                         {{#if featured}}
-                            <div class="absolute bottom-2.5 left-2.5 bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs flex items-center gap-1">
-                                {{> "icons/fire"}}Featured</div>
+                        <div
+                            class="absolute bottom-2.5 left-2.5 bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs flex items-center gap-1">
+                            {{> "icons/fire"}}Featured</div>
                         {{/if}}
-                         </div>
+                    </div>
                     <div class="bg-alternate p-4 pb-[0px] rounded-b-xl">
                         {{! Category Tag }}
                         <div class="flex items-start justify-between">
@@ -226,13 +229,14 @@
                             {{/if}}
                             {{/foreach}}
                             {{#unless access}}
-                                {{^has visibility="public"}}
-                                <span class="ml-3 flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
+                            {{^has visibility="public"}}
+                            <span
+                                class="ml-3 flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
                                 {{> "icons/lock"}}
-                                </span>
-                                {{/has}}
+                            </span>
+                            {{/has}}
                             {{/unless}}
-                            </div>
+                        </div>
                         {{! Title }}
                         <h3 class="text-md md:text-xl mb-4 pr-[10px]"> {{title}} </h3>
 
@@ -264,7 +268,14 @@
                 {{#if pages}}
                 {{#foreach pages}}
                 <div class="text-center max-w-[600px] mx-auto mb-8">
-                    <h2 class="text-4xl md:text-5xl font-bold mb-3">{{title}}</h2>
+                    {{#foreach (split title separator="-|-")}}
+                    {{#unless @last}}<p>{{this}}</p>{{/unless}}
+                    {{/foreach}}
+                    {{#foreach (split title separator="-|-")}}
+                    {{#unless @first}}<p>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-3">{{this}}</h2>
+                    </p>{{/unless}}
+                    {{/foreach}}
                     {{#if excerpt}}
                     <p>{{excerpt}}</p>
                     {{/if}}
@@ -314,11 +325,12 @@
                                         {{/if}}
                                         {{/foreach}}
                                         {{#unless access}}
-                                            {{^has visibility="public"}}
-                                            <span class="flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
+                                        {{^has visibility="public"}}
+                                        <span
+                                            class="flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">
                                             {{> "icons/lock"}}
-                                            </span>
-                                            {{/has}}
+                                        </span>
+                                        {{/has}}
                                         {{/unless}}
                                     </div>
                                     <div class="w-full">
@@ -330,7 +342,8 @@
                                             {{title}}
                                         </div>
                                         {{#if featured}}
-                                        <div class="mt-3 bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
+                                        <div
+                                            class="mt-3 bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
                                             {{> "icons/fire"}}Featured</div>
                                         {{/if}}
                                     </div>
@@ -531,8 +544,48 @@
                 </form>
                 {{else}}
                 {{#match @custom.hero_actions "Social links"}}
-                <div>
-                    <p>ye wale social links hai</p>
+                <div class="author-profile-meta mt-4 inline-flex justify-center social-links banner-link"
+                    data-links="{{@custom.social_links}}">
+                    {{!-- {{#if website}}
+                    <a class="social-link" href="{{website}}" target="_blank" rel="noopener">{{>
+                        "icons/website"}}</a>
+                    {{/if}}
+                    {{#if twitter}}
+                    <a class="social-link" href="{{social_url type=" twitter"}}" target="_blank" rel="noopener">{{>
+                        "icons/twitter"}}</a>
+                    {{/if}}
+                    {{#if facebook}}
+                    <a class="social-link" href="{{social_url type=" facebook"}}" target="_blank" rel="noopener">{{>
+                        "icons/facebook"}}</a>
+                    {{/if}}
+                    {{#if linkedin}}
+                    <a class="social-link" href="{{social_url type=" linkedin"}}" target="_blank" rel="noopener">{{>
+                        "icons/linkedin"}}</a>
+                    {{/if}}
+                    {{#if bluesky}}
+                    <a class="social-link" href="{{social_url type=" bluesky"}}" target="_blank" rel="noopener">{{>
+                        "icons/bluesky"}}</a>
+                    {{/if}}
+                    {{#if threads}}
+                    <a class="social-link" href="{{social_url type=" threads"}}" target="_blank" rel="noopener">{{>
+                        "icons/threads"}}</a>
+                    {{/if}}
+                    {{#if mastodon}}
+                    <a class="social-link" href="{{social_url type=" mastodon"}}" target="_blank" rel="noopener">{{>
+                        "icons/mastodon"}}</a>
+                    {{/if}}
+                    {{#if tiktok}}
+                    <a class="social-link" href="{{social_url type=" tiktok"}}" target="_blank" rel="noopener">{{>
+                        "icons/tiktok"}}</a>
+                    {{/if}}
+                    {{#if youtube}}
+                    <a class="social-link" href="{{social_url type=" youtube"}}" target="_blank" rel="noopener">{{>
+                        "icons/youtube"}}</a>
+                    {{/if}}
+                    {{#if instagram}}
+                    <a class="social-link" href="{{social_url type=" instagram"}}" target="_blank" rel="noopener">{{>
+                        "icons/instagram"}}</a>
+                    {{/if}} --}}
                 </div>
                 {{/match}}
                 {{/match}}

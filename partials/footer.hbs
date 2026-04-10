@@ -1,25 +1,28 @@
 <footer class="site-footer bg-white text-black border-t border-border-light pt-[30px] lg:pt-[50px] xl:pt-[70px]">
-    <div class="container">
-      <div class="grid grid-cols-[1fr_1fr_1fr] gap-6">
-        <div class="">
-          <div class="footer-logo mb-3">
-            <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
-              {{#if @site.logo}}
-              <img loading="lazy" class="max-w-[150px]" src="{{@site.logo}}" alt="{{@site.title}}">
-              {{else}}
-              {{@site.title}}
-              {{/if}}
-            </a>
-          </div>
-          <p class="text-sm mb-4">{{@site.description}}</p>
-          <p><span>{{@custom.footer_copyright_text}}</span>
-            <span>Published with <a class="underline" target="_blank" href="https://ghost.org/">Ghost</a> and <a class="underline" target="_blank" href="https://whmcsglobalservices.com/">WHMCS Global Services</a></span>
-          </p>
+  <div class="container">
+    <div class="grid grid-cols-[1fr_1fr_1fr] gap-6">
+      <div class="">
+        <div class="footer-logo mb-3">
+          <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
+            {{#if @site.logo}}
+            <img loading="lazy" class="max-w-[150px]" src="{{@site.logo}}" alt="{{@site.title}}">
+            {{else}}
+            {{@site.title}}
+            {{/if}}
+          </a>
         </div>
-        <div id="footerGrid" class="grid grid-cols-3 gap-6"></div>
+        <p class="text-sm mb-4">{{@site.description}}</p>
+        <p><span>{{@custom.footer_copyright_text}}</span>
+          <span>Published with <a class="underline" target="_blank" href="https://ghost.org/">Ghost</a> and <a
+              class="underline" target="_blank" href="https://whmcsglobalservices.com/">WHMCS Global Services</a></span>
+        </p>
       </div>
-      
+      <div id="footerGrid" class="grid grid-cols-3 gap-6"></div>
     </div>
+    <div class="author-profile-meta mt-4 inline-flex justify-center social-links footer-link" data-links="{{@custom.social_links}}">
+    </div>
+
+  </div>
 </footer>
 
 
