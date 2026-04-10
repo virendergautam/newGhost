@@ -195,7 +195,7 @@ const addClassToHeaderOnScroll = () => {
   if (!header) return;
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 50) {
+    if (window.scrollY > 120) {
       header.classList.add("is-sticky");
     } else {
       header.classList.remove("is-sticky");
@@ -275,7 +275,7 @@ const socialLinks = () => {
       a.target = "_blank";
       a.rel = "noopener noreferrer";
       a.setAttribute("aria-label", type);
-      a.className = "flex items-center justify-center w-6 h-6";
+      a.classList.add("social-link");
 
       a.innerHTML = getSocialIcon(type); // function below
       c.appendChild(a);

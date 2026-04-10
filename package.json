@@ -32,12 +32,12 @@
       "header_layout": {
         "type": "select",
         "options": [
-          "Full width",
-          "Full width with sticky",
+          "Fullwidth",
+          "Sticky fullwidth",
           "Fixed layout",
-          "Sticky with fixed layout"
+          "Sticky fixed layout"
         ],
-        "default": "Full width"
+        "default": "Sticky fixed layout"
       },
       "social_links": {
         "type": "text",
@@ -77,7 +77,7 @@
         "type": "select",
         "options": [
           "Landscape",
-          "Potrait",
+          "Portrait",
           "Square",
           "Free"
         ],

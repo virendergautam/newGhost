@@ -87,11 +87,50 @@ h6 {
 }
 
 .header-sticky {
-  --header-sticky-offset: 20px;
   position: sticky;
-  top: var(--header-sticky-offset);
+  transition: 0.3s ease;
+  overflow: clip;
+}
+.fixed-layout:not(.fixed-sticky) {
+  padding-block-start: 20px;
+}
+.fixed-sticky > .container,
+.fixed-layout > .container {
+  padding: 0;
 }
 
+.background-layer {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 0;
+  z-index: -1;
+  box-shadow: 0px 8px 22px 0px#261E532B;
+  transition: transform 0.6s ease;
+}
+.fixed-sticky .background-layer,
+.fixed-layout .background-layer {
+  border-radius: 10px;
+}
+
+.header-sticky.is-sticky {
+  top: 0;
+}
+
+.header-sticky.is-sticky .background-layer{
+  transform: scaleX(1.5);
+}
+.fixed-sticky .header-inner,
+.fixed-layout .header-inner {
+  padding-inline-start: 20px;
+  padding-inline-end: 5px;
+}
+body:has(.fixed-sticky) .site-main {
+  padding-block-start: 20px;
+}
 .swiper-fade .thumbs-swiper-wrapper .swiper-slide {
   pointer-events: auto !important;
 }

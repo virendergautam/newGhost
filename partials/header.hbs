@@ -1,103 +1,106 @@
-<header id="siteHeader" class="header {{#match @custom.header_layout "Full width"}} container-full  {{else match @custom.header_layout "Full width with sticky" }} container-full header-sticky z-3 {{else match @custom.header_layout "Fixed layout" }} container {{else}} container header-sticky z-3 {{/match}} ">
-    <!-- HEADER BAR -->
-    <nav class="header-inner grid grid-cols-[1fr_auto_1fr] items-center min-h-[50px] p-1.5 pl-5 gap-6 relative text-black dark:text-white before:absolute before:h-full before:w-full before:left-0 before:top-0 before:bg-white dark:before:bg-black before:-z-10 {{#match @custom.header_layout "^=" "Full width"}} lg:before:rounded-lg {{/match}} shadow-[0px_8px_22px_0px_#261E532B]">
+<header id="siteHeader" class="header relative{{#match @custom.header_layout "Fixed layout"}} fixed-layout {{/match}} {{#match @custom.header_layout "Sticky fullwidth"}} fullwidth-sticky header-sticky top-[0px] z-3 {{else match @custom.header_layout "Sticky fixed layout"}} fixed-sticky header-sticky top-[20px] z-3{{/match}}">
+    <div class="container {{#match @custom.header_layout "Fixed layout"}}relative{{else match @custom.header_layout "Sticky fixed layout"}}relative{{/match}}">
+        <div class="background-layer bg-white dark:bg-black"></div>
+      <!-- HEADER BAR -->
+      <nav class="header-inner grid grid-cols-[1fr_auto_1fr] items-center min-h-[50px] py-1.5 gap-6 relative text-black dark:text-white">
 
-      <!-- LOGO -->
-      <div class="header-logo">
-        <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
-          {{#if @site.logo}}
-            <img src="{{@site.logo}}" class="max-w-[150px]" alt="{{@site.title}}">
-          {{else}}
-            <h1 class="text-lg font-semibold">{{@site.title}}</h1>
-          {{/if}}
-        </a>
-      </div>
-
-      <!-- DESKTOP NAV -->
-      <nav class="nav-menu hidden lg:flex w-full justify-center items-center gap-6">
-        {{navigation}}
-      </nav>
-
-      <!-- RIGHT SIDE -->
-      <div class="flex items-center justify-end gap-4">
-        <div class="flex items-center">
-          <!-- SEARCH -->
-          <button aria-label="Search" class="gh-search min-w-12 flex items-center justify-center hover:text-accent cursor-pointer" data-ghost-search>
-            {{> "icons/search"}}
-          </button>
-       
-{{#match @custom.appearance "User defined"}}
-<button 
-  aria-label="Toggle theme" 
-  id="theme-toggle"
-  class="gh-search min-w-12 border-l flex items-center justify-center hover:text-accent cursor-pointer"
->
-  <span class="icon-dark">
-    {{> "icons/dark-mode"}}
-  </span>
-  <span class="icon-light hidden">
-    {{> "icons/light-mode"}}
-  </span>
-</button>
-{{/match}}
-          
+        <!-- LOGO -->
+        <div class="header-logo">
+          <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
+            {{#if @site.logo}}
+              <img src="{{@site.logo}}" class="max-w-[150px]" alt="{{@site.title}}">
+            {{else}}
+              <h1 class="text-lg font-semibold">{{@site.title}}</h1>
+            {{/if}}
+          </a>
         </div>
-        <div class="flex items-center gap-1.5">
-          <!-- MEMBERS -->
-          {{#if @site.members_enabled}}
+
+        <!-- DESKTOP NAV -->
+        <nav class="nav-menu hidden lg:flex w-full justify-center items-center gap-6">
+          {{navigation}}
+        </nav>
+
+        <!-- RIGHT SIDE -->
+        <div class="flex items-center justify-end gap-4">
+          <div class="flex items-center">
+            <!-- SEARCH -->
+            <button aria-label="Search" class="gh-search min-w-12 flex items-center justify-center hover:text-accent cursor-pointer" data-ghost-search>
+              {{> "icons/search"}}
+            </button>
+        
+  {{#match @custom.appearance "User defined"}}
+  <button 
+    aria-label="Toggle theme" 
+    id="theme-toggle"
+    class="min-w-12 border-l flex items-center justify-center hover:text-accent cursor-pointer"
+  >
+    <span class="icon-dark">
+      {{> "icons/dark-mode"}}
+    </span>
+    <span class="icon-light hidden">
+      {{> "icons/light-mode"}}
+    </span>
+  </button>
+  {{/match}}
+            
+          </div>
+          <div class="flex items-center gap-1.5">
+            <!-- MEMBERS -->
+            {{#if @site.members_enabled}}
+              {{#if @member}}
+                <a href="#/portal/account" data-portal="account" class="hidden lg:inline-flex text-sm px-4 py-2 bg-transparent border border-border-light text-black dark:text-white rounded-lg">
+                  Account
+                </a>
+              {{else}}
+                <a href="#/portal/signin" data-portal="signin" class="hidden lg:inline-flex text-sm px-4 py-2 bg-transparent border border-border-light text-black dark:text-white rounded-lg">
+                  Sign In
+                </a>
+                {{#unless @site.members_invite_only}}
+                  <a href="#/portal/signup" data-portal="signup" class="hidden button">
+                    Subscribe
+                  </a>
+                {{/unless}}
+              {{/if}}
+            {{/if}}
+
+            <!-- MOBILE BURGER -->
+            <button id="mobileMenuToggle" aria-label="Menu" class="w-6 h-6 lg:hidden flex flex-col justify-center gap-1 cursor-pointer">
+              <span class="block h-[2px] bg-black"></span>
+              <span class="block h-[2px] bg-black"></span>
+              <span class="block h-[2px] bg-black"></span>
+            </button>
+
+          </div>
+        </div>
+      </nav>
+      <!-- MOBILE MENU -->
+      {{!-- <nav id="mobileMenu" class="mobile-header-menu hidden lg:hidden mt-4 bg-white border border-[#EBEBEB] rounded-xl p-5">
+
+        <!-- NAVIGATION -->
+        <div class="flex flex-col gap-4">
+          {{navigation}}
+        </div>
+
+        <!-- MEMBERS (MOBILE) -->
+        {{#if @site.members_enabled}}
+          <div class="flex flex-col gap-3 mt-5 border-t pt-5">
             {{#if @member}}
-              <a href="#/portal/account" data-portal="account" class="hidden lg:inline-flex text-sm px-4 py-2 bg-transparent border border-border-light text-black dark:text-white rounded-lg">
+              <a href="#/portal/account" data-portal="account" class="text-base">
                 Account
               </a>
             {{else}}
-              <a href="#/portal/signin" data-portal="signin" class="hidden lg:inline-flex text-sm px-4 py-2 bg-transparent border border-border-light text-black dark:text-white rounded-lg">
+              <a href="#/portal/signin" data-portal="signin" class="text-base">
                 Sign In
               </a>
               {{#unless @site.members_invite_only}}
-                <a href="#/portal/signup" data-portal="signup" class="hidden button">
+                <a href="#/portal/signup" data-portal="signup" class="px-4 py-2 bg-black text-white rounded-full text-center">
                   Subscribe
                 </a>
               {{/unless}}
             {{/if}}
-          {{/if}}
+          </div>
+        {{/if}}
 
-          <!-- MOBILE BURGER -->
-          <button id="mobileMenuToggle" aria-label="Menu" class="w-6 h-6 lg:hidden flex flex-col justify-center gap-1 cursor-pointer">
-            <span class="block h-[2px] bg-black"></span>
-            <span class="block h-[2px] bg-black"></span>
-            <span class="block h-[2px] bg-black"></span>
-          </button>
-
-        </div>
-      </div>
-    </nav>
-    <!-- MOBILE MENU -->
-    {{!-- <nav id="mobileMenu" class="mobile-header-menu hidden lg:hidden mt-4 bg-white border border-[#EBEBEB] rounded-xl p-5">
-
-      <!-- NAVIGATION -->
-      <div class="flex flex-col gap-4">
-        {{navigation}}
-      </div>
-
-      <!-- MEMBERS (MOBILE) -->
-      {{#if @site.members_enabled}}
-        <div class="flex flex-col gap-3 mt-5 border-t pt-5">
-          {{#if @member}}
-            <a href="#/portal/account" data-portal="account" class="text-base">
-              Account
-            </a>
-          {{else}}
-            <a href="#/portal/signin" data-portal="signin" class="text-base">
-              Sign In
-            </a>
-            {{#unless @site.members_invite_only}}
-              <a href="#/portal/signup" data-portal="signup" class="px-4 py-2 bg-black text-white rounded-full text-center">
-                Subscribe
-              </a>
-            {{/unless}}
-          {{/if}}
-        </div>
-      {{/if}}
-
-    </nav> --}}
+      </nav> --}}
+  </div>
 </header>
