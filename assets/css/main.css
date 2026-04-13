@@ -89,7 +89,6 @@ h6 {
 .header-sticky {
   position: sticky;
   transition: 0.3s ease;
-  overflow: clip;
 }
 
 .fixed-layout:not(.fixed-sticky) {
