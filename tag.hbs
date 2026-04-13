@@ -1,45 +1,89 @@
 {{!< default}} {{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template
     --}} <main id="site-main" class="site-main outer">
-    <section class="category-posts py-[70px]">
+    <section class="category-posts py-[40px] sm:py-[70px]">
         <div class="container">
-            <div class="grid grid-cols-[auto_1fr] items-start gap-4">
-                {{#tag}}
-                <div class="category-card w-[375px] bg-alternate border border-accent rounded-[20px] sticky top-[70px]">
-                    <div class="category-card-body px-7 py-10 text-center flex flex-col items-center">
-                        <div
-                            class="category-image bg-main rounded-full overflow-hidden size-[180px] text-text/20 aspect-square">
-                            {{#if feature_image}}
-                            <img class="w-full h-full object-cover" srcset="{{img_url feature_image size=" s"}} 300w,
-                                {{img_url feature_image size="m" }} 600w, {{img_url feature_image size="l" }} 1000w,
-                                {{img_url feature_image size="xl" }} 2000w" sizes="(max-width: 1000px) 400px, 800px"
-                                src="{{img_url feature_image size=" m"}}" alt="{{title}}" />
-                            {{else}}
-                            <div class="w-full h-full p-[10%] flex items-center justify-center">
-                                {{> "icons/avatar"}}
-                            </div>
-                            {{/if}}
-                        </div>
-                        <div class="category-card-content">
-                            <h2 class="text-2xl lg:text-3xl mt-5">{{name}}</h2>
+            <div class="sm:grid sm:grid-cols-[auto_1fr] items-start gap-4">
+                <div class="sm:sticky sm:top-[70px] w-full sm:w-[300px] md:w-[300px]  xl:w-[375px] ">
+                    {{#tag}}
+                    <div class="category-card w-full bg-alternate border border-accent rounded-[20px]">
+                        <div class="category-card-body px-5 sm:px-7 py-7 sm:py-10 text-center flex flex-col items-center">
                             <div
-                                class="px-3 py-1 min-h-[20px] inline-flex items-center rounded-sm text-xs border border-border-light text-heading mt-4">
-                                2 Article
-                            </div>
-                            <p class="text-sm mt-4">
-                                {{#if description}}
-                                {{description}}
+                                class="category-image bg-main rounded-full overflow-hidden size-[180px] text-text/20 aspect-square">
+                                {{#if feature_image}}
+                                <img class="w-full h-full object-cover" srcset="{{img_url feature_image size=" s"}} 300w,
+                                    {{img_url feature_image size="m" }} 600w, {{img_url feature_image size="l" }} 1000w,
+                                    {{img_url feature_image size="xl" }} 2000w" sizes="(max-width: 1000px) 400px, 800px"
+                                    src="{{img_url feature_image size=" m"}}" alt="{{title}}" />
                                 {{else}}
-                                {{plural ../pagination.total empty=(t "A collection of 0 posts") singular=(t "A
-                                collection of 1 post") plural=(t "A collection of {numberOfPosts} posts"
-                                numberOfPosts=../pagination.total)}}
+                                <div class="w-full h-full p-[10%] flex items-center justify-center">
+                                    {{> "icons/avatar"}}
+                                </div>
                                 {{/if}}
-                            </p>
+                            </div>
+                            <div class="category-card-content">
+                                <h2 class="text-2xl lg:text-3xl mt-5">{{name}}</h2>
+                                <div
+                                    class="px-3 py-1 min-h-[20px] inline-flex items-center rounded-sm text-xs border border-border-light text-heading mt-4">
+                                    2 Article
+                                </div>
+                                <p class="text-sm mt-4">
+                                    {{#if description}}
+                                    {{description}}
+                                    {{else}}
+                                    {{plural ../pagination.total empty=(t "A collection of 0 posts") singular=(t "A
+                                    collection of 1 post") plural=(t "A collection of {numberOfPosts} posts"
+                                    numberOfPosts=../pagination.total)}}
+                                    {{/if}}
+                                </p>
+                            </div>
                         </div>
                     </div>
+                    <div class="bg-alternate w-full rounded-[20px] mt-4 shadow-[0px_0px_50px_0px_#261E5308]">
+                        <div class="px-5 py-3 border-b border-border-light flex items-center justify-between">
+                            <h6 class="text-base">{{t "More categories" }}</h6>
+                            <div class="flex items-center gap-2">
+                                <button class="categories-prev cursor-pointer size-6 flex items-center justify-center text-heading hover:text-accent disabled:opacity-30 transition-colors" aria-label="Previous">
+                                    <svg width="11" height="10" viewBox="0 0 11 10" fill="none">
+                                        <path d="M10.3388 3.94475C10.2938 3.93744 10.2483 3.93407 10.2027 3.93466H2.44243L2.61164 3.85596C2.77704 3.77767 2.92752 3.67113 3.05632 3.54114L5.2325 1.36497C5.5191 1.09137 5.56726 0.651239 5.34662 0.322132C5.08982 -0.0285702 4.59735 -0.104717 4.24663 0.152081C4.21829 0.172839 4.19136 0.195467 4.16605 0.219816L0.230832 4.15504C-0.0767059 4.46223 -0.0769765 4.96055 0.230217 5.26809C0.230413 5.26829 0.230635 5.26851 0.230832 5.2687L4.16605 9.20392C4.47384 9.51085 4.97216 9.51016 5.27911 9.20238C5.30326 9.17815 5.32581 9.15237 5.34662 9.12522C5.56726 8.79611 5.5191 8.35598 5.2325 8.08239L3.06026 5.90227C2.94478 5.78668 2.81202 5.68975 2.66673 5.615L2.43062 5.50875H10.1594C10.5615 5.52368 10.9142 5.24283 10.9897 4.84764C11.0593 4.41857 10.7679 4.01435 10.3388 3.94475Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <button class="categories-next cursor-pointer size-6 flex items-center justify-center text-heading hover:text-accent disabled:opacity-30 transition-colors" aria-label="Next">
+                                    <svg width="11" height="10" viewBox="0 0 11 10" fill="none">
+                                        <path d="M0.66116 3.94475C0.706169 3.93744 0.751719 3.93407 0.797294 3.93466H8.55757L8.38836 3.85596C8.22296 3.77767 8.07248 3.67113 7.94368 3.54114L5.7675 1.36497C5.4809 1.09137 5.43274 0.651239 5.65338 0.322132C5.91018 -0.0285702 6.40265 -0.104717 6.75337 0.152081C6.78171 0.172839 6.80864 0.195467 6.83395 0.219816L10.7692 4.15504C11.0767 4.46223 11.077 4.96055 10.7698 5.26809C10.7696 5.26829 10.7694 5.26851 10.7692 5.2687L6.83395 9.20392C6.52616 9.51085 6.02784 9.51016 5.72089 9.20238C5.69674 9.17815 5.67419 9.15237 5.65338 9.12522C5.43274 8.79611 5.4809 8.35598 5.7675 8.08239L7.93974 5.90227C8.05522 5.78668 8.18798 5.68975 8.33327 5.615L8.56938 5.50875H0.840606C0.438549 5.52368 0.0858054 5.24283 0.0102738 4.84764C-0.0593058 4.41857 0.232098 4.01435 0.66116 3.94475Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="px-5 py-6">
+                            {{#get "tags"  filter="slug:-{{slug}}"}}
+                            <div class="swiper categories-swiper">
+                                <div class="swiper-wrapper">
+                                    {{#foreach tags}}
+                                    <div class="swiper-slide">
+                                        <a href="{{url}}" class="flex flex-col items-center gap-2.5 group">
+                                            <div class="category-image bg-main rounded-full overflow-hidden size-[56px] text-text/20 aspect-square group-hover:shadow-md transition-shadow">
+                                                {{#if feature_image}}
+                                                <img class="w-full h-full object-cover" 
+                                                    src="{{img_url feature_image size="s"}}" alt="{{name}}" />
+                                                {{else}}
+                                                <div class="w-full h-full p-[20%] flex items-center justify-center border border-border-light rounded-full">
+                                                    {{> "icons/avatar"}}
+                                                </div>
+                                                {{/if}}
+                                            </div>
+                                            <h6 class="text-xs">{{name}}</h6>
+                                        </a>
+                                    </div>
+                                    {{/foreach}}
+                                </div>
+                            </div>
+                            {{/get}}
+                        </div>
+                    </div>
+                    {{/tag}}
                 </div>
-                {{/tag}}
-                <div class="authors-posts-list">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="mt-5 sm:mt-0 authors-posts-list">
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                         {{#foreach posts}}
                         {{> "post-card"}}
                         {{/foreach}}
@@ -48,8 +92,5 @@
                 </div>
             </div>
 
-
-
-
     </section>
-    </main>
+</main>
