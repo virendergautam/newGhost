@@ -19,12 +19,12 @@
   "config": {
     "posts_per_page": 9,
     "custom": {
-      "appearance": {
-        "dark_mode_logo": {
+      "dark_mode_logo": {
         "type": "image",
         "default": "",
         "group": "homepage"
       },
+      "appearance": {
         "type": "select",
         "options": [
           "Light",
@@ -127,6 +127,11 @@
         ],
         "default": "Default",
         "group": "post"
+      },
+        "contact_form_endpoint": {
+        "type": "text",
+        "default": "",
+        "description": "Note: Endpoint URL for the contact form, such as a Formspree endpoint. Example: https://formspree.io/f/yourformid"
       }
     }
   }
