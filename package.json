@@ -20,6 +20,11 @@
     "posts_per_page": 9,
     "custom": {
       "appearance": {
+        "dark_mode_logo": {
+        "type": "image",
+        "default": "",
+        "group": "homepage"
+      },
         "type": "select",
         "options": [
           "Light",
@@ -110,6 +115,18 @@
         "type": "image",
         "default": "",
         "group": "homepage"
+      },
+      "post_layout": {
+        "type": "select",
+        "options": [
+          "Default",
+          "Full width Image layout",
+          "No image layout",
+          "Split layout",
+          "Wide image layout"
+        ],
+        "default": "Default",
+        "group": "post"
       }
     }
   }

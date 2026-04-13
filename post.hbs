@@ -1,4 +1,4 @@
-{{!< default}}
+{{!-- {{!< default}}
 
 {{!-- The tag above means: insert everything in this file
 into the {body} tag of the default.hbs template --}}
@@ -137,4 +137,23 @@ into the {body} tag of the default.hbs template --}}
     {{/get}}
 {{/if}}
 
-{{/post}}
+{{/post}} --}}
+
+
+{{ !< default}}
+{{#match @custom.post_image_style "Full width Image layout"}}
+    {{!-- If the post has the "Full width image" layout selected, we load the fullWidthImage.hbs partial --}}
+    {{> "postLayouts/fullWidthImage"}}
+{{else match @custom.post_image_style "=" "No image layout"}}
+    {{!-- If the post has the "No image" layout selected, we load the noImage.hbs partial --}}
+    {{> "postLayouts/noImage"}}
+{{else match @custom.post_image_style "=" "Split layout"}}
+    {{!-- If the post has the "Split layout" layout selected, we load the splitLayout.hbs partial --}}
+    {{> "postLayouts/splitLayout"}}
+{{else match @custom.post_image_style "=" "Wide image layout"}}
+    {{!-- If the post has the "Wide image" layout selected, we load the wideImage.hbs partial --}}
+    {{> "postLayouts/wideImage"}}
+{{else}}
+    {{!-- If no custom layout is selected, we load the default.hbs partial --}}
+    {{> "postLayouts/default"}}
+{{/match}}
