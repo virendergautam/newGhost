@@ -1,0 +1,115 @@
+{{!< default}}
+
+{{#page}}
+<main id="site-main" class="site-main">
+	<section class="contact-page py-[70px]">
+		<div class="container">
+			{{!-- Header --}}
+			<div class="text-center mb-12">
+				<h1 class="text-4xl md:text-5xl mb-3">Contact Us</h1>
+				<p> Have questions or need assistance? We're here to help. Reach out to us
+					for<br>inquiries, support, or collaboration
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 max-w-[1250px] mx-auto">
+				{{!-- Form Column --}}
+				<div class="bg-alternate w-full max-w-[650px] mx-auto rounded-[20px] px-7 py-12 order-2 md:order-1">
+					<form class="flex flex-col gap-7 h-full" id="contact-form" novalidate>
+						<div class="flex flex-col gap-1.5">
+							<label for="contact-name" class="text-sm text-heading">Full Name<span>*</span></label>
+							<input type="text" id="contact-name" name="name" placeholder="Enter your full name" required
+								class="rounded-lg px-3.5 min-h-[50px] border border-transparent text-sm text-text bg-main/50 outline-none transition-all duration-200 font-[inherit] resize-none placeholder:text-text/70 focus:border-accent" />
+						</div>
+
+						<div class="flex flex-col gap-1.5">
+							<label for="contact-name" class="text-sm text-heading">Email<span>*</span></label>
+							<input type="email" id="contact-email" name="email" placeholder="Example@gmail.com" required
+								class="rounded-lg px-3.5 min-h-[50px] border border-transparent text-sm text-text bg-main/50 outline-none transition-all duration-200 font-[inherit] resize-none placeholder:text-text/70 focus:border-accent" />
+						</div>
+
+						<div class="flex flex-col gap-1.5">
+							<label for="contact-name" class="text-sm text-heading">	Message<span>*</span></label>
+							<textarea id="contact-message" name="message" placeholder="Enter your message here" rows="5" required
+								class="rounded-lg px-3.5 py-[10px] min-h-[50px] border border-transparent text-sm text-text bg-main/50 outline-none transition-all duration-200 font-[inherit] resize-none placeholder:text-text/70 focus:border-accent"></textarea>
+						</div>
+
+						<button type="submit" id="contact-submit"
+							class="w-full button button-large contact-button">
+							<span class="btn-text">Send Message</span>
+							<span class="btn-loading hidden">Sending…</span>
+						</button>
+
+						<p class="form-success hidden text-[#2e7d32] text-[0.88rem] m-0" id="form-success">
+							✅ Message sent! We'll get back to you soon.
+						</p>
+						<p class="form-error hidden text-[#c62828] text-[0.88rem] m-0" id="form-error">
+							❌ Something went wrong. Please try again.
+						</p>
+
+					</form>
+				</div>
+				{{!-- Image Column — uses the page's Feature Image --}}
+				{{#if feature_image}}
+					<div class="relative h-full rounded-[20px] flex items-center justify-center bg-alternate text-center text-text/300 overflow-hidden order-1 md:order-2">
+						<img src="{{feature_image}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}Contact{{/if}}"	class="w-full h-full object-cover block absolute inset-0" />
+					</div>
+				{{else if @site.cover_image}}
+					<div class="relative h-full rounded-[20px] flex items-center justify-center bg-alternate text-center text-text/300 overflow-hidden order-1 md:order-2">
+						<img src="{{@site.cover_image}}" alt="{{@site.title}}" class="w-full h-full object-cover block absolute inset-0" />
+					</div>
+				{{/if}}
+			</div>
+		</div>
+	</section>
+
+</main>
+{{/page}}
+
+<script>
+	document.getElementById('contact-form').addEventListener('submit', async function (e) {
+		e.preventDefault();
+
+		const btn = document.getElementById('contact-submit');
+		const btnText = btn.querySelector('.btn-text');
+		const btnLoad = btn.querySelector('.btn-loading');
+		const success = document.getElementById('form-success');
+		const error = document.getElementById('form-error');
+
+		const name = document.getElementById('contact-name').value.trim();
+		const email = document.getElementById('contact-email').value.trim();
+		const message = document.getElementById('contact-message').value.trim();
+
+		success.classList.add('hidden');
+		error.classList.add('hidden');
+
+		if (!name || !email || !message) {
+			error.textContent = '❌ Please fill in all required fields.';
+			error.classList.remove('hidden');
+			return;
+		}
+
+		btn.disabled = true;
+		btnText.classList.add('hidden');
+		btnLoad.classList.remove('hidden');
+
+		/* Ghost Members contact form submission via email */
+		try {
+			const res = await fetch('/members/api/send-magic-link/', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ email, emailType: 'subscribe' })
+			});
+
+			success.classList.remove('hidden');
+			this.reset();
+		} catch (err) {
+			error.textContent = '❌ Something went wrong. Please try again.';
+			error.classList.remove('hidden');
+		} finally {
+			btn.disabled = false;
+			btnText.classList.remove('hidden');
+			btnLoad.classList.add('hidden');
+		}
+	});
+</script>
