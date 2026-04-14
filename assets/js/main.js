@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   addClassToHeaderOnScroll();
   allAuthorsPageLoadMore();
   socialLinks();
+  lazyLoadImages()
 });
 
 const themeToggle = () => {
@@ -85,7 +86,39 @@ const swiperJs = () => {
       },
     },
   });
+// 🔹 CATEGORIES SWIPER
+const categoriesEl = document.querySelector(".categories-swiper");
 
+if (categoriesEl) {
+  new Swiper(".categories-swiper", {
+    slidesPerView: "5",
+    spaceBetween: 12,
+    grabCursor: true,
+    speed: 500,
+
+    // 🔥 Navigation (YOUR BUTTONS)
+    navigation: {
+      nextEl: ".categories-next",
+      prevEl: ".categories-prev",
+    },
+
+    // Optional smooth feel
+    freeMode: {
+      enabled: true,
+      momentum: true,
+      momentumRatio: 0.8,
+    },
+
+    breakpoints: {
+      640: {
+        spaceBetween: 12,
+      },
+      1024: {
+        spaceBetween: 16,
+      },
+    },
+  });
+}
   // Tab Switching Logic
   const tabBtns = document.querySelectorAll(".tab-btn");
   const tabGrids = document.querySelectorAll(".tab-grid");
@@ -381,3 +414,53 @@ const socialLinks = () => {
     }
   }
 };
+
+const lazyLoadImages = () => {
+  //   const lazyImages = document.querySelectorAll('img.lazyload');
+
+  //   const observer = new IntersectionObserver((entries, observer) => {
+  //       entries.forEach(entry => {
+  //           if (entry.isIntersecting) {
+  //               const img = entry.target;
+  //               // Swap the tiny src for the real data-src
+  //               img.src = img.dataset.src;
+  //               img.onload = () => img.classList.add('lazyloaded');
+  //               observer.unobserve(img);
+  //           }
+  //       });
+  //   });
+
+  // lazyImages.forEach(img => observer.observe(img));.
+
+  const images = document.querySelectorAll(".progressive-load");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, { threshold: 0.2 });
+
+  images.forEach(img => {
+
+    // ✅ Wait for image load FIRST
+    if (img.complete) {
+      img.classList.remove("lazyload");
+      img.classList.add("lazyloaded");
+      observer.observe(img);
+    } else {
+      img.addEventListener("load", () => {
+        img.classList.remove("lazyload");
+        img.classList.add("lazyloaded");
+        observer.observe(img);
+      });
+    }
+
+  });
+
+
+  
+
+
+}

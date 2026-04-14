@@ -69,15 +69,6 @@
         "description": "Enter the tag slug to show posts, separate by comma. Example: Fashion,lifestyle,travel",
         "group": "homepage"
       },
-      "feed_card_layout": {
-        "type": "select",
-        "options": [
-          "Heading first",
-          "Image first"
-        ],
-        "default": "Heading first",
-        "group": "homepage"
-      },
       "feed_image_orientation": {
         "type": "select",
         "options": [
@@ -99,17 +90,6 @@
         "type": "text",
         "default": "Read by Category",
         "group": "homepage"
-      },
-      "hero_actions": {
-        "type": "select",
-        "options": [
-          "Subscription form",
-          "Social links",
-          "None"
-        ],
-        "default": "Subscription form",
-        "group": "homepage",
-        "description": "Subscription form will be hidden if the Portal is disabled or set to invite-only."
       },
       "banner_background_image": {
         "type": "image",
