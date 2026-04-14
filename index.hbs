@@ -573,21 +573,36 @@
                     {{excerpt}}
                 </p>
                 {{/foreach}}
-                  <form
+                  {{!-- <form
+                  data-members-form="signup"
                     class="flex flex-col md:grid md:grid-cols-[1fr_auto] items-center justify-center gap-3.5 max-w-lg mx-auto">
-                    <input type="email" placeholder="Your Email"
+                    <input data-members-email type="email" placeholder="Your Email"
                         class="w-full px-6 py-3 rounded-lg border border-transparent bg-alternate shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-text text-sm placeholder:text-text/20 focus:border-text focus:ring-4 focus:ring-text/5 transition-all outline-none"
                         required>
                     <button type="submit" class="button subscribe-button h-full cursor-pointer">
                         Subscribe
                     </button>
-                </form>
+                </form> --}}
+                {{#if @site.members_enabled}}
+                {{#unless @site.members_invite_only}}
+ <form data-members-form="subscribe" class="flex flex-col md:grid md:grid-cols-[1fr_auto] items-center justify-center gap-3.5 max-w-lg mx-auto">
+
+              <input data-members-email name="email" type="email" required placeholder="Enter your email" id="subscribe-email2"
+                class="w-full px-6 py-3 rounded-lg border border-transparent bg-alternate shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-text text-sm placeholder:text-text/20 focus:border-text focus:ring-4 focus:ring-text/5 transition-all outline-none" placeholder="Enter your email" autocomplete="email"/>
+              <button type="submit"
+                class="button subscribe-button h-full cursor-pointer" autocomplete="off">
+                Subscribe
+              </button>
+            <p data-members-error class="form-error text-red-500 mt-3 text-sm"></p>
+            <p data-members-success class="form-success text-green-500 mt-3 text-sm">
+              Thanks! Check your inbox.
+            </p>
+          </form>
+          {{/unless}}
+          {{/if}}
                 {{/if}}
                 {{/get}}
               
-
-
-
             </div>
 
         </div>

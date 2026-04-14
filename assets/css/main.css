@@ -240,3 +240,16 @@ body:has(.fixed-sticky) .site-main {
   transform: scale(1);
   transition: all 1s ease;
 }
+
+[data-members-error],
+[data-members-success] {
+    display: none;
+}
+
+form.success [data-members-success] {
+    display: block;
+}
+
+form.error [data-members-error] {
+    display: block;
+}
