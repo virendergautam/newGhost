@@ -1,0 +1,305 @@
+.kg-canvas {
+    display: grid;
+}
+.kg-canvas .kg-width-wide {
+    margin-left: 50%!important;
+    max-width: min(var(--page-width),calc(100vw - 3rem))!important;
+    transform: translateX(-50%)!important;
+    width: min(var(--page-width),calc(100vw - 3rem))!important;
+}
+.kg-flex {
+    display: flex;
+}
+
+.kg-flex-4col {
+    gap: 24px;
+    flex: 1 1 calc(25% - 24px);
+}
+
+.kg-grid {
+    display: grid;
+    column-gap: var(--card-gap);
+    row-gap: var(--card-gap);
+    align-items: start;
+}
+
+.kg-grid.tiny {
+    column-gap: .1rem;
+    row-gap: .1rem;
+}
+
+.kg-grid-2col {
+    grid-template-columns: 1fr 1fr;
+}
+
+.kg-grid-3col {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.kg-grid-4col {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+@media (max-width: 991px) {
+    .kg-grid-4col {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 575px) {
+    .kg-grid-2col,
+    .kg-grid-3col,
+    .kg-grid-4col {
+        grid-template-columns: 1fr;
+    } 
+}
+/* Content refers to styling all page and post content that is
+created within the Ghost editor. The main content handles
+headings, text, images and lists. We deal with cards lower down. */
+
+/* Default vertical spacing */
+.gh-content > * + * {
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.gh-content > .kg-width-full:is(.kg-signup-card, .kg-header-card) {
+    margin-top: 0;
+}
+
+.gh-content > * {
+    z-index: 1;
+}
+
+/* [id] represents all headings h1-h6, reset all margins */
+.gh-content > [id] {
+    margin: 0;
+}
+
+
+/* Add back a top margin to all headings, unless a heading
+is the very first element in the post content */
+.gh-content > [id]:not(:first-child) {
+    margin-top: 3rem;
+}
+
+/* Add a small margin between a heading and anything after it */
+.gh-content > [id] + * {
+    margin-top: 2rem;
+}
+
+.gh-content > [id] + p {
+    margin-top: 1.2rem;
+}
+
+.gh-content > [id] + .kg-card  {
+    margin-top: 2rem;
+}
+
+/* A larger margin before/after HRs and blockquotes */
+.gh-content > hr,
+.gh-content > blockquote {
+    position: relative;
+    margin-top: 4rem;
+}
+
+.gh-content > hr + *,
+.gh-content > blockquote + * {
+    margin-top: 4rem;
+}
+
+.kg-gallery-image {
+    cursor: pointer;
+}
+
+.kg-image {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.kg-embed-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.kg-callout-card-accent a {
+    text-decoration: underline;
+}
+
+.gh-content > hr {
+    border-color: var(--color-border);
+    display: block;
+    opacity: .1;
+    width: 100%;
+}
+
+.gh-content > hr::after {
+    content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	background-color: var(--color-heading);
+	margin: 0 46%;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' width='8' height='8' fill='none' stroke='%23ffffff90' stroke-width='3px' stroke-linecap='round' stroke-linejoin='round' class='logo-wireframe'%3E%3Cpath d='M 30.91 17.52 L 34.43 35.7 M 61.44 14.41 L 62.61 0 M 34.43 35.7 L 37.57 90.47 M 81 26.39 L 61.44 14.41 L 34.43 35.7 L 65.35 100 M 62.61 0 L 30.91 17.52 L 18 45.45 L 37.57 90.47 L 65.35 100 L 70.44 89.8 L 81 26.39 L 62.61 0 Z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+
+/* Cards */
+.gh-content :not(.kg-card):not([id]) + .kg-card {
+    margin-top: 3rem;
+}
+
+.gh-content .kg-card + :not(.kg-card):not([id]) {
+    margin-top: 4rem;
+}
+
+.gh-content :not(.kg-card):not([id]) + .kg-card:not(.kg-width-wide):not(.kg-width-full) {
+    margin-top: 3rem;
+}
+
+.gh-content .kg-card:not(.kg-width-wide):not(.kg-width-full) + :not(.kg-card):not([id]) {
+    margin-top: 3rem;
+}
+.gh-content > .kg-card+[id] {
+    --content-spacing-multiplier: 0.5;
+}
+
+/* Now the content typography styles */
+.gh-content h1,
+.gh-content h2:not(h4, .card-title) {
+    font-size: 3rem;
+}
+
+.gh-content h3 {
+    font-size: 2rem;
+}
+
+.gh-content h4 {
+    font-size: 1.875rem;
+}
+
+.gh-content h5 {
+    font-size: 1.5rem;
+}
+
+.gh-content h6 {
+    font-size: 1.2rem;
+}
+
+.gh-content h6+[id] {
+    margin-top: 1.6rem !important;
+}
+
+
+.gh-content a,
+.toc-list-item a,
+.gh-footer-content a,
+.footer-copyright a,
+.kg-product-card-title a span,
+.kg-product-card-description a span,
+.tag-hash-section-static-text .kg-product-card a.kg-product-card-button span,
+.tag-hash-section-static-banner .kg-product-card a.kg-product-card-button span,
+.meta-link .post-tag {
+    word-break: break-word;
+    color: inherit;
+    transition: text-decoration 300 var(--animation-base);
+    text-decoration-line: underline;
+    transition: all .1s var(--animation-base);
+    text-decoration-thickness: 0.06em;
+    text-underline-offset: 0.1em;
+    text-decoration-color: hsl(from currentColor h s l / .2);
+}
+
+.gh-content a {
+    color: var(--brand-color);
+    text-decoration-color: hsl(from var(--brand-color) h s l / .6);
+}
+
+.gh-content a:hover,
+.toc-list-item a:hover,
+.kg-product-card-title a:hover span,
+.kg-product-card-description a:hover span,
+.tag-hash-section-static-text .kg-product-card a.kg-product-card-button:hover span,
+.tag-hash-section-static-banner .kg-product-card a.kg-product-card-button:hover span,
+.gh-footer-content a:hover,
+.meta-link .post-tag:hover,
+.single-meta-item .post-tag:hover {
+    text-decoration-thickness: 0.08em;
+    color: var(--brand-color);
+    text-decoration-color: hsl(from currentColor h s l / .8);
+}
+
+.footer-copyright a:hover {
+    text-decoration-thickness: 0.08em;
+    text-decoration-color: hsl(from currentColor h s l / .8);
+}
+
+.gh-content a[class]:hover {
+    opacity: 1;
+}
+
+
+.gh-content .kg-callout-card .kg-callout-text,
+.gh-content .kg-toggle-card .kg-toggle-content > ol,
+.gh-content .kg-toggle-card .kg-toggle-content > ul,
+.gh-content .kg-product-card .kg-product-card-description > ol,
+.gh-content .kg-product-card .kg-product-card-description > ul {
+    letter-spacing: 0;
+}
+
+.gh-content .kg-callout-card .kg-callout-text,
+.gh-content .kg-toggle-card .kg-toggle-content > p,
+.gh-content .kg-toggle-card .kg-toggle-content > ol,
+.gh-content .kg-toggle-card .kg-toggle-content > ul {
+    font-size: 0.75rem;
+}
+
+.gh-content .kg-product-card .kg-product-card-description > p {
+    font-size: 0.75rem;
+    letter-spacing: 0;
+}
+
+
+.gh-content > ul,
+.gh-content > ol,
+.gh-content > dl {
+    padding-left: 2.4rem;
+}
+
+.gh-content li + li {
+    margin-top: 1.2rem;
+}
+
+
+/* footnote */
+.footnote { 
+    margin-left: 0.25rem; 
+    margin-right: 0.5rem;
+}
+.footnote a { 
+    text-decoration: none;
+    color: var(--brand-color);
+    font-weight: 400;
+    font-size: 0.9em;
+}
+
+.footnote-list {
+    padding: 2.4rem 0 4.8rem 2.4rem;
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.footnote-list li {
+    padding-top: 1.6rem;
+    line-height: 1.5;
+}

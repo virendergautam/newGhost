@@ -1,16 +1,38 @@
 {{!< default}} {{#post}} <section class="post-detail py-[70px]">
-  <div class="container">
+  <div class="container container-sm">
     <article class="blog-article w-full">
       <header>
-          {{!-- post header Layout --}}
+        {{!-- post header Layout --}}
       </header>
-      <div class="post-content gh-content max-w-[800px] mx-auto">
-        {{> "postContent/content"}}
+      <div class="kg-canvas">
+        <div class="post-content gh-content max-w-[790px] mx-auto">
+          {{content}}
+          {{#if @site.members_enabled}}
+            {{#if @member}}
+              {{#if comments}}
+                {{comments}}
+                {{/if}}
+            {{else}}
+            <div class="bg-alternate rounded-[20px] overflow-hidden px-8">
+              <div class="border-b border-border-light py-5 flex items-center justify-between">
+                <h6>{{t "Member discussion"}}</h2>
+                <span>{{t "2 comments"}}</span>
+              </div>
+              <div class="text-center py-10 min-h-[200px] flex flex-col items-center justify-center">
+                <p>{{t "Become a member of Focus to start commenting"}}</p>
+                <a href="#" class="button">{{t "Sign up now"}}</a>
+                <p>Already a member? <a href="#" class="text-underline">{{t "Sign In"}}</a></p>
+              </div>
+            </div>
+            {{/if}}
+ 
+          {{/if}}
+
+          
+        </div>
       </div>
     </article>
-
   </div>
-
   </section>
 
   {{> "postContent/relatedPost"}}
