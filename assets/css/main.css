@@ -136,6 +136,15 @@ body:has(.fixed-sticky) .site-main {
   padding-block-start: 20px;
 }
 
+[data-theme="dark"] .light-logo-image,
+[data-theme="light"] .dark-logo-image{
+  opacity: 0;
+}
+
+[data-theme="dark"] .dark-logo-image{
+  opacity: 1;
+}
+
 .swiper-fade .thumbs-swiper-wrapper .swiper-slide {
   pointer-events: auto !important;
 }
@@ -153,9 +162,7 @@ body:has(.fixed-sticky) .site-main {
 .main-swiper:not(:has(.navigation-wrapper)) .featured-slider-card {
   align-items: center;
 }
-.categories-swiper .swiper-slide {
-  width: auto;
-}
+
 
 .overlaylink {
   position: absolute;
