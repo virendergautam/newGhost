@@ -2,21 +2,20 @@
 	<section class="contact-page py-[70px]">
 		<div class="container">
 			{{!-- Header --}}
-			<div class="text-center mb-12">
+			<div class="text-center mb-12 max-w-[800px] mx-auto">
 				<h1 class="text-4xl md:text-5xl mb-3">{{title}}</h1>
-				<p> {{excerpt}}
-				</p>
+				<p> {{excerpt}} </p>
 			</div>
 			{{#if @custom.contact_form_endpoint}}
 			<div class="grid grid-cols-1 {{#if feature_image}}
-  md:grid-cols-2
-{{else}}
-  {{#if @site.cover_image}}
-    md:grid-cols-2
-  {{else}}
-    md:grid-cols-1
-  {{/if}}
-{{/if}} gap-2.5 max-w-[1250px] mx-auto">
+				md:grid-cols-2
+			{{else}}
+				{{#if @site.cover_image}}
+					md:grid-cols-2
+				{{else}}
+					md:grid-cols-1
+				{{/if}}
+					{{/if}} gap-2.5 max-w-[1250px] mx-auto">
 				{{!-- Form Column --}}
 				<div class="bg-alternate w-full max-w-[650px] mx-auto rounded-[20px] px-7 py-12 order-2 md:order-1">
 					<form class="flex flex-col gap-7 h-full" id="contact-form"
@@ -64,7 +63,7 @@
 				{{/if}}
 			</div>
 			{{else}}
-			<div>
+			<div class="contact-details pt-5 text-center max-w-[800px] mx-auto">
 				{{content}}
 			</div>
 			{{/if}}

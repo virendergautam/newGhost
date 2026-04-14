@@ -1,6 +1,18 @@
+{{!< default}} {{#post}} <section class="post-detail py-[70px]">
+  <div class="container">
+    <article class="blog-article w-full">
+      <header>
+          {{!-- post header Layout --}}
+      </header>
+      <div class="post-content gh-content max-w-[800px] mx-auto">
+        {{> "postContent/content"}}
+      </div>
+    </article>
 
-{{!< default}}
-{{#post}}
-dslkjflk
+  </div>
 
-{{/post}}
+  </section>
+
+  {{> "postContent/relatedPost"}}
+
+  {{/post}}
