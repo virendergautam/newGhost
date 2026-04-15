@@ -3,7 +3,7 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} tag of the default.hbs template --}}
 <div class="container container-sm">
-    <div class="aricle-heading-wrapper grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-end gap-10 pb-10 {{#match @custom.post_layout "=" "No image layout"}} border-b border-border{{/match}}">
+    <div class="aricle-heading-wrapper grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-end gap-10 pb-10 {{#match @custom.post_layout "No image"}} border-b border-border{{/match}}">
         <div class="aricle-heading lg:max-w-[85%] flex flex-col gap-5">
             <div class="flex items-center gap-2">
                 {{> "tagsList"}}
@@ -45,7 +45,7 @@ into the {body} tag of the default.hbs template --}}
             </div>
         </div>
     </div>
-    {{#match @custom.post_layout "!=" "No image layout"}}
+    {{#match @custom.post_layout "!=" "No image"}}
     {{> "postContent/postImage"}}
     {{/match}}
 </div>

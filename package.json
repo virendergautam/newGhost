@@ -16,11 +16,11 @@
     "tailwindcss": "^4.1.17",
     "gscan": "^5.2.4"
   },
-    "keywords": [
-  "ghost-theme",
-  "blog",
-  "magazine"
-],
+  "keywords": [
+    "ghost-theme",
+    "blog",
+    "magazine"
+  ],
   "author": {
     "name": "vikas",
     "email": "vikas.shinedezign@gmail.com"
@@ -109,15 +109,18 @@
         "type": "select",
         "options": [
           "Default",
-          "Full width Image layout",
-          "No image layout",
-          "Split layout",
-          "Wide image layout"
+          "Wide image",
+          "No image",
+          "Full image",
+          "Split image",
+          "Gallery",
+          "Sticky content",
+          "Images Slider"
         ],
         "default": "Default",
         "group": "post"
       },
-        "contact_form_endpoint": {
+      "contact_form_endpoint": {
         "type": "text",
         "default": "",
         "description": "Note: Endpoint URL for the contact form, such as a Formspree endpoint. Example: https://formspree.io/f/yourformid"
