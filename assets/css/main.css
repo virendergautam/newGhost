@@ -1,6 +1,6 @@
 @import "tailwindcss";
-
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@import "./content.css";
 
 @theme {
   --color-heading: #000000;
@@ -48,24 +48,16 @@ p {
   line-height: 1.6;
 }
 
-h2 {
+h1,h2 {
   line-height: 1.2;
 }
 
-h3 {
+h3,h4 {
   line-height: 1.3;
 }
 
-h4 {
-  line-height: 1.35;
-}
-
-h5 {
+h5,h6 {
   line-height: 1.4
-}
-
-h6 {
-  line-height: 1.45
 }
 
 h1,
@@ -80,10 +72,19 @@ h6 {
 
 }
 
-.container {
-  max-width: 1580px;
+.container,
+.container-sm {
+  max-width: var(--page-width);
   margin: 0 auto;
   padding: 0 15px;
+}
+
+.container{
+  --page-width: 1580px;
+}
+
+.container-sm {
+ --page-width: 1240px;
 }
 
 .header-sticky {
@@ -95,8 +96,8 @@ h6 {
   padding-block-start: 20px;
 }
 
-.fixed-sticky > .container,
-.fixed-layout > .container {
+.fixed-sticky>.container,
+.fixed-layout>.container {
   padding: 0;
 }
 
@@ -122,7 +123,7 @@ h6 {
   top: 0;
 }
 
-.header-sticky.is-sticky .background-layer{
+.header-sticky.is-sticky .background-layer {
   transform: scaleX(1.5);
 }
 
@@ -137,11 +138,11 @@ body:has(.fixed-sticky) .site-main {
 }
 
 [data-theme="dark"] .light-logo-image,
-[data-theme="light"] .dark-logo-image{
+[data-theme="light"] .dark-logo-image {
   opacity: 0;
 }
 
-[data-theme="dark"] .dark-logo-image{
+[data-theme="dark"] .dark-logo-image {
   opacity: 1;
 }
 
@@ -163,7 +164,6 @@ body:has(.fixed-sticky) .site-main {
   align-items: center;
 }
 
-
 .overlaylink {
   position: absolute;
   inset: 0;
@@ -181,6 +181,7 @@ body:has(.fixed-sticky) .site-main {
   min-width: 120px;
   padding: 4px 12px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .button.button-large {
@@ -221,7 +222,6 @@ body:has(.fixed-sticky) .site-main {
   height: 17px;
 }
 
-
 /* Initial state (hidden completely) */
 .progressive-load.lazyload {
   opacity: 0;
@@ -252,4 +252,9 @@ form.success [data-members-success] {
 
 form.error [data-members-error] {
     display: block;
+}
+div[data-testid="comment-elements"] {
+    background: var(--color-main);
+    border-radius: 20px;
+    padding: 20px;
 }

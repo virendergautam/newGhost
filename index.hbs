@@ -19,19 +19,7 @@
                                         class="bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
                                         {{> "icons/fire"}}Featured</div>
                                     {{/if}}
-                                    {{#foreach tags visibility="public"}}
-                                    {{#if @first}}
-                                    <div class="flex gap-1.5">
-                                        {{/if}}
-                                        <span
-                                            class="px-3 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border">{{name}}</span>
-
-                                        {{#if @last}}
-                                    </div>
-                                    {{/if}}
-                                    {{/foreach}}
-
-
+                                    {{> "tagsList"}}
                                     <span class="text-xs font-medium pl-2">{{reading_time}}</span>
                                     {{#unless access}}
                                     {{^has visibility="public"}}
@@ -164,7 +152,7 @@
                         {{/foreach}}
                     </div>
                     <div class="text-center mt-10">
-                        <button class="show-more-btn button button-outline cursor-pointer">
+                        <button class="show-more-btn button button-outline">
                             Show More
                         </button>
                     </div>

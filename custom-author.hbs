@@ -1,6 +1,4 @@
-{{!< default}}
-{{#post}} 
-<main id="site-main" class="site-main outer">
+{{!< default}} {{#post}} <main id="site-main" class="site-main outer">
     <section class="py-[70px]">
         <div class="container">
             <div class="text-center mb-7">
@@ -13,24 +11,23 @@
                 {{/foreach}}
             </div>
             {{/get}} --}}
-{{#get "authors" limit="100" include="count.posts"}}
+            {{#get "authors" limit="100" include="count.posts"}}
 
-<div id="authors-container" class="grid grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-10">
-    {{#foreach authors}}
-    <div class="author-item">
-        {{> "author-card"}}
-    </div>
-    {{/foreach}}
-</div>
+            <div id="authors-container" class="grid grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-10">
+                {{#foreach authors}}
+                <div class="author-item">
+                    {{> "author-card"}}
+                </div>
+                {{/foreach}}
+            </div>
+            <div class="text-center mt-10">
+                <button class="show-more-btn button ">
+                    Show More
+                </button>
+            </div>
 
-    <div class="text-center mt-10">
-                        <button class="show-more-btn button button-outline cursor-pointer">
-                            Show More
-                        </button>
-                    </div>
-
-{{/get}}
+            {{/get}}
         </div>
     </section>
-</main>
-{{/post}}
+    </main>
+    {{/post}}
