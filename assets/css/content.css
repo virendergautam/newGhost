@@ -198,15 +198,9 @@ is the very first element in the post content */
 }
 
 
-.gh-content a,
-.toc-list-item a,
-.gh-footer-content a,
-.footer-copyright a,
+.gh-content a:not(.button),
 .kg-product-card-title a span,
-.kg-product-card-description a span,
-.tag-hash-section-static-text .kg-product-card a.kg-product-card-button span,
-.tag-hash-section-static-banner .kg-product-card a.kg-product-card-button span,
-.meta-link .post-tag {
+.kg-product-card-description a span {
     word-break: break-word;
     color: inherit;
     transition: text-decoration 300 var(--animation-base);
@@ -217,27 +211,16 @@ is the very first element in the post content */
     text-decoration-color: hsl(from currentColor h s l / .2);
 }
 
-.gh-content a {
+.gh-content a:not(.button) {
     color: var(--brand-color);
     text-decoration-color: hsl(from var(--brand-color) h s l / .6);
 }
 
-.gh-content a:hover,
-.toc-list-item a:hover,
+.gh-content a:not(.button):hover,
 .kg-product-card-title a:hover span,
-.kg-product-card-description a:hover span,
-.tag-hash-section-static-text .kg-product-card a.kg-product-card-button:hover span,
-.tag-hash-section-static-banner .kg-product-card a.kg-product-card-button:hover span,
-.gh-footer-content a:hover,
-.meta-link .post-tag:hover,
-.single-meta-item .post-tag:hover {
+.kg-product-card-description a:hover span {
     text-decoration-thickness: 0.08em;
     color: var(--brand-color);
-    text-decoration-color: hsl(from currentColor h s l / .8);
-}
-
-.footer-copyright a:hover {
-    text-decoration-thickness: 0.08em;
     text-decoration-color: hsl(from currentColor h s l / .8);
 }
 
@@ -302,4 +285,7 @@ is the very first element in the post content */
 .footnote-list li {
     padding-top: 1.6rem;
     line-height: 1.5;
+}
+#ghost-comments-root [data-testid="cta-box"] {
+    display: none;
 }

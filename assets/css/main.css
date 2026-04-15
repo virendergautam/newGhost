@@ -181,6 +181,7 @@ body:has(.fixed-sticky) .site-main {
   min-width: 120px;
   padding: 4px 12px;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .button.button-large {
@@ -238,4 +239,22 @@ body:has(.fixed-sticky) .site-main {
   filter: blur(0);
   transform: scale(1);
   transition: all 1s ease;
+}
+
+[data-members-error],
+[data-members-success] {
+    display: none;
+}
+
+form.success [data-members-success] {
+    display: block;
+}
+
+form.error [data-members-error] {
+    display: block;
+}
+div[data-testid="comment-elements"] {
+    background: var(--color-main);
+    border-radius: 20px;
+    padding: 20px;
 }
