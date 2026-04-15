@@ -3,7 +3,21 @@
  <main id="site-main" class="site-main outer">
   <article class="blog-article post-detail py-[70px]">
     <div class="post-header mb-12">
+      {{#match @custom.post_layout "Images slider"}}
+      {{> "postLayouts/postImagesSlider"}}
+      {{else match @custom.post_layout "Wide image"}}
+      {{> "postLayouts/widePost"}}
+      {{else match @custom.post_layout "Full image"}}
+      {{> "postLayouts/fullWidthImagePost"}}
+        {{else match @custom.post_layout "Split image"}}
+      {{> "postLayouts/splitPost"}}
+        {{else match @custom.post_layout "Sticky content"}}
+      {{> "postLayouts/stickyPost"}}
+         {{else match @custom.post_layout "Gallery"}}
+      {{> "postLayouts/postGallery"}}
+      {{else}}
       {{> "postLayouts/defaultPost"}}
+      {{/match}}
     </div>
     <div class="post-content">
       <div class="container container-sm">
@@ -40,7 +54,9 @@
             {{/if}}
           </div>
           <div class="post-content-actions flex items-center justify-between">
-            <button
+              {{#prev_post}}
+            <a
+            href="{{url}}"
               class="rounded-full cursor-pointer bg-alternate/50 text-heading flex items-center px-5 py-2.5 gap-2.5">
               <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
                 <path
@@ -48,8 +64,10 @@
                   fill="currentColor" />
               </svg>
               <span class="text-sm">Prev Post</span>
-            </button>
-            <button
+            </a>
+              {{/prev_post}}
+              {{#next_post}}
+            <a href="{{url}}"
               class="rounded-full cursor-pointer bg-alternate/50 text-heading flex flex-row-reverse items-center px-5 py-2.5 gap-2.5">
               <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
                 <path
@@ -58,7 +76,8 @@
               </svg>
 
               <span class="text-sm">Next Post</span>
-            </button>
+            </a>
+            {{/next_post}}
           </div>
         </div>
       </div>
