@@ -16,6 +16,15 @@
     "tailwindcss": "^4.1.17",
     "gscan": "^5.2.4"
   },
+    "keywords": [
+  "ghost-theme",
+  "blog",
+  "magazine"
+],
+  "author": {
+    "name": "vikas",
+    "email": "vikas.shinedezign@gmail.com"
+  },
   "config": {
     "posts_per_page": 9,
     "custom": {
