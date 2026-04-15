@@ -139,6 +139,7 @@
                         data-tab="all">
                         All
                     </button>
+                    {{#if @custom.home_feed_tags}}
                     {{#get "tags" filter="slug:[{{@custom.home_feed_tags}}]"}}
                     {{#foreach tags}}
                     <button
@@ -148,6 +149,7 @@
                     </button>
                     {{/foreach}}
                     {{/get}}
+                    {{/if}}
                 </div>
             </div>
             <div class="tab-content">
@@ -169,6 +171,7 @@
                     {{/get}}
                 </div>
                 <!-- TAG TABS -->
+                
                 {{#get "tags" filter="slug:[{{@custom.home_feed_tags}}]"}}
                 {{#foreach tags}}
                 <div id="tab-{{slug}}" class="tab-grid hidden">

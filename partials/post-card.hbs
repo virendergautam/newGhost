@@ -60,8 +60,8 @@
   <div class="mt-auto py-[15px] border-t border-border-light flex items-center justify-between">
     {{#has author="count:1"}}
     <div class="flex items-center gap-2.5">
-      {{#if authors.[0].profile_image}}
-      <img src="{{img_url authors.[0].profile_image size=" xs"}}" alt="{{authors.[0].name}}"
+      {{#if primary_author.profile_image}}
+      <img src="{{img_url primary_author.profile_image size=" xs"}}" alt="{{primary_author.name}}"
         class="w-8 h-8 rounded-full object-cover">
       {{else}}
       <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-[10px] text-gray-400 p-2"
@@ -69,7 +69,7 @@
         {{> "icons/avatar"}}
       </div>
       {{/if}}
-      <h4 class="text-xs">By {{authors.[0].name}}</h4>
+      <h4 class="text-xs">By {{primary_author.name}}</h4>
     </div>
     <div class="grid grid-cols-[auto_1fr] gap-1 items-center">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none">

@@ -198,7 +198,7 @@ const homePagePostLoadMore = () => {
       if (btn && visible >= posts.length) {
         btn.style.display = "none";
       } else if (btn) {
-        btn.style.display = "inline-block";
+        btn.style.display = "inline-flex";
       }
     }
 
@@ -212,7 +212,7 @@ const homePagePostLoadMore = () => {
 
       tab.dataset.initialized = "true";
     } else if (reset) {
-      if (btn) btn.style.display = "inline-block";
+      if (btn) btn.style.display = "inline-flex";
       showNext();
     }
   }
