@@ -32,21 +32,14 @@
     <img src="{{img_url feature_image size="xs" }}" data-src="{{img_url feature_image size="l"}}" alt="{{title}}" loading="lazy"
       class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 progressive-load lazyload" />
     {{else}}
-    <span class="font-bold">NO IMAGE</span>
+    <span class="font-bold">{{t "NO IMAGE"}}</span>
     {{/if}}
     {{#if featured}}
     <div
       class="absolute bottom-2.5 left-2.5 bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs flex items-center gap-1">
-      {{> "icons/fire"}}Featured</div>
+      {{> "icons/fire"}}{{t "Featured"}}</div>
     {{/if}}
   </div>
-
-  {{! Excerpt }}
-  {{!-- {{#if excerpt}}
-  <p class="text-sm line-clamp-3 mb-4">
-    {{excerpt}}
-  </p>
-  {{/if}} --}}
   {{#if custom_excerpt}}
   <p class="text-sm line-clamp-3 mb-4">{{custom_excerpt}}</p>
   {{/if}}
