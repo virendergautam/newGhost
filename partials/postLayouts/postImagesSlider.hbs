@@ -36,19 +36,15 @@
 </div>
 {{> "postContent/postContent"}} --}}
 
-
-
 <div class="post-header mb-12">
   <div class="article-post-slider bg-alternate grid h-[450px] md:h-[600px] xl:h-[720px] overflow-hidden -mt-[70px]">
-
     <!-- SWIPER -->
     <div class="swiper col-span-full row-span-full w-full h-full min-w-[0px]">
       <div class="swiper-wrapper" id="post-slider-wrapper">
-
         {{!-- FEATURE IMAGE AS FIRST SLIDE --}}
         {{#if feature_image}}
         <div class="swiper-slide">
-          <figure class="article-image w-full overflow-hidden">
+          <figure class="article-img relative before:absolute before:inset-0 before:bg-black/40 h-full w-full overflow-hidden">
             <img 
               src="{{img_url feature_image size="xl"}}"
               alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
@@ -57,13 +53,9 @@
           </figure>
         </div>
         {{/if}}
-
       </div>
-        <div class="swiper-pagination post-slider-pagination"></div>
-
-      
+      <div class="swiper-pagination post-slider-pagination"></div>
     </div>
-
     <!-- CONTENT OVERLAY -->
     <div class="container grid col-span-full row-span-full h-full grid-rows-[1fr_auto] gap-10 relative z-1">
       <div class="aricle-heading-wrapper py-5 max-w-[650px] h-full flex">
@@ -71,39 +63,31 @@
 
           <div class="flex items-center gap-2">
             {{> "tagsList"}}
-            <span class="text-xs font-medium pl-2">{{reading_time}}</span>
+            <p class="text-xs font-medium pl-2">{{reading_time}}</p>
           </div>
 
-          <h2 class="text-5xl mb-2 !text-white">{{title}}</h2>
+          <h2 class="text-5xl mb-2">{{title}}</h2>
 
           {{#if custom_excerpt}}
-            <p class="article-excerpt text-white">{{custom_excerpt}}</p>
+            <p class="article-excerpt ">{{custom_excerpt}}</p>
           {{/if}}
 
         </div>
       </div>
-
       <div class="article-info py-6 border-t border-white/15 grid grid-cols-1 md:grid-cols-[1.1fr_auto] gap-10 items-start">
         {{> "author-group"}}
         {{> "postContent/postShare"}}
       </div>
     </div>
-
   </div>
 </div>
-
-<!-- HIDDEN CONTENT (FOR IMAGE EXTRACTION) -->
-<div id="hidden-post-content" class="hidden">
-  {{content}}
-</div>
-
 {{> "postContent/postContent"}}
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
   const wrapper = document.getElementById("post-slider-wrapper");
-  const hiddenContent = document.getElementById("hidden-post-content");
+  const hiddenContent = document.querySelector(".gh-content");
 
   if (!wrapper || !hiddenContent) return;
 
@@ -136,8 +120,25 @@ document.addEventListener("DOMContentLoaded", function () {
   if (slides.length === 0) {
     wrapper.innerHTML = `
       <div class="swiper-slide">
-        <div class="w-full h-full flex items-center justify-center bg-gray-200">
-          <span class="text-gray-500">No Image</span>
+        <div class="w-full h-full flex items-center justify-center bg-alternate text-text/20">
+            <svg  class="size-[200px]" version="1.1" viewBox="-5.0 -10.0 110.0 135.0" fill="currentColor">
+            <path d="m11.285 13.984c-2.3906 0-4.3359 1.9453-4.3359 4.3359v63.359c0 2.3906 1.9453 4.3359 4.3359 4.3359h77.43c2.3906 0 4.3359-1.9453 4.3359-4.3359v-63.359c0-2.3945-1.9453-4.3359-4.3359-4.3359zm77.43 74.102h-77.43c-3.5312 0-6.4023-2.875-6.4023-6.4023v-63.359c0-3.5312 2.875-6.4023 6.4023-6.4023h77.43c3.5312 0 6.4023 2.8711 6.4023 6.4023v63.359c0 3.5312-2.875 6.4023-6.4023 6.4023z" fill-rule="evenodd"/>
+            <path d="m12.043 81.215h75.914v-62.391h-75.914zm76.945 2.0664h-77.98c-0.57031 0-1.0352-0.46094-1.0352-1.0312v-64.457c0-0.57422 0.46094-1.0312 1.0312-1.0312h77.98c0.57031 0 1.0312 0.46094 1.0312 1.0312v64.457c0 0.57031-0.46484 1.0352-1.0312 1.0312z" fill-rule="evenodd"/>
+            <path d="m42.113 83.281h-24.773c-0.35156 0-0.67578-0.17578-0.86719-0.47266-0.1875-0.29297-0.21875-0.66406-0.074218-0.98438l12.387-27.652c0.16797-0.37109 0.53516-0.60938 0.94141-0.60938s0.77734 0.23828 0.94531 0.60938l8.0938 18.051c0.23438 0.51953 0 1.1328-0.51953 1.3633-0.51953 0.23437-1.1328 0-1.3633-0.51953l-7.1523-15.945-10.793 24.094h23.176c0.57031 0 1.0312 0.46094 1.0312 1.0352 0 0.57031-0.46094 1.0312-1.0312 1.0312z" fill-rule="evenodd"/>
+            <path d="m82.68 83.281h-28.477c-0.57031 0-1.0312-0.46094-1.0312-1.0312s0.46094-1.0352 1.0312-1.0352h26.465l-12.234-17.066-7.0781 9.8828c-0.33203 0.46094-0.97656 0.57031-1.4414 0.23828-0.46484-0.33203-0.57031-0.97656-0.23828-1.4414l7.918-11.055c0.19531-0.26953 0.50391-0.43359 0.83984-0.43359 0.33203 0 0.64453 0.16016 0.83984 0.43359l14.246 19.871c0.22656 0.31641 0.25781 0.73047 0.078125 1.0742-0.17578 0.34375-0.53125 0.5625-0.91797 0.5625z" fill-rule="evenodd"/>
+            <path d="m35.039 81.215h27.887l-13.938-30.539-13.953 30.539zm29.496 2.0664h-31.102c-0.35156 0-0.67969-0.17969-0.87109-0.47656-0.19141-0.29688-0.21484-0.66797-0.070312-0.98828l15.562-34.062c0.16797-0.36719 0.53516-0.60547 0.94141-0.60547 0.40234 0 0.76953 0.23828 0.94141 0.60547l15.543 34.062c0.14453 0.32031 0.11719 0.69141-0.074219 0.98828-0.19141 0.29687-0.51562 0.47656-0.86719 0.47656z" fill-rule="evenodd"/>
+            <path d="m26.219 46.887c-0.27344 0-0.53516-0.10938-0.73047-0.30469-1.5586-1.5586-3.5-2.5234-5.0781-2.5234h-0.007812c-0.86719 0-1.5703 0.28516-2.1562 0.875-0.40234 0.40625-1.0547 0.40625-1.4609 0.003906s-0.41016-1.0547-0.007812-1.4609c0.96484-0.96875 2.2148-1.4844 3.6172-1.4883h0.011719c1.875 0 3.9883 0.90234 5.8047 2.4531 1.8008-1.5469 3.9062-2.4492 5.7812-2.4531h0.011718c1.4141 0 2.668 0.51172 3.6406 1.4844 0.40234 0.40234 0.40234 1.0586 0 1.4609-0.40234 0.40234-1.0547 0.40234-1.4609 0-0.58984-0.59375-1.3047-0.87891-2.1758-0.87891h-0.007812c-1.5742 0-3.5117 0.96875-5.0508 2.5234-0.19531 0.19531-0.45703 0.30469-0.73047 0.30469z" fill-rule="evenodd"/>
+            <path d="m48.992 44.73c-0.27344 0-0.53516-0.10938-0.73047-0.30078-1.5586-1.5586-3.5-2.5273-5.0742-2.5273h-0.007812c-0.86719 0-1.5703 0.28906-2.1562 0.875-0.40234 0.40625-1.0547 0.41016-1.4609 0.007812s-0.40625-1.0547-0.003906-1.4609c0.96094-0.96875 2.2148-1.4844 3.6172-1.4883h0.011719c1.875 0 3.9883 0.90234 5.8047 2.4531 1.8008-1.543 3.9062-2.4492 5.7812-2.4531h0.011718c1.4102 0 2.668 0.51172 3.6406 1.4844 0.40234 0.40234 0.40234 1.0586 0 1.4609-0.40234 0.40234-1.0586 0.40234-1.4609 0-0.58984-0.59375-1.3047-0.87891-2.1797-0.87891h-0.007812c-1.5781 0.003906-3.5117 0.96875-5.0508 2.5234-0.19141 0.19531-0.45703 0.30469-0.73047 0.30469z" fill-rule="evenodd"/>
+            <path d="m71.902 44.164c-2.6719 0-4.8477 2.1758-4.8477 4.8477s2.1758 4.8477 4.8477 4.8477 4.8477-2.1758 4.8477-4.8477-2.1758-4.8477-4.8477-4.8477zm0 11.762c-3.8125 0-6.9141-3.1016-6.9141-6.9141s3.1016-6.9141 6.9141-6.9141 6.9102 3.1016 6.9102 6.9141-3.0977 6.9141-6.9102 6.9141z" fill-rule="evenodd"/>
+            <path d="m71.902 41.145c-0.57031 0-1.0352-0.46094-1.0352-1.0312v-1.8828c0-0.57031 0.46094-1.0312 1.0312-1.0312 0.57031 0 1.0352 0.46094 1.0352 1.0312v1.8828c0 0.57031-0.46484 1.0352-1.0352 1.0312z" fill-rule="evenodd"/>
+            <path d="m65.609 43.754c-0.26562 0-0.53125-0.10156-0.73438-0.30469l-1.332-1.332c-0.40234-0.40234-0.40234-1.0547 0-1.4609 0.40234-0.40234 1.0586-0.40234 1.4609 0l1.332 1.332c0.40234 0.40234 0.40234 1.0547 0 1.4609-0.19922 0.20312-0.46484 0.30469-0.73047 0.30469z" fill-rule="evenodd"/>
+            <path d="m63.004 50.043h-1.8828c-0.57031 0-1.0352-0.46094-1.0352-1.0312 0-0.57031 0.46094-1.0352 1.0352-1.0352h1.8828c0.57031 0 1.0312 0.46094 1.0312 1.0352 0 0.57031-0.46094 1.0312-1.0312 1.0312z" fill-rule="evenodd"/>
+            <path d="m64.277 57.648c-0.26562 0-0.53516-0.10156-0.73438-0.30469-0.40234-0.40625-0.39453-1.0625 0.007812-1.4609l1.332-1.3125c0.40625-0.39844 1.0625-0.39453 1.4609 0.011719s0.39453 1.0586-0.011719 1.4609l-1.332 1.3125c-0.19922 0.19922-0.46484 0.29688-0.72656 0.29688z" fill-rule="evenodd"/>
+            <path d="m71.902 60.801c-0.57031 0-1.0352-0.46094-1.0352-1.0312v-1.8633c0-0.57031 0.46094-1.0312 1.0312-1.0312 0.57031 0 1.0352 0.46094 1.0352 1.0312v1.8633c0 0.57031-0.46484 1.0352-1.0352 1.0352z" fill-rule="evenodd"/>
+            <path d="m79.523 57.648c-0.26172 0-0.52344-0.097657-0.72656-0.29688l-1.332-1.3125c-0.40625-0.39844-0.41406-1.0547-0.011719-1.4609s1.0547-0.41016 1.4609-0.011719l1.332 1.3125c0.40625 0.39844 0.41406 1.0547 0.011718 1.4609-0.19922 0.20312-0.46875 0.30859-0.73437 0.30469z" fill-rule="evenodd"/>
+            <path d="m82.68 50.043h-1.8828c-0.57031 0-1.0352-0.46094-1.0352-1.0312 0-0.57031 0.46094-1.0352 1.0352-1.0352h1.8828c0.57031 0 1.0312 0.46094 1.0312 1.0352 0 0.57031-0.46094 1.0312-1.0312 1.0312z" fill-rule="evenodd"/>
+            <path d="m78.191 43.754c-0.26172 0-0.52734-0.10156-0.73047-0.30469-0.40234-0.40234-0.40234-1.0547 0-1.4609l1.332-1.332c0.40234-0.40234 1.0547-0.40234 1.4609 0 0.40234 0.40234 0.40234 1.0547 0 1.4609l-1.332 1.332c-0.19922 0.20312-0.46875 0.30469-0.73047 0.30469z" fill-rule="evenodd"/>
+            </svg>
         </div>
       </div>
     `;
@@ -172,33 +173,3 @@ const swiper = new Swiper(".article-post-slider .swiper", {
 
 });
 </script>
-
-<style>
-  .post-slider-pagination {
-  position: absolute;
-  bottom: 30px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 5;
-}
-
-/* Default dot */
-.post-slider-pagination .swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background: rgba(255,255,255,0.5);
-  opacity: 1;
-  margin: 0 5px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-/* Active dot */
-.post-slider-pagination .swiper-pagination-bullet-active {
-  background: #fff;
-  width: 24px;
-  border-radius: 20px;
-}
-  </style>
