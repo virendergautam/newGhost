@@ -19,9 +19,10 @@
       {{> "postLayouts/defaultPost"}}
       {{/match}}
     </div>
-    <div class="post-content">
-      <div class="container container-sm">
-        <div class="gh-content max-w-[790px] mx-auto">
+    {{#match @custom.post_layout "!=" "Sticky content"}}
+    <div class="post-content kg-canvas">
+      <div class="container {{#match @custom.post_layout "Default"}} container-sm {{/match}}">
+        <div class="gh-content w-full max-w-[790px] mx-auto">
           {{content}}
           <div class="post-content-cta">
             {{#if @site.members_enabled}}
@@ -82,6 +83,7 @@
         </div>
       </div>
     </div>
+    {{/match}}
   </article>
     {{> "postContent/relatedPost"}}
   </main>

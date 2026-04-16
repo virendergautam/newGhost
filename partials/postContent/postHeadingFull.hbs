@@ -1,0 +1,17 @@
+<div class="aricle-heading-wrapper">
+    <div class="aricle-heading lg:max-w-[85%] flex flex-col gap-5">
+        <div class="flex items-center gap-2">
+            {{> "tagsList"}}
+            <span class="text-xs font-medium pl-2">{{reading_time}}</span>
+        </div>
+        <h2 class="text-5xl mb-2">{{title}}</h2>
+        {{> "author-group"}}
+        {{#if custom_excerpt}}
+        <p class="article-excerpt mt-4">{{custom_excerpt}}</p>
+        {{/if}}
+        {{#match @custom.post_layout "!=" "Sticky content"}}
+        {{> "postContent/postShare"}}
+        {{/match}}
+    </div>
+
+</div>

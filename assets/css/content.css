@@ -7,6 +7,12 @@
     transform: translateX(-50%)!important;
     width: min(var(--page-width),calc(100vw - 3rem))!important;
 }
+.article-stickypost .kg-canvas .kg-width-wide {
+    margin-left: 0!important;
+    max-width: 100% !important;
+    transform: unset !important;
+    width: 100% !important;
+}
 .kg-flex {
     display: flex;
 }
@@ -259,7 +265,9 @@ is the very first element in the post content */
 .gh-content li + li {
     margin-top: 1.2rem;
 }
-
+.article-info> div:only-child {
+    justify-content: flex-end;
+}
 
 /* footnote */
 .footnote { 
@@ -286,6 +294,9 @@ is the very first element in the post content */
     padding-top: 1.6rem;
     line-height: 1.5;
 }
-#ghost-comments-root [data-testid="cta-box"] {
-    display: none;
+.article-post-slider p, h4,h6 {
+    color: white!important;
+}
+.article-post-slider {
+    margin-top: calc(var(--header-height) * -1 - 70px - 20px);
 }
