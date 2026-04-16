@@ -1,6 +1,10 @@
-<div class="container">
-  <div class="bg-alternate rounded-[20px] p-7 overflow-hidden {{#if feature_image}} grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-10 lg:gap-14{{/if}}">
-    {{> "postContent/postImage"}}
-    {{> "postContent/postHeadingFull"}}
+<div class="post-header mb-12">
+  <div class="container">
+    <div
+      class="bg-alternate rounded-[20px] p-7 overflow-hidden {{#if feature_image}} grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] items-center gap-10 lg:gap-14{{/if}}">
+      {{> "postContent/postImage"}}
+      {{> "postContent/postHeadingFull"}}
+    </div>
   </div>
 </div>
+{{> "postContent/postContent"}}

@@ -294,7 +294,7 @@ is the very first element in the post content */
     padding-top: 1.6rem;
     line-height: 1.5;
 }
-.article-post-slider p, h4,h6 {
+.article-post-slider p, .article-post-slider h4,.article-post-slider h6 {
     color: white!important;
 }
 .article-post-slider {

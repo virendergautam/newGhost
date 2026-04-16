@@ -2,7 +2,10 @@
 
 {{!-- The tag above means: insert everything in this file
 into the {body} tag of the default.hbs template --}}
-<div class="container container-sm">
-    {{> "postContent/postHeading"}}
-    {{> "postContent/postImage"}}
+<div class="post-header mb-12">
+    <div class="container container-sm">
+        {{> "postContent/postHeading"}}
+        {{> "postContent/postImage"}}
+    </div>
 </div>
+{{> "postContent/postContent"}}
