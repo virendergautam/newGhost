@@ -56,7 +56,7 @@
       "social_links": {
         "type": "text",
         "default": "",
-        "description": "Enter the social media name and URL, separate by comma. Example:https://facebook.com/yourpage,https://twitter.com/yourpage"
+        "description": "Enter the social media URL, separate by comma.Example:https://facebook.com/yourpage,https://twitter.com/yourpage"
       },
       "footer_copyright_text": {
         "type": "text",
@@ -123,7 +123,7 @@
       "contact_form_endpoint": {
         "type": "text",
         "default": "",
-        "description": "Note: Endpoint URL for the contact form, such as a Formspree endpoint. Example: https://formspree.io/f/yourformid"
+        "description": "Endpoint URL for the contact form, such as a Formspree endpoint.Example:https://formspree.io/f/yourformid"
       }
     }
   }
