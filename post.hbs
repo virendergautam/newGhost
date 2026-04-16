@@ -2,7 +2,6 @@
 {{#post}}
  <main id="site-main" class="site-main outer">
   <article class="blog-article post-detail py-[70px]">
-    <div class="post-header mb-12">
       {{#match @custom.post_layout "Images slider"}}
       {{> "postLayouts/postImagesSlider"}}
       {{else match @custom.post_layout "Wide image"}}
@@ -18,72 +17,6 @@
       {{else}}
       {{> "postLayouts/defaultPost"}}
       {{/match}}
-    </div>
-    {{#match @custom.post_layout "!=" "Sticky content"}}
-    <div class="post-content kg-canvas">
-      <div class="container {{#match @custom.post_layout "Default"}} container-sm {{/match}}">
-        <div class="gh-content w-full max-w-[790px] mx-auto">
-          {{content}}
-          <div class="post-content-cta">
-            {{#if @site.members_enabled}}
-            {{#if @member}}
-            {{#if comments}}
-            <div class="bg-alternate rounded-[20px] overflow-hidden px-8">
-              <div class="border-b border-border-light py-4 mb-7 flex items-center justify-between">
-                <h6>{{t "Comments"}}</h2>
-                  <span class="text-sm">{{comment_count empty="0 comments" singular="comment" plural="comments"}}</span>
-              </div>
-              {{comments title="" count=false}}
-            </div>
-            {{/if}}
-            {{else}}
-            <div class="bg-alternate rounded-[20px] overflow-hidden px-8">
-              <div class="border-b border-border-light py-4 flex items-center justify-between">
-                <h6>{{t "Member discussion"}}</h2>
-                  <span class="text-sm">{{comment_count empty="0 comments" singular="comment" plural="comments"}}</span>
-              </div>
-              <div class="text-center py-10 min-h-[300px] flex flex-col items-center justify-center">
-                <h3>{{t "Start the conversation"}}</h3>
-                <p class="text-sm mt-3">{{t "Create a free account or sign in to participate in comments."}}</p>
-                <a href="#" class="button mt-5">{{t "Sign up now"}}</a>
-                <p class="text-sm mt-5">{{t "Already a member?"}} <a href="#" class="text-underline">{{t "Sign In"}}</a>
-                </p>
-              </div>
-            </div>
-            {{/if}}
-
-            {{/if}}
-          </div>
-          <div class="post-content-actions flex items-center justify-between">
-              {{#prev_post}}
-            <a
-            href="{{url}}"
-              class="rounded-full cursor-pointer bg-alternate/50 text-heading flex items-center px-5 py-2.5 gap-2.5">
-              <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
-                <path
-                  d="M13.9999 4.67486H2.27586L5.80452 1.14619C5.8682 1.08469 5.91899 1.01113 5.95393 0.929795C5.98886 0.848459 6.00726 0.760979 6.00803 0.67246C6.00879 0.58394 5.99193 0.496154 5.95841 0.414223C5.92488 0.332292 5.87538 0.257857 5.81279 0.195262C5.75019 0.132667 5.67576 0.0831648 5.59383 0.0496442C5.5119 0.0161236 5.42411 -0.00074404 5.33559 2.51714e-05C5.24707 0.000794382 5.15959 0.0191852 5.07825 0.0541246C4.99692 0.0890639 4.92336 0.139852 4.86186 0.203526L0.195191 4.87019C0.0702103 4.99521 0 5.16475 0 5.34153C0 5.5183 0.0702103 5.68784 0.195191 5.81286L4.86186 10.4795C4.98759 10.601 5.15599 10.6682 5.33079 10.6666C5.50559 10.6651 5.6728 10.595 5.7964 10.4714C5.92001 10.3478 5.99012 10.1806 5.99164 10.0058C5.99316 9.83099 5.92596 9.66259 5.80452 9.53686L2.27586 6.00819H13.9999C14.1767 6.00819 14.3462 5.93795 14.4713 5.81293C14.5963 5.68791 14.6665 5.51834 14.6665 5.34153C14.6665 5.16471 14.5963 4.99515 14.4713 4.87012C14.3462 4.7451 14.1767 4.67486 13.9999 4.67486Z"
-                  fill="currentColor" />
-              </svg>
-              <span class="text-sm">Prev Post</span>
-            </a>
-              {{/prev_post}}
-              {{#next_post}}
-            <a href="{{url}}"
-              class="rounded-full cursor-pointer bg-alternate/50 text-heading flex flex-row-reverse items-center px-5 py-2.5 gap-2.5">
-              <svg width="15" height="11" viewBox="0 0 15 11" fill="none">
-                <path
-                  d="M0.666646 4.67486H12.3906L8.86198 1.14619C8.79831 1.08469 8.74752 1.01113 8.71258 0.929795C8.67764 0.848459 8.65925 0.760979 8.65848 0.67246C8.65771 0.58394 8.67458 0.496154 8.7081 0.414223C8.74162 0.332292 8.79112 0.257857 8.85372 0.195262C8.91631 0.132667 8.99075 0.0831648 9.07268 0.0496442C9.15461 0.0161236 9.24239 -0.00074404 9.33091 2.51714e-05C9.41943 0.000794382 9.50691 0.0191852 9.58825 0.0541246C9.66959 0.0890639 9.74315 0.139852 9.80465 0.203526L14.4713 4.87019C14.5963 4.99521 14.6665 5.16475 14.6665 5.34153C14.6665 5.5183 14.5963 5.68784 14.4713 5.81286L9.80465 10.4795C9.67891 10.601 9.51051 10.6682 9.33571 10.6666C9.16091 10.6651 8.99371 10.595 8.8701 10.4714C8.7465 10.3478 8.67638 10.1806 8.67486 10.0058C8.67334 9.83099 8.74054 9.66259 8.86198 9.53686L12.3906 6.00819H0.666646C0.489835 6.00819 0.320265 5.93795 0.195241 5.81293C0.0702162 5.68791 -2.09808e-05 5.51834 -2.09808e-05 5.34153C-2.09808e-05 5.16471 0.0702162 4.99515 0.195241 4.87012C0.320265 4.7451 0.489835 4.67486 0.666646 4.67486Z"
-                  fill="currentColor" />
-              </svg>
-
-              <span class="text-sm">Next Post</span>
-            </a>
-            {{/next_post}}
-          </div>
-        </div>
-      </div>
-    </div>
-    {{/match}}
   </article>
     {{> "postContent/relatedPost"}}
   </main>

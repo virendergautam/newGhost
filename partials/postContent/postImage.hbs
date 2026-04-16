@@ -1,6 +1,6 @@
     {{#match @custom.post_layout "!=" "No image"}}
     {{#if feature_image}}
-    <figure class="article-image w-full {{#match @custom.post_layout "!=" "Full image"}} rounded-xl{{/match}} overflow-hidden">
+    <figure class="article-image w-full bg-alternate {{#match @custom.post_layout "!=" "Full image"}} rounded-xl{{/match}} overflow-hidden">
         {{!-- This is a responsive image, it loads different sizes depending on device
         https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
         <img
@@ -14,7 +14,7 @@
             class="w-full block"
         />
         {{#if feature_image_caption}}
-            <figcaption>{{feature_image_caption}}</figcaption>
+            <figcaption class="text-center">{{feature_image_caption}}</figcaption>
         {{/if}}
     </figure>
     {{/if}}
