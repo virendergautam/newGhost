@@ -1,0 +1,27 @@
+<div class="flex items-center flex-wrap gap-4 {{#match @custom.post_layout "!=" "Images slider"}}mt-4{{/match}}">
+    <h6 class="text-base">
+        {{t "Share This Article:"}}
+    </h6>
+    <div class="flex items-center flex-wrap gap-1.5">
+        <a class="social-link" href="javascript:void(0)" onclick="copyToClipboard('{{url absolute=" true"}}')"
+            rel="noopener">
+            {{> "icons/website"}}
+        </a>
+        <a class="social-link" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute=" true"}}"
+            target="_blank" rel="noopener">
+            {{> "icons/facebook"}}
+        </a>
+        <a class="social-link" href="https://twitter.com/intent/tweet?url={{url absolute=" true"}}&text={{encode
+            title}}" target="_blank" rel="noopener">
+            {{> "icons/twitter"}}
+        </a>
+        <a class="social-link" href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute=" true"}}"
+            target="_blank" rel="noopener">
+            {{> "icons/linkedin"}}
+        </a>
+        <a class="social-link" href="https://wa.me/?text={{encode title}}%20{{url absolute=" true"}}" target="_blank"
+            rel="noopener">
+            {{> "icons/lock"}}
+        </a>
+    </div>
+</div>
