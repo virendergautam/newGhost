@@ -1,4 +1,4 @@
-<div class="post-header mb-12">
+{{!-- <div class="post-header mb-12">
   <div class="article-post-slider text-white grid h-[450px] md:h-[600px] xl:h-[720px] overflow-hidden -mt-[70px]">
     <div class="swiper col-span-full row-span-full w-full h-full min-w-[0px]">
       <div class="swiper-wrapper">
@@ -34,4 +34,171 @@
     </div>
   </div>
 </div>
+{{> "postContent/postContent"}} --}}
+
+
+
+<div class="post-header mb-12">
+  <div class="article-post-slider text-white grid h-[450px] md:h-[600px] xl:h-[720px] overflow-hidden -mt-[70px]">
+
+    <!-- SWIPER -->
+    <div class="swiper col-span-full row-span-full w-full h-full min-w-[0px]">
+      <div class="swiper-wrapper" id="post-slider-wrapper">
+
+        {{!-- FEATURE IMAGE AS FIRST SLIDE --}}
+        {{#if feature_image}}
+        <div class="swiper-slide">
+          <figure class="article-image w-full overflow-hidden">
+            <img 
+              src="{{img_url feature_image size="xl"}}"
+              alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+              class="w-full h-full object-cover"
+            />
+          </figure>
+        </div>
+        {{/if}}
+
+      </div>
+        <div class="swiper-pagination post-slider-pagination"></div>
+
+      
+    </div>
+
+    <!-- CONTENT OVERLAY -->
+    <div class="container grid col-span-full row-span-full h-full grid-rows-[1fr_auto] gap-10 relative z-1">
+      <div class="aricle-heading-wrapper py-5 max-w-[650px] h-full flex">
+        <div class="aricle-heading my-auto flex flex-col gap-2">
+
+          <div class="flex items-center gap-2">
+            {{> "tagsList"}}
+            <span class="text-xs font-medium pl-2">{{reading_time}}</span>
+          </div>
+
+          <h2 class="text-5xl mb-2 !text-white">{{title}}</h2>
+
+          {{#if custom_excerpt}}
+            <p class="article-excerpt text-white">{{custom_excerpt}}</p>
+          {{/if}}
+
+        </div>
+      </div>
+
+      <div class="article-info py-6 border-t border-white/15 grid grid-cols-1 md:grid-cols-[1.1fr_auto] gap-10 items-start">
+        {{> "author-group"}}
+        {{> "postContent/postShare"}}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HIDDEN CONTENT (FOR IMAGE EXTRACTION) -->
+<div id="hidden-post-content" class="hidden">
+  {{content}}
+</div>
+
 {{> "postContent/postContent"}}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const wrapper = document.getElementById("post-slider-wrapper");
+  const hiddenContent = document.getElementById("hidden-post-content");
+
+  if (!wrapper || !hiddenContent) return;
+
+  let slides = [];
+
+  // ✅ 1. Get existing feature image (already rendered)
+  const existingSlides = wrapper.querySelectorAll("img");
+  existingSlides.forEach(img => {
+    slides.push(img.src);
+  });
+
+  // ✅ 2. Extract images from post content
+  const contentImgs = hiddenContent.querySelectorAll("img");
+
+  contentImgs.forEach((img) => {
+    const src = img.src || img.getAttribute("data-src");
+
+    if (src && !slides.includes(src) && slides.length < 4) {
+      slides.push(src);
+
+      wrapper.insertAdjacentHTML("beforeend", `
+        <div class="swiper-slide">
+          <img src="${src}" class="w-full h-full object-cover"/>
+        </div>
+      `);
+    }
+  });
+
+  // ✅ 3. Placeholder if no images
+  if (slides.length === 0) {
+    wrapper.innerHTML = `
+      <div class="swiper-slide">
+        <div class="w-full h-full flex items-center justify-center bg-gray-200">
+          <span class="text-gray-500">No Image</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // ✅ 4. INIT SWIPER
+  const enableSlider = slides.length > 1;
+
+const swiper = new Swiper(".article-post-slider .swiper", {
+  loop: enableSlider,
+
+  autoplay: enableSlider ? {
+    delay: 3000,
+    disableOnInteraction: false
+  } : false,
+
+  effect: "fade",
+  fadeEffect: {
+    crossFade: true
+  },
+
+  // 🔥 IMPORTANT FIXES
+  watchSlidesProgress: true,
+  observer: true,
+  observeParents: true,
+
+  pagination: {
+    el: ".post-slider-pagination",
+    clickable: true
+  }
+});
+
+});
+</script>
+
+<style>
+  .post-slider-pagination {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+}
+
+/* Default dot */
+.post-slider-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.5);
+  opacity: 1;
+  margin: 0 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Active dot */
+.post-slider-pagination .swiper-pagination-bullet-active {
+  background: #fff;
+  width: 24px;
+  border-radius: 20px;
+}
+  </style>
