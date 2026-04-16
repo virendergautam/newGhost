@@ -294,9 +294,88 @@ is the very first element in the post content */
     padding-top: 1.6rem;
     line-height: 1.5;
 }
-.article-post-slider p, .article-post-slider h4,.article-post-slider h6 {
+.article-post-slider:has(.article-img) p, .article-post-slider:has(.article-img) h2, .article-post-slider:has(.article-img) h4,.article-post-slider:has(.article-img) h6,
+.post-gallery-content p, .post-gallery-content h2, .post-gallery-content h4, .post-gallery-content h6 {
     color: white!important;
 }
 .article-post-slider {
     margin-top: calc(var(--header-height) * -1 - 70px - 20px);
+}
+/* post gallery design css  */
+.post-gallery-images {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-auto-rows: minmax(220px, auto);
+    gap: 5px;
+}
+.post-gallery-image {
+    grid-area: span 1 / span 1;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--color-alternate);
+    overflow: hidden;
+}
+.post-gallery-image .post-image{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    object-fit: cover;
+}
+.post-gallery-image:nth-child(1) {
+    grid-area: span 2 / span 7;
+}
+/* when image count is 2 */
+.post-gallery-images.img-count-2 .post-gallery-image:nth-child(2) {
+    grid-area: span 2 / span 6;
+}
+/* when image count is 3 */
+.post-gallery-images.img-count-3 .post-gallery-image:nth-child(2) {
+    grid-area: span 2 / span 3;
+}
+.post-gallery-images.img-count-3 .post-gallery-image:nth-child(3){
+    grid-area: span 2 / span 4;
+}
+/* when image count is 4 */
+.post-gallery-images.img-count-4 .post-gallery-image:nth-child(2),
+.post-gallery-images.img-count-4 .post-gallery-image:nth-child(4) {
+    grid-area: span 1 / span 3;
+}
+.post-gallery-images.img-count-4 .post-gallery-image:nth-child(3){
+    grid-area: span 2 / span 4;
+}
+/* when image count is 5 */
+.post-gallery-images.img-count-5 .post-gallery-image:nth-child(2) {
+    grid-area: span 2 / span 3;
+}
+.post-gallery-images.img-count-5 .post-gallery-image:nth-child(3),
+.post-gallery-images.img-count-5 .post-gallery-image:nth-child(5){
+    grid-area: span 1 / span 2;
+}
+.post-gallery-images.img-count-5 .post-gallery-image:nth-child(4) {
+    grid-area: span 2 / span 2;
+}
+/* when image count is 6 */
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(2),
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(5) {
+    grid-area: span 1 / span 3;
+}
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(3) {
+    grid-area: span 2 / span 2;
+}
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(4),
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(6) {
+    grid-area: span 1 / span 2;
+}
+/* when image count is 7 */
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(4){
+    grid-area: span 2 / span 3;
+}
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(5),
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(6),
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(7) {
+    grid-area: span 1 / span 2;
 }

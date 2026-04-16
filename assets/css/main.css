@@ -12,6 +12,9 @@
   --color-accent-text: #fff;
   --color-accent: var(--ghost-accent-color);
   --color-accent-border: color-mix(in srgb, var(--color-accent-bg) 100%, white 30%);
+  --font-heading: var(--gh-font-heading, "Manrope Variable", sans-serif);
+  --font-button: var(--gh-font-heading, "Manrope Variable", sans-serif);
+  --font-body: var(--gh-font-body, "Instrument Sans", sans-serif);
 }
 
 [data-theme="dark"] {

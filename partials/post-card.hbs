@@ -2,17 +2,7 @@
 <article class="relative article-card group bg-alternate rounded-[20px] p-7 pbe-0 shadow-[box-shadow:0px_0px_50px_0px_#261E5308] hover:shadow-xl transition-all flex flex-col h-full ">
   <div class="flex items-start justify-between mb-4">
     {{! Category Tag }}
-    {{#foreach tags visibility="public"}}
-    {{#if @first}}
-    <div class="flex gap-2">
-      {{/if}}
-      <span class="px-4 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light">
-        {{name}}
-      </span>
-      {{#if @last}}
-    </div>
-    {{/if}}
-    {{/foreach}}
+    {{> "tagsList"}}
     {{#unless access}}
     {{^has visibility="public"}}
     <span class="flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full">

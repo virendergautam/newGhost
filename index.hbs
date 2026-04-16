@@ -256,18 +256,7 @@
                                                 <div class="bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
                                                 {{> "icons/fire"}}{{t "Featured"}}</div>
                                             {{/if}}
-                                            {{#foreach tags visibility="public"}}
-                                            {{#if @first}}
-                                            <div class="flex gap-1.5">
-                                                {{/if}}
-                                                <span
-                                                    class="px-4 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light group-hover:bg-[#FFFFFF33] group-hover:text-white group-hover:border-[#FFFFFF1A] group-hover:backdrop-blur-[40px]">
-                                                    {{name}}
-                                                </span>
-                                                {{#if @last}}
-                                            </div>
-                                            {{/if}}
-                                            {{/foreach}}
+                                            {{> "tagsList"}}
                                         </div>
                                         {{#unless access}}
                                         {{^has visibility="public"}}
@@ -339,18 +328,7 @@
                                                 {{> "icons/fire"}}{{t "Featured"}}
                                             </div>
                                         {{/if}}
-                                        {{#foreach tags visibility="public"}}
-                                            {{#if @first}}
-                                            <div class="flex gap-1.5 ">
-                                                {{/if}}
-                                                <span
-                                                    class="px-3 py-1 min-h-[20px] flex items-center bg-alternate rounded-sm text-xs border border-border-light">{{name}}</span>
-
-
-                                                {{#if @last}}
-                                            </div>
-                                            {{/if}}
-                                        {{/foreach}}
+                                        {{> "tagsList"}}
                                     </div>
                                     {{#unless access}}
                                     {{^has visibility="public"}}
