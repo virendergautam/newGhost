@@ -414,7 +414,16 @@ const socialLinks = () => {
     }
   }
 };
-
+const copyToClipboard = (url) => {
+  navigator.clipboard
+    .writeText(url)
+    .then(function () {
+      alert("Link copied to clipboard!");
+    })
+    .catch(function (err) {
+      console.error("Failed to copy: ", err);
+    });
+};
 const lazyLoadImages = () => {
   //   const lazyImages = document.querySelectorAll('img.lazyload');
 

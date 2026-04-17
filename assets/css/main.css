@@ -250,7 +250,7 @@ body:has(.fixed-sticky) .site-main {
 /* After load → blurred visible */
 .progressive-load.lazyloaded {
   opacity: 1;
-  filter: blur(20px);
+  filter: blur(10px);
   transform: scale(1.05);
 }
 
@@ -258,7 +258,7 @@ body:has(.fixed-sticky) .site-main {
 .progressive-load.is-visible {
   filter: blur(0);
   transform: scale(1);
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 }
 
 [data-members-error],
