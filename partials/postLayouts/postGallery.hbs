@@ -72,9 +72,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ❌ 3. Hide section if no images
   if (images.length === 0) {
-    header.style.display = "none";
-    return;
-  }
+  // Instead of hiding, render fallback
+  gallery.innerHTML = `
+    <div class="post-gallery-image no-image rounded-xl">
+      <div class="post-gallery-content px-7 relative z-1 w-full h-full flex mt-auto">
+        {{> "postContent/postHeading"}}
+      </div>
+    </div>
+  `;
+  return;
+}
+
+  if (images.length === 2) {
+  images = [images[0]]; // keep only first (featured)
+}
 
   // ✅ 4. Add dynamic class
   gallery.classList.add(`img-count-${images.length}`);
@@ -88,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="post-gallery-image">
           <img src="${src}" class="post-image" alt="{{title}}">
           <div class="post-gallery-content px-7 py-2 relative z-1 w-full h-full flex mt-auto text-white">
-            ${document.querySelector('[data-post-heading]')?.innerHTML || ""}
+            {{> "postContent/postHeading"}}
           </div>
         </div>
       `;
