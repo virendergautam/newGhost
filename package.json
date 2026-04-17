@@ -1,5 +1,5 @@
 {
-  "name": "Gravity",
+  "name": "gravity",
   "version": "1.0.0",
   "engines": {
     "ghost": ">=5.0.0"
