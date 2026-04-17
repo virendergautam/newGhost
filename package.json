@@ -1,6 +1,5 @@
 {
-  "name": "your-theme-name",
-  "description": "Your custom Ghost theme",
+  "name": "Gravity",
   "version": "1.0.0",
   "engines": {
     "ghost": ">=5.0.0"
