@@ -3,6 +3,7 @@
     <div class="container {{#match @custom.post_layout "Default"}} container-sm {{/match}}">
       <div class="gh-content w-full max-w-[790px] mx-auto">
         {{content}}
+        {{#if @site.comments_enabled}}
         <div class="post-content-cta">
           {{#if @site.members_enabled}}
           {{#if @member}}
@@ -33,6 +34,7 @@
 
           {{/if}}
         </div>
+        {{/if}}
         <div class="post-content-actions flex items-center justify-between">
             {{#prev_post}}
           <a

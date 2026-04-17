@@ -1,4 +1,4 @@
-<div class="post-header mb-12">
+{{!-- <div class="post-header mb-12">
     <div class="container">
         <div class="post-gallery-images img-count-7">
             <div class="post-gallery-image">
@@ -28,4 +28,79 @@
         </div>
     </div>
 </div>
+{{> "postContent/postContent"}} --}}
+
+<div class="post-header mb-12" id="post-header">
+  <div class="container">
+    <div class="post-gallery-images" id="post-gallery"></div>
+  </div>
+</div>
+
 {{> "postContent/postContent"}}
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const gallery = document.getElementById("post-gallery");
+  const header = document.getElementById("post-header");
+  const hiddenContent = document.querySelector(".gh-content");
+
+  if (!gallery || !hiddenContent) return;
+
+  let images = [];
+
+  // ✅ 1. Featured image
+  const featureImg = "{{feature_image}}";
+  if (featureImg) {
+    images.push(featureImg);
+  }
+
+  // ✅ 2. Extract images (normal + gallery cards)
+  const contentImgs = hiddenContent.querySelectorAll("img");
+
+  contentImgs.forEach((img) => {
+    const src =
+      img.src ||
+      img.getAttribute("data-src") ||
+      img.getAttribute("data-lazy-src");
+
+    if (src && !images.includes(src) && images.length < 7) {
+      images.push(src);
+    }
+  });
+
+  // ❌ 3. Hide section if no images
+  if (images.length === 0) {
+    header.style.display = "none";
+    return;
+  }
+
+  // ✅ 4. Add dynamic class
+  gallery.classList.add(`img-count-${images.length}`);
+
+  // ✅ 5. Build HTML dynamically
+  gallery.innerHTML = images.map((src, index) => {
+
+    // First image gets heading overlay
+    if (index === 0) {
+      return `
+        <div class="post-gallery-image">
+          <img src="${src}" class="post-image" alt="{{title}}">
+          <div class="post-gallery-content px-7 py-2 relative z-1 w-full h-full flex mt-auto text-white">
+            ${document.querySelector('[data-post-heading]')?.innerHTML || ""}
+          </div>
+        </div>
+      `;
+    }
+
+    return `
+      <div class="post-gallery-image">
+        <img src="${src}" class="post-image" alt="{{title}}">
+      </div>
+    `;
+  }).join("");
+
+});
+</script>
+
