@@ -95,7 +95,7 @@ observer.observe(parentA, { childList: true });
 
     const dropdown = document.createElement('ul');
     dropdown.className =
-      'absolute left-0 top-full z-50 mt-2 min-w-56 rounded-xl border border-neutral-200 bg-white text-black p-2 shadow-lg ' +
+      'absolute left-0 top-full z-50 mt-4 min-w-[170px] rounded-xl bg-white text-black dark:bg-black dark:text-white p-2 ' +
       'opacity-0 invisible translate-y-1 transition';
 
     childLIs.forEach(childLI => {
@@ -104,7 +104,7 @@ observer.observe(parentA, { childList: true });
 
       const li = document.createElement('li');
       const a = childA.cloneNode(true);
-      a.className = 'block rounded-lg px-3 py-2 text-sm font-medium hover:bg-[#F7F7F7]';
+      a.className = 'block rounded-lg px-3 py-2 text-sm font-medium hover:bg-main';
 
       li.appendChild(a);
       dropdown.appendChild(li);

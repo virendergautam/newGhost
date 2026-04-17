@@ -92,10 +92,10 @@
                                 {{#foreach featured}}
                                 <div class="swiper-slide !w-auto px-1">
                                     <div
-                                        class="thumb-card w-[130px] xl:w-[180px] aspect-1/1 bg-alternate text-text rounded-lg overflow-hidden transition-all cursor-pointer">
+                                        class="thumb-card w-[130px] xl:w-[180px] aspect-1/1 bg-alternate text-text rounded-xl overflow-hidden transition-all cursor-pointer">
                                         {{#if feature_image}}
                                         <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
-                                            class="rounded-lg w-full h-full object-cover progressive-load lazyload">
+                                            class="rounded-xl w-full h-full object-cover progressive-load lazyload">
                                         {{else}}
                                         <div class="w-full h-full flex items-center justify-center">
                                             <span class="">{{t "NO IMAGE"}}</span>
@@ -550,7 +550,7 @@
                 class="w-full px-6 py-3 rounded-lg border border-transparent bg-alternate shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-text text-sm placeholder:text-text/20 focus:border-text focus:ring-4 focus:ring-text/5 transition-all outline-none" placeholder="Enter your email" autocomplete="email"/>
               <button type="submit"
                 class="button subscribe-button h-full cursor-pointer" autocomplete="off">
-                Subscribe
+                <span class="button-text relative">{{t "Subscribe"}}</span>
               </button>
                 <p data-members-error class="form-error text-red-500 mt-3 text-sm"></p>
                 <p data-members-success class="form-success text-green-500 mt-3 text-sm">

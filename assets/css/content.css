@@ -301,6 +301,26 @@ is the very first element in the post content */
 .article-post-slider {
     margin-top: calc(var(--header-height) * -1 - 70px - 20px);
 }
+.swiper-pagination.post-slider-pagination {
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+.swiper-pagination.post-slider-pagination .swiper-pagination-bullet {
+    width: 7px;
+    height: 7px;
+    border-radius: 10px;
+    background: #fff;
+    opacity: 1;
+    transition: .3s ease;
+}
+.swiper-pagination.post-slider-pagination .swiper-pagination-bullet-active {
+    height: 28px;
+}
 /* post gallery design css  */
 .post-gallery-images {
     display: grid;
@@ -325,6 +345,7 @@ is the very first element in the post content */
     z-index: 0;
     object-fit: cover;
 }
+
 .post-gallery-image:nth-child(1) {
     grid-area: span 2 / span 7;
 }
