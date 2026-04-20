@@ -1,30 +1,38 @@
 <style>
   @keyframes marquee-scroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
   }
+
   .animate-marquee-scroll {
     animation: marquee-scroll 25s linear infinite;
     display: flex;
     width: max-content;
   }
+
   .marquee-container:after {
     position: absolute;
     content: "";
     background: linear-gradient(90deg, var(--color-alternate) 0%, rgba(254, 254, 254, 0) 15%, rgba(252, 252, 252, 0) 85%, var(--color-alternate) 100%);
     inset: 0;
     pointer-events: none;
-}
+  }
 </style>
 
-<footer class="site-footer bg-alternate border-t border-border-light pt-[30px] lg:pt-[50px] xl:pt-[70px] overflow-hidden">
+<footer
+  class="site-footer bg-alternate border-t border-border-light pt-[30px] lg:pt-[50px] xl:pt-[70px] overflow-hidden">
   <div class="container">
     <div class="grid grid-cols-[1fr_2fr_0.5fr] gap-6 pb-[20px] lg:pb-[40px] xl:pb-[60px]">
       <div class="footer-info max-w-[300px]">
         <div class="footer-logo">
           <a class="block site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
             {{#if @site.logo}}
-             <img loading="lazy" class="max-w-[150px]" src="{{@site.logo}}" alt="{{@site.title}}">
+            <img loading="lazy" class="max-w-[150px]" src="{{@site.logo}}" alt="{{@site.title}}">
             {{else}}
             <h6 class="text-xl">{{@site.title}}</h6>
             {{/if}}
@@ -33,48 +41,43 @@
         <p class="text-sm mt-5">{{@site.description}}</p>
         <p class="text-xs mt-5 pt-5">
           <span>{{@custom.footer_copyright_text}}</span>
-          <span>Published with 
-            <a target="_blank" href="https://ghost.org/">Ghost</a> and 
+          <span>Published with
+            <a target="_blank" href="https://ghost.org/">Ghost</a> and
             <a target="_blank" href="https://whmcsglobalservices.com/">WHMCS Global Services</a>
           </span>
         </p>
       </div>
       <div id="footerGrid" class="grid grid-cols-3 gap-6 w-full lg:max-w-[75%] mx-auto"></div>
-      <div class="author-profile-meta gap-2.5 inline-flex justify-end social-links footer-link" data-links="{{@custom.social_links}}"> </div>
+      <div class="author-profile-meta gap-2.5 inline-flex justify-end social-links footer-link"
+        data-links="{{@custom.social_links}}"> </div>
     </div>
     <div class="marquee-container relative w-full pb-[20px] lg:pb-[35px] xl:pb-[50px] flex overflow-hidden">
-      <div class="animate-marquee-scroll">
-        <!-- Half 1 -->
-        <div class="flex items-center gap-10 pr-10">
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Ongoing Notes</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Curated Thoughts</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Collected Ideas</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Ongoing Notes</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Curated Thoughts</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Collected Ideas</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-        </div>
-        <!-- Half 2 -->
-        <div class="flex items-center gap-10 pr-10" aria-hidden="true">
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Ongoing Notes</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Curated Thoughts</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Collected Ideas</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Ongoing Notes</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Curated Thoughts</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-          <span class="text-3xl lg:text-4xl xl:text-5xl whitespace-nowrap text-heading font-heading font-bold">Collected Ideas</span>
-          <svg class="w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
-        </div>
+
+      {{#get "pages" filter="tag:hash-marquee" limit="1" include="tags"}}
+      {{#if pages}}
+      {{#foreach pages}}
+
+      <div class=" flex items-center gap-10 whitespace-nowrap animate-marquee-scroll">
+
+        {{#foreach tags}}
+        <span class="marquee-item text-3xl lg:text-4xl xl:text-5xl text-heading font-heading font-bold">
+          {{name}}
+        </span>
+
+        <svg class="marquee-item w-8 h-8 lg:w-12 lg:h-12 text-accent shrink-0" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
+          </path>
+        </svg>
+        {{/foreach}}
+
       </div>
+
+      {{/foreach}}
+      {{/if}}
+      {{/get}}
+
     </div>
   </div>
 </footer>

@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   allAuthorsPageLoadMore();
   socialLinks();
   lazyLoadImages()
+  marqueeText()
 });
 
 const themeToggle = () => {
@@ -463,4 +464,29 @@ const lazyLoadImages = () => {
   
 
 
+}
+
+
+
+const marqueeText = () => {
+  const marquees = document.querySelectorAll('.animate-marquee-scroll');
+  if (marquees.length) {
+    console.warn('Marquee animation skipped: no marquee-items-scroll found.');
+
+    marquees.forEach((marquee) => {
+      if (!marquee) return;
+      if (marquee.dataset.duplicated === "true") return;
+      const originalContent = marquee.innerHTML;
+      const viewportWidth = window.innerWidth;
+      let contentWidth = marquee.scrollWidth;
+      let count = 0;
+      const MAX_DUPLICATE = 3;
+      while (contentWidth < viewportWidth * 1.5 && count < MAX_DUPLICATE) {
+        marquee.insertAdjacentHTML('beforeend', originalContent);
+        contentWidth = marquee.scrollWidth;
+        count++;
+      }
+      marquee.dataset.duplicated = "true";
+    });
+  }
 }
