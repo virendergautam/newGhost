@@ -51,10 +51,10 @@
       <div class="author-profile-meta gap-2.5 inline-flex justify-end social-links footer-link"
         data-links="{{@custom.social_links}}"> </div>
     </div>
-    <div class="marquee-container relative w-full pb-[20px] lg:pb-[35px] xl:pb-[50px] flex overflow-hidden">
 
       {{#get "pages" filter="tag:hash-marquee" limit="1" include="tags"}}
       {{#if pages}}
+    <div class="marquee-container relative w-full pb-[20px] lg:pb-[35px] xl:pb-[50px] flex overflow-hidden">
       {{#foreach pages}}
 
       <div class=" flex items-center gap-10 whitespace-nowrap animate-marquee-scroll">
@@ -75,10 +75,10 @@
       </div>
 
       {{/foreach}}
+    </div>
       {{/if}}
       {{/get}}
 
-    </div>
   </div>
 </footer>
 
