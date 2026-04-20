@@ -25,12 +25,11 @@
     "email": "vikas.shinedezign@gmail.com"
   },
   "config": {
-    "posts_per_page": 9,
+    "posts_per_page": 12,
     "custom": {
       "dark_mode_logo": {
         "type": "image",
-        "default": "",
-        "group": "homepage"
+        "default": ""
       },
       "appearance": {
         "type": "select",
@@ -97,6 +96,16 @@
       "category_title": {
         "type": "text",
         "default": "Read by Category",
+        "group": "homepage"
+      },
+      "banner_heading": {
+        "type": "text",
+        "default": "Thoughts on code, design, and the future of the web.",
+        "group": "homepage"
+      },
+      "banner_description": {
+        "type": "text",
+        "default": "Join a community of over 10,000+ subscribers who receive curated links, exclusive tutorials, and honest advice on mastering the creator economy.",
         "group": "homepage"
       },
       "banner_background_image": {

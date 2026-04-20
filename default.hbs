@@ -9,7 +9,10 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {{!-- Swiper --}}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> 
+    <link rel="stylesheet" href="{{asset "css/vendor/swiper-bundle.min.css"}}">
+    <link rel="stylesheet" href="{{asset "css/vendor/aos.css"}}">
+      
     <link rel="preload" as="style" href="{{asset "built/main.css"}}" />
     <link rel="preload" as="script" href="{{asset "js/main.js"}}" />
 
@@ -43,9 +46,13 @@
 </script>
 
 {{!-- Ghost outputs required functional scripts with this tag - it should always be the last thing before the closing body tag --}}
-<script src="{{asset "js/main.js"}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+<script src="{{asset "js/vendor/swiper-bundle.min.js"}}"></script>
+<script src="{{asset "js/vendor/aos.js"}}"></script>
+<script src="{{asset "js/main.js"}}"></script>
+<script>
+  AOS.init();
+</script>
 {{ghost_foot}}
 
 </body>
