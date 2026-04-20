@@ -1,6 +1,6 @@
 {{!< default}} {{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template
     --}} <main id="site-main" class="site-main outer">
-    <section class="category-posts py-[40px] sm:py-[70px] border-10 border-red-100">
+    <section class="category-posts py-[40px] sm:py-[70px]">
         <div class="container">
             <div class="sm:grid sm:grid-cols-[auto_1fr] items-start gap-4">
                 <div class="sm:sticky sm:top-[70px] w-full sm:w-[300px] md:w-[300px]  xl:w-[375px] ">
@@ -10,10 +10,10 @@
                             <div
                                 class="category-image bg-main rounded-full overflow-hidden size-[180px] text-text/20 aspect-square">
                                 {{#if feature_image}}
-                                <img class="w-full h-full object-cover" srcset="{{img_url feature_image size=" s"}} 300w,
-                                    {{img_url feature_image size="m" }} 600w, {{img_url feature_image size="l" }} 1000w,
-                                    {{img_url feature_image size="xl" }} 2000w" sizes="(max-width: 1000px) 400px, 800px"
-                                    src="{{img_url feature_image size=" m"}}" alt="{{title}}" />
+                                <img class="w-full h-full object-cover" srcset="{{img_url feature_image size="s"}} 300w,
+                                    {{img_url feature_image size="m"}} 600w, {{img_url feature_image size="l"}} 1000w,
+                                    {{img_url feature_image size="xl"}} 2000w" sizes="(max-width: 1000px) 400px, 800px"
+                                    src="{{img_url feature_image size="m"}}" alt="{{name}}" />
                                 {{else}}
                                 <div class="w-full h-full p-[10%] flex items-center justify-center">
                                     {{> "icons/avatar"}}
