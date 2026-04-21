@@ -101,11 +101,6 @@ h6 {
   padding-block-start: 20px;
 }
 
-/* .fixed-sticky>.container,
-.fixed-layout>.container {
-  padding: 0;
-} */
-
 .background-layer {
   position: absolute;
   height: 100%;
@@ -157,8 +152,8 @@ body:has(.fixed-sticky) .site-main {
 }
 
 .thumbs-swiper .swiper-slide-thumb-active .thumb-card {
-  border: 2px solid var(--color-border) !important;
-  padding: 8px !important;
+  border: 1px solid var(--color-border) !important;
+  padding: 6px !important;
 }
 
 .main-swiper:has(.navigation-wrapper) .slide-content {
@@ -194,7 +189,7 @@ body:has(.fixed-sticky) .site-main {
 
 .button.button-large {
   min-height: 46px;
-  padding-inline: 20px;
+  padding-inline: 30px;
 }
 
 .button-outline {
@@ -202,21 +197,23 @@ body:has(.fixed-sticky) .site-main {
   color: var(--color-heading);
   border: 1px solid var(--color-heading);
 }
-.button::before{
+.button-text-inner{
+  display: block;
+  transition: .3s ease;
+}
+.button-text-inner.bottom-text{
+  display: flex;
   position: absolute;
-    content: "";
-    top: 0;
-    bottom: 0;
-    left: 0;
-    height: 100%;
-    width: 0%;
-    background-color: rgba(0,0,0,0.2);
-    transition: 0.3s ease-out;
+  left: 0;
+  bottom: -100%;
+  z-index: 2;
 }
-.button:hover::before{
-  width: 100%;
+.button:hover .button-text-inner.top-text  {
+  transform: translateY(-130%);
 }
-
+.button:hover .button-text-inner.bottom-text {
+  bottom: 0;
+}
 .filter-tab-btn.active {
   background-color: var(--color-accent);
   color: var(--color-accent-text);
@@ -246,6 +243,13 @@ body:has(.fixed-sticky) .site-main {
 .social-link:hover {
     color: var(--color-accent);
     transform: scale(0.9);
+}
+
+.recommended-posts .card.active{
+  flex: 1.3;
+}
+.recommended-posts .card.active .recommended-post-card{
+  opacity: 1;
 }
 /* Initial state (hidden completely) */
 .progressive-load.lazyload {
@@ -312,7 +316,7 @@ div[data-testid="comment-elements"] {
     height: 0%;
     left: 50%;
     top: 50%;
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
     transform: translate(-50%, -50%) rotate(-45deg);
     z-index: 1;
     pointer-events: none;
