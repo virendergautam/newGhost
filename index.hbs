@@ -10,10 +10,10 @@
                     {{#foreach featured}}
                     <div class="swiper-slide flex flex-col justify-center">
                         {{!-- Main Content Wrapper: Groups Text and Image --}}
-                        <div class="featured-slider-card h-full grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12">
+                        <div class="featured-slider-card h-full grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 md:gap-12">
                             {{!-- Text Content --}}
                             <div class="slide-content" data-aos="fade-in" data-aos-duration="600">
-                                <div class="flex items-center gap-1.5 mb-7">
+                                <div class="flex items-center gap-1.5 mb-5 md:mb-7">
                                     {{#if featured}}
                                     <div
                                         class="bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
@@ -30,15 +30,15 @@
                                     {{/has}}
                                     {{/unless}}
                                 </div>
-                                <h2 class="text-5xl mb-5 max-w-[550px]">
+                                <h2 class="text-3xl md:text-4xl lg:text-5xl  mb-5 max-w-[550px]">
                                     <a href="{{url}}">{{title}}</a>
                                 </h2>
                                 {{#if custom_excerpt}}
-                                    <p class="text-sm line-clamp-3 max-w-[450px] font-medium mb-8">{{custom_excerpt}}</p>
+                                    <p class="text-sm line-clamp-3 max-w-[450px] font-medium mb-5 md:mb-8">{{custom_excerpt}}</p>
                                 {{/if}}
                                 {{#unless custom_excerpt}}
                                     {{#if excerpt}}
-                                     <p class="text-sm line-clamp-3 max-w-[450px] font-medium mb-8">{{excerpt}}</p>
+                                     <p class="text-sm line-clamp-3 max-w-[450px] font-medium mb-5 md:mb-8">{{excerpt}}</p>
                                     {{/if}}
                                 {{/unless}}
                                 {{> "author-group"}}
@@ -46,10 +46,10 @@
 
                             {{!-- Right Large Image --}}
                             <div
-                                class="relative bg-alternate text-text/50 h-[690px] rounded-[20px] overflow-hidden flex items-center justify-center">
+                                class="group featured-post-img relative bg-alternate text-text/50 h-[690px] rounded-[20px] overflow-hidden flex items-center justify-center">
                                 {{#if feature_image}}
                                 <img src="{{img_url feature_image size="m"}}" data-src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy"
-                                    class="w-full h-full object-cover progressive-load lazyload">
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 progressive-load lazyload">
                                 {{else}}
                                 <span>{{t "NO IMAGE"}}</span>
                                 {{/if}}
@@ -61,7 +61,7 @@
                 </div>
                 {{#if featured.[1]}}
                 <div
-                    class="navigation-wrapper absolute z-1 bottom-[50px] left-0 w-full max-w-[56%] flex items-end justify-between gap-12 p-[10px] bg-main rounded-lg">
+                    class="navigation-wrapper absolute z-1 bottom-0 md:bottom-[50px] left-0 w-full md:max-w-[80%] lg:max-w-[56%] max-w-full  flex items-end justify-between gap-12 p-[10px] bg-main rounded-lg overflow-hidden">
                     <div class="flex items-center gap-5">
                         <div class="flex gap-2">
                             <button
@@ -82,8 +82,8 @@
 
                             </button>
                         </div>
-                        <div class="swiper-pagination-custom text-text font-medium">
-                            <span class="active-index text-heading text-xl">1</span>/{{featured.length}}
+                        <div class="swiper-pagination-custom text-text font-medium text-sm">
+                            <span class="active-index text-heading text-lg">1</span>/{{featured.length}}
                         </div>
                     </div>
                     <div class="thumbs-swiper-wrapper max-w-[560px]">
@@ -92,7 +92,7 @@
                                 {{#foreach featured}}
                                 <div class="swiper-slide !w-auto px-1">
                                     <div
-                                        class="thumb-card w-[130px] xl:w-[180px] aspect-1/1 bg-alternate text-text rounded-xl overflow-hidden transition-all cursor-pointer">
+                                        class="thumb-card w-[130px] md:w-[156px] 2xl:w-[180px] aspect-1/1 bg-alternate text-text rounded-xl overflow-hidden transition-all cursor-pointer">
                                         {{#if feature_image}}
                                         <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
                                             class="rounded-xl w-full h-full object-cover progressive-load lazyload">
