@@ -30,12 +30,7 @@
     <div
       class="px-3 py-1 min-h-[20px] flex items-center rounded-sm text-xs border border-border-light text-heading"
     >
-      {{plural
-        count.posts
-        empty="No articles"
-        singular="% article"
-        plural="% articles"
-      }}
+      {{count.posts}} {{t "articles"}}
     </div>
 
   </div>

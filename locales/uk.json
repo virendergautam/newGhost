@@ -99,7 +99,7 @@
     "Upgrade now": "Покращити підписку зараз",
     "Upgrade to a paid account to get full access.": "Оформіть платну підписку, щоб відкрити повний доступ.",
     "Upgrade your account": "Підвищити рівень своєї підписки",
-    "View all →": "Переглянути всі →",
+    "View all": "Переглянути всі",
     "View project": "Переглянути проєкт",
     "Website": "Вебсайт",
     "You might also like...": "Вам також може сподобатися...",
@@ -108,5 +108,7 @@
     "comments": "коментарі",
     "in {primaryTag}": "в {primaryTag}",
     "jamie@example.com": "ivan.koval@pryklad.com",
-    "← Previous": "← Назад"
+    "← Previous": "← Назад",
+    "articles":"статті",
+    "Published on":"Опубліковано"
 }

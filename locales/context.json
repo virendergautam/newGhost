@@ -99,7 +99,7 @@
     "Upgrade now": "bulletin/partials/content-cta.hbs, dawn/partials/content-cta.hbs, digest/partials/content-cta.hbs, edition/partials/content-cta.hbs, journal/index.hbs, journal/partials/content-cta.hbs, solo/partials/content-cta.hbs",
     "Upgrade to a paid account to get full access.": "journal/index.hbs",
     "Upgrade your account": "ghost-tpl/content-cta.hbs",
-    "View all →": "_shared/list.hbs, episode/partials/components/list.hbs, taste/partials/components/list.hbs",
+    "View all": "_shared/list.hbs, episode/partials/components/list.hbs, taste/partials/components/list.hbs",
     "View project": "edge/partials/loop.hbs",
     "Website": "london/author.hbs",
     "You might also like...": "alto/partials/related.hbs, dawn/partials/related-posts.hbs, ruby/partials/related-posts.hbs",
@@ -108,5 +108,6 @@
     "comments": "_shared/article.hbs, episode/partials/components/article.hbs, solo/post.hbs, taste/partials/components/article.hbs",
     "in {primaryTag}": "bulletin/partials/article.hbs, ruby/post.hbs",
     "jamie@example.com": "_shared/cta.hbs, _shared/header-content.hbs, bulletin/home.hbs, digest/default.hbs, episode/partials/components/cta.hbs, episode/partials/components/header-content.hbs, journal/default.hbs, journal/index.hbs, source/partials/email-subscription.hbs, taste/partials/components/cta.hbs, taste/partials/components/header-content.hbs",
-    "← Previous": "solo/post.hbs"
+    "← Previous": "solo/post.hbs",
+    "articles":"london/tag.hbs"
 }

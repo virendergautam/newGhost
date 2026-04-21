@@ -99,7 +99,7 @@
     "Upgrade now": "Şimdi yükselt",
     "Upgrade to a paid account to get full access.": "Tam erişim elde etmek için ücretli bir hesaba yükseltin.",
     "Upgrade your account": "Hesabınızı yükseltin",
-    "View all →": "Tümünü gör →",
+    "View all": "Tümünü gör",
     "View project": "Projeyi görüntüle",
     "Website": "Web sitesi",
     "You might also like...": "Bunlar da hoşunuza gidebilir...",
@@ -108,5 +108,7 @@
     "comments": "yorumlar",
     "in {primaryTag}": "{primaryTag} içinde",
     "jamie@example.com": "bilge@ornek.com",
-    "← Previous": "← Önceki"
+    "← Previous": "← Önceki",
+    "articles":"Makaleler",
+    "Published on":"Yayınlanma tarihi"
 }

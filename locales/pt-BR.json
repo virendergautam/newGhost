@@ -99,7 +99,7 @@
     "Upgrade now": "",
     "Upgrade to a paid account to get full access.": "",
     "Upgrade your account": "Atualize sua conta",
-    "View all →": "",
+    "View all": "",
     "View project": "",
     "Website": "",
     "You might also like...": "",
@@ -108,5 +108,7 @@
     "comments": "",
     "in {primaryTag}": "",
     "jamie@example.com": "joao.silva@exemplo.com",
-    "← Previous": ""
+    "← Previous": "",
+    "articles":"artigos",
+    "Published on":"Publicado em"
 }

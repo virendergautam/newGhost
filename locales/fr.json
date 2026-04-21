@@ -99,7 +99,7 @@
     "Upgrade now": "Mettre à niveau maintenant",
     "Upgrade to a paid account to get full access.": "Passez à un abonnement payant pour un accès complet.",
     "Upgrade your account": "Surclasser votre compte",
-    "View all →": "Tout voir →",
+    "View all": "Tout voir",
     "View project": "Voir le projet",
     "Website": "Site web",
     "You might also like...": "Vous aimerez peut-être aussi…",
@@ -108,5 +108,7 @@
     "comments": "commentaires",
     "in {primaryTag}": "dans {primaryTag}",
     "jamie@example.com": "jean.martin@exemple.com",
-    "← Previous": "← Précédent"
+    "← Previous": "← Précédent",
+    "articles":"articles",
+    "Published on":"Publié le"
 }

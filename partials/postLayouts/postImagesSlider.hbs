@@ -104,13 +104,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
   contentImgs.forEach((img) => {
     const src = img.src || img.getAttribute("data-src");
+        let url = new URL(src).pathname;
 
-    if (src && !slides.includes(src) && slides.length < 4) {
-      slides.push(src);
+
+    if (url && !slides.includes(url) && slides.length < 4) {
+      slides.push(url);
 
       wrapper.insertAdjacentHTML("beforeend", `
         <div class="swiper-slide">
-          <img src="${src}" class="w-full h-full object-cover"/>
+          <img src="${url}" class="w-full h-full object-cover"/>
         </div>
       `);
     }

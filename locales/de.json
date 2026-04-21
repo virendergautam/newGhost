@@ -99,7 +99,7 @@
     "Upgrade now": "Jetzt upgraden",
     "Upgrade to a paid account to get full access.": "Wechsle zum kostenpflichtigen Konto, um vollen Zugang zu erhalten.",
     "Upgrade your account": "Konto upgraden",
-    "View all →": "Alle anzeigen →",
+    "View all": "Alle anzeigen",
     "View project": "Projekt ansehen",
     "Website": "Website",
     "You might also like...": "Das könnte dich auch interessieren …",
@@ -108,5 +108,7 @@
     "comments": "Kommentare",
     "in {primaryTag}": "in {primaryTag}",
     "jamie@example.com": "jamie@example.com",
-    "← Previous": "← Zurück"
+    "← Previous": "← Zurück",
+    "articles":"Artikel",
+    "Published on":"Veröffentlicht am"
 }

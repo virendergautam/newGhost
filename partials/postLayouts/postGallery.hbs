@@ -92,12 +92,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ✅ 5. Build HTML dynamically
   gallery.innerHTML = images.map((src, index) => {
+    let url = new URL(src).pathname;
 
     // First image gets heading overlay
     if (index === 0) {
       return `
         <div class="post-gallery-image">
-          <img src="${src}" class="post-image" alt="{{title}}">
+          <img src="${url}" class="post-image" alt="{{title}}">
           <div class="post-gallery-content px-7 py-2 relative z-1 w-full h-full flex mt-auto text-white">
             {{> "postContent/postHeading"}}
           </div>
@@ -107,7 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     return `
       <div class="post-gallery-image">
-        <img src="${src}" class="post-image" alt="{{title}}">
+        <img src="${url}" class="post-image" alt="{{title}}">
       </div>
     `;
   }).join("");
