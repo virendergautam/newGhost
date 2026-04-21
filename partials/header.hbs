@@ -1,7 +1,7 @@
-<header id="siteHeader" class="header relative{{#match @custom.header_layout " Fixed layout"}} fixed-layout {{/match}}
+<header id="siteHeader" class="header relative{{#match @custom.header_layout "Fixed layout"}} fixed-layout {{/match}}
   {{#match @custom.header_layout "Sticky fullwidth" }} fullwidth-sticky header-sticky top-[0px] z-3 {{else match
   @custom.header_layout "Sticky fixed layout" }} fixed-sticky header-sticky top-[20px] z-3{{/match}}">
-  <div class="container {{#match @custom.header_layout " Fixed layout"}}relative{{else match
+  <div class="container {{#match @custom.header_layout "Fixed layout"}}relative{{else match
     @custom.header_layout "Sticky fixed layout" }}relative{{/match}}">
     <div class="background-layer bg-white dark:bg-black"></div>
     <!-- HEADER BAR -->

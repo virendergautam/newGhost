@@ -350,7 +350,6 @@ is the very first element in the post content */
     height: 100%;
     z-index: 0;
     object-fit: cover;
-    image-rendering: crisp-edges;
 }
 
 .post-gallery-image:nth-child(1) {
@@ -406,8 +405,4 @@ is the very first element in the post content */
 .post-gallery-images.img-count-7 .post-gallery-image:nth-child(6),
 .post-gallery-images.img-count-7 .post-gallery-image:nth-child(7) {
     grid-area: span 1 / span 2;
-}
-
-.article-image img {
-    image-rendering: crisp-edges;
 }

@@ -20,7 +20,11 @@
     {{#match @custom.feed_image_orientation "Landscape"}} aspect-[3/2] {{else}} {{#match @custom.feed_image_orientation "Portrait" }} aspect-[2/3] {{else}} {{#match @custom.feed_image_orientation "Square" }} aspect-square {{else}} aspect-auto {{/match}} {{/match}} {{/match}}">
     {{#if feature_image}}
     <img src="{{img_url feature_image size="xs" }}" data-src="{{img_url feature_image size="l"}}" alt="{{title}}" loading="lazy"
-      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 progressive-load lazyload" />
+      class="w-full h-full object-cover transition-all ease-[ease] duration-[0.7s] origin-right progressive-load lazyload group-hover:opacity-0 group-hover:scale-x-[1.5] group-hover:blur-lg" />
+      <div class="img-animtaion absolute inset-0">
+        <img src="{{img_url feature_image size="xs" }}" data-src="{{img_url feature_image size="l"}}" alt="{{title}}" loading="lazy"
+      class="w-full h-full object-cover transition-all ease-[ease] duration-[0.7s] origin-left opacity-0 scale-x-[1.5] blur-lg group-hover:opacity-100 group-hover:scale-x-[1] group-hover:blur-none" />
+      </div>
     {{else}}
     <span class="font-bold">{{t "NO IMAGE"}}</span>
     {{/if}}
