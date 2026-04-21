@@ -278,3 +278,19 @@ div[data-testid="comment-elements"] {
     border-radius: 20px;
     padding: 20px;
 }
+
+
+/* media query start */
+@media (max-width: 1280px) {
+.main-swiper:has(.navigation-wrapper) .slide-content {
+    padding-bottom: 180px;
+}
+}
+@media (max-width: 1199px) {
+ .main-swiper:has(.navigation-wrapper) .slide-content {
+    padding-top: 0px;padding-bottom: 0px;
+  }
+}
+@media (max-width: 991px) {
+  
+}
