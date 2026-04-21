@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   addClassToHeaderOnScroll();
   allAuthorsPageLoadMore();
   socialLinks();
-  lazyLoadImages()
-  marqueeText()
+  lazyLoadImages();
+  marqueeText();
+  recommededSectionHover();
 });
 
 const themeToggle = () => {
@@ -87,39 +88,39 @@ const swiperJs = () => {
       },
     },
   });
-// 🔹 CATEGORIES SWIPER
-const categoriesEl = document.querySelector(".categories-swiper");
+  // 🔹 CATEGORIES SWIPER
+  const categoriesEl = document.querySelector(".categories-swiper");
 
-if (categoriesEl) {
-  new Swiper(".categories-swiper", {
-    slidesPerView: "5",
-    spaceBetween: 12,
-    grabCursor: true,
-    speed: 500,
+  if (categoriesEl) {
+    new Swiper(".categories-swiper", {
+      slidesPerView: "4",
+      spaceBetween: 12,
+      grabCursor: true,
+      speed: 500,
 
-    // 🔥 Navigation (YOUR BUTTONS)
-    navigation: {
-      nextEl: ".categories-next",
-      prevEl: ".categories-prev",
-    },
-
-    // Optional smooth feel
-    freeMode: {
-      enabled: true,
-      momentum: true,
-      momentumRatio: 0.8,
-    },
-
-    breakpoints: {
-      640: {
-        spaceBetween: 12,
+      // 🔥 Navigation (YOUR BUTTONS)
+      navigation: {
+        nextEl: ".categories-next",
+        prevEl: ".categories-prev",
       },
-      1024: {
-        spaceBetween: 16,
+
+      // Optional smooth feel
+      freeMode: {
+        enabled: true,
+        momentum: true,
+        momentumRatio: 0.8,
       },
-    },
-  });
-}
+
+      breakpoints: {
+        640: {
+          spaceBetween: 12,
+        },
+        1024: {
+          spaceBetween: 16,
+        },
+      },
+    });
+  }
   // Tab Switching Logic
   const tabBtns = document.querySelectorAll(".tab-btn");
   const tabGrids = document.querySelectorAll(".tab-grid");
@@ -286,7 +287,7 @@ const socialLinks = () => {
     discord: ["discord.gg", "discord.com"],
     mastodon: ["mastodon.social", "mstdn.social", "mastodon.cloud"],
     bluesky: "bsky.app",
-    threads: ["threads.net","threads.com"],
+    threads: ["threads.net", "threads.com"],
   };
 
   links.split(",").forEach((raw) => {
@@ -425,16 +426,18 @@ const lazyLoadImages = () => {
 
   const images = document.querySelectorAll(".progressive-load");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-      }
-    });
-  }, { threshold: 0.2 });
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    },
+    { threshold: 0.2 },
+  );
 
-  images.forEach(img => {
-
+  images.forEach((img) => {
     // ✅ Wait for image load FIRST
     if (img.complete) {
       img.classList.remove("lazyload");
@@ -447,17 +450,11 @@ const lazyLoadImages = () => {
         observer.observe(img);
       });
     }
-
   });
-
-
-  
-
-
-}
+};
 
 const marqueeText = () => {
-    const track = document.getElementById("marquee-track");
+  const track = document.getElementById("marquee-track");
   if (!track) return;
 
   // ✅ STEP 1: Convert comma text → elements
@@ -465,10 +462,12 @@ const marqueeText = () => {
 
   let items = rawText
     .split(",")
-    .map(i => i.trim())
+    .map((i) => i.trim())
     .filter(Boolean);
 
-  track.innerHTML = items.map(text => `
+  track.innerHTML = items
+    .map(
+      (text) => `
     <span class="marquee-item text-3xl lg:text-4xl xl:text-5xl text-heading font-heading font-bold">
       ${text}
     </span>
@@ -481,14 +480,16 @@ const marqueeText = () => {
           <path d="M9.98438 16.123C10.2805 16.1232 10.5205 16.3631 10.5205 16.6592V17.4473C10.5203 17.7431 10.2803 17.9833 9.98438 17.9834C9.68836 17.9834 9.44848 17.7432 9.44824 17.4473V16.6592C9.44824 16.363 9.68821 16.123 9.98438 16.123Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"/>
           <path d="M16.5576 11.3486C16.6492 11.0671 16.9519 10.9135 17.2334 11.0049L17.9824 11.248C18.264 11.3396 18.4177 11.6422 18.3262 11.9238C18.2524 12.1505 18.0423 12.2939 17.8164 12.2939C17.7614 12.2939 17.7052 12.2854 17.6504 12.2676L16.9014 12.0244C16.6198 11.9328 16.4661 11.6303 16.5576 11.3486Z" fill="currentColor" stroke="currentColor" stroke-width="0.2"/>
         </svg>
-  `).join("");
+  `,
+    )
+    .join("");
 
   // ✅ STEP 2: Call your existing duplication logic
   marqueeTextDuplicate();
-}
+};
 
 const marqueeTextDuplicate = () => {
-  const marquees = document.querySelectorAll('.animate-marquee-scroll');
+  const marquees = document.querySelectorAll(".animate-marquee-scroll");
   if (marquees.length) {
     marquees.forEach((marquee) => {
       if (!marquee) return;
@@ -499,11 +500,52 @@ const marqueeTextDuplicate = () => {
       let count = 0;
       const MAX_DUPLICATE = 3;
       while (contentWidth < viewportWidth * 1.5 && count < MAX_DUPLICATE) {
-        marquee.insertAdjacentHTML('beforeend', originalContent);
+        marquee.insertAdjacentHTML("beforeend", originalContent);
         contentWidth = marquee.scrollWidth;
         count++;
       }
       marquee.dataset.duplicated = "true";
     });
   }
-}
+};
+
+const recommededSectionHover = () => {
+  const cards = document.querySelectorAll(".recommended-card");
+  if (!cards.length) return;
+
+  // ✅ Helper: remove all active
+  const clearActive = () => {
+    cards.forEach((card) => card.classList.remove("active"));
+  };
+  const container = document.querySelector(".recommended-posts-container");
+
+  container.addEventListener("mouseleave", () => {
+    clearActive();
+
+    if (cards.length === 1) {
+      cards[0].classList.add("active");
+    } else if (cards.length === 2) {
+      cards[0].classList.add("active");
+    } else {
+      cards[1].classList.add("active");
+    }
+  });
+
+  // ✅ DEFAULT ACTIVE BASED ON COUNT
+  if (cards.length === 1) {
+    cards[0].classList.add("active");
+  } else if (cards.length === 2) {
+    cards[0].classList.add("active");
+  } else {
+    // 3 or more
+    cards[1].classList.add("active");
+  }
+
+  // ✅ HOVER BEHAVIOR
+  cards.forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      clearActive();
+      card.classList.add("active");
+    });
+  });
+};
