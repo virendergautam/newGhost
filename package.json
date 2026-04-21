@@ -113,6 +113,11 @@
         "default": "",
         "group": "homepage"
       },
+      "footer_marquee_text": {
+        "type": "text",
+        "default": "Latest Topics, updates, and insights from our team.",
+        "group": "homepage"
+      },
       "post_layout": {
         "type": "select",
         "options": [
