@@ -1,5 +1,5 @@
 {{! Article Card for Index Page }}
-<article class="relative article-card group bg-alternate rounded-[20px] p-7 pbe-0 shadow-[box-shadow:0px_0px_50px_0px_#261E5308] hover:shadow-xl transition-all flex flex-col h-full ">
+<article class="relative article-card group bg-alternate rounded-[20px] p-4 sm:p-5 xl:p-7 pbe-0 shadow-[box-shadow:0px_0px_50px_0px_#261E5308] hover:shadow-xl transition-all flex flex-col h-full ">
   <div class="flex items-start justify-between mb-4">
     {{! Category Tag }}
     {{> "tagsList"}}
@@ -49,9 +49,9 @@
     <div class="flex items-center gap-2.5">
       {{#if primary_author.profile_image}}
       <img src="{{img_url primary_author.profile_image size=" xs"}}" alt="{{primary_author.name}}"
-        class="w-8 h-8 rounded-full object-cover">
+        class="md:w-9 md:h-9 w-7 h-7 rounded-full object-cover">
       {{else}}
-      <div class="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center text-[10px] text-gray-400 p-2"
+      <div class="md:w-9 md:h-9 w-7 h-7 rounded-full bg-gray-300 flex items-center justify-center text-[10px] text-gray-400 p-2"
         title="{{name}}">
         {{> "icons/avatar"}}
       </div>

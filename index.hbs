@@ -119,9 +119,9 @@
     <section class="latest-articles pt-[70px]">
         <div class="container">
             <!-- HEADER -->
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-[25px] gap-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-[30px] md:mb-[25px] gap-3 md:gap-6">
                 <h2 class="text-2xl md:text-3xl tracking-tight">{{@custom.home_feed_title}}</h2>
-                <div class="flex flex-wrap items-center gap-3">
+                <div class="flex flex-wrap items-center md:justify-end gap-3">
                     <button
                         class="filter-tab-btn cursor-pointer tab-btn active px-5 py-1.5 rounded-lg text-xs bg-alternate/50 border border-border"
                         data-tab="all">
@@ -144,7 +144,7 @@
                 <!-- ALL TAB -->
                 <div id="tab-all" class="tab-grid">
                     {{#get "posts" limit="50" include="tags,authors" order="published_at desc"}}
-                    <div class="posts-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="posts-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                         {{#foreach posts}}
                         <div class="post-item hidden">
                             {{> post-card}}
@@ -194,7 +194,7 @@
     {{#if @custom.home_tags_section}}
     <section class="tag-posts pt-[70px]">
         <div class="container">
-            <div class="bg-alternate rounded-[30px] p-[40px]">
+            <div class="bg-alternate rounded-[30px] py-[40px] px-[20px] md:px-[30px] lg:px-[40px]">
                 {{!-- PAGE BLOCK --}}
                 {{#get "pages" filter="tag:hash-categories-posts" limit="1"}}
                 {{#if pages}}
@@ -205,7 +205,7 @@
                     {{#unless @last}}
                         {{!-- Badge --}}
                             <div
-                                class="inline-flex items-center justify-center gap-1 rounded-full px-4 py-1.5 mb-7 border-2 border-accent text-heading" data-aos="fade-up" data-aos-duration="600">
+                                class="inline-flex items-center justify-center gap-1 rounded-full px-4 py-1.5 mb-3 md:mb-5 lg:mb-7 border-2 border-accent text-heading" data-aos="fade-up" data-aos-duration="600">
                                 <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M6.422 0.00405997C6.38979 0.0139994 6.35708 0.0222331 6.324 0.0287266C6.26746 0.0468719 6.21511 0.0761085 6.17 0.114727C6.01467 0.245393 6.00133 0.299393 5.97933 0.913393C5.93667 2.08473 5.74133 3.02206 5.38467 3.75873C4.68667 5.20139 3.27733 5.90273 0.904 5.98873C0.308 6.01006 0.244667 6.02406 0.125333 6.15539C0.0306666 6.26006 0 6.34406 0 6.49806C0 6.65206 0.0306666 6.73606 0.125333 6.84073C0.244 6.97206 0.309333 6.98606 0.888667 7.00739C1.68 7.03673 2.138 7.09606 2.73 7.24473C4.68867 7.73673 5.65 8.95473 5.92933 11.2981C5.94533 11.4374 5.968 11.7974 5.97933 12.0981C6 12.6594 6.01 12.7134 6.12533 12.8407C6.216 12.9407 6.33067 12.9867 6.48867 12.9867C6.64667 12.9867 6.76133 12.9407 6.852 12.8407C6.96667 12.7134 6.97733 12.6594 6.998 12.0981C7.02067 11.4974 7.04933 11.1947 7.128 10.7514C7.506 8.61606 8.60667 7.51539 10.742 7.13739C11.1853 7.05939 11.488 7.03006 12.0887 7.00739C12.668 6.98606 12.7333 6.97206 12.852 6.84073C12.9467 6.73606 12.9773 6.65206 12.9773 6.49806C12.9773 6.34006 12.9307 6.22539 12.8313 6.13473C12.704 6.01939 12.6507 6.00939 12.0753 5.98873C9.50467 5.89539 8.11133 5.12139 7.43867 3.41139C7.17933 2.75206 7.03533 1.93273 6.998 0.911393C6.98467 0.539393 6.96667 0.328727 6.94333 0.284727C6.89443 0.190723 6.82003 0.112399 6.72867 0.0587266C6.658 0.02206 6.46667 -0.01194 6.422 0.00405997ZM6.55467 3.90473C6.63 4.10939 6.87933 4.56873 7.04867 4.81606C7.53733 5.52739 8.27667 6.11073 9.12867 6.45606L9.24867 6.50406L9.08867 6.57273C7.88133 7.09006 7.07667 7.89806 6.558 9.11139L6.484 9.28473L6.42133 9.13006C5.94533 7.96406 5.138 7.13473 3.97533 6.61739C3.84733 6.56073 3.75133 6.50539 3.762 6.49539C3.77333 6.48539 3.872 6.43873 3.982 6.39273C5.04 5.94873 5.93133 5.05539 6.38533 3.98473C6.434 3.87073 6.48133 3.77806 6.49067 3.77806C6.5 3.77806 6.52933 3.83473 6.55467 3.90473Z" fill="currentcolor"/>
                                 </svg>
@@ -235,19 +235,19 @@
                     {{#if tags}}
 
                     {{#foreach tags}}
-                    <div class="mb-12" data-aos="fade-up" data-aos-duration="800">
+                    <div class="mt-10" data-aos="fade-up" data-aos-duration="800">
                         <h2 class="text-xl mb-6 tag-post-title">{{name}}</h2>
                         {{#get "posts" limit="4" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
 
                         {{#if posts}}
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                             {{#foreach posts}}
                             <a href="{{url}}"
                                 class="group relative flex flex-col bg-main rounded-[10px] overflow-hidden aspect-[3/4] cursor-pointer">
 
                                 {{!-- Enhanced Image Expansion Layer --}}
                                 <div
-                                    class="absolute inset-0 m-auto [clip-path:circle(28%_at_50%_45%)] group-hover:[clip-path:circle(100%_at_50%_50%)] overflow-hidden transition-all duration-700 ease-in-out">
+                                    class="absolute inset-0 m-auto lg:[clip-path:circle(28%_at_50%_45%)] group-hover:[clip-path:circle(100%_at_50%_50%)] overflow-hidden transition-all duration-700 ease-in-out">
                                     {{#if feature_image}}
                                     <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
                                         class="w-full h-full object-cover progressive-load lazyload">
@@ -257,7 +257,7 @@
                                 {{!-- Normal State Content --}}
                                 <div class="relative flex flex-col h-full justify-between px-[14px] py-[20px]">
                                     <div class="flex gap-2 justify-between">
-                                        <div class="flex items-center gap-1.5">
+                                        <div class="flex items-start gap-1.5">
                                             {{#if featured}}
                                                 <div class="bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
                                                 {{> "icons/fire"}}{{t "Featured"}}</div>
@@ -267,7 +267,7 @@
                                         {{#unless access}}
                                         {{^has visibility="public"}}
                                         <span
-                                            class="flex justify-center items-center border border-dashed border-heading text-heading w-7 h-7 rounded-full group-hover:bg-[#FFFFFF33] group-hover:text-white group-hover:border-[#FFFFFF] group-hover:backdrop-blur-[40px]">
+                                            class="flex justify-center items-center border border-dashed border-white lg:border-heading text-white lg:text-heading bg-[#FFFFFF33] lg:bg-transparent backdrop-blur-[40px] lg:backdrop-blur-0 w-7 h-7 rounded-full group-hover:bg-[#FFFFFF33] group-hover:text-white group-hover:border-[#FFFFFF] group-hover:backdrop-blur-[40px]">
                                             {{> "icons/lock"}}
                                         </span>
                                         {{/has}}
@@ -275,10 +275,10 @@
                                     </div>
                                     <div class="w-full">
                                         <span
-                                            class="text-xs font-medium mb-1 text-white opacity-0 group-hover:opacity-70 transition-all ease-in">{{date
+                                            class="text-xs font-medium mb-1 text-white lg:opacity-0 group-hover:opacity-70 transition-all ease-in">{{date
                                             format="MMM DD, YYYY"}}</span>
                                         <div
-                                            class="text-base font-bold text-black dark:text-white group-hover:text-white transition-all ease-in">
+                                            class="text-base font-bold text-white lg:text-black dark:text-white group-hover:text-white transition-all ease-in">
                                             {{title}}
                                         </div>
                                     </div>
@@ -309,9 +309,9 @@
     {{#get "posts" limit="3" include="tags,authors" filter="tag:hash-recommended" order="published_at desc"}}
         <section class="recommended-posts pt-[70px]">
             <div class="recommended-posts-container container">
-                <div class="flex gap-4 overflow-hidden" data-aos="fade-up" data-aos-duration="700">
+                <div class="flex gap-4 overflow-hidden mobile-swipe" data-aos="fade-up" data-aos-duration="700">
                     {{#foreach posts}}
-                    <div class="group card recommended-card relative min-h-[80dvh] p-5 rounded-[20px] overflow-hidden flex items-center justify-center flex-1 transition-all duration-400">
+                    <div class="group card recommended-card relative min-h-[80dvh] px-5 py-10 rounded-[20px] overflow-hidden flex items-center justify-center flex-1 transition-all duration-400">
                         <div class="absolute inset-0 overflow-hidden bg-alternate text-text/50 flex items-center justify-center min-w-[30vw]">
                             {{#if feature_image}}
                             <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}" class="w-full h-full object-cover progressive-load lazyload" />
@@ -320,7 +320,7 @@
                             {{/if}}
                         </div>
                         <article id="article-card-{{@index}}"
-                            class="recommended-post-card relative z-1 article-card group flex flex-col w-full max-w-[370px] mx-auto opacity-0 transition-all duration-400 ease">
+                            class="recommended-post-card relative z-1 article-card group flex flex-col w-full max-w-[370px] mx-auto opacity-100 lg:opacity-0  transition-all duration-400 ease">
                             <div id="article-card-iamge-{{@index}}"
                                 class="border-16 border-alternate rounded-t-xl article-card-image aspect-[3/2] relative">
                                 
@@ -379,10 +379,10 @@
                 <h2 class="text-2xl md:text-3xl font-bold tracking-tight">{{@custom.category_title}}</h2>
             </div>
             {{#get "tags" limit="100" include="count.posts" order="count.posts desc"}}
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6" data-aos="fade-up" data-aos-duration="800">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 gap-y-10" data-aos="fade-up" data-aos-duration="800">
                 {{#foreach tags}}
                 <a href="{{url}}"
-                    class="group flex flex-col gap-4 hover:translate-y-[-10px] transition-transform duration-500 ease-in-out">
+                    class="group flex flex-col gap-3 md:gap-4 hover:translate-y-[-10px] transition-transform duration-500 ease-in-out">
                     <div
                         class="relative aspect-square bg-alternate text-text/20 flex items-center justify-center rounded-lg overflow-hidden group-hover:shadow-lg transition-shadow duration-500 ease-in-out">
                         {{#if feature_image}}
