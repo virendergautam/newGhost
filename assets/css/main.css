@@ -44,6 +44,7 @@ body {
   line-height: 1.7;
   font-family: var(--font-body);
   font-weight: 500;
+  scrollbar-width: thin;
   --header-height: 70px;
 
 }
@@ -189,7 +190,8 @@ body:has(.fixed-sticky) .site-main {
 
 .button.button-large {
   min-height: 46px;
-  padding-inline: 30px;
+    min-width: 130px;
+  padding-inline: 20px;
 }
 
 .button-outline {
