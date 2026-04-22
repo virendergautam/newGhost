@@ -251,14 +251,14 @@ const allAuthorsPageLoadMore = () => {
 
   function update() {
     items.forEach((item, index) => {
-      item.style.display = index < visible ? "block" : "none";
+      item.style.display = index < visible ? "inline-flex" : "none";
     });
 
     // Hide button if all items already visible
     if (visible >= items.length) {
       btn.style.display = "none";
     } else {
-      btn.style.display = "block";
+      btn.style.display = "inline-flex";
     }
   }
 
@@ -292,6 +292,7 @@ const socialLinks = () => {
     mastodon: ["mastodon.social", "mstdn.social", "mastodon.cloud"],
     bluesky: "bsky.app",
     threads: ["threads.net", "threads.com"],
+    youtube: ["youtube.com", "youtu.be"],
   };
 
   links.split(",").forEach((raw) => {
@@ -394,6 +395,11 @@ const socialLinks = () => {
         return `<svg class="icon" viewBox="0 0 24 24" fill="none">
         <path d="M17.5609 11.1236C17.4575 11.074 17.3526 11.0263 17.2462 10.9806C17.0611 7.56727 15.1967 5.61312 12.0661 5.59312C12.0519 5.59304 12.0379 5.59304 12.0237 5.59304C10.1512 5.59304 8.59388 6.39262 7.63537 7.84759L9.35708 9.0291C10.0732 7.94229 11.1969 7.7106 12.0245 7.7106C12.034 7.7106 12.0436 7.7106 12.0531 7.71068C13.0839 7.71726 13.8618 8.01708 14.3652 8.60175C14.7315 9.02742 14.9765 9.61563 15.0978 10.3579C14.1839 10.2026 13.1956 10.1548 12.139 10.2155C9.16261 10.387 7.24916 12.1235 7.37767 14.5365C7.44288 15.7605 8.05242 16.8135 9.09393 17.5014C9.97446 18.0829 11.1087 18.3673 12.2874 18.3029C13.844 18.2175 15.0652 17.6234 15.9171 16.5371C16.564 15.712 16.9732 14.6429 17.154 13.2958C17.8957 13.7436 18.4455 14.333 18.7492 15.0414C19.2655 16.2459 19.2956 18.225 17.6814 19.8385C16.267 21.2521 14.5669 21.8635 11.9976 21.8824C9.14756 21.8613 6.9921 20.9468 5.59068 19.1646C4.27836 17.4958 3.60015 15.0852 3.57484 12C3.60015 8.91472 4.27836 6.5042 5.59068 4.83533C6.9921 3.05312 9.14752 2.13875 11.9976 2.11756C14.8684 2.13891 17.0614 3.05767 18.5164 4.8485C19.2299 5.7267 19.7677 6.8311 20.1224 8.11879L22.14 7.58028C21.7102 5.99527 21.0338 4.62946 20.1135 3.49675C18.248 1.20083 15.5199 0.024398 12.0046 0H11.9906C8.48249 0.0243044 5.78485 1.20522 3.97257 3.50991C2.3599 5.5608 1.52804 8.41446 1.50008 11.9916L1.5 12L1.50008 12.0084C1.52804 15.5855 2.3599 18.4393 3.97257 20.4901C5.78485 22.7947 8.48249 23.9758 11.9906 24H12.0046C15.1235 23.9783 17.3219 23.1615 19.1329 21.3513C21.5024 18.9833 21.431 16.0149 20.6501 14.1927C20.0898 12.8859 19.0216 11.8245 17.5609 11.1236ZM12.1759 16.1884C10.8715 16.2619 9.51623 15.6761 9.44937 14.4215C9.39984 13.4913 10.1111 12.4533 12.256 12.3296C12.5016 12.3154 12.7427 12.3085 12.9794 12.3085C13.7585 12.3085 14.4874 12.3842 15.1499 12.5292C14.9028 15.6169 13.4532 16.1183 12.1759 16.1884Z" fill="currentColor"/>
         </svg>`;
+            case "youtube":
+        return `<svg width="17" height="17" viewBox="0 0 17 17" fill="none">
+<path d="M0.566895 8.49974C0.566895 6.16224 0.566895 4.14349 1.60389 3.41745C2.64231 2.69141 5.16114 2.69141 8.50023 2.69141C11.8393 2.69141 14.3589 2.69141 15.3959 3.41745C16.4329 4.14349 16.4336 6.16224 16.4336 8.49974C16.4336 10.8372 16.4336 12.856 15.3959 13.582C14.3596 14.3081 11.8393 14.3081 8.50023 14.3081C5.16114 14.3081 2.6416 14.3081 1.60389 13.582C0.566186 12.856 0.566895 10.8372 0.566895 8.49974Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.8003 6.36551V10.633C6.80058 10.688 6.81212 10.7423 6.83427 10.7929C6.85642 10.8436 6.88874 10.8895 6.92939 10.9281C6.97004 10.9668 7.01822 10.9974 7.07118 11.0181C7.12415 11.0389 7.18085 11.0495 7.23806 11.0492C7.32427 11.0502 7.40876 11.026 7.48031 10.9798L10.8538 8.86442C10.9138 8.82712 10.9632 8.77605 10.9975 8.71583C11.0318 8.6556 11.05 8.58812 11.0503 8.51948C11.0506 8.45084 11.0331 8.38321 10.9994 8.3227C10.9656 8.26218 10.9167 8.21069 10.857 8.17289L7.4835 6.02076C7.38706 5.95878 7.26905 5.93581 7.15508 5.95681C7.04111 5.97781 6.94035 6.0411 6.87467 6.13295C6.82582 6.20141 6.79988 6.28253 6.8003 6.36551Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
       default:
         return `<svg width="17" height="17" viewBox="0 0 17 17" fill="none">
         <path d="M9.20147 5.92796L10.1368 6.86324C11.9447 8.6712 11.9447 11.6023 10.1368 13.4103L9.90295 13.644C8.09502 15.452 5.16383 15.452 3.35592 13.644C1.54803 11.8362 1.54803 8.90494 3.35592 7.09707L4.29122 8.03239C2.99986 9.32374 2.99986 11.4174 4.29122 12.7087C5.58257 14.0001 7.67625 14.0001 8.96767 12.7087L9.20147 12.475C10.4928 11.1836 10.4928 9.08987 9.20147 7.79853L8.26617 6.86324L9.20147 5.92796ZM13.644 9.90295L12.7087 8.96767C14.0001 7.67625 14.0001 5.58257 12.7087 4.29122C11.4174 2.99986 9.32374 2.99986 8.03239 4.29122L7.79853 4.52503C6.50718 5.81639 6.50718 7.9101 7.79853 9.20147L8.7338 10.1368L7.79853 11.072L6.86324 10.1368C5.05534 8.32885 5.05534 5.39766 6.86324 3.58976L7.09707 3.35592C8.90494 1.54803 11.8362 1.54803 13.644 3.35592C15.452 5.16383 15.452 8.09502 13.644 9.90295Z" fill="currentColor"/>
@@ -401,15 +407,48 @@ const socialLinks = () => {
     }
   }
 };
-const copyToClipboard = (url) => {
-  navigator.clipboard
-    .writeText(url)
-    .then(function () {
-      alert("Link copied to clipboard!");
-    })
-    .catch(function (err) {
-      console.error("Failed to copy: ", err);
-    });
+
+
+
+window.copyToClipboard = (url, el) => {
+  const showInlineToast = (element, message) => {
+    let toast = element.querySelector('.copy-toast-inline');
+
+    if (!toast) {
+      toast = document.createElement('span');
+      toast.className = 'copy-toast-inline';
+      element.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 1500);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url)
+      .then(() => showInlineToast(el, "Copied!"))
+      .catch(err => console.error("Failed to copy:", err));
+  } else {
+    const textarea = document.createElement("textarea");
+    textarea.value = url;
+    textarea.style.position = "fixed";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    try {
+      document.execCommand("copy");
+      showInlineToast(el, "Copied!");
+    } catch (err) {
+      console.error("Fallback copy failed:", err);
+    }
+
+    document.body.removeChild(textarea);
+  }
 };
 const lazyLoadImages = () => {
   //   const lazyImages = document.querySelectorAll('img.lazyload');
