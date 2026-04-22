@@ -1,35 +1,3 @@
-{{!-- <div class="post-header mb-12">
-    <div class="container">
-        <div class="post-gallery-images img-count-7">
-            <div class="post-gallery-image">
-                <img src="{{feature_image}}" class="post-image" alt="{{title}}">
-                <div class="post-gallery-content px-7 py-2 relative z-1 w-full h-full flex mt-auto text-white">
-                {{> "postContent/postHeading"}}
-                </div>
-            </div>
-            <div class="post-gallery-image">
-                <img src="{{feature_image}}" class="post-image" alt="{{title}}">
-            </div>
-            <div class="post-gallery-image">
-                <img src="{{feature_image}}" class="post-image" alt="{{title}}">
-            </div>
-            <div class="post-gallery-image">
-                <img src="{{feature_image}}" class="post-image" alt="{{title}}">
-            </div>
-            <div class="post-gallery-image">
-                <img src="{{feature_image}}" class="post-image" alt="{{title}}">
-            </div>
-            <div class="post-gallery-image">
-                <img src="{{feature_image}}" class="post-image" alt="{{title}}">
-            </div>
-            <div class="post-gallery-image">
-                <img src="{{feature_image}}" class="post-image" alt="{{title}}">
-            </div>
-        </div>
-    </div>
-</div>
-{{> "postContent/postContent"}} --}}
-
 <div class="post-header mb-12" id="post-header">
   <div class="container">
     <div class="post-gallery-images" id="post-gallery"></div>
@@ -75,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Instead of hiding, render fallback
   gallery.innerHTML = `
     <div class="post-gallery-image no-image rounded-xl">
-      <div class="post-gallery-content px-7 relative z-1 w-full h-full flex mt-auto">
+      <div class="post-gallery-content w-full px-7 relative z-1 w-full h-full flex mt-auto">
         {{> "postContent/postHeading"}}
       </div>
     </div>

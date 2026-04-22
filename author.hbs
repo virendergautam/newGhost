@@ -1,10 +1,10 @@
 {{!< default}} {{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template
     --}} <main id="site-main" class="site-main outer">
-    <section class="authors-posts py-[70px]">
+    <section class="authors-posts py-[40px] md:py-[60px] lg:py-[70px]">
         <div class="container">
-            <div class="grid grid-cols-[auto_1fr] items-start gap-4">
+            <div class="grid sm:grid-cols-[auto_1fr] items-start gap-4">
                 {{#author}}
-                <div class="author-card w-[375px] bg-alternate border border-accent rounded-[20px] sticky top-[70px]">
+                <div class="author-card w-[100%] sm:w-[300px] lg:w-[350px] 2xl:w-[375px] bg-alternate border border-accent rounded-[20px] sm:sticky sm:top-[70px]">
                     <div class="author-card-body p-5 text-center flex flex-col items-center">
                         <div
                             class="author-image bg-main rounded-full overflow-hidden size-[180px] text-text/20 aspect-square  mt-5">

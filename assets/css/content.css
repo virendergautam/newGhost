@@ -86,7 +86,7 @@ headings, text, images and lists. We deal with cards lower down. */
 /* Add back a top margin to all headings, unless a heading
 is the very first element in the post content */
 .gh-content > [id]:not(:first-child) {
-    margin-top: 3rem;
+    margin-top: 2.6rem;
 }
 
 /* Add a small margin between a heading and anything after it */
@@ -325,6 +325,9 @@ is the very first element in the post content */
 .article-stickypost .aricle-heading-wrapper .post-share-links {
     display: none;
 }
+ .split-post .aricle-heading-wrapper {
+    max-width: 95%;
+}
 .article-post-slider {
     margin-top: calc(var(--header-height) * -1 - 70px - 20px);
 }
@@ -366,6 +369,7 @@ is the very first element in the post content */
     height: 100%;
     background: var(--color-alternate);
     overflow: hidden;
+    border-radius: 10px;
 }
 .post-gallery-image .post-image{
     position: absolute;
@@ -429,4 +433,37 @@ is the very first element in the post content */
 .post-gallery-images.img-count-7 .post-gallery-image:nth-child(6),
 .post-gallery-images.img-count-7 .post-gallery-image:nth-child(7) {
     grid-area: span 1 / span 2;
+}
+.social-link {
+  position: relative;
+}
+ 
+.copy-toast-inline {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #ffffff;
+  color: #000000;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+}
+ 
+.copy-toast-inline.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.copy-toast-inline::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #111;
 }

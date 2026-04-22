@@ -92,10 +92,13 @@ const observer = new MutationObserver(() => {
 
 observer.observe(parentA, { childList: true });
 
+    const dropdownUl = document.createElement('ul');
+    const dropdown = document.createElement('div');
+    dropdown.appendChild(dropdownUl);
 
-    const dropdown = document.createElement('ul');
+
     dropdown.className =
-      'absolute left-0 top-full z-50 mt-4 min-w-[170px] rounded-xl bg-white text-black dark:bg-black dark:text-white p-2 ' +
+      'dropdown absolute left-0 top-full z-50 mt-4 min-w-[170px] rounded-xl bg-white text-black dark:bg-black dark:text-white p-2 ' +
       'opacity-0 invisible translate-y-1 transition';
 
     childLIs.forEach(childLI => {
@@ -107,7 +110,7 @@ observer.observe(parentA, { childList: true });
       a.className = 'block rounded-lg px-3 py-2 text-sm font-medium hover:bg-main';
 
       li.appendChild(a);
-      dropdown.appendChild(li);
+      dropdownUl.appendChild(li);
 
       // Remove from top-level
       childLI.remove();
@@ -138,12 +141,15 @@ observer.observe(parentA, { childList: true });
 </script>
 
 <style>
-#siteNav li.is-open > ul {
+#siteNav li.is-open > .dropdown {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
-  max-height: 235px;
   overflow: hidden;
-  overflow-y: auto;
+}
+
+#siteNav li.is-open > .dropdown > ul {
+  max-height: 230px;
+  overflow: auto;
 }
 </style>
