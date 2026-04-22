@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ✅ 5. Build HTML dynamically
   gallery.innerHTML = images.map((src, index) => {
-    let url = new URL(src).pathname;
+    let url = src;
 
     // First image gets heading overlay
     if (index === 0) {
