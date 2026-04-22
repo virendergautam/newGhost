@@ -1,3 +1,5 @@
+import PhotoSwipeLightbox from '/assets/photoswipe/photoswipe-lightbox.esm.js';
+
 document.addEventListener("DOMContentLoaded", function () {
   themeToggle();
   swiperJs();
@@ -8,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
   lazyLoadImages();
   marqueeText();
   recommededSectionHover();
+  initPhotoSwipe()
+
 });
 
 const themeToggle = () => {
@@ -549,3 +553,36 @@ const recommededSectionHover = () => {
     });
   });
 };
+
+
+function initPhotoSwipe() {
+
+  document.querySelectorAll('.kg-image-card img, .kg-gallery-image img').forEach(img => {
+    if (!img.parentElement.querySelector('a')) {
+      const link = document.createElement('a');
+      link.href = img.src;
+
+      const setSize = () => {
+        link.setAttribute('data-pswp-width', img.naturalWidth);
+        link.setAttribute('data-pswp-height', img.naturalHeight);
+      };
+
+      if (img.complete) {
+        setSize();
+      } else {
+        img.onload = setSize;
+      }
+
+      img.parentNode.insertBefore(link, img);
+      link.appendChild(img);
+    }
+  });
+
+const lightbox = new PhotoSwipeLightbox({
+  gallery: '.post-content',
+  children: 'figure.kg-image-card a, .kg-gallery-image a',
+  pswpModule: () => import('/assets/photoswipe/photoswipe.esm.js')
+});
+
+  lightbox.init();
+}

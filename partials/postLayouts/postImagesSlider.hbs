@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   contentImgs.forEach((img) => {
     const src = img.src || img.getAttribute("data-src");
-        let url = new URL(src).pathname;
+        let url = src;
 
 
     if (url && !slides.includes(url) && slides.length < 4) {
