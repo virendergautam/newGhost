@@ -407,15 +407,48 @@ const socialLinks = () => {
     }
   }
 };
-const copyToClipboard = (url) => {
-  navigator.clipboard
-    .writeText(url)
-    .then(function () {
-      alert("Link copied to clipboard!");
-    })
-    .catch(function (err) {
-      console.error("Failed to copy: ", err);
-    });
+
+
+
+window.copyToClipboard = (url, el) => {
+  const showInlineToast = (element, message) => {
+    let toast = element.querySelector('.copy-toast-inline');
+
+    if (!toast) {
+      toast = document.createElement('span');
+      toast.className = 'copy-toast-inline';
+      element.appendChild(toast);
+    }
+
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 1500);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(url)
+      .then(() => showInlineToast(el, "Copied!"))
+      .catch(err => console.error("Failed to copy:", err));
+  } else {
+    const textarea = document.createElement("textarea");
+    textarea.value = url;
+    textarea.style.position = "fixed";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+
+    try {
+      document.execCommand("copy");
+      showInlineToast(el, "Copied!");
+    } catch (err) {
+      console.error("Fallback copy failed:", err);
+    }
+
+    document.body.removeChild(textarea);
+  }
 };
 const lazyLoadImages = () => {
   //   const lazyImages = document.querySelectorAll('img.lazyload');
