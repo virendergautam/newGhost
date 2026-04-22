@@ -20,7 +20,7 @@
                                         {{> "icons/fire"}}{{t "Featured"}}</div>
                                     {{/if}}
                                     {{> "tagsList"}}
-                                    <span class="text-xs font-medium pl-2">{{reading_time}}</span>
+                                    <span class="text-xs font-medium pl-2 min-w-[90px]">{{reading_time}}</span>
                                     {{#unless access}}
                                     {{^has visibility="public"}}
                                     <span
@@ -121,9 +121,9 @@
             <!-- HEADER -->
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-[30px] md:mb-[25px] gap-3 md:gap-6">
                 <h2 class="text-2xl md:text-3xl tracking-tight">{{@custom.home_feed_title}}</h2>
-                <div class="flex flex-wrap items-center md:justify-end gap-3">
+                <div class="flex flex-wrap items-center md:justify-end gap-1">
                     <button
-                        class="filter-tab-btn cursor-pointer tab-btn active px-5 py-1.5 rounded-lg text-xs bg-alternate/50 border border-border"
+                        class="filter-tab-btn cursor-pointer tab-btn active px-5 py-2 rounded-lg text-xs bg-alternate/50 border border-border"
                         data-tab="all">
                         {{t "All"}}
                     </button>
@@ -131,7 +131,7 @@
                     {{#get "tags" filter="slug:[{{@custom.home_feed_tags}}]"}}
                     {{#foreach tags}}
                     <button
-                        class="filter-tab-btn cursor-pointer tab-btn px-5 py-1.5 rounded-lg text-xs bg-alternate/50 border border-border"
+                        class="filter-tab-btn cursor-pointer tab-btn px-5 py-2 rounded-lg text-xs bg-alternate/50 border border-border"
                         data-tab="{{slug}}">
                         {{name}}
                     </button>
@@ -154,8 +154,8 @@
                     <div class="text-center mt-10">
                         <button class="show-more-btn button button-outline button-large">
                             <span class="button-text relative overflow-hidden h-full">
-                                <span class="button-text-inner top-text">{{t "Show more"}}</span>
-                                <span class="button-text-inner bottom-text">{{t "Show more"}}</span>
+                                <span class="button-text-inner top-text">{{t "Show More"}}</span>
+                                <span class="button-text-inner bottom-text">{{t "Show More"}}</span>
                             </span>
                         </button>
                     </div>
@@ -177,8 +177,8 @@
                     <div class="text-center mt-10">
                         <button class="show-more-btn button button-outline button-large">
                             <span class="button-text relative overflow-hidden h-full">
-                                <span class="button-text-inner top-text">{{t "Show more"}}</span>
-                                <span class="button-text-inner bottom-text">{{t "Show more"}}</span>
+                                <span class="button-text-inner top-text">{{t "Show More"}}</span>
+                                <span class="button-text-inner bottom-text">{{t "Show More"}}</span>
                             </span>
                         </button>
                     </div>
@@ -252,6 +252,7 @@
                                     <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
                                         class="w-full h-full object-cover progressive-load lazyload">
                                     {{/if}}
+                                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[linear-gradient(0deg,_#000000_0%,_#00000000_75%)]"></div>
                                 </div>
 
                                 {{!-- Normal State Content --}}
