@@ -1,5 +1,5 @@
-    <div class="aricle-heading-wrapper w-full grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] items-end gap-10 pb-10 {{#match @custom.post_layout "No image"}} border-b border-border{{/match}} {{#unless feature_image}} border-b border-border{{/unless}}">
-        <div class="aricle-heading lg:max-w-[700px] flex flex-col gap-5">
+    <div class="aricle-heading-wrapper w-full grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[1.5fr_1fr] items-end gap-2 md:gap-5 xl:gap-10 pb-10 {{#match @custom.post_layout "No image"}} border-b border-border{{/match}} {{#unless feature_image}} border-b border-border{{/unless}}">
+        <div class="aricle-heading lg:max-w-[700px] xl:max-w-[600px] flex flex-col gap-5">
             <div class="flex items-center gap-2">
                 {{> "tagsList"}}
                 <span class="text-xs font-medium pl-2">{{reading_time}}</span>
@@ -7,9 +7,9 @@
             <h2 class="text-4xl mb-2">{{title}}</h2>
             {{> "author-group"}}
         </div>
-        <div class="article-info grid gap-12">
+        <div class="article-info grid gap-4 md:gap-10 lg:gap-12">
             {{#if custom_excerpt}}
-                <p class="article-excerpt mt-4">{{custom_excerpt}}</p>
+                <p class="article-excerpt mt-3 md:mt-4">{{custom_excerpt}}</p>
             {{/if}}
             {{> "postContent/postShare"}}
         </div>

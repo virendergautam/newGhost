@@ -159,9 +159,6 @@ h6 {
   transition: .2s ease;
 }
 
-body:has(.fixed-sticky) .site-main {
-  padding-block-start: 20px;
-}
 
 [data-theme="dark"] .light-logo-image,
 [data-theme="light"] .dark-logo-image {
@@ -429,9 +426,6 @@ div[data-testid="comment-elements"] {
     z-index: 99999;
     transition: clip-path 0.4s ease-out;
     clip-path: inset(0% 0 100% 0);
-  }
-  body:has(.announcement-bar-root) .header:not(.is-sticky) .mobile-header-menu {
-    top: calc(var(--announcement-height, 0px) + var(--header-height));
   }
   .header:not(.is-sticky) .mobile-header-menu {
     max-width: calc(100% - 30px);
