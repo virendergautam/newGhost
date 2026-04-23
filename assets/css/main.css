@@ -408,6 +408,88 @@ div[data-testid="comment-elements"] {
   .mobile-swipe-cols-2 {
     --column-width-mobile: 37vw;
   }
+  /* mobile menu design start */
+  .mobile-header-menu {
+    background: var(--color-alternate);
+    color: var(--color-heading);
+    margin: 0 auto;
+    padding: 20px;
+    position: fixed;
+    overflow: hidden;
+    overflow-y: auto;
+    transition: transform .5s ease-in-out;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: calc(100dvh - var(--announcement-height, 0px) - var(--header-height) - 60px);
+    left: 0;
+    right: 0;
+    top: calc(var(--announcement-height, 0px) + var(--header-height));
+    z-index: 99999;
+    transition: clip-path 0.4s ease-out;
+    clip-path: inset(0% 0 100% 0);
+  }
+  body:has(.announcement-bar-root) .header:not(.is-sticky) .mobile-header-menu {
+    top: calc(var(--announcement-height, 0px) + var(--header-height));
+  }
+  .header:not(.is-sticky) .mobile-header-menu {
+    max-width: calc(100% - 30px);
+  }
+    body:has(.mobile-header-menu.is-open) {
+    overflow: hidden;
+  }
+
+  .mobile-header-menu.is-open{
+    clip-path: inset(0 0 0 0);
+  }
+
+  .header-nav-close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .header:has(.is-open-animation) .header-inner {
+    background: var(--color-alternate);
+    border-radius: 20px 20px 0 0;
+    border-color: var(--color-alternate);
+  }
+  .mobile-header-menu ul {
+    align-content: flex-start;
+    height: 100%;
+    overflow: hidden auto;
+}
+  .nav-menu-item {
+    width: 100%;
+  }
+  .nav-menu-link {
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    background: color-mix(in srgb, var(--color-main) 100%, white 10%);
+    border-radius: 8px;
+  }
+  .nav-menu-item.has-dropdown .dropdown {
+    opacity: 1;
+    visibility: visible;
+    background-color: var(--color-alternate);
+    width: 100%;
+    color: var(--color-heading);
+    box-shadow: none;
+    border: 0;
+    border-radius: 0px;
+    margin: 0;
+    display: none;
+    position: relative;
+    top: 0;
+  }
+  .nav-menu-item.has-dropdown.is-open .dropdown {
+    display: block;
+  }
+
 }
 @media (max-width: 639px){
     .subscribe-button{

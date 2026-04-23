@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", function () {
   marqueeText();
   recommededSectionHover();
   initPhotoSwipe()
+  mobileMenu()
+  setHeaderAndAnnouncementHeights();
+  observeAnnouncementLifecycle();
+  observeAnnouncementVisibility();
 
 });
 
@@ -625,3 +629,133 @@ const lightbox = new PhotoSwipeLightbox({
 
   lightbox.init();
 }
+
+
+const mobileMenu = () => {
+  const burger = document.querySelector(".header-utils-burger");
+  const menu = document.querySelector(".mobile-header-menu");
+  const menuClose = document.querySelector(".header-nav-close");
+
+  if (!burger || !menu) return;
+
+  burger.addEventListener("click", function () {
+    console.log("burger click")
+
+    const isOpen = menu.classList.contains("is-open");
+    console.log("burger click",isOpen)
+
+
+    if (!isOpen) {
+      // OPEN
+      menu.classList.add("is-open");
+      menu.classList.add("is-open-animation");
+    } else {
+      // CLOSE
+      menu.classList.remove("is-open");
+
+      setTimeout(() => {
+        menu.classList.remove("is-open-animation");
+      }, 400); // slow close
+    }
+  });
+};
+
+
+///////////////////////////// header heights
+const setHeaderAndAnnouncementHeights = () => {
+  const announcementBar = document.getElementById("announcement-bar-root");
+  const siteHeader = document.getElementById("siteHeader");
+
+  requestAnimationFrame(() => {
+    const h = announcementBar.scrollHeight;
+
+    announcementBar.style.maxHeight = h + "px";
+
+    requestAnimationFrame(() => {
+      announcementBar.style.opacity = "1";
+    });
+  });
+
+  if (announcementBar) {
+    announcementBar.classList.add("active");
+  }
+  const announcementHeight = announcementBar?.offsetHeight || 0;
+  document.body.style.setProperty(
+    "--announcement-height",
+    `${announcementHeight}px`,
+  );
+
+  observeAnnouncementVisibility();
+
+  const headerInner = siteHeader?.querySelector(".header-inner");
+  const headerHeight = headerInner?.offsetHeight || 0;
+  document.body.style.setProperty("--header-height", `${headerHeight}px`);
+};
+
+const debounce = (fn, delay = 150) => {
+  let timeout;
+  return (...args) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => fn(...args), delay);
+  };
+};
+
+const observeAnnouncementLifecycle = () => {
+  let resizeObserver = null;
+
+  const mutationObserver = new MutationObserver(() => {
+    const announcementBar = document.getElementById("announcement-bar-root");
+
+    if (announcementBar) {
+      setHeaderAndAnnouncementHeights();
+
+      if (!resizeObserver) {
+        resizeObserver = new ResizeObserver(() => {
+          setHeaderAndAnnouncementHeights();
+        });
+        resizeObserver.observe(announcementBar);
+      }
+    }
+
+    if (!announcementBar && resizeObserver) {
+      document.body.style.setProperty("--announcement-height", "0px");
+      resizeObserver.disconnect();
+      resizeObserver = null;
+    }
+  });
+
+  mutationObserver.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+};
+
+const observeAnnouncementVisibility = () => {
+  const announcementBar = document.getElementById("announcement-bar-root");
+  if (!announcementBar) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const entry = entries[0];
+
+      if (entry.isIntersecting) {
+        // Announcement is visible
+        const height = announcementBar.offsetHeight;
+        document.body.style.setProperty("--announcement-height", `${height}px`);
+      } else {
+        // Announcement scrolled out of view
+        document.body.style.setProperty("--announcement-height", "0px");
+      }
+    },
+    {
+      threshold: 0,
+    },
+  );
+
+  observer.observe(announcementBar);
+};
+
+window.addEventListener(
+  "resize",
+  debounce(setHeaderAndAnnouncementHeights, 150),
+);

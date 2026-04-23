@@ -1,6 +1,6 @@
 {{#get "posts" include="tags,authors" filter="id:-{{id}}" limit="4" as |more_posts| }}
 {{#if more_posts}}
-  <section class="related-posts py-[70px] border-t border-border">
+  <section class="related-posts py-[40px] md:py-[60px] lg:py-[70px] border-t border-border">
     <div class="container">
       <h2 class="text-3xl mb-5">{{t "You might also like"}}</h2>
       {{!-- This query gets the latest 3 posts on the site, but adds a filter to

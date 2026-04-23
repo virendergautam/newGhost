@@ -5,7 +5,7 @@
     @custom.header_layout "Sticky fixed layout" }}relative{{/match}}">
     <div class="background-layer bg-white dark:bg-black"></div>
     <!-- HEADER BAR -->
-    <nav
+    <div
       class="header-inner grid grid-cols-[1fr_auto] md:grid-cols-[auto_1fr_auto] lg:grid-cols-[1fr_auto_1fr] items-center min-h-[50px] py-1.5 gap-6 relative text-black dark:text-white">
 
       <!-- LOGO -->
@@ -90,7 +90,7 @@
           </div>
           <!-- MOBILE BURGER -->
           <button id="mobileMenuToggle" aria-label="Menu"
-            class="w-5 h-5 flex flex-col justify-center gap-1 cursor-pointer md:hidden">
+            class="w-5 h-5 flex flex-col justify-center gap-1 cursor-pointer md:hidden header-utils-burger">
             <span class="block rounded-lg h-[2px]  bg-black"></span>
             <span class="block rounded-lg w-[80%] ml-auto h-[2px] bg-black"></span>
             <span class="block rounded-lg h-[2px]  bg-black"></span>
@@ -98,11 +98,10 @@
 
         </div>
       </div>
-    </nav>
+    </div>
     <!-- MOBILE MENU -->
-    {{!-- <nav id="mobileMenu"
-      class="mobile-header-menu hidden lg:hidden mt-4 bg-white border border-[#EBEBEB] rounded-xl p-5">
-
+    <nav id="mobileMenu"
+      class="mobile-header-menu  lg:hidden mt-4 bg-white border border-[#EBEBEB] p-5">
       <!-- NAVIGATION -->
       <div class="flex flex-col gap-4">
         {{navigation}}
@@ -128,6 +127,6 @@
       </div>
       {{/if}}
 
-    </nav> --}}
+    </nav>
   </div>
 </header>
