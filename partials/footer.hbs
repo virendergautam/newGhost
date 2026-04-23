@@ -25,10 +25,10 @@
 </style>
 
 <footer
-  class="site-footer bg-alternate border-t border-border-light pt-[30px] lg:pt-[50px] xl:pt-[70px] overflow-hidden">
+  class="site-footer bg-alternate border-t border-border-light pt-[40px] lg:pt-[50px] xl:pt-[70px] overflow-hidden">
   <div class="container">
-    <div class="grid grid-cols-[1fr_2fr_0.5fr] gap-6 items-start pb-[20px] lg:pb-[40px] xl:pb-[60px]">
-      <div class="footer-info max-w-[300px]">
+    <div class="grid grid-cols-[1fr] md:grid-cols-[1.2fr_2fr] lg:grid-cols-[1fr_2fr_0.5fr] gap-8 sm:gap-6 items-start pb-[40px] xl:pb-[60px]">
+      <div class="footer-info md:max-w-[300px]">
         <div class="footer-logo">
           <a class="block relative site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
           {{#if @site.logo}}
@@ -45,8 +45,8 @@
 
         </a>
         </div>
-        <p class="text-sm mt-5">{{@site.description}}</p>
-        <p class="text-xs mt-5 pt-5">
+        <p class="text-sm mt-5 pb-4 border-b border-border-light md:border-0 md:pb-0">{{@site.description}}</p>
+        <p class="text-xs mt-5 pt-5 hidden md:block">
           <span>{{@custom.footer_copyright_text}}</span>
           <span>Published with
             <a target="_blank" href="https://ghost.org/">Ghost</a> and
@@ -54,13 +54,20 @@
           </span>
         </p>
       </div>
-      <div id="footerGrid" class="grid grid-cols-3 gap-6 w-full lg:max-w-[75%] mx-auto"></div>
-      <div class="author-profile-meta gap-2.5 inline-flex flex-wrap justify-end social-links footer-link"
+      <div id="footerGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 w-full md:max-w-[75%] mx-auto"></div>
+      <div class="author-profile-meta gap-2.5 inline-flex flex-wrap lg:justify-end social-links footer-link"
         data-links="{{@custom.social_links}}"> </div>
+      <p class="text-xs block md:hidden">
+          <span>{{@custom.footer_copyright_text}}</span>
+          <span>Published with
+            <a target="_blank" href="https://ghost.org/">Ghost</a> and
+            <a target="_blank" href="https://whmcsglobalservices.com/">WHMCS Global Services</a>
+          </span>
+        </p>
     </div>
 
       <div class="marquee-container relative w-full pb-[20px] lg:pb-[35px] xl:pb-[50px] flex overflow-hidden">
-  <div id="marquee-track" class="flex items-center gap-10 whitespace-nowrap animate-marquee-scroll">
+  <div id="marquee-track" class="flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 whitespace-nowrap animate-marquee-scroll">
     {{@custom.footer_marquee_text}}
   </div>
 </div>
@@ -94,7 +101,7 @@
       if (label.startsWith('#')) {
         currentCol = document.createElement('div');
         currentCol.innerHTML = `
-        <h2 class="text-xs !text-heading/50 mb-6">
+        <h2 class="text-xs !text-heading/50 mb-3 sm:mb-6">
           ${label.replace(/^#+\s*/, '')}
         </h2>
         <ul class="space-y-4 text-sm"></ul>

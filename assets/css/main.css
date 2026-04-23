@@ -147,11 +147,16 @@ h6 {
 .header-sticky.is-sticky .background-layer {
   transform: scaleX(1.5);
 }
+.header-sticky.is-sticky  .header-inner {
+    padding-inline-start: 0;
+    padding-inline-end: 0;
+}
 
 .fixed-sticky .header-inner,
 .fixed-layout .header-inner {
   padding-inline-start: 20px;
   padding-inline-end: 20px;
+  transition: .2s ease;
 }
 
 body:has(.fixed-sticky) .site-main {
@@ -376,22 +381,32 @@ div[data-testid="comment-elements"] {
 }
 @media (max-width: 1023px) {
   .mobile-swipe {
-      display: grid;
-      grid: auto / auto-flow 47.5vw;
+    --column-width-mobile:  47.5vw;
       overflow-y: hidden;
       overflow-x: auto;
-      padding-bottom: 10px;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+      scroll-behavior: smooth;
+      padding-inline: 15px;
+      margin-inline: -15px;
+      scroll-padding-inline: 15px;
+      scrollbar-width: none;
+      display: grid !important;
+  }
+  .mobile-swipe-inner {
+      display: grid;
+      grid: auto / auto-flow var(--column-width-mobile);
   }
   .mobile-swipe-cols-2 {
-    grid: auto / auto-flow 20vw;
+    --column-width-mobile: 20vw;
   }
 }
 @media (max-width: 767px) {
   .mobile-swipe {
-      grid: auto / auto-flow 80vw;
+      --column-width-mobile: 80vw;
   }
   .mobile-swipe-cols-2 {
-    grid: auto / auto-flow 37vw;
+    --column-width-mobile: 37vw;
   }
 }
 @media (max-width: 639px){
