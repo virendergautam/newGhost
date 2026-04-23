@@ -151,7 +151,7 @@ h6 {
 .fixed-sticky .header-inner,
 .fixed-layout .header-inner {
   padding-inline-start: 20px;
-  padding-inline-end: 5px;
+  padding-inline-end: 20px;
 }
 
 body:has(.fixed-sticky) .site-main {
@@ -353,12 +353,16 @@ div[data-testid="comment-elements"] {
 
 }
 @media (min-width: 768px){
-  
-.button.button-large {
-  min-height: 46px;
-    min-width: 130px;
-  padding-inline: 20px;
-}
+  .button.button-large {
+    min-height: 46px;
+      min-width: 130px;
+    padding-inline: 20px;
+  }
+  .fixed-sticky .header-inner,
+  .fixed-layout .header-inner {
+    padding-inline-start: 20px;
+    padding-inline-end: 5px;
+  }
 }
 @media (max-width: 1280px) {
   .main-swiper:has(.navigation-wrapper) .slide-content {
