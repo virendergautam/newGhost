@@ -13,7 +13,7 @@
                         <div class="featured-slider-card h-full grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-10 md:gap-12">
                             {{!-- Text Content --}}
                             <div class="slide-content" data-aos="fade-in" data-aos-duration="600">
-                                <div class="flex items-start flex-wrap gap-1.5 mb-5 md:mb-7">
+                                <div class="flex items-center flex-wrap gap-1.5 mb-5 md:mb-7">
                                     {{#if featured}}
                                     <div
                                         class="bg-[#FFF9E6] text-black border border-[#FFC107] px-2 py-1 rounded-sm text-xs inline-flex items-center gap-1">
@@ -252,7 +252,7 @@
                                     <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
                                         class="w-full h-full object-cover progressive-load lazyload">
                                     {{/if}}
-                                    <div class="absolute inset-0 opacity-0 group-hover:opacity-100 bg-[linear-gradient(180deg,_rgba(0, 0, 0, 0)_0%,_rgba(0, 0, 0, 0)_67.02%,_rgba(0, 0, 0, 0.5)_79.23%,_#000000_100%)]"></div>
+                                    <div class="absolute inset-0 op opacity-100 md:opacity-0 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0)_67.02%,_rgba(0,0,0,0.5)_79.23%,_#000000_100%)] md:bg-transparent md:group-hover:opacity-100 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0)_67.02%,_rgba(0,0,0,0.5)_79.23%,_#000000_100%)]"></div>
                                 </div>
 
                                 {{!-- Normal State Content --}}
@@ -381,8 +381,16 @@
    {{#foreach pages}}
     <section class="py-[40px] md:py-[60px] lg:py-[70px]">
         <div class="container">
-            <div class="flex items-center justify-between mb-[15px] lg:mb-[25px]">
+            <div class="flex items-center justify-between mb-[20px]">
                 <h2 class="text-2xl md:text-3xl font-bold tracking-tight">{{title}}</h2>
+                <a href={{url}}
+                    class="text-xs text-heading font-medium flex items-center gap-2 group/link hover:text-accent transition-colors">
+                    <span>{{t "View all"}} </span>
+                    <svg width="9" height="8" viewBox="0 0 9 8" fill="none">
+                        <path d="M5.4 0L4.77 0.63L7.29 3.15H0V4.05H7.29L4.77 6.57L5.4 7.2L9 3.6L5.4 0Z"
+                            fill="currentColor" />
+                    </svg>
+                </a>
             </div>
             {{#get "tags" limit="6" include="count.posts" order="count.posts desc" filter="visibility:public"}}
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 gap-y-5" data-aos="fade-up" data-aos-duration="800">
@@ -572,7 +580,7 @@
                     <input data-members-email name="email" type="email" required placeholder="Enter your email" id="subscribe-email2"
                         class="w-full px-6 py-3 rounded-lg border border-transparent bg-alternate shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-text text-sm placeholder:text-text/70 focus:border-text focus:ring-4 focus:ring-text/5 transition-all outline-none" placeholder="Enter your email" autocomplete="email"/>
                     <button type="submit"
-                        class="button subscribe-button h-full cursor-pointer" autocomplete="off">
+                        class="button subscribe-button button-large h-full cursor-pointer" autocomplete="off">
                         <span class="button-text relative overflow-hidden">
                             <span class="button-text-inner top-text">{{t "Subscribe"}}</span>
                             <span class="button-text-inner bottom-text">{{t "Subscribe"}}</span>

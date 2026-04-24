@@ -250,7 +250,7 @@ const addClassToHeaderOnScroll = () => {
 };
 
 const allAuthorsPageLoadMore = () => {
-  const items = document.querySelectorAll(".author-item");
+  const items = document.querySelectorAll(".author-item,.category-item");
   const btn = document.getElementById("loadMoreAuthors");
 
   if (!items.length || !btn) return;
@@ -652,10 +652,14 @@ const mobileMenu = () => {
     if (!isOpen) {
       // OPEN
       menu.classList.add("is-open");
+      document.body.classList.add("has-overlay");
+
+
       menu.classList.add("is-open-animation");
     } else {
       // CLOSE
       menu.classList.remove("is-open");
+      document.body.classList.remove("has-overlay");
 
       setTimeout(() => {
         menu.classList.remove("is-open-animation");
