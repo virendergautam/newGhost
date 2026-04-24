@@ -7,7 +7,7 @@
         <h2 class="text-3xl md:text-4xl mb-2">{{title}}</h2>
         {{> "author-group"}}
         {{#if custom_excerpt}}
-        <p class="article-excerpt mt-4">{{custom_excerpt}}</p>
+        <p class="article-excerpt text-sm md:text-base mt-4">{{custom_excerpt}}</p>
         {{/if}}
         {{#match @custom.post_layout "!=" "Sticky content"}}
         {{> "postContent/postShare"}}

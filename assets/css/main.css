@@ -23,7 +23,7 @@
   --color-main: #0B0B0B;
   --color-alternate: #000000;
   --color-border: #333333;
-  --color-border-light: color-mix(in srgb, var(--color-border) 50%, white 20%);
+  --color-border-light: color-mix(in srgb, var(--color-border) 50%, transparent 50%);
   --color-accent-text: #fff;
   --color-accent: var(--ghost-accent-color);
   --color-accent-border: color-mix(in srgb, var(--color-accent-bg) 100%, black 30%);
