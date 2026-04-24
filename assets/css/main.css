@@ -22,7 +22,7 @@
   --color-text: #A4A4A4;
   --color-main: #0B0B0B;
   --color-alternate: #000000;
-  --color-border: #262626;
+  --color-border: #333333;
   --color-border-light: color-mix(in srgb, var(--color-border) 50%, white 20%);
   --color-accent-text: #fff;
   --color-accent: var(--ghost-accent-color);
@@ -66,8 +66,15 @@ body {
   font-family: var(--font-body);
   font-weight: 500;
   --header-height: 70px;
+}body.has-overlay {
+  position: relative;
 }
-
+body.has-overlay:after{
+  position: absolute;
+  content: "";
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
+}
 p {
   line-height: 1.6;
 }
@@ -263,7 +270,9 @@ h6 {
   border-radius: 8px;
   box-shadow: 0px 4px 15px 0px #1820531A;
 }
-
+[data-theme="dark"] .social-link{
+    box-shadow: 0px 4px 9px 0px #25252569;
+}
 .social-link svg {
   width: 20px;
   height: 20px;

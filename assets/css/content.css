@@ -137,7 +137,6 @@ is the very first element in the post content */
 .gh-content > hr {
     border-color: var(--color-border);
     display: block;
-    opacity: .1;
     width: 100%;
 }
 
@@ -321,6 +320,7 @@ is the very first element in the post content */
 }
 .post-gallery-content .aricle-heading-wrapper {
     border-color: transparent!important;
+    padding-bottom: 0!important;
 }
 .article-stickypost .aricle-heading-wrapper .post-share-links {
     display: none;
@@ -329,7 +329,13 @@ is the very first element in the post content */
     max-width: 95%;
 }
 .article-post-slider {
-    margin-top: calc(var(--header-height) * -1 - 70px - 20px);
+    margin-top:calc(var(--header-height) * -1);
+}
+.article-post-slider .aricle-heading-wrapper {
+    padding-top: calc(var(--header-height) + 20px);
+}
+.blog-article:has(.article-post-slider){
+    padding-top: 0;
 }
 .full-width-image-post .article-image {
     border-radius: 0 !important;
@@ -385,7 +391,7 @@ is the very first element in the post content */
 }
 /* when image count is 2 */
 .post-gallery-images.img-count-2 .post-gallery-image:nth-child(2) {
-    grid-area: span 2 / span 6;
+    grid-area: span 2 / span 7;
 }
 /* when image count is 3 */
 .post-gallery-images.img-count-3 .post-gallery-image:nth-child(2) {
@@ -437,7 +443,7 @@ is the very first element in the post content */
 .social-link {
   position: relative;
 }
- 
+
 .copy-toast-inline {
   position: absolute;
   bottom: 120%;
@@ -467,6 +473,16 @@ is the very first element in the post content */
   border: 5px solid transparent;
   border-top-color: #111;
 }
+@media (max-width: 1280px){
+    .post-gallery-images {
+        grid-auto-rows: minmax(180px, auto);
+    }
+}
+@media (max-width: 1023px){
+    .post-gallery-images {
+        grid-auto-rows: minmax(160px, auto);
+    }
+}
 @media (max-width: 767px){
     .gh-content h1,
     .gh-content h2:not(h4, .card-title) {
@@ -488,4 +504,74 @@ is the very first element in the post content */
     .gh-content h6 {
         font-size: 1rem;
     }
+    .article-post-slider .swiper-pagination.post-slider-pagination {
+        position: unset;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: row;
+        gap: 5px;
+        padding: 0 20px 15px 20px;
+    }
+    .swiper-pagination.post-slider-pagination .swiper-pagination-bullet-active {
+        width: 28px;
+        height: 7px;
+    }
+}
+@media (max-width: 575px){
+
+/* when image count is 3 */
+.post-gallery-images.img-count-3 .post-gallery-image:nth-child(2) {
+    grid-area: span 2 / span 7;
+}
+.post-gallery-images.img-count-3 .post-gallery-image:nth-child(3){
+    grid-area: span 2 / span 7;
+}
+/* when image count is 4 */
+.post-gallery-images.img-count-4 .post-gallery-image:nth-child(2),
+.post-gallery-images.img-count-4 .post-gallery-image:nth-child(3) {
+    grid-area: span 1 / span 7;
+}
+.post-gallery-images.img-count-4 .post-gallery-image:nth-child(4){
+    grid-area: span 2 / span 7;
+}
+/* when image count is 5 */
+.post-gallery-images.img-count-5 .post-gallery-image:nth-child(2) {
+    grid-area: span 2 / span 7;
+}
+.post-gallery-images.img-count-5 .post-gallery-image:nth-child(3),
+.post-gallery-images.img-count-5 .post-gallery-image:nth-child(5){
+    grid-area: span 1 / span 3;
+}
+.post-gallery-images.img-count-5 .post-gallery-image:nth-child(4) {
+    grid-area: span 2 / span 4;
+}
+/* when image count is 6 */
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(2),
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(3) {
+    grid-area: span 1 / span 7;
+}
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(4) {
+    grid-area: span 2 / span 4;
+}
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(5),
+.post-gallery-images.img-count-6 .post-gallery-image:nth-child(6) {
+    grid-area: span 1 / span 3;
+}
+/* when image count is 7 */
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(2){
+    grid-area: span 1 / span 3;
+}
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(3){
+    grid-area: span 1 / span 4;
+}
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(4){
+    grid-area: span 2 / span 7;
+}
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(5) {
+    grid-area: span 2 / span 4;
+}
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(6),
+.post-gallery-images.img-count-7 .post-gallery-image:nth-child(7){
+    grid-area: span 1 / span 3;
+}
 }
