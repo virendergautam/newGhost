@@ -1,25 +1,26 @@
 <div class="post-header mb-12">
-  <div class="article-post-slider bg-alternate grid h-[450px] md:h-[600px] xl:h-[720px] overflow-hidden -mt-[70px]">
+  <div class="article-post-slider flex items-end relative bg-alternate min-h-[600px] xl:min-h-[720px] overflow-hidden -mt-[70px]">
     <!-- SWIPER -->
-    <div class="swiper col-span-full row-span-full w-full h-full min-w-[0px]">
-      <div class="swiper-wrapper" id="post-slider-wrapper">
-        {{!-- FEATURE IMAGE AS FIRST SLIDE --}}
-        {{#if feature_image}}
-        <div class="swiper-slide">
-          <figure class="article-img relative before:absolute before:inset-0 before:bg-black/40 h-full w-full overflow-hidden">
-            <img 
-              src="{{img_url feature_image size="xl"}}"
-              alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-              class="w-full h-full object-cover"
-            />
-          </figure>
+    <div class="absolute inset-0">
+      <div class="swiper w-full h-full min-w-[0px]">
+        <div class="swiper-wrapper" id="post-slider-wrapper">
+          {{!-- FEATURE IMAGE AS FIRST SLIDE --}}
+          {{#if feature_image}}
+          <div class="swiper-slide">
+            <figure class="article-img relative before:absolute before:inset-0 before:bg-black/40 h-full w-full overflow-hidden">
+              <img 
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                class="w-full h-full object-cover"
+              />
+            </figure>
+          </div>
+          {{/if}}
         </div>
-        {{/if}}
       </div>
-      <div class="swiper-pagination post-slider-pagination"></div>
     </div>
     <!-- CONTENT OVERLAY -->
-    <div class="container grid col-span-full row-span-full h-full grid-rows-[1fr_auto] gap-10 relative z-1">
+    <div class="container grid h-full  grid-rows-[1fr_auto_auto] md:grid-rows-[1fr_auto] gap-4 md:gap-7 lg:gap-10 z-1">
       <div class="aricle-heading-wrapper py-5 max-w-[650px] h-full flex">
         <div class="aricle-heading my-auto flex flex-col gap-2">
 
@@ -28,7 +29,7 @@
             <p class="text-xs font-medium pl-2">{{reading_time}}</p>
           </div>
 
-          <h2 class="text-5xl mb-2">{{title}}</h2>
+          <h2 class="text-3xl md:text-4xl mb-2">{{title}}</h2>
 
           {{#if custom_excerpt}}
             <p class="article-excerpt ">{{custom_excerpt}}</p>
@@ -36,10 +37,11 @@
 
         </div>
       </div>
-      <div class="article-info py-6 border-t border-white/15 grid grid-cols-1 md:grid-cols-[1.1fr_auto] gap-10 items-start">
+      <div class="article-info py-6 border-t border-white/15 grid grid-cols-1 md:grid-cols-[1.1fr_auto] gap-3 md:gap-5 lg:gap-7 xl:gap-10 items-start">
         {{> "author-group"}}
         {{> "postContent/postShare"}}
       </div>
+    <div class="swiper-pagination post-slider-pagination"></div>
     </div>
   </div>
 </div>

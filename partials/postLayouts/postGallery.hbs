@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Instead of hiding, render fallback
   gallery.innerHTML = `
     <div class="post-gallery-image no-image rounded-xl">
-      <div class="post-gallery-content w-full px-7 relative z-1 w-full h-full flex mt-auto">
+      <div class="post-gallery-content w-full p-3 sm:p-5 md:p-7 lg:p-18 xl:p-10 relative z-1 w-full h-full flex mt-auto">
         {{> "postContent/postHeading"}}
       </div>
     </div>
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return `
         <div class="post-gallery-image">
           <img src="${url}" class="post-image" alt="{{title}}">
-          <div class="post-gallery-content px-7 py-2 relative z-1 w-full h-full flex mt-auto text-white">
+          <div class="post-gallery-content p-3 sm:p-5 md:p-7 lg:p-18 xl:p-10 relative z-1 w-full h-full flex mt-auto text-white">
             {{> "postContent/postHeading"}}
           </div>
         </div>
