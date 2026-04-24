@@ -2,9 +2,9 @@
 	<section class="contact-page py-[40px] md:py-[60px] lg:py-[70px]">
 		<div class="container">
 			{{!-- Header --}}
-			<div class="text-center mb-12 max-w-[800px] mx-auto">
-				<h1 class="text-4xl md:text-5xl mb-3">{{title}}</h1>
-				<p> {{excerpt}} </p>
+			<div class="text-center mb-8 sm:mb-10 md:mb-12 max-w-[340px] sm:max-w-[500px] lg:max-w-[800px] mx-auto">
+				<h1 class="text-3xl md:text-4xl mb-3">{{title}}</h1>
+				<p class="text-sm md:text-base"> {{excerpt}} </p>
 			</div>
 			{{#if @custom.contact_form_endpoint}}
 			<div class="grid grid-cols-1 {{#if feature_image}}
@@ -15,9 +15,9 @@
 				{{else}}
 					md:grid-cols-1
 				{{/if}}
-					{{/if}} gap-2.5 max-w-[1250px] mx-auto">
+					{{/if}} gap-5 max-w-[1250px] mx-auto">
 				{{!-- Form Column --}}
-				<div class="bg-alternate w-full max-w-[650px] mx-auto rounded-[20px] px-7 py-12 order-2 md:order-1">
+				<div class="bg-alternate w-full max-w-[650px] mx-auto rounded-[20px] px-5 py-5 md:py-8 md:px-7 lg:py-12">
 					<form class="flex flex-col gap-7 h-full" id="contact-form"
 						action="{{@custom.contact_form_endpoint}}" method="POST">
 						<div class="flex flex-col gap-1.5">
@@ -49,14 +49,14 @@
 				{{!-- Image Column — uses the page's Feature Image --}}
 				{{#if feature_image}}
 				<div
-					class="relative h-full rounded-[20px] flex items-center justify-center bg-alternate text-center text-text/300 overflow-hidden order-1 md:order-2">
+					class="relative min-h-[350px] h-full max-w-[650px] rounded-[20px] flex items-center justify-center bg-alternate text-center text-text/300 overflow-hidden">
 					<img src="{{feature_image}}"
 						alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}Contact{{/if}}"
 						class="w-full h-full object-cover block absolute inset-0" />
 				</div>
 				{{else if @site.cover_image}}
 				<div
-					class="relative h-full rounded-[20px] flex items-center justify-center bg-alternate text-center text-text/300 overflow-hidden order-1 md:order-2">
+					class="relative h-full rounded-[20px] flex items-center justify-center bg-alternate text-center text-text/300 overflow-hidden">
 					<img src="{{@site.cover_image}}" alt="{{@site.title}}"
 						class="w-full h-full object-cover block absolute inset-0" />
 				</div>
