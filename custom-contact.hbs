@@ -56,7 +56,7 @@
 				</div>
 				{{else if @site.cover_image}}
 				<div
-					class="relative h-full rounded-[20px] flex items-center justify-center bg-alternate text-center text-text/300 overflow-hidden">
+					class="relative min-h-[350px] h-full rounded-[20px] flex items-center justify-center bg-alternate text-center text-text/300 overflow-hidden">
 					<img src="{{@site.cover_image}}" alt="{{@site.title}}"
 						class="w-full h-full object-cover block absolute inset-0" />
 				</div>

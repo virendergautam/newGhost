@@ -322,6 +322,9 @@ is the very first element in the post content */
     border-color: transparent!important;
     padding-bottom: 0!important;
 }
+.post-header:has(.article-stickypost) {
+    margin-bottom: 0!important;
+}
 .article-stickypost .aricle-heading-wrapper .post-share-links {
     display: none;
 }
@@ -525,6 +528,9 @@ is the very first element in the post content */
     .swiper-pagination.post-slider-pagination .swiper-pagination-bullet-active {
         width: 28px;
         height: 7px;
+    }
+    .gh-post-upgrade-cta-content h2{
+        font-size: 1.2rem!important;
     }
 }
 @media (max-width: 575px){
