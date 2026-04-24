@@ -8,22 +8,22 @@
           {{#if @site.members_enabled}}
           {{#if @member}}
           {{#if comments}}
-          <div class="bg-alternate rounded-[20px] overflow-hidden px-8">
+          <div class="bg-alternate rounded-[16px] md:rounded-[20px] overflow-hidden px-4 sm:px-6 md:px-8">
             <div class="border-b border-border-light py-4 mb-7 flex items-center justify-between">
-              <h6>{{t "Comments"}}</h2>
+              <h6 class="!text-sm md:!text-base">{{t "Comments"}}</h6>
                 <span class="text-sm">{{comment_count empty="0 comments" singular="comment" plural="comments"}}</span>
             </div>
             {{comments title="" count=false}}
           </div>
           {{/if}}
           {{else}}
-          <div class="bg-alternate rounded-[20px] overflow-hidden px-8">
+          <div class="bg-alternate rounded-[16px] md:rounded-[20px] overflow-hidden px-4 sm:px-6 md:px-8">
             <div class="border-b border-border-light py-4 flex items-center justify-between">
-              <h6>{{t "Member discussion"}}</h2>
+              <h6 class="!text-sm md:!text-base">{{t "Member discussion"}}</h6>
                 <span class="text-sm">{{comment_count empty="0 comments" singular="comment" plural="comments"}}</span>
             </div>
             <div class="text-center py-10 min-h-[300px] flex flex-col items-center justify-center">
-              <h3>{{t "Start the conversation"}}</h3>
+              <h3 class="!text-xl md:!text-3xl">{{t "Start the conversation"}}</h3>
               <p class="text-sm mt-3">{{t "Create a free account or sign in to participate in comments."}}</p>
               <a href="#/portal/signup" class="button mt-5">
                 <span class="button-text relative overflow-hidden h-full">

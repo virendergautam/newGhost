@@ -1,6 +1,6 @@
 <header id="siteHeader" class="header relative{{#match @custom.header_layout "Fixed layout"}} fixed-layout {{/match}}
   {{#match @custom.header_layout "Sticky fullwidth" }} fullwidth-sticky header-sticky top-[0px] z-3 {{else match
-  @custom.header_layout "Sticky fixed layout" }} fixed-sticky header-sticky top-[0px] mt-5 z-3{{/match}}">
+  @custom.header_layout "Sticky fixed layout" }} fixed-sticky header-sticky top-[0px] pt-5 z-3{{/match}}">
   <div class="container {{#match @custom.header_layout "Fixed layout"}}relative{{else match
     @custom.header_layout "Sticky fixed layout" }}relative{{/match}}">
     <div class="background-layer bg-white dark:bg-black"></div>
@@ -101,32 +101,45 @@
     </div>
     <!-- MOBILE MENU -->
     <nav id="mobileMenu"
-      class="mobile-header-menu  md:hidden mt-4 bg-white border border-[#EBEBEB] p-5">
+      class="mobile-header-menu  md:hidden mt-4 bg-white p-5">
       <!-- NAVIGATION -->
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col items-start gap-4">
         {{navigation}}
-      </div>
-
       <!-- MEMBERS (MOBILE) -->
-      {{#if @site.members_enabled}}
-      <div class="flex flex-col gap-3 mt-5 border-t pt-5">
-        {{#if @member}}
-        <a href="#/portal/account" data-portal="account" class="text-base">
-          Account
-        </a>
-        {{else}}
-        <a href="#/portal/signin" data-portal="signin" class="text-base">
-          Sign In
-        </a>
-        {{#unless @site.members_invite_only}}
-        <a href="#/portal/signup" data-portal="signup" class="px-4 py-2 bg-black text-white rounded-full text-center">
-          Subscribe
-        </a>
-        {{/unless}}
-        {{/if}}
-      </div>
-      {{/if}}
+          <div class="block">
+              <!-- MEMBERS -->
+            {{#if @site.members_enabled}}
+              {{#if @member}}
+              <a href="#/portal/account" data-portal="account"
+                class="hidden button">
+                <span class="button-text relative overflow-hidden h-full">
+                  <span class="button-text-inner top-text">{{t "Account"}}</span>
+                  <span class="button-text-inner bottom-text">{{t "Account"}}</span>
+                </span>
+              </a>
+              {{else}}
+            {{#if @site.members_invite_only}}
+              <a href="#/portal/signin" data-portal="signin"
+              class="hidden button">
+              <span class="button-text relative overflow-hidden">
+                <span class="button-text-inner top-text">{{t "Sign In"}}</span>
+                <span class="button-text-inner bottom-text">{{t "Sign In"}}</span>
+              </span>
+            </a>
+            {{else}}
+            <a href="#/portal/signup" data-portal="signup" class="hidden button">
+              <span class="button-text relative overflow-hidden">
+                <span class="button-text-inner top-text">{{t "Subscribe"}}</span>
+                <span class="button-text-inner bottom-text">{{t "Subscribe"}}</span>
+              </span>
+            </a>
+          
+            {{/if}}
+            {{/if}}
+            {{/if}}
 
+          </div>
+      </div>
     </nav>
   </div>
 </header>

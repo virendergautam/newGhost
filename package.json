@@ -54,7 +54,7 @@
       "social_links": {
         "type": "text",
         "default": "",
-        "description": "Enter the social media URL, separate by comma.Example:https://facebook.com/yourpage,https://twitter.com/yourpage"
+        "description": "Enter the social media URL, separate by comma."
       },
       "footer_copyright_text": {
         "type": "text",

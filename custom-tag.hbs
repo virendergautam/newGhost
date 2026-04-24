@@ -1,0 +1,42 @@
+{{!< default}} {{#post}} <main id="site-main" class="site-main outer">
+    <section class="py-[40px] md:py-[60px] lg:py-[70px]">
+        <div class="container">
+            <div class="text-center mb-7">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl">{{title}}</h2>
+            </div>
+ {{#get "tags" limit="100" include="count.posts" order="count.posts desc"}}       
+   <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 gap-y-5" data-aos="fade-up" data-aos-duration="800">
+                {{#foreach tags}}
+                <a href="{{url}}"
+                    class="group flex flex-col gap-3 md:gap-4 hover:translate-y-[-10px] transition-transform duration-500 ease-in-out">
+                    <div
+                        class="relative aspect-square bg-alternate text-text/20 flex items-center justify-center rounded-lg overflow-hidden group-hover:shadow-lg transition-shadow duration-500 ease-in-out">
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{name}}"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out progressive-load lazyload">
+                        {{else}}
+                        <span class="font-bold">{{t "NO IMAGE"}}</span>
+                        {{/if}}
+                    </div>
+                    <div class="flex flex-col">
+                        <h3 class="text-base leading-tight group-hover:!text-accent transition-all ease-in">{{name}}
+                        </h3>
+                        <span class="text-xs mt-1">{{count.posts}} {{t "articles"}}</span>
+                    </div>
+                </a>
+                {{/foreach}}
+            </div>
+            <div class="text-center mt-10 justify-center">
+                <button id="loadMoreAuthors" class="show-more-btn button">
+                    <span class="button-text relative overflow-hidden">
+                        <span class="button-text-inner top-text">{{t "Show more"}}</span>
+                        <span class="button-text-inner bottom-text">{{t "Show more"}}</span>
+                    </span>
+                </button>
+            </div>
+
+            {{/get}}
+        </div>
+    </section>
+    </main>
+    {{/post}}

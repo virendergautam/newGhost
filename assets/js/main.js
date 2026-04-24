@@ -185,6 +185,7 @@ const homePagePostLoadMore = () => {
   function initTab(tab, reset = false) {
     const posts = tab.querySelectorAll(".post-item");
     const btn = tab.querySelector(".show-more-btn");
+    const btnWrapper = btn?.parentElement;
 
     if (!posts.length) return;
 
@@ -205,10 +206,10 @@ const homePagePostLoadMore = () => {
       visible += POSTS_PER_LOAD;
       tab.dataset.visible = visible;
 
-      if (btn && visible >= posts.length) {
-        btn.style.display = "none";
-      } else if (btn) {
-        btn.style.display = "inline-flex";
+      if (btnWrapper && visible >= posts.length) {
+        btnWrapper.style.display = "none";
+      } else if (btnWrapper) {
+        btnWrapper.style.display = "flex"; // or "block"
       }
     }
 
@@ -222,7 +223,7 @@ const homePagePostLoadMore = () => {
 
       tab.dataset.initialized = "true";
     } else if (reset) {
-      if (btn) btn.style.display = "inline-flex";
+      if (btnWrapper) btnWrapper.style.display = "flex"; // or "block"
       showNext();
     }
   }
@@ -232,6 +233,8 @@ const homePagePostLoadMore = () => {
     initTab(tab);
   });
 };
+
+
 const addClassToHeaderOnScroll = () => {
   const header = document.getElementById("siteHeader");
 
@@ -245,29 +248,32 @@ const addClassToHeaderOnScroll = () => {
     }
   });
 };
+
 const allAuthorsPageLoadMore = () => {
   const items = document.querySelectorAll(".author-item");
   const btn = document.getElementById("loadMoreAuthors");
 
   if (!items.length || !btn) return;
 
-  let visible = 12; // 👈 show only 12 initially
+  const btnWrapper = btn.parentElement; // 👈 parent div
+
+  let visible = 12;
 
   function update() {
     items.forEach((item, index) => {
-      item.style.display = index < visible ? "inline-flex" : "none";
+      item.style.display = index < visible ? "flex" : "none";
     });
 
-    // Hide button if all items already visible
+    // 👇 change parent display instead of button
     if (visible >= items.length) {
-      btn.style.display = "none";
+      btnWrapper.style.display = "none";
     } else {
-      btn.style.display = "inline-flex";
+      btnWrapper.style.display = "flex"; // or "block"
     }
   }
 
   btn.addEventListener("click", () => {
-    visible += 12; // 👈 load 12 more each click
+    visible += 12;
     update();
   });
 
@@ -411,8 +417,6 @@ const socialLinks = () => {
     }
   }
 };
-
-
 
 window.copyToClipboard = (url, el) => {
   const showInlineToast = (element, message) => {
@@ -687,8 +691,8 @@ const setHeaderAndAnnouncementHeights = () => {
 
   observeAnnouncementVisibility();
 
-  const headerInner = siteHeader?.querySelector(".header-inner");
-  const headerHeight = headerInner?.offsetHeight || 0;
+  // const headerInner = siteHeader?.querySelector(".header-inner");
+  const headerHeight = siteHeader?.offsetHeight || 0;
   document.body.style.setProperty("--header-height", `${headerHeight}px`);
 };
 
