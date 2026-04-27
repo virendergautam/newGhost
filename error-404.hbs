@@ -19,7 +19,7 @@
             were looking for, let's give them some alternative stuff to read. --}}
             <div class="mt-10">
                 <h2 class="text-2xl mb-5">{{t "You may also like"}}</h2>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                     {{#get "posts" include="authors,tags" limit="4" as |more_posts|}}
                     {{#if more_posts}}
                     {{#foreach more_posts}}
