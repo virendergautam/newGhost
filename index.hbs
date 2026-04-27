@@ -247,7 +247,7 @@
 
                                 {{!-- Enhanced Image Expansion Layer --}}
                                 <div
-                                    class="absolute inset-0 m-auto lg:[clip-path:circle(28%_at_50%_45%)] group-hover:[clip-path:circle(100%_at_50%_50%)] overflow-hidden transition-all duration-700 ease-in-out">
+                                    class="absolute inset-0 m-auto xl:[clip-path:circle(28%_at_50%_45%)] group-hover:[clip-path:circle(100%_at_50%_50%)] overflow-hidden transition-all duration-700 ease-in-out">
                                     {{#if feature_image}}
                                     <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
                                         class="w-full h-full object-cover progressive-load lazyload">
@@ -268,7 +268,7 @@
                                         {{#unless access}}
                                         {{^has visibility="public"}}
                                         <span
-                                            class="flex justify-center items-center border border-dashed border-white lg:border-heading text-white lg:text-heading bg-[#FFFFFF33] lg:bg-transparent backdrop-blur-[40px] lg:backdrop-blur-0 w-7 h-7 rounded-full group-hover:bg-[#FFFFFF33] group-hover:text-white group-hover:border-[#FFFFFF] group-hover:backdrop-blur-[40px]">
+                                            class="flex justify-center items-center border border-dashed border-white xl:border-heading text-white xl:text-heading bg-[#FFFFFF33] xl:bg-transparent backdrop-blur-[40px] xl:backdrop-blur-0 w-7 h-7 rounded-full group-hover:bg-[#FFFFFF33] group-hover:text-white group-hover:border-[#FFFFFF] group-hover:backdrop-blur-[40px]">
                                             {{> "icons/lock"}}
                                         </span>
                                         {{/has}}
@@ -276,10 +276,10 @@
                                     </div>
                                     <div class="w-full">
                                         <span
-                                            class="text-xs font-medium mb-1 text-white lg:opacity-0 group-hover:opacity-70 transition-all ease-in">{{date
+                                            class="text-xs font-medium mb-1 text-white xl:opacity-0 group-hover:opacity-70 transition-all ease-in">{{date
                                             format="MMM DD, YYYY"}}</span>
                                         <div
-                                            class="text-base font-bold text-white lg:text-black dark:text-white group-hover:text-white transition-all ease-in">
+                                            class="text-base font-bold text-white xl:text-black dark:text-white group-hover:text-white transition-all ease-in">
                                             {{title}}
                                         </div>
                                     </div>
@@ -622,7 +622,7 @@
             </div>
             {{#get "authors" limit="6" include="count.posts"}}
             <div class="mobile-swipe mobile-swipe-cols-2">
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-x-4 md:gap-x-6 lg:gap-x-8 mobile-swipe-inner" data-aos="fade-up" data-aos-duration="800">
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-6 lg:gap-8 mobile-swipe-inner" data-aos="fade-up" data-aos-duration="800">
                     {{#foreach authors}}
                     {{> "author-card"}}
                     {{/foreach}}

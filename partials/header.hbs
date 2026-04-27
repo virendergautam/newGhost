@@ -12,11 +12,11 @@
       <div class="header-logo">
         <a class="block relative site-header-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
           {{#if @site.logo}}
-            <img src="{{@site.logo}}" class="max-w-[150px] light-logo-image" alt="{{@site.title}}">
+            <img src="{{@site.logo}}" class="max-w-[100px] light-logo-image" alt="{{@site.title}}">
             {{#if @custom.dark_mode_logo}}
-              <img src="{{@custom.dark_mode_logo}}" class="max-w-[150px] dark-logo-image absolute inset-0 w-full h-full object-contain object-top-left" alt="{{@site.title}}">
+              <img src="{{@custom.dark_mode_logo}}" class="max-w-[100px] dark-logo-image absolute inset-0 w-full h-full object-contain object-top-left" alt="{{@site.title}}">
               {{ else }}
-              <img src="{{@site.logo}}" class="max-w-[150px] dark-logo-image absolute inset-0 object-contain w-full h-full  object-top-left" alt="{{@site.title}}">
+              <img src="{{@site.logo}}" class="max-w-[100px] dark-logo-image absolute inset-0 object-contain w-full h-full  object-top-left" alt="{{@site.title}}">
             {{/if}}
           {{else}}
           <h1 class="text-lg font-semibold text-black dark:text-white">{{@site.title}}</h1>
