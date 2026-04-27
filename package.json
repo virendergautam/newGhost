@@ -85,7 +85,7 @@
           "Free"
         ],
         "default": "Landscape",
-        "group": "homepage"
+        "group": "post"
       },
       "home_tags_section": {
         "type": "text",
