@@ -21,12 +21,22 @@
     </div>
     <!-- CONTENT OVERLAY -->
     <div class="container grid h-full  grid-rows-[1fr_auto_auto] md:grid-rows-[1fr_auto] gap-4 md:gap-7 lg:gap-10 z-1">
-      <div class="aricle-heading-wrapper py-5 max-w-[650px] h-full flex">
-        <div class="aricle-heading my-auto flex flex-col gap-2">
+      <div class="article-heading-wrapper py-5 max-w-[650px] h-full flex">
+        <div class="article-heading my-auto flex flex-col gap-2">
 
           <div class="flex flex-wrap items-center gap-2">
-            {{> "tagsList"}}
-            <p class="text-xs font-medium pl-2">{{reading_time}}</p>
+            {{#foreach tags visibility="public"}}
+              {{#if @first}}
+              <div class="flex gap-1.5 flex-wrap">
+                {{/if}}
+                <span
+                  class="px-3 py-1 min-h-[20px] flex items-center bg-alternate text-heading rounded-sm text-xs border border-border">{{name}}</span>
+
+                {{#if @last}}
+              </div>
+              {{/if}}
+              {{/foreach}}
+            <p class="text-xs font-medium pl-2 whitespace-nowrap">{{reading_time}}</p>
           </div>
           <h2 class="text-3xl md:text-4xl mb-2">{{title}}</h2>
           {{#if custom_excerpt}}
