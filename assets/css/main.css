@@ -156,8 +156,11 @@ h6 {
 }
 
 .fixed-sticky.is-sticky .mobile-header-menu {
+  top: calc(var(--announcement-height, 0px) + var(--header-height) - 20px);
+}
+/* .fullwidth-sticky.is-sticky .mobile-header-menu {
   top: calc(var(--announcement-height, 0px) + var(--header-height));
-} 
+} */
 .header-sticky.is-sticky  .header-inner {
     padding-inline-start: 0;
     padding-inline-end: 0;
