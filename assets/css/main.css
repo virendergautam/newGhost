@@ -497,8 +497,6 @@ div[data-testid="comment-elements"] {
     justify-content: space-between;
     width: 100%;
     padding: 10px;
-    background: color-mix(in srgb, var(--color-main) 100%, white 10%);
-    border-radius: 8px;
   }
   .nav-menu-item.has-dropdown .dropdown {
     opacity: 1;
