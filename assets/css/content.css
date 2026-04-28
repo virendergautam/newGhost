@@ -7,6 +7,12 @@
     transform: translateX(-50%)!important;
     width: min(var(--page-width),calc(100vw - 3rem))!important;
 }
+.kg-canvas .kg-width-full{
+    margin-left: 50%!important;
+    max-width: 100%!important;
+    transform: translateX(-50%)!important;
+    width: min(var(--page-width),calc(100vw - 3rem))!important;
+}
 .article-stickypost .kg-canvas .kg-width-wide {
     margin-left: 0!important;
     max-width: 100% !important;
@@ -45,7 +51,10 @@
 .kg-grid-4col {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
+.kg-card + .kg-grid,
+.kg-card + .kg-gallery-row {
+    margin-top: 12px!important;
+}
 @media (max-width: 991px) {
     .kg-grid-4col {
         grid-template-columns: 1fr 1fr;
