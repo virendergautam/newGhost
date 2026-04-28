@@ -93,11 +93,6 @@
         "group": "homepage",
         "description": "Enter the tag slug to show posts, separate by comma. Example: Fashion,lifestyle,travel"
       },
-      "category_title": {
-        "type": "text",
-        "default": "Read by Category",
-        "group": "homepage"
-      },
       "banner_heading": {
         "type": "text",
         "default": "Thoughts on code, design, and the future of the web.",
