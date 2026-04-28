@@ -484,12 +484,7 @@ div[data-testid="comment-elements"] {
     border-radius: 20px 20px 0 0;
     border-color: var(--color-alternate);
   }
-  .mobile-header-menu ul {
-    /* align-content: flex-start;
-    height: 100%;
-    overflow: hidden auto; */
-    width: 100%;
-  }
+  .mobile-header-menu ul,
   .nav-menu-item {
     width: 100%;
   }
