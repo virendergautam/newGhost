@@ -24,13 +24,11 @@
       <div class="aricle-heading-wrapper py-5 max-w-[650px] h-full flex">
         <div class="aricle-heading my-auto flex flex-col gap-2">
 
-          <div class="flex items-center gap-2">
+          <div class="flex flex-wrap items-center gap-2">
             {{> "tagsList"}}
             <p class="text-xs font-medium pl-2">{{reading_time}}</p>
           </div>
-
           <h2 class="text-3xl md:text-4xl mb-2">{{title}}</h2>
-
           {{#if custom_excerpt}}
             <p class="article-excerpt ">{{custom_excerpt}}</p>
           {{/if}}

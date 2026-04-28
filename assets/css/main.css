@@ -378,7 +378,6 @@ div[data-testid="comment-elements"] {
 
 }
 @media (min-width: 768px){
-
   .fixed-sticky .header-inner,
   .fixed-layout .header-inner {
     padding-inline-start: 20px;
@@ -418,6 +417,9 @@ div[data-testid="comment-elements"] {
   }
 }
 @media (max-width: 767px) {
+  .thumbs-swiper .swiper-slide-thumb-active .thumb-card {
+      padding: 4px !important;
+  }
   .mobile-swipe {
       --column-width-mobile: 90vw;
   }

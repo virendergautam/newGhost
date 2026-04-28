@@ -19,8 +19,11 @@
                     {{/if}}
                 </figure>
                 {{/if}}
-                <h1 class="page-title">{{title}}</h1>
-
+               {{#match title "(Untitled)"}}
+                {{!-- Do nothing (hide it) --}}
+                {{else}}
+                <h1>{{title}}</h1>
+                {{/match}}
             </header>
             {{/match}}
             <div class="gh-content kg-canvas ">
