@@ -143,7 +143,7 @@
             <div class="tab-content">
                 <!-- ALL TAB -->
                 <div id="tab-all" class="tab-grid">
-                    {{#get "posts" limit="50" include="tags,authors"}}
+                    {{#get "posts" limit="50" include="tags,authors" order="published_at desc"}}
                     <div class="posts-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                         {{#foreach posts}}
                         <div class="post-item hidden">
@@ -166,7 +166,7 @@
                 {{#get "tags" filter="slug:[{{@custom.home_feed_tags}}]"}}
                 {{#foreach tags}}
                 <div id="tab-{{slug}}" class="tab-grid hidden">
-                    {{#get "posts" limit="50" include="tags,authors" filter="tag:{{slug}}"}}
+                    {{#get "posts" limit="50" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
                     <div class="posts-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         {{#foreach posts}}
                         <div class="post-item hidden">
@@ -237,7 +237,7 @@
                     {{#foreach tags}}
                     <div class="mt-7" data-aos="fade-up" data-aos-duration="800">
                         <h2 class="text-xl mb-6 tag-post-title">{{name}}</h2>
-                        {{#get "posts" limit="4" include="tags,authors" filter="tag:{{slug}}"}}
+                        {{#get "posts" limit="4" include="tags,authors" filter="tag:{{slug}}" order="published_at desc"}}
 
                         {{#if posts}}
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -252,7 +252,7 @@
                                     <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
                                         class="w-full h-full object-cover progressive-load lazyload">
                                     {{/if}}
-                                    <div class="absolute inset-0 opacity-100 xl:opacity-0 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0)_67.02%,_rgba(0,0,0,0.5)_79.23%,_#000000_100%)] md:bg-transparent md:group-hover:opacity-100 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0)_67.02%,_rgba(0,0,0,0.5)_79.23%,_#000000_100%)]"></div>
+                                    <div class="absolute inset-0 op opacity-100 md:opacity-0 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0)_67.02%,_rgba(0,0,0,0.5)_79.23%,_#000000_100%)] md:bg-transparent md:group-hover:opacity-100 bg-[linear-gradient(180deg,_rgba(0,0,0,0)_0%,_rgba(0,0,0,0)_67.02%,_rgba(0,0,0,0.5)_79.23%,_#000000_100%)]"></div>
                                 </div>
 
                                 {{!-- Normal State Content --}}
@@ -307,7 +307,7 @@
     {{/if}}
 
     {{!-- recommended post section --}}
-    {{#get "posts" limit="3" include="tags,authors" filter="tag:hash-recommended"}}
+    {{#get "posts" limit="3" include="tags,authors" filter="tag:hash-recommended" order="published_at desc"}}
         <section class="recommended-posts pt-[40px] md:pt-[60px] lg:pt-[70px] ">
             <div class="recommended-posts-container container">
                 <div class="mobile-swipe mobile-swipe-cols-1">
@@ -392,7 +392,7 @@
                     </svg>
                 </a>
             </div>
-            {{#get "tags" limit="6" include="count.posts" filter="visibility:public"}}
+            {{#get "tags" limit="6" include="count.posts" order="count.posts desc" filter="visibility:public"}}
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 gap-y-5" data-aos="fade-up" data-aos-duration="800">
                 {{#foreach tags}}
                 <a href="{{url}}"
@@ -424,7 +424,7 @@
             <div class="flex items-center justify-between mb-[15px] lg:mb-[25px]">
                 <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Read by category</h2>
             </div>
-            {{#get "tags" limit="100" include="count.posts" filter="visibility:public"}}
+            {{#get "tags" limit="100" include="count.posts" order="count.posts desc" filter="visibility:public"}}
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 gap-y-5" data-aos="fade-up" data-aos-duration="800">
                 {{#foreach tags}}
                 <a href="{{url}}"
