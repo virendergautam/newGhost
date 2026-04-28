@@ -318,23 +318,23 @@ is the very first element in the post content */
 .post-gallery-image:not(.no-image) .post-gallery-content p, .post-gallery-image:not(.no-image) .post-gallery-content h2, .post-gallery-image:not(.no-image) .post-gallery-content h4, .post-gallery-image:not(.no-image) .post-gallery-content h6 {
     color: white!important;
 }
-.post-gallery-content .aricle-heading-wrapper {
+.post-gallery-content .article-heading-wrapper {
     border-color: transparent!important;
     padding-bottom: 0!important;
 }
 .post-header:has(.article-stickypost) {
     margin-bottom: 0!important;
 }
-.article-stickypost .aricle-heading-wrapper .post-share-links {
+.article-stickypost .article-heading-wrapper .post-share-links {
     display: none;
 }
- .split-post .aricle-heading-wrapper {
+ .split-post .article-heading-wrapper {
     max-width: 95%;
 }
 .article-post-slider {
     margin-top:calc(var(--header-height) * -1);
 }
-.article-post-slider .aricle-heading-wrapper {
+.article-post-slider .article-heading-wrapper {
     padding-top: calc(var(--header-height) + 20px);
 }
 .blog-article:has(.article-post-slider){
