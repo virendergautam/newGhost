@@ -7,6 +7,13 @@
     transform: translateX(-50%)!important;
     width: min(var(--page-width),calc(100vw - 3rem))!important;
 }
+.kg-canvas .kg-width-full{
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
 .article-stickypost .kg-canvas .kg-width-wide {
     margin-left: 0!important;
     max-width: 100% !important;
@@ -45,7 +52,10 @@
 .kg-grid-4col {
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
+.kg-card + .grid,
+.kg-card + .kg-gallery-row {
+    margin-top: 12px!important;
+}
 @media (max-width: 991px) {
     .kg-grid-4col {
         grid-template-columns: 1fr 1fr;
@@ -278,7 +288,7 @@ is the very first element in the post content */
     flex-direction: column;
 }
 .gh-post-upgrade-cta-content h2{
-    font-size: 2rem!important;
+    font-size: 1.8rem!important;
     color: var(--color-heading)!important;
 }
 .gh-post-upgrade-cta a.gh-btn {
