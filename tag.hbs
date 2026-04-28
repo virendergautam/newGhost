@@ -3,12 +3,12 @@
     <section class="category-posts py-[40px] sm:py-[70px]">
         <div class="container">
             <div class="flex flex-col lg:grid lg:grid-cols-[auto_1fr] items-start gap-4">
-                <div class="block lg:sticky lg:top-[70px] w-full lg:w-[375px]">
+                <div class="block md:grid md:grid-cols-2 md:gap-4 lg:block lg:sticky lg:top-[70px] w-full lg:w-[375px]">
                     {{#tag}}
                     <div class="category-card w-full bg-alternate border border-accent rounded-[20px] order-1 lg:order-none">
-                        <div class="category-card-body px-5 sm:px-7 py-7 sm:py-10 text-center flex flex-col items-center">
+                        <div class="category-card-body px-5 sm:px-7 py-7 sm:py-10 text-center md:text-left lg:text-center flex flex-col md:flex-row lg:flex-col items-center md:gap-4 lg:gap-0">
                             <div
-                                class="category-image bg-main rounded-full overflow-hidden size-[180px] text-text/20 aspect-square">
+                                class="category-image shrink-0 bg-main rounded-full overflow-hidden size-[180px] md:size-[140px] lg:size-[180px] text-text/20 aspect-square">
                                 {{#if feature_image}}
                                 <img class="w-full h-full object-cover" srcset="{{img_url feature_image size="s"}} 300w,
                                     {{img_url feature_image size="m"}} 600w, {{img_url feature_image size="l"}} 1000w,
@@ -21,7 +21,7 @@
                                 {{/if}}
                             </div>
                             <div class="category-card-content">
-                                <h2 class="text-2xl lg:text-3xl mt-5">{{name}}</h2>
+                                <h2 class="text-2xl lg:text-3xl mt-5 md:mt-0 lg:mt-5">{{name}}</h2>
                                 <div
                                     class="px-3 py-1 min-h-[20px] inline-flex items-center rounded-sm text-xs border border-border-light text-heading mt-4">
                                     2 Article
@@ -38,7 +38,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="bg-alternate w-full rounded-[20px] mt-4 shadow-[0px_0px_50px_0px_#261E5308] order-3 lg:order-none">
+                    <div class="bg-alternate w-full rounded-[20px] mt-4 md:mt-0 lg:mt-4 shadow-[0px_0px_50px_0px_#261E5308] order-3 lg:order-none min-w-0">
                         <div class="px-5 py-4 border-b border-border-light flex items-center justify-between">
                             <h6 class="text-base">{{t "More Categories" }}</h6>
                             <div class="flex items-center gap-2">
