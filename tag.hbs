@@ -1,12 +1,12 @@
 {{!< default}} {{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template
     --}} <main id="site-main" class="site-main outer">
     <section class="category-posts py-[40px] sm:py-[70px]">
-        <div class="container">
-            <div class="flex flex-col lg:grid lg:grid-cols-[auto_1fr] items-start gap-4">
-                <div class="block md:grid md:grid-cols-2 md:gap-4 lg:block lg:sticky lg:top-[70px] w-full lg:w-[375px]">
+        <div class="container"> 
+            <div class="flex flex-col md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[auto_1fr] items-start gap-4">
+                <div class="block md:flex-col md:flex md:gap-4 lg:block lg:sticky lg:top-[70px] w-full lg:w-[375px]">
                     {{#tag}}
                     <div class="category-card w-full bg-alternate border border-accent rounded-[20px] order-1 lg:order-none">
-                        <div class="category-card-body px-5 sm:px-7 py-7 sm:py-10 text-center md:text-left lg:text-center flex flex-col md:flex-row lg:flex-col items-center md:gap-4 lg:gap-0">
+                        <div class="category-card-body px-5 sm:px-7 py-7 sm:py-10 text-center lg:text-center flex flex-col lg:flex-col items-center md:gap-4 lg:gap-0">
                             <div
                                 class="category-image shrink-0 bg-main rounded-full overflow-hidden size-[180px] md:size-[140px] lg:size-[180px] text-text/20 aspect-square">
                                 {{#if feature_image}}
@@ -83,7 +83,7 @@
                     {{/tag}}
                 </div>
                 <div class="authors-posts-list w-full order-2 lg:order-none">
-                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                         {{#foreach posts}}
                         {{> "post-card"}}
                         {{/foreach}}
