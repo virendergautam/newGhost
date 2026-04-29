@@ -562,42 +562,67 @@ const marqueeTextDuplicate = () => {
 
 const recommededSectionHover = () => {
   const cards = document.querySelectorAll(".recommended-card");
-  if (!cards.length) return;
+  const container = document.querySelector(".recommended-posts-container");
 
-  // ✅ Helper: remove all active
+  if (!cards.length || !container) return;
+
+  let currentIndex = 0;
+
   const clearActive = () => {
     cards.forEach((card) => card.classList.remove("active"));
   };
-  const container = document.querySelector(".recommended-posts-container");
 
-  container.addEventListener("mouseleave", () => {
+  const setActive = (index) => {
     clearActive();
+    cards[index].classList.add("active");
+    currentIndex = index;
+  };
 
+  // ✅ DEFAULT ACTIVE
+  if (cards.length === 1) {
+    setActive(0);
+  } else if (cards.length === 2) {
+    setActive(0);
+  } else {
+    setActive(1);
+  }
+
+  // ✅ MOUSE HOVER
+  cards.forEach((card, index) => {
+    card.addEventListener("mouseenter", () => {
+      setActive(index);
+    });
+
+    // ✅ KEYBOARD FOCUS (TAB)
+    card.addEventListener("focus", () => {
+      setActive(index);
+    });
+  });
+
+  // ✅ CONTAINER LEAVE
+  container.addEventListener("mouseleave", () => {
     if (cards.length === 1) {
-      cards[0].classList.add("active");
+      setActive(0);
     } else if (cards.length === 2) {
-      cards[0].classList.add("active");
+      setActive(0);
     } else {
-      cards[1].classList.add("active");
+      setActive(1);
     }
   });
 
-  // ✅ DEFAULT ACTIVE BASED ON COUNT
-  if (cards.length === 1) {
-    cards[0].classList.add("active");
-  } else if (cards.length === 2) {
-    cards[0].classList.add("active");
-  } else {
-    // 3 or more
-    cards[1].classList.add("active");
-  }
+  // ✅ KEYBOARD NAVIGATION (ARROWS)
+  container.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      const next = (currentIndex + 1) % cards.length;
+      cards[next].focus();
+    }
 
-  // ✅ HOVER BEHAVIOR
-  cards.forEach((card) => {
-    card.addEventListener("mouseenter", () => {
-      clearActive();
-      card.classList.add("active");
-    });
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prev = (currentIndex - 1 + cards.length) % cards.length;
+      cards[prev].focus();
+    }
   });
 };
 
