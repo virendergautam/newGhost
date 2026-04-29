@@ -100,7 +100,7 @@
       },
       "banner_description": {
         "type": "text",
-        "default": "Join a community of over 10,000+ subscribers who receive curated links, exclusive tutorials, and honest advice on mastering the creator economy.",
+        "default": "Join a community of over 10,000+ subscribers who receive curated links.",
         "group": "homepage"
       },
       "banner_background_image": {
@@ -131,7 +131,7 @@
       "contact_form_endpoint": {
         "type": "text",
         "default": "",
-        "description": "Endpoint URL for the contact form, such as a Formspree endpoint.Example:https://formspree.io/f/yourformid"
+        "description": "Endpoint URL for the contact form, such as Formspree endpoint.Example:https://formspree.io/f/formid"
       }
     }
   }

@@ -1,8 +1,8 @@
 {{!< default}} {{!-- The tag above means: insert everything in this file into the {body} tag of the default.hbs template
     --}} {{#post}} {{!-- Everything inside the #post block pulls data from the page --}} <main id="site-main"
     class="site-main outer">
-    <section class="{{post_class}} py-[70px]">
-        <div class="container md:!p-0">
+    <section class="{{post_class}} py-[40px] md:py-[60px] lg:py-[70px]">
+        <div class="container">
             {{#match @page.show_title_and_feature_image}}
             <header class="page-header gh-canvas grid gap-5 mb-8">
                 {{#if feature_image}}
@@ -32,5 +32,4 @@
         </div>
     </section>
     </main>
-
     {{/post}}
