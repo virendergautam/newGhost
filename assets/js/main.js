@@ -243,8 +243,14 @@ const addClassToHeaderOnScroll = () => {
   window.addEventListener("scroll", () => {
     if (window.scrollY > 120) {
       header.classList.add("is-sticky");
+      requestAnimationFrame(() => {
+        setHeaderAndAnnouncementHeights();
+      })
     } else {
       header.classList.remove("is-sticky");
+      requestAnimationFrame(() => {
+        setHeaderAndAnnouncementHeights();
+      })
     }
   });
 };
@@ -756,7 +762,9 @@ const setHeaderAndAnnouncementHeights = () => {
       });
     });
   } else {
-    updateHeights();
+     requestAnimationFrame(() => {
+        updateHeights();
+      });
   }
 
   observeAnnouncementVisibility();

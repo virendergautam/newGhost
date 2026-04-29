@@ -116,7 +116,7 @@ h6 {
   margin: 0 auto;
   padding: 0 15px;
 }
-.page-template .gh-content .container{
+.page-template .post .container{
   --page-width: 1310px;
 }
 .container{
@@ -195,10 +195,7 @@ h6 {
   padding: 6px !important;
 }
 
-.main-swiper:has(.navigation-wrapper) .slide-content {
-  padding-bottom: 250px;
-  padding-top: 60px;
-}
+
 
 .main-swiper:not(:has(.navigation-wrapper)) .featured-slider-card {
   align-items: center;
@@ -375,7 +372,7 @@ div[data-testid="comment-elements"] {
 
 /* media query start */
 @media (min-width: 1441px) {
-  .page-template .gh-content .container{
+  .page-template .post .container{
     --page-width: 1550px;
   }
   .container{
@@ -393,15 +390,11 @@ div[data-testid="comment-elements"] {
     padding-inline-end: 5px;
   }
 }
-@media (max-width: 1280px) {
+@media (min-width: 1024px){
   .main-swiper:has(.navigation-wrapper) .slide-content {
-      padding-bottom: 180px;
-  }
+  padding-bottom: 250px;
+  padding-top: 60px;
 }
-@media (max-width: 1199px) {
- .main-swiper:has(.navigation-wrapper) .slide-content {
-    padding-top: 0px;padding-bottom: 0px;
-  }
 }
 @media (max-width: 1023px) {
   .mobile-swipe {

@@ -58,3 +58,8 @@ npm run dev\
 
 1.  Upload theme in Ghost Admin → Design\
 2.  Activate Gravity
+
+
+##  Documentation
+
+https://themesupport.gitbook.io/gravity-docs/

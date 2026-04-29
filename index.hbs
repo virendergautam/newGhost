@@ -49,7 +49,7 @@
                                 class="group featured-post-img relative bg-alternate text-text/50 h-[400px] lg:h-[690px] rounded-[20px] overflow-hidden flex items-center justify-center">
                                 {{#if feature_image}}
                                 <img src="{{img_url feature_image size="m"}}" data-src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy"
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 progressive-load lazyload">
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
                                 {{else}}
                                 <span>{{t "NO IMAGE"}}</span>
                                 {{/if}}
@@ -95,7 +95,7 @@
                                         class="thumb-card w-[80px] lg:w-[155px] 2xl:w-[180px] aspect-1/1 bg-alternate text-text rounded-xl overflow-hidden transition-all cursor-pointer">
                                         {{#if feature_image}}
                                         <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
-                                            class="rounded-lg w-full h-full object-cover progressive-load lazyload">
+                                            class="aspect-1/1 rounded-lg w-full object-cover">
                                         {{else}}
                                         <div class="w-full h-full flex items-center justify-center">
                                             <span class="">{{t "NO IMAGE"}}</span>
@@ -144,21 +144,26 @@
                 <!-- ALL TAB -->
                 <div id="tab-all" class="tab-grid">
                     {{#get "posts" limit="50" include="tags,authors" order="published_at desc"}}
-                    <div class="posts-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                        {{#foreach posts}}
-                        <div class="post-item hidden">
-                            {{> post-card}}
-                        </div>
-                        {{/foreach}}
-                    </div>
-                    <div class="text-center  justify-center mt-5 md:mt-10">
-                        <button class="show-more-btn button button-outline button-large">
-                            <span class="button-text relative overflow-hidden">
-                                <span class="button-text-inner top-text">{{t "Show More"}}</span>
-                                <span class="button-text-inner bottom-text">{{t "Show More"}}</span>
-                            </span>
-                        </button>
-                    </div>
+                    {{#if posts}}
+        <div class="posts-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {{#foreach posts}}
+                <div class="post-item hidden">
+                    {{> post-card}}
+                </div>
+            {{/foreach}}
+        </div>
+
+        <div class="text-center justify-center mt-5 md:mt-10">
+            <button class="show-more-btn button button-outline button-large">
+                <span class="button-text relative overflow-hidden">
+                    <span class="button-text-inner top-text">{{t "Show More"}}</span>
+                    <span class="button-text-inner bottom-text">{{t "Show More"}}</span>
+                </span>
+            </button>
+        </div>
+    {{else}}
+        <p class="text-sm text-secondary">{{t "No posts found."}}</p>
+    {{/if}}
                     {{/get}}
                 </div>
                 <!-- TAG TABS -->
@@ -402,6 +407,7 @@
                 </a>
             </div>
             {{#get "tags" limit="6" include="count.posts" order="count.posts desc" filter="visibility:public"}}
+            {{#if tags}}
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 gap-y-5" data-aos="fade-up" data-aos-duration="800">
                 {{#foreach tags}}
                 <a href="{{url}}"
@@ -423,6 +429,9 @@
                 </a>
                 {{/foreach}}
             </div>
+            {{else}}
+                <p class="text-sm text-secondary">{{t "No tags found."}}</p>
+            {{/if}}
             {{/get}}
         </div>
     </section>
@@ -434,6 +443,7 @@
                 <h2 class="text-2xl md:text-3xl font-bold tracking-tight">Read by category</h2>
             </div>
             {{#get "tags" limit="100" include="count.posts" order="count.posts desc" filter="visibility:public"}}
+            {{#if tags}}
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-4 md:gap-x-6 gap-y-5" data-aos="fade-up" data-aos-duration="800">
                 {{#foreach tags}}
                 <a href="{{url}}"
@@ -455,6 +465,9 @@
                 </a>
                 {{/foreach}}
             </div>
+            {{else}}
+                <p class="text-sm text-secondary">{{t "No tags found."}}</p>
+            {{/if}}
             {{/get}}
         </div>
     </section>
