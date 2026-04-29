@@ -8,6 +8,7 @@
     width: min(var(--page-width),calc(100vw - 3rem))!important;
 }
 .kg-canvas .kg-width-full{
+    position: relative;
     width: 100vw;
     left: 50%;
     right: 50%;

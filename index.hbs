@@ -30,7 +30,7 @@
                                     {{/has}}
                                     {{/unless}}
                                 </div>
-                                <h2 class="text-3xl md:text-4xl lg:text-5xl  mb-5 max-w-[550px]">
+                                <h2 class="text-3xl md:text-4xl lg:text-5xl mb-5 max-w-[550px]">
                                     <a href="{{url}}">{{title}}</a>
                                 </h2>
                                 {{#if custom_excerpt}}
@@ -61,7 +61,7 @@
                 </div>
                 {{#if featured.[1]}}
                 <div
-                    class="navigation-wrapper -mt-[30px] lg:mt-0 relative lg:absolute z-1 lg:bottom-[50px] lg:left-0 w-full mx-auto max-w-[270px] md:max-w-[500px] xl:max-w-[56%] flex flex-col-reverse lg:flex-row items-center lg:items-end justify-between gap-8 lg:gap-12 p-[5px] lg:p-[10px] bg-main rounded-lg overflow-hidden">
+                    class="navigation-wrapper -mt-[30px] lg:mt-0 relative lg:absolute z-1 lg:bottom-[50px] lg:left-0 w-full mx-auto max-w-[273px] lg:max-w-[70%] xl:max-w-[56%] flex flex-col-reverse lg:flex-row items-center lg:items-end justify-between gap-8 lg:gap-12 px-[5px] py-[8px] lg:px-[10px] lg:py-[10px] bg-main rounded-lg overflow-hidden">
                     <div class="flex items-center gap-5">
                         <div class="flex gap-2">
                             <button
@@ -92,7 +92,7 @@
                                 {{#foreach featured}}
                                 <div class="swiper-slide !w-auto px-1">
                                     <div
-                                        class="thumb-card w-[80px] md:w-[150px] lg:w-[160px] 2xl:w-[180px] aspect-1/1 bg-alternate text-text rounded-xl overflow-hidden transition-all cursor-pointer">
+                                        class="thumb-card w-[80px] lg:w-[160px] 2xl:w-[180px] aspect-1/1 bg-alternate text-text rounded-xl overflow-hidden transition-all cursor-pointer">
                                         {{#if feature_image}}
                                         <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" alt="{{title}}"
                                             class="rounded-lg w-full h-full object-cover progressive-load lazyload">
