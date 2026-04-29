@@ -2,7 +2,7 @@
     --}} {{#post}} {{!-- Everything inside the #post block pulls data from the page --}} <main id="site-main"
     class="site-main outer">
     <section class="{{post_class}} py-[70px]">
-        <div class="max-w-[1400px] mx-auto">
+        <div class="container md:!p-0">
             {{#match @page.show_title_and_feature_image}}
             <header class="page-header gh-canvas grid gap-5 mb-8">
                 {{#if feature_image}}

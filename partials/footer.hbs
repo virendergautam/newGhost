@@ -54,7 +54,7 @@
           </span>
         </p>
       </div>
-      <div id="footerGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 w-full md:max-w-[75%] mx-auto"></div>
+      <div id="footerGrid" class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-6 w-full md:max-w-[85%] md:ml-auto lg:max-w-[75%] lg:mx-auto"></div>
       <div class="author-profile-meta gap-2.5 inline-flex flex-wrap lg:justify-end social-links footer-link"
         data-links="{{@custom.social_links}}"> </div>
       <p class="text-xs block md:hidden">
@@ -101,7 +101,7 @@
       if (label.startsWith('#')) {
         currentCol = document.createElement('div');
         currentCol.innerHTML = `
-        <h2 class="text-xs !text-heading/50 dark:!text-heading mb-3 sm:mb-6">
+        <h2 class="text-xs !text-heading/60 dark:!text-heading mb-3 sm:mb-6">
           ${label.replace(/^#+\s*/, '')}
         </h2>
         <ul class="space-y-4 text-sm"></ul>
