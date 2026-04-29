@@ -308,6 +308,7 @@
 
     {{!-- recommended post section --}}
     {{#get "posts" limit="3" include="tags,authors" filter="tag:hash-recommended" order="published_at desc"}}
+    {{#if posts}}
         <section class="recommended-posts pt-[40px] md:pt-[60px] lg:pt-[70px] ">
             <div class="recommended-posts-container container">
                 <div class="mobile-swipe mobile-swipe-cols-1">
@@ -373,6 +374,7 @@
                 </div>
             </div>
         </section>
+        {{/if}}
     {{/get}}
 
     {{!-- Read by Category Section --}}
@@ -469,7 +471,7 @@
                         class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center -rotate-[15deg] translate-x-[25px] translate-y-[10px] group-hover:-translate-x-[20px] group-hover:translate-y-[0px] group-hover:-rotate-[0deg] transition-all duration-500 ease-in-out">
                         {{#with posts.[0]}}
                         {{#if feature_image}}
-                        <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy"  class="w-full h-full object-cover progressive-load lazyload">
+                        <img src="{{img_url feature_image size="xs"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" data-src="{{img_url feature_image size="m"}}" loading="lazy"  class="w-full h-full object-cover progressive-load lazyload">
                         {{else}}
                         <span class="font-bold">{{t "NO IMAGE"}}</span>
                         {{/if}}
@@ -482,7 +484,7 @@
                         class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
                         {{#with posts.[1]}}
                         {{#if feature_image}}
-                        <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
+                        <img src="{{img_url feature_image size="xs"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
                         {{else}}
                         <span class="font-bold">{{t "NO IMAGE"}}</span>
                         {{/if}}
@@ -495,7 +497,7 @@
                         class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center rotate-[15deg] -translate-x-[25px] translate-y-[10px] group-hover:translate-x-[25px] group-hover:translate-y-[0px] group-hover:-rotate-[0deg] transition-all duration-500 ease-in-out">
                         {{#with posts.[2]}}
                         {{#if feature_image}}
-                        <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
+                        <img src="{{img_url feature_image size="xs"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
                         {{else}}
                         <span class="font-bold">{{t "NO IMAGE"}}</span>
                         {{/if}}
@@ -512,7 +514,7 @@
                         class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
                         {{#with posts.[0]}}
                         {{#if feature_image}}
-                        <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
+                        <img src="{{img_url feature_image size="xs"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
                         {{else}}
                         <span class="font-bold">{{t "NO IMAGE"}}</span>
                         {{/if}}
@@ -525,7 +527,7 @@
                         class="relative w-[100px] md:w-[150px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center rotate-[15deg] -translate-x-[25px] translate-y-[10px] group-hover:translate-x-[25px] group-hover:translate-y-[0px] group-hover:-rotate-[0deg] transition-all duration-500 ease-in-out">
                         {{#with posts.[1]}}
                         {{#if feature_image}}
-                        <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
+                        <img src="{{img_url feature_image size="xs"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
                         {{else}}
                         <span class="font-bold">{{t "NO IMAGE"}}</span>
                         {{/if}}
@@ -542,7 +544,7 @@
                         class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate text-text/20 flex items-center justify-center relative z-2">
                         {{#with posts.[0]}}
                         {{#if feature_image}}
-                        <img src="{{img_url feature_image size="xs"}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
+                        <img src="{{img_url feature_image size="xs"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" data-src="{{img_url feature_image size="m"}}" loading="lazy" class="w-full h-full object-cover progressive-load lazyload">
                         {{else}}
                         <span class="font-bold">{{t "NO IMAGE"}}</span>
                         {{/if}}
@@ -557,7 +559,7 @@
                     {{#if @site.cover_image}}
                     <div
                         class="relative w-[150px] md:w-[200px] aspect-square rounded-lg overflow-hidden border-[2px] border-alternate">
-                        <img src="{{@site.cover_image}}" class="w-full h-full object-cover progressive-load lazyload">
+                        <img src="{{@site.cover_image}}" alt="{{@site.title}}" class="w-full h-full object-cover progressive-load lazyload">
                     </div>
                     {{/if}}
 
@@ -578,9 +580,9 @@
                         <form data-members-form="subscribe" class="flex flex-col sm:grid sm:grid-cols-[1fr_auto] items-center justify-center gap-3.5 max-w-lg mx-auto" data-aos="fade-up" data-aos-duration="600">
 
                     <input data-members-email name="email" type="email" required placeholder="Enter your email" id="subscribe-email2"
-                        class="w-full px-6 py-3 rounded-lg border border-transparent bg-alternate shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-text text-sm placeholder:text-text/70 focus:border-text focus:ring-4 focus:ring-text/5 transition-all outline-none" placeholder="Enter your email" autocomplete="email"/>
+                        class="w-full px-6 py-3 rounded-lg border border-transparent bg-alternate shadow-[0_2px_15px_-3px_rgba(0,0,0,0.08),0_10px_20px_-2px_rgba(0,0,0,0.04)] text-text text-sm placeholder:text-text/70 focus:border-text focus:ring-4 focus:ring-text/5 transition-all outline-none" autocomplete="email"/>
                     <button type="submit"
-                        class="button subscribe-button button-large h-full cursor-pointer" autocomplete="off">
+                        class="button subscribe-button button-large h-full cursor-pointer">
                         <span class="button-text relative overflow-hidden">
                             <span class="button-text-inner top-text">{{t "Subscribe"}}</span>
                             <span class="button-text-inner bottom-text">{{t "Subscribe"}}</span>
