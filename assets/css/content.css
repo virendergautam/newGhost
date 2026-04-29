@@ -3,9 +3,9 @@
 }
 .kg-canvas .kg-width-wide {
     margin-left: 50%!important;
-    max-width: min(var(--page-width),calc(100vw - 3rem))!important;
+    max-width: min(var(--page-width),calc(100vw - 30px))!important;
     transform: translateX(-50%)!important;
-    width: min(var(--page-width),calc(100vw - 3rem))!important;
+    width: min(var(--page-width),calc(100vw - 30px))!important;
 }
 .kg-canvas .kg-width-full{
     position: relative;
@@ -526,7 +526,7 @@ is the very first element in the post content */
     }
 
     .gh-content h6 {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .article-post-slider .swiper-pagination.post-slider-pagination {
         position: unset;
